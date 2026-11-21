@@ -1,6 +1,94 @@
 import type { Reference, ReportSection } from './types';
 
-export const references: readonly Reference[] = [];
+export const references: readonly Reference[] = [
+  {
+    id: 'daihoaphu-gland',
+    author: 'Dai Hoa Phu',
+    year: 'n.d.',
+    title: 'Cable gland Upun PG13.5',
+    retrievedDate: 'November 19, 2026',
+    url: 'https://daihoaphu.vn/cable-gland-upun-pg135',
+  },
+  {
+    id: 'dfrobot-ph',
+    author: 'DFRobot',
+    year: 'n.d.-a',
+    title: 'Gravity: 7/24 industrial analog pH meter kit V2 (Arduino, Raspberry Pi)',
+    retrievedDate: 'November 19, 2026',
+    url: 'https://www.dfrobot.com/product-2069.html',
+  },
+  {
+    id: 'dfrobot-turbidity',
+    author: 'DFRobot',
+    year: 'n.d.-b',
+    title: 'RS485 industrial water quality turbidity sensor (0–1000 NTU)',
+    retrievedDate: 'November 19, 2026',
+    url: 'https://www.dfrobot.com/product-3104.html',
+  },
+  {
+    id: 'hww-blueprint',
+    author: 'Hanoi WaterWatch Team',
+    year: '2026',
+    title: 'Implementation blueprint: MVP, sensor registry and data-honesty rules',
+    description: '[Internal project documentation]',
+  },
+  {
+    id: 'hshop-rs485',
+    author: 'Hshop',
+    year: 'n.d.-a',
+    title: 'Bo mạch chuyển đổi tín hiệu TTL sang RS485 V1',
+    retrievedDate: 'November 19, 2026',
+    url: 'https://hshop.vn/bo-mach-chuyen-doi-tin-hieu-ttl-sang-rs485-v1',
+  },
+  {
+    id: 'hshop-temperature',
+    author: 'Hshop',
+    year: 'n.d.-b',
+    title: 'Cảm biến nhiệt độ chống nước DS18B20 waterproof temperature sensor',
+    retrievedDate: 'November 19, 2026',
+    url: 'https://hshop.vn/cam-bien-nhiet-do-chong-nuoc-ds18b20-waterproof-temperature-sensor',
+  },
+  {
+    id: 'hshop-do',
+    author: 'Hshop',
+    year: 'n.d.-c',
+    title: 'DFRobot RS485 fluorescence dissolved oxygen sensor (freshwater)',
+    retrievedDate: 'November 19, 2026',
+    url: 'https://hshop.vn/cam-bien-oxy-hoa-tan-dfrobot-rs485-fluorescence-dissolved-oxygen-sensor-freshwater',
+  },
+  {
+    id: 'hshop-esp32',
+    author: 'Hshop',
+    year: 'n.d.-d',
+    title: 'Mạch phát triển Vietduino ESP32 (Arduino Compatible)',
+    retrievedDate: 'November 19, 2026',
+    url: 'https://hshop.vn/mach-phat-trien-vietduino-esp32',
+  },
+  {
+    id: 'hshop-sim7600',
+    author: 'Hshop',
+    year: 'n.d.-e',
+    title: 'SIM7600G-H-M.2 SIMCom original 4G LTE Cat-4 module',
+    retrievedDate: 'November 19, 2026',
+    url: 'https://hshop.vn/mach-sim7600g-h-m-2-simcom-original-4g-lte-cat-4-module-global-coverage-gnss-m-2-connector',
+  },
+  {
+    id: 'vietcombank-rate',
+    author: 'NDH',
+    year: '2026',
+    date: '2026, November 19',
+    title: 'Tỷ giá USD hôm nay 19/11/2026',
+    url: 'https://ndh.vn/ty-gia/usd/',
+  },
+  {
+    id: 'vinadenki-enclosure',
+    author: 'Vinadenki',
+    year: 'n.d.',
+    title: 'Tu dien nhua Viger',
+    retrievedDate: 'November 19, 2026',
+    url: 'https://vinadenki.vn/tu-dien-nhua-vo-hop-dau-noi-cap',
+  },
+];
 
 export default {
   title: "References",

@@ -26,7 +26,7 @@ export function ReportPage({ index }: { index: number }) {
           <h2 id={id} tabIndex={-1}>{title}</h2>
           {paragraphs?.map(({ text, citations }) => (
             <p key={text}>
-              {text}{citations?.map((reference) => <span key={reference.id}> <Citation reference={reference} /></span>)}
+              {text}{citations && <> <Citation references={citations} /></>}
             </p>
           ))}
           {pending && <Pending>{pending}</Pending>}
