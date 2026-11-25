@@ -132,3 +132,15 @@ input[type=range]{width:100%;accent-color:var(--accent);margin:2px 0}
 /* Linked to the simulator inside the report page */
 .btn:disabled,input[type=range]:disabled{opacity:.5;cursor:not-allowed}
 body.linked .sl::after{content:"\21C4  Simulator";display:block;margin-top:4px;font:700 12px var(--f-body);color:var(--accent)}
+
+/* ===== embedded in the report (?embed=1): only the 3D view, a status chip and the focus button ===== */
+body.embed .app{grid-template-columns:minmax(0,1fr)}
+body.embed .panel,body.embed .titlebar .brand,body.embed .titlebar .lang,body.embed .hot,body.embed .dock .sl,body.embed .dock .btns,body.embed .dock .hint{display:none}
+body.embed .dock{left:12px;right:auto;transform:none;bottom:12px;width:auto;padding:8px 14px;background:rgba(11,34,56,.88);border:1px solid #25445f;border-radius:14px;color:#e6eef4;box-shadow:none}
+body.embed .dock .stat{display:flex;gap:18px;margin:0;padding:0;border:0}
+body.embed .dock small{color:#9db4c4}
+body.embed .pill.ok{background:#c8f169;color:#0b2238}body.embed .pill.watch{background:#f2a541;color:#2b1d00}body.embed .pill.bad{background:#ff6b57;color:#fff}
+body.embed .run{color:#fff}
+body.embed .focus,body.embed .focus.far{background:#0b2238;color:#c8f169;border:1px solid #25445f;border-radius:999px;font-weight:700}
+body.embed .tag{background:rgba(11,34,56,.9);color:#e6eef4;border-color:#25445f}
+body.embed .stage{background:#bfd6e4}

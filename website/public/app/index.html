@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WaterWatch App Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE   a shipped civic app: calm, legible, Vietnamese first
+   IDEA    the phone in a riverside resident's hand, and the inspector's dashboard behind it
+   PICTURE the live app itself, in a phone frame on desktop and full screen on a phone
+   COLOUR  river green #0b2238 header, white cards, status green #23944a, amber #d98a0b, red #e0412f
+   TYPE    Be Vietnam Pro (made for Vietnamese diacritics) + JetBrains Mono for readings
+   LAYOUT  desktop: controls left, phone right; phone: the app first, controls below */
+:root{color-scheme:light;--river:#0b2238;--river2:#143552;--lime:#c8f169;--blue:#4a9fd8;--bg:#eef2f6;--card:#fff;--ink:#0e1e2c;--ink2:#56656f;--line:#dce4ea;--ok:#23944a;--warn:#d98a0b;--bad:#e0412f;--blue:#2f6df6;--fs:1}
+*{box-sizing:border-box;min-width:0}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:#0b2238;color:var(--ink);font:15px/1.5 'Be Vietnam Pro',system-ui,Arial,sans-serif;overflow-x:clip}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid #7fd6e8;outline-offset:2px}
+.stage{min-height:100svh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,430px);gap:clamp(24px,4vw,64px);align-items:center;max-width:1180px;margin:0 auto;padding:32px max(4vw,16px)}
+.side{color:#e6eef4;display:grid;gap:18px;align-content:center}
+.side h1{font:800 clamp(30px,3.6vw,46px)/1.05 'Be Vietnam Pro',sans-serif;letter-spacing:-.02em;margin:0}
+.side h1 span{color:var(--lime)}
+.side p{margin:0;color:#b8c8d5;max-width:52ch}
+.panel{background:#12304d;border:1px solid #24405a;border-radius:18px;padding:18px;display:grid;gap:14px}
+.panel h2{margin:0;font:700 15px/1.2 'Be Vietnam Pro',system-ui,sans-serif;color:#fff}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button,.pbtn{min-height:44px;padding:10px 14px;border-radius:12px;border:1px solid #2b4d6a;background:#0d2840;color:#e6eef4;font-weight:600;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--lime);color:#0b2238;border-color:var(--lime)}
+.pbtn.go{background:var(--lime);color:#0b2238;border-color:var(--lime)}
+.pbtn.red{background:#e0412f;border-color:#e0412f;color:#fff}
+.pbtn:hover{filter:brightness(1.08)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.side select{min-height:44px;padding:8px 12px;border-radius:12px;background:#0d2840;border:1px solid #2b4d6a;color:#fff}
+.small{font-size:13.5px;color:#9fb2c2}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.stats div{background:#0d2840;border-radius:12px;padding:10px 12px;display:grid;gap:2px}
+.stats b{font:600 22px/1 'JetBrains Mono',monospace;color:#fff}
+.stats small{font-size:12.5px;color:#9fb2c2}
+.live-status{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#cfdce6}
+.live-status i{width:9px;height:9px;border-radius:50%;background:#8ea6b8;flex:none}
+.live-status.on i{background:var(--lime);box-shadow:0 0 0 4px rgba(200,241,105,.25)}
+.live-status.err i{background:var(--bad)}
+
+/* phone frame */
+.device{width:100%;max-width:410px;height:min(860px,calc(100svh - 64px));min-height:640px;margin:0 auto;border-radius:48px;padding:12px;background:#050b14;box-shadow:0 0 0 2px #2a4258,0 50px 100px -40px rgba(0,0,0,.8),0 0 80px -20px rgba(200,241,105,.25)}
+.app{position:relative;height:100%;border-radius:38px;overflow:hidden;background:var(--bg);display:grid;grid-template-rows:auto auto 1fr auto;font-size:calc(15px * var(--fs))}
+.sbar{display:flex;justify-content:space-between;padding:12px 26px 6px;background:var(--river);color:#fff;font:600 13px/1 'Be Vietnam Pro',system-ui,sans-serif}
+.top{background:var(--river);color:#fff;padding:6px 16px 14px;display:grid;gap:10px}
+.top .r1{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.brandrow{display:flex;align-items:center;gap:10px}
+.brandrow .logo{width:36px;height:22px;flex:none}
+.brandrow .logo .gap{stroke:var(--river)}
+.top h2{margin:0;white-space:nowrap;font:800 calc(17px * var(--fs))/1.1 'Be Vietnam Pro',system-ui,sans-serif}
+.top h2 small{display:block;font:500 12px/1.3 'Be Vietnam Pro',system-ui,sans-serif;color:#a9bccb;margin-top:3px}
+.icons{display:flex;gap:6px}
+.ib{width:40px;height:40px;border-radius:12px;border:0;background:rgba(255,255,255,.1);color:#fff;display:grid;place-items:center;cursor:pointer;position:relative;font-weight:700;font-size:13px}
+.ib svg{width:20px;height:20px}
+.ib .cnt{position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;border-radius:9px;background:var(--bad);font-size:11px;display:grid;place-items:center;padding:0 4px}
+.role{display:grid;grid-template-columns:1fr 1fr;background:rgba(255,255,255,.08);border-radius:12px;padding:3px}
+.role button{border:0;background:none;color:#cfdce6;min-height:36px;border-radius:9px;font-weight:600;cursor:pointer;font-size:calc(13.5px * var(--fs))}
+.role button[aria-pressed=true]{background:#fff;color:var(--river)}
+.view{overflow:auto;padding:14px 14px 20px;display:none;gap:12px;min-height:0}
+.view.on{display:flex;flex-direction:column}
+.view>*{flex-shrink:0}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);background:#fff;border-top:1px solid var(--line);padding:6px 6px 14px}
+.tabs button{border:0;background:none;display:grid;justify-items:center;gap:3px;padding:6px 0;color:var(--ink2);font:600 calc(12px * var(--fs))/1.1 'Be Vietnam Pro',system-ui,sans-serif;cursor:pointer;min-height:48px}
+.tabs svg{width:22px;height:22px}
+.tabs button[aria-selected=true]{color:var(--river)}
+.tabs button[aria-selected=true] svg{color:var(--ok)}
+.card{background:var(--card);border-radius:18px;padding:14px;border:1px solid var(--line)}
+.map{position:relative;border-radius:18px;overflow:hidden;background:#e3e9ee;aspect-ratio:1/1.05}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.mk{cursor:pointer}
+.mk .halo{transform-box:fill-box;transform-origin:center;animation:halo 1.6s infinite}
+@keyframes halo{from{transform:scale(1);opacity:.7}to{transform:scale(2.6);opacity:0}}
+.legend{display:flex;flex-wrap:wrap;gap:6px}
+.lg{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:calc(12.5px * var(--fs));font-weight:600}
+.lg i{width:10px;height:10px;border-radius:50%}
+.lg i.sq{border-radius:2px}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-weight:700;font-size:calc(12px * var(--fs));white-space:nowrap}
+.b-ok{background:#ddf3e3;color:#18713a}.b-check{background:#fff0d4;color:#8a5600}.b-alert{background:#ffe1dc;color:#b3261a}.b-off{background:#e6ebe8;color:#4f5d57}
+.stn{display:grid;gap:10px}
+.stn .h{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.stn h3{margin:0;font:700 calc(16px * var(--fs))/1.25 'Be Vietnam Pro',system-ui,sans-serif}
+.stn h3 small{display:block;font-weight:500;color:var(--ink2);font-size:calc(12.5px * var(--fs))}
+.reads{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.reads div{background:var(--bg);border-radius:12px;padding:8px 6px;text-align:center;display:grid;gap:2px}
+.reads small{font-size:calc(11px * var(--fs));color:var(--ink2);font-weight:600}
+.reads b{font:600 calc(15px * var(--fs))/1.1 'JetBrains Mono',monospace}
+.reads b.hi{color:var(--bad)}
+.reads em{font-style:normal;font-size:calc(10.5px * var(--fs));color:var(--ink2)}
+.spark{height:54px;width:100%}
+.advice{border-radius:14px;padding:12px 14px;font-size:calc(14px * var(--fs));line-height:1.5}
+.advice.ok{background:#e9f6ed;color:#1c5a33}.advice.check{background:#fff5e0;color:#6e4600}.advice.alert{background:#ffe9e5;color:#8f1f14}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.btn{min-height:44px;padding:10px 16px;border-radius:12px;border:1px solid var(--line);background:#fff;font-weight:700;cursor:pointer;font-size:calc(14px * var(--fs))}
+.btn.pri{background:var(--river);border-color:var(--river);color:#fff}
+.btn.red{background:var(--bad);border-color:var(--bad);color:#fff}
+.btn.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.alertc{display:grid;gap:8px;border-left:5px solid var(--bad)}
+.alertc.done{border-left-color:var(--ok)}
+.alertc.fa{border-left-color:#9aa6b0}
+.alertc .t{display:flex;justify-content:space-between;gap:8px;align-items:center;font-weight:700}
+.alertc p{margin:0;color:var(--ink2);font-size:calc(14px * var(--fs))}
+.empty{text-align:center;color:var(--ink2);padding:30px 10px;display:grid;gap:8px;justify-items:center}
+.empty svg{width:44px;height:44px;color:var(--ok)}
+label.f{display:grid;gap:6px;font-weight:600;font-size:calc(14px * var(--fs))}
+.f select,.f textarea,.f input[type=text]{width:100%;min-height:44px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:#fff;font-size:16px}
+.chipset{display:flex;flex-wrap:wrap;gap:6px}
+.chipset button{min-height:40px;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:600;cursor:pointer;font-size:calc(13.5px * var(--fs))}
+.chipset button[aria-pressed=true]{background:#e9f6ed;border-color:var(--ok);color:#18713a}
+.photo{display:flex;align-items:center;gap:10px;min-height:56px;padding:10px 12px;border:1.5px dashed #b9c6bf;border-radius:12px;cursor:pointer;color:var(--ink2);font-weight:600}
+.photo img{width:56px;height:56px;object-fit:cover;border-radius:10px}
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.kpis div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;display:grid;gap:4px}
+.kpis small{color:var(--ink2);font-weight:600;font-size:calc(12px * var(--fs))}
+.kpis b{font:600 calc(22px * var(--fs))/1 'JetBrains Mono',monospace}
+.sec{font:800 calc(13px * var(--fs))/1.2 'Be Vietnam Pro',system-ui,sans-serif;color:var(--ink2);margin:6px 2px 0}
+.health{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.health:last-child{border:0}
+.health b{font-size:calc(14px * var(--fs))}
+.health small{grid-column:1/-1;color:var(--ink2);font-size:calc(12.5px * var(--fs))}
+.steps{display:flex;gap:4px}
+.steps i{flex:1;height:5px;border-radius:3px;background:var(--line)}
+.steps i.f{background:var(--ok)}
+/* overlay */
+.over{position:absolute;inset:0;background:rgba(8,16,28,.55);display:none;align-items:end;z-index:5}
+.over.on{display:flex}
+.over .box{width:100%;background:#fff;border-radius:26px 26px 0 0;padding:20px 18px 26px;display:grid;gap:12px;animation:up .35s cubic-bezier(.2,.9,.3,1.1)}
+@keyframes up{from{transform:translateY(100%)}to{transform:none}}
+.over .big{background:var(--bad);color:#fff;border-radius:18px;padding:16px;display:grid;gap:4px}
+.over .big b{font:800 calc(20px * var(--fs))/1.15 'Be Vietnam Pro',system-ui,sans-serif}
+.over ul{margin:0;padding-left:20px;display:grid;gap:4px;font-size:calc(14.5px * var(--fs))}
+.toast{position:absolute;left:14px;right:14px;top:120px;background:var(--river);color:#fff;border-radius:14px;padding:12px 14px;font-weight:600;z-index:6;opacity:0;visibility:hidden;transform:translateY(-12px);transition:opacity .3s,transform .3s,visibility .3s}
+.toast.on{opacity:1;visibility:visible;transform:none}
+@media (max-width:820px){
+  body{background:var(--bg)}
+  .stage{display:flex;flex-direction:column;padding:0}
+  .device{order:-1}
+  .device{max-width:none;height:100svh;min-height:560px;border-radius:0;padding:0;box-shadow:none;background:none}
+  .app{border-radius:0;grid-template-rows:auto 1fr auto}
+  .side{background:var(--river);padding:28px 16px 40px}
+  .sbar{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="stage">
+  <section class="side" aria-label="Prototype controls">
+    <a href="../index.html#solution-prototypes" style="color:#c8f169;font-weight:600;text-decoration:none">← Back to the report</a>
+    <h1>WaterWatch <span>app prototype</span></h1>
+    <p>Prototype P2 of Hanoi WaterWatch. Residents see a colour-coded map of drain outfalls and get alerts; the environment authority manages alerts and station health. Use the controls to run the test scenarios.</p>
+    <div class="panel">
+      <h2>Data source</h2>
+      <div class="seg" id="srcSeg"><button type="button" data-src="demo" aria-pressed="true">Simulated stations</button><button type="button" data-src="live" aria-pressed="false">Live from Wokwi (MQTT)</button></div>
+      <div class="live-status" id="liveStatus"><i></i><span>Six simulated stations, one reading every 2 seconds.</span></div>
+    </div>
+    <div class="panel">
+      <h2>Test scenarios</h2>
+      <div class="row"><select id="stSel" aria-label="Station"></select></div>
+      <div class="row">
+        <button class="pbtn red" type="button" id="bDis">Discharge</button>
+        <button class="pbtn" type="button" id="bSpike">Single spike</button>
+        <button class="pbtn" type="button" id="bOff">Station offline</button>
+        <button class="pbtn go" type="button" id="bReset">Reset all</button>
+      </div>
+      <div class="stats">
+        <div><b id="sAl">0</b><small>Alerts raised</small></div>
+        <div><b id="sSp">0</b><small>Spikes ignored</small></div>
+        <div><b id="sTt">–</b><small>Last time to alert</small></div>
+      </div>
+      <p class="small">Alert rule: pH outside 6.0–8.5, dissolved oxygen below 4 mg/L, or turbidity above 1.5× the station’s baseline, for three readings in a row (QCVN 08:2023/BTNMT).</p>
+    </div>
+  </section>
+
+  <div class="device">
+    <div class="app" id="app">
+      <div class="sbar"><span id="clk">02:14</span><span>4G ▮▮▮ 86%</span></div>
+      <header class="top">
+        <div class="r1">
+          <div class="brandrow"><svg class="logo" viewBox="0 0 160 96" aria-hidden="true"><rect x="36" y="2" width="17" height="92" rx="8.5" fill="#6c9c3f"/><rect x="107" y="2" width="17" height="92" rx="8.5" fill="#6c9c3f"/><path class="gap" d="M6 54C14 40 26 33 38 37C50 41 54 70 62 70C70 70 74 40 80 40C86 40 90 70 98 70C106 70 110 41 122 37C134 33 146 40 154 54" fill="none" stroke-width="27" stroke-linecap="round"/><path d="M6 54C14 40 26 33 38 37C50 41 54 70 62 70C70 70 74 40 80 40C86 40 90 70 98 70C106 70 110 41 122 37C134 33 146 40 154 54" fill="none" stroke="#5aa6d6" stroke-width="16" stroke-linecap="round"/></svg><h2 id="appTitle">WaterWatch Hà Nội<small id="upd"></small></h2></div>
+          <div class="icons">
+            <button class="ib" id="bigText" type="button" aria-label="Larger text" aria-pressed="false">Aa</button>
+            <button class="ib" id="lang" type="button" aria-label="Switch language">EN</button>
+            <button class="ib" id="bell" type="button" aria-label="Alerts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg><span class="cnt" id="bellCnt" hidden>0</span></button>
+          </div>
+        </div>
+        <div class="role" role="group" aria-label="Role"><button type="button" data-role="res" aria-pressed="true" id="rRes"></button><button type="button" data-role="gov" aria-pressed="false" id="rGov"></button></div>
+      </header>
+
+      <!-- resident: map -->
+      <section class="view on" id="vMap">
+        <div class="map"><svg id="mapSvg" viewBox="0 0 340 357" aria-label="Map of Hanoi rivers with monitored outfalls"></svg></div>
+        <div class="legend" id="legend"></div>
+        <div class="card stn" id="stnCard"></div>
+      </section>
+      <!-- resident: alerts -->
+      <section class="view" id="vAlerts"></section>
+      <!-- resident: report -->
+      <section class="view" id="vReport"></section>
+      <!-- authority -->
+      <section class="view" id="vGov"></section>
+
+      <nav class="tabs" id="tabs" role="tablist"></nav>
+
+      <div class="over" id="over" role="alertdialog" aria-modal="true" aria-labelledby="ovT"><div class="box" id="ovBox"></div></div>
+      <div class="toast" id="toast" role="status"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+{
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const rnd = (a, b) => a + Math.random() * (b - a);
+
+/* ---------- strings ---------- */
+const T = {
+  vi: { res: 'Người dân', gov: 'Cơ quan quản lý', map: 'Bản đồ', alerts: 'Cảnh báo', report: 'Báo cáo', dash: 'Điều hành', stations: 'Trạm', reports: 'Phản ánh',
+    upd: 'Cập nhật lúc', safe: 'An toàn', check: 'Đang kiểm tra', alert: 'Vượt ngưỡng', off: 'Mất kết nối', resi: 'Cống dân cư', ind: 'Khu công nghiệp', you: 'Bạn',
+    tapHint: 'Chạm vào một điểm trên bản đồ để xem chi tiết.', lim: 'Giới hạn',
+    advOk: 'Nước tại cửa xả này đang trong giới hạn cho phép.', advCheck: 'Có số đo bất thường. Hệ thống đang kiểm tra thêm, chưa phải cảnh báo.', advAlert: 'Không dùng nước sông để tưới rau, nuôi cá hay giặt giũ. Tránh tiếp xúc trực tiếp với nước.', advOff: 'Trạm tạm mất kết nối. Dữ liệu sẽ được gửi lại khi có sóng.',
+    reportBtn: 'Báo ô nhiễm', history: 'Oxy hòa tan, 60 giây gần nhất', noAlerts: 'Không có cảnh báo nào gần bạn.', noAlertsSub: 'Bạn sẽ nhận thông báo ngay khi có xả thải.',
+    detected: 'Phát hiện xả thải lúc', status: { new: 'Đang kiểm tra', sent: 'Thanh tra đang đến', sampled: 'Đã lấy mẫu', confirmed: 'Lab xác nhận vi phạm', false: 'Báo động giả', closed: 'Đã kết thúc' },
+    rTitle: 'Phản ánh ô nhiễm', rWhere: 'Cửa xả gần bạn', rWhat: 'Bạn thấy gì?', rPhoto: 'Thêm ảnh (không bắt buộc)', rNote: 'Ghi chú', rSend: 'Gửi phản ánh', rSent: 'Đã gửi. Cảm ơn bạn! Cơ quan quản lý sẽ xem xét.', rNeed: 'Hãy chọn ít nhất một dấu hiệu.',
+    sign: ['Nước đen', 'Mùi hôi', 'Cá chết', 'Bọt trắng', 'Rác thải'],
+    ovT: 'CẢNH BÁO Ô NHIỄM', ovA: ['Không dùng nước sông cho rau, ao cá', 'Đóng cống lấy nước vào ruộng, ao', 'Tránh để trẻ em chơi gần bờ'], ovOk: 'Tôi đã hiểu', ovMap: 'Xem trên bản đồ', away: 'cách bạn',
+    kOn: 'Trạm hoạt động', kOpen: 'Cảnh báo đang mở', kResp: 'Phản hồi TB', kRep: 'Phản ánh mới', aSend: 'Cử thanh tra', aSample: 'Đã lấy mẫu', aConfirm: 'Lab xác nhận', aFalse: 'Báo động giả',
+    hAlerts: 'Cảnh báo', hHealth: 'Tình trạng trạm', hReports: 'Phản ánh của người dân', batt: 'Pin', clean: 'Vệ sinh đầu đo', daysAgo: 'ngày trước', last: 'Lần cuối', none: 'Chưa có.', min: 'phút' },
+  en: { res: 'Resident', gov: 'Authority', map: 'Map', alerts: 'Alerts', report: 'Report', dash: 'Operations', stations: 'Stations', reports: 'Reports',
+    upd: 'Updated', safe: 'Safe', check: 'Checking', alert: 'Limit exceeded', off: 'Offline', resi: 'Residential drain', ind: 'Industrial cluster', you: 'You',
+    tapHint: 'Tap a point on the map for details.', lim: 'Limit',
+    advOk: 'Water at this outfall is within the permitted limits.', advCheck: 'An unusual reading. The system is checking further; this is not an alert yet.', advAlert: 'Do not use river water for crops, fish ponds or washing. Avoid direct contact with the water.', advOff: 'Station temporarily offline. Data will be sent when the signal returns.',
+    reportBtn: 'Report pollution', history: 'Dissolved oxygen, last 60 seconds', noAlerts: 'No alerts near you.', noAlertsSub: 'You will be notified as soon as a discharge is detected.',
+    detected: 'Discharge detected at', status: { new: 'Being checked', sent: 'Inspector on the way', sampled: 'Sample taken', confirmed: 'Lab confirmed violation', false: 'False alarm', closed: 'Closed' },
+    rTitle: 'Report pollution', rWhere: 'Nearest outfall', rWhat: 'What do you see?', rPhoto: 'Add a photo (optional)', rNote: 'Note', rSend: 'Send report', rSent: 'Sent. Thank you! The authority will review it.', rNeed: 'Choose at least one sign.',
+    sign: ['Black water', 'Bad smell', 'Dead fish', 'White foam', 'Rubbish'],
+    ovT: 'POLLUTION ALERT', ovA: ['Do not use river water for crops or fish ponds', 'Close inlets to fields and ponds', 'Keep children away from the bank'], ovOk: 'I understand', ovMap: 'Show on map', away: 'from you',
+    kOn: 'Stations online', kOpen: 'Open alerts', kResp: 'Avg response', kRep: 'New reports', aSend: 'Send inspector', aSample: 'Sample taken', aConfirm: 'Lab confirms', aFalse: 'False alarm',
+    hAlerts: 'Alerts', hHealth: 'Station health', hReports: 'Residents’ reports', batt: 'Battery', clean: 'Probe cleaned', daysAgo: 'days ago', last: 'Last seen', none: 'None yet.', min: 'min' }
+};
+let L = 'vi';
+const t = k => T[L][k];
+
+/* ---------- state ---------- */
+const S = {
+  role: 'res', tab: 'map', sel: 'NH-04', clock: 2 * 3600 + 14 * 60, src: 'demo', big: false,
+  stations: [
+    { id: 'NH-04', river: 'Nhuệ', place: 'Hà Đông', type: 'res', x: 78, y: 236, dist: 400 },
+    { id: 'NH-09', river: 'Nhuệ', place: 'Thanh Trì', type: 'res', x: 118, y: 318, dist: 2600 },
+    { id: 'TL-02', river: 'Tô Lịch', place: 'Cầu Giấy', type: 'res', x: 142, y: 102, dist: 3100 },
+    { id: 'TL-06', river: 'Tô Lịch', place: 'Hoàng Mai', type: 'res', x: 176, y: 262, dist: 2900 },
+    { id: 'KN-01', river: 'Kim Ngưu', place: 'Hai Bà Trưng', type: 'res', x: 230, y: 196, dist: 4100 },
+    { id: 'TO-01', river: 'Nhuệ', place: 'CCN Thanh Oai', type: 'ind', x: 64, y: 312, dist: 5200 }
+  ],
+  alerts: [], reports: [], stats: { al: 0, sp: 0, tt: null }
+};
+S.stations.forEach(s => Object.assign(s, { ph: rnd(7, 7.4), do: rnd(4.8, 5.4), ntu: rnd(30, 44), temp: rnd(27, 27.8), base: 38, state: 'ok', n: 0, mode: 'normal', ramp: 0, hist: [], batt: Math.round(rnd(72, 98)), cleaned: Math.round(rnd(1, 12)), seen: 0 }));
+const stn = id => S.stations.find(s => s.id === id);
+const hhmm = sec => `${String(Math.floor(sec / 3600) % 24).padStart(2, '0')}:${String(Math.floor(sec / 60) % 60).padStart(2, '0')}`;
+const breach = s => s.ph < 6 || s.ph > 8.5 || s.do < 4 || s.ntu > s.base * 1.5;
+const COL = { ok: '#23944a', check: '#d98a0b', alert: '#e0412f', off: '#8a968f' };
+
+/* ---------- rule engine (same logic as the Wokwi station) ---------- */
+const evaluate = s => {
+  if (s.mode === 'offline') { s.state = 'off'; return; }
+  if (breach(s)) {
+    s.n++;
+    if (s.state !== 'alert') {
+      s.state = s.n >= 3 ? 'alert' : 'check';
+      if (s.state === 'alert') raise(s);
+    }
+  } else {
+    if (s.n > 0 && s.state === 'check') { S.stats.sp++; }
+    s.n = 0;
+    if (s.state !== 'alert') s.state = 'ok';
+  }
+};
+const raise = s => {
+  S.stats.al++;
+  if (s.startedAt != null) { S.stats.tt = S.clock - s.startedAt; s.startedAt = null; }
+  const a = { id: Date.now(), st: s.id, at: S.clock, ph: s.ph, do: s.do, ntu: s.ntu, status: 'new', sentAt: null };
+  S.alerts.unshift(a);
+  if (S.role === 'res' && s.dist < 3000) showOverlay(a);
+  try { navigator.vibrate && navigator.vibrate([300, 120, 300]); } catch (e) {}
+  beep();
+};
+let actx;
+const beep = () => { try { if (!actx) return; const o = actx.createOscillator(), g = actx.createGain(); o.frequency.value = 880; o.connect(g); g.connect(actx.destination); g.gain.setValueAtTime(.12, actx.currentTime); g.gain.exponentialRampToValueAtTime(.0001, actx.currentTime + .6); o.start(); o.stop(actx.currentTime + .6); } catch (e) {} };
+document.addEventListener('click', () => { try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} }, { once: true });
+
+const tick = () => {
+  S.clock += 2;
+  S.stations.forEach(s => {
+    if (S.src === 'live' && s.id === liveId) return;
+    if (s.mode === 'offline') { evaluate(s); return; }
+    if (s.mode === 'discharge') { s.ramp = Math.min(1, s.ramp + .34); s.ph = 7.2 + 2.4 * s.ramp + rnd(-.1, .1); s.do = 5.1 - 3 * s.ramp + rnd(-.1, .1); s.ntu = 38 + 120 * s.ramp + rnd(-4, 4); }
+    else if (s.mode === 'spike') { s.ph = 9.7; s.do = 3.2; s.ntu = 150; s.mode = 'normal'; }
+    else { s.ph = rnd(7.0, 7.4); s.do = rnd(4.8, 5.4); s.ntu = rnd(30, 44); }
+    s.temp = rnd(27.1, 27.7); s.seen = S.clock;
+    s.hist.push(s.do); if (s.hist.length > 30) s.hist.shift();
+    evaluate(s);
+  });
+  render();
+};
+
+/* ---------- live MQTT from Wokwi ---------- */
+let client = null, liveId = 'NH-04';
+const setLive = (cls, msg) => { const el = $('#liveStatus'); el.className = 'live-status ' + cls; el.querySelector('span').textContent = msg; };
+const goLive = () => {
+  setLive('', 'Connecting to broker.hivemq.com…');
+  const start = () => {
+    try {
+      client = mqtt.connect('wss://broker.hivemq.com:8884/mqtt', { connectTimeout: 8000, reconnectPeriod: 0 });
+      client.on('connect', () => { client.subscribe('waterwatch/group1-uts/#'); setLive('on', 'Connected. Waiting for the Wokwi station (topic waterwatch/group1-uts/#).'); });
+      client.on('message', (topic, buf) => {
+        let d; try { d = JSON.parse(buf.toString()); } catch (e) { return; }
+        const s = stn(d.id) || stn(liveId);
+        liveId = s.id;
+        Object.assign(s, { ph: +d.ph, do: +d.do, ntu: +d.ntu, temp: +d.temp, seen: S.clock, mode: 'normal' });
+        s.hist.push(s.do); if (s.hist.length > 30) s.hist.shift();
+        if (d.state === 'alert' && s.state !== 'alert') { s.state = 'alert'; raise(s); }
+        else if (d.state === 'checking') { s.state = 'check'; s.n = d.count || 1; }
+        else if (d.state === 'normal') { s.state = 'ok'; s.n = 0; }
+        setLive('on', `Live: ${s.id} pH ${s.ph.toFixed(1)}, DO ${s.do.toFixed(1)}, ${Math.round(s.ntu)} NTU`);
+        render();
+      });
+      client.on('error', () => setLive('err', 'Could not reach the broker. Live mode needs the app hosted online, for example on GitHub Pages.'));
+      client.on('close', () => { if (S.src === 'live') setLive('err', 'Disconnected. Live mode needs the app hosted online, for example on GitHub Pages.'); });
+    } catch (e) { setLive('err', 'Live mode is not available here. Open the app from GitHub Pages.'); }
+  };
+  if (window.mqtt) return start();
+  const sc = document.createElement('script');
+  sc.src = 'https://unpkg.com/mqtt@5.10.1/dist/mqtt.min.js';
+  sc.onload = start; sc.onerror = () => setLive('err', 'Could not load the MQTT library. Live mode needs internet access.');
+  document.head.appendChild(sc);
+};
+$('#srcSeg').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  S.src = b.dataset.src; $$('#srcSeg button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  if (S.src === 'live') goLive(); else { try { client && client.end(true); } catch (er) {} setLive('', 'Six simulated stations, one reading every 2 seconds.'); }
+});
+
+/* ---------- render ---------- */
+const badge = st => `<span class="badge b-${st}">${esc({ ok: t('safe'), check: t('check'), alert: t('alert'), off: t('off') }[st])}</span>`;
+const drawMap = () => {
+  const svg = $('#mapSvg');
+  const marks = S.stations.map(s => {
+    const c = COL[s.state], sel = s.id === S.sel;
+    const shape = s.type === 'ind' ? `<rect x="${s.x - 9}" y="${s.y - 9}" width="18" height="18" rx="3" fill="${c}" stroke="#fff" stroke-width="3"/>` : `<circle cx="${s.x}" cy="${s.y}" r="10" fill="${c}" stroke="#fff" stroke-width="3"/>`;
+    const halo = s.state === 'alert' ? `<circle class="halo" cx="${s.x}" cy="${s.y}" r="10" fill="none" stroke="${c}" stroke-width="3"/>` : '';
+    const ring = sel ? `<circle cx="${s.x}" cy="${s.y}" r="17" fill="none" stroke="#0b2238" stroke-width="2.5"/>` : '';
+    return `<g class="mk" data-id="${s.id}" tabindex="0" role="button" aria-label="${esc(s.id + ' ' + s.river + ', ' + s.place)}">${halo}${ring}${shape}</g>`;
+  }).join('');
+  svg.innerHTML = `
+    <rect width="340" height="357" fill="#e3e9ee"/>
+    <g stroke="#fff" stroke-width="7" fill="none"><path d="M0 70h340M0 180h340M0 290h340M60 0v357M170 0v357M280 0v357"/></g>
+    <g stroke="#f4f6f2" stroke-width="3" fill="none"><path d="M0 125h340M0 235h340M115 0v357M225 0v357"/></g>
+    <ellipse cx="205" cy="48" rx="34" ry="22" fill="#a9d6ea"/><text x="205" y="52" text-anchor="middle" style="font:600 10px Be Vietnam Pro,Arial,sans-serif;fill:#2a6f87">Hồ Tây</text>
+    <path d="M320 -10c-40 90 6 170 -26 250s16 80 6 130" stroke="#a9d6ea" stroke-width="26" fill="none"/>
+    <text x="300" y="150" transform="rotate(80 300 150)" style="font:600 11px Be Vietnam Pro,Arial,sans-serif;fill:#2a6f87">Sông Hồng</text>
+    <path d="M52 -10c14 80 6 140 26 200s22 110 42 177" stroke="#86c4dd" stroke-width="10" fill="none"/>
+    <path d="M176 70c-30 40 -24 90 -34 120s30 50 34 72s-30 60 -40 100" stroke="#86c4dd" stroke-width="7" fill="none"/>
+    <path d="M250 140c-14 40 -16 64 -26 90s-40 50 -60 70" stroke="#86c4dd" stroke-width="6" fill="none"/>
+    <text x="22" y="140" style="font:700 11px Be Vietnam Pro,Arial,sans-serif;fill:#2a6f87">Nhuệ</text>
+    <text x="150" y="150" style="font:700 11px Be Vietnam Pro,Arial,sans-serif;fill:#2a6f87">Tô Lịch</text>
+    <text x="236" y="248" style="font:700 11px Be Vietnam Pro,Arial,sans-serif;fill:#2a6f87">Kim Ngưu</text>
+    <circle cx="104" cy="226" r="16" fill="#2f6df6" opacity=".15"/><circle cx="104" cy="226" r="7" fill="#2f6df6" stroke="#fff" stroke-width="3"/>
+    <text x="104" y="210" text-anchor="middle" style="font:700 10px Be Vietnam Pro,Arial,sans-serif;fill:#2f6df6">${esc(t('you'))}</text>
+    ${marks}`;
+  $('#legend').innerHTML = `<span class="lg"><i style="background:${COL.ok}"></i>${esc(t('safe'))}</span><span class="lg"><i style="background:${COL.check}"></i>${esc(t('check'))}</span><span class="lg"><i style="background:${COL.alert}"></i>${esc(t('alert'))}</span><span class="lg"><i style="background:#fff;border:2px solid #56656f"></i>${esc(t('resi'))}</span><span class="lg"><i class="sq" style="background:#fff;border:2px solid #56656f"></i>${esc(t('ind'))}</span>`;
+};
+const spark = h => {
+  if (h.length < 2) return '';
+  const W = 300, H = 54, mn = 0, mx = 7;
+  const pts = h.map((v, i) => `${(i / (30 - 1) * W).toFixed(1)},${(H - (Math.max(mn, Math.min(mx, v)) - mn) / (mx - mn) * H).toFixed(1)}`).join(' ');
+  const y4 = (H - 4 / mx * H).toFixed(1);
+  return `<svg class="spark" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true"><line x1="0" x2="${W}" y1="${y4}" y2="${y4}" stroke="#e0412f" stroke-dasharray="4 4" stroke-width="1.2"/><polyline points="${pts}" fill="none" stroke="#0b2238" stroke-width="2.2" vector-effect="non-scaling-stroke"/></svg>`;
+};
+const stnCard = () => {
+  const s = stn(S.sel);
+  const adv = { ok: t('advOk'), check: t('advCheck'), alert: t('advAlert'), off: t('advOff') }[s.state];
+  $('#stnCard').innerHTML = `
+    <div class="h"><h3>${esc(s.id)} · ${esc(s.river)}<small>${esc(s.place)} · ${s.dist >= 1000 ? (s.dist / 1000).toFixed(1) + ' km' : s.dist + ' m'} ${esc(t('away'))}</small></h3>${badge(s.state)}</div>
+    <div class="reads">
+      <div><small>pH</small><b class="${s.ph < 6 || s.ph > 8.5 ? 'hi' : ''}">${s.ph.toFixed(1)}</b><em>6.0–8.5</em></div>
+      <div><small>DO mg/L</small><b class="${s.do < 4 ? 'hi' : ''}">${s.do.toFixed(1)}</b><em>≥ 4.0</em></div>
+      <div><small>NTU</small><b class="${s.ntu > s.base * 1.5 ? 'hi' : ''}">${Math.round(s.ntu)}</b><em>≤ ${Math.round(s.base * 1.5)}</em></div>
+      <div><small>°C</small><b>${s.temp.toFixed(1)}</b><em>&nbsp;</em></div>
+    </div>
+    <div><small style="color:var(--ink2);font-weight:600">${esc(t('history'))}</small>${spark(s.hist)}</div>
+    <div class="advice ${s.state}">${esc(adv)}</div>
+    <div class="btns"><button class="btn pri" type="button" data-go="report">${esc(t('reportBtn'))}</button></div>`;
+};
+const alertList = () => {
+  const mine = S.alerts;
+  if (!mine.length) return `<div class="card empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg><b>${esc(t('noAlerts'))}</b><span>${esc(t('noAlertsSub'))}</span></div>`;
+  return mine.map(a => { const s = stn(a.st); const cls = a.status === 'confirmed' || a.status === 'closed' ? 'done' : a.status === 'false' ? 'fa' : '';
+    return `<div class="card alertc ${cls}"><div class="t"><span>${esc(s.river)} · ${esc(s.place)}</span><span class="badge ${a.status === 'false' ? 'b-off' : a.status === 'confirmed' ? 'b-ok' : 'b-alert'}">${esc(t('status')[a.status])}</span></div><p>${esc(t('detected'))} ${hhmm(a.at)} · ${esc(s.id)}</p>${a.status !== 'false' ? `<div class="advice alert">${esc(t('advAlert'))}</div>` : ''}</div>`; }).join('');
+};
+const reportForm = () => `
+  <div class="card" style="display:grid;gap:14px">
+    <h3 style="margin:0;font-size:calc(17px * var(--fs))">${esc(t('rTitle'))}</h3>
+    <label class="f">${esc(t('rWhere'))}<select id="rSt">${S.stations.map(s => `<option value="${s.id}" ${s.id === S.sel ? 'selected' : ''}>${esc(s.id + ' · ' + s.river + ', ' + s.place)}</option>`).join('')}</select></label>
+    <div class="f" style="display:grid;gap:6px;font-weight:600">${esc(t('rWhat'))}<div class="chipset" id="rSigns">${t('sign').map((x, i) => `<button type="button" aria-pressed="false" data-i="${i}">${esc(x)}</button>`).join('')}</div></div>
+    <label class="photo" for="rPh"><span id="rPhPrev"></span>${esc(t('rPhoto'))}<input id="rPh" type="file" accept="image/*" hidden></label>
+    <label class="f">${esc(t('rNote'))}<textarea id="rNote" rows="3"></textarea></label>
+    <button class="btn pri" type="button" id="rSend">${esc(t('rSend'))}</button>
+  </div>`;
+const govView = () => {
+  const on = S.stations.filter(s => s.state !== 'off').length, open = S.alerts.filter(a => !['confirmed', 'false', 'closed'].includes(a.status)).length;
+  const resp = S.alerts.filter(a => a.sentAt != null).map(a => a.sentAt - a.at);
+  const avg = resp.length ? Math.round(resp.reduce((x, y) => x + y, 0) / resp.length / 60) + ' ' + t('min') : '–';
+  const next = { new: ['sent', t('aSend')], sent: ['sampled', t('aSample')], sampled: ['confirmed', t('aConfirm')] };
+  return `
+    <div class="kpis"><div><small>${esc(t('kOn'))}</small><b>${on}/${S.stations.length}</b></div><div><small>${esc(t('kOpen'))}</small><b style="color:${open ? 'var(--bad)' : 'inherit'}">${open}</b></div><div><small>${esc(t('kResp'))}</small><b>${esc(avg)}</b></div><div><small>${esc(t('kRep'))}</small><b>${S.reports.length}</b></div></div>
+    <p class="sec">${esc(t('hAlerts'))}</p>
+    ${S.alerts.length ? S.alerts.map(a => { const s = stn(a.st), stp = ['new', 'sent', 'sampled', 'confirmed'].indexOf(a.status); return `<div class="card alertc ${a.status === 'confirmed' ? 'done' : a.status === 'false' ? 'fa' : ''}"><div class="t"><span>${esc(s.id)} · ${esc(s.river)}, ${esc(s.place)}</span><span>${hhmm(a.at)}</span></div><p>pH ${a.ph.toFixed(1)} · DO ${a.do.toFixed(1)} mg/L · ${Math.round(a.ntu)} NTU</p><div class="steps">${[0, 1, 2, 3].map(k => `<i class="${a.status !== 'false' && k <= stp ? 'f' : ''}"></i>`).join('')}</div><p><b>${esc(t('status')[a.status])}</b></p>${next[a.status] ? `<div class="btns"><button class="btn ${a.status === 'sampled' ? 'ok' : 'pri'}" type="button" data-act="${a.id}" data-to="${next[a.status][0]}">${esc(next[a.status][1])}</button>${a.status !== 'new' ? `<button class="btn" type="button" data-act="${a.id}" data-to="false">${esc(t('aFalse'))}</button>` : ''}</div>` : ''}</div>`; }).join('') : `<div class="card empty"><span>${esc(t('none'))}</span></div>`}
+    <p class="sec">${esc(t('hHealth'))}</p>
+    <div class="card">${S.stations.map(s => `<div class="health"><b>${esc(s.id)} · ${esc(s.river)}</b>${badge(s.state)}<small>${esc(t('batt'))} ${s.batt}% · ${esc(t('clean'))} ${s.cleaned} ${esc(t('daysAgo'))} · ${esc(t('last'))} ${hhmm(s.seen || S.clock)}</small></div>`).join('')}</div>
+    <p class="sec">${esc(t('hReports'))}</p>
+    ${S.reports.length ? S.reports.map(r => `<div class="card" style="display:flex;gap:10px;align-items:center">${r.img ? `<img src="${r.img}" alt="" style="width:52px;height:52px;object-fit:cover;border-radius:10px">` : ''}<div><b>${esc(r.st)}</b> · ${hhmm(r.at)}<div style="color:var(--ink2);font-size:calc(13.5px * var(--fs))">${esc(r.signs.join(', '))}${r.note ? ' · ' + esc(r.note) : ''}</div></div></div>`).join('') : `<div class="card empty"><span>${esc(t('none'))}</span></div>`}`;
+};
+const tabsHtml = () => S.role === 'res'
+  ? [['map', t('map'), '<path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/>'], ['alerts', t('alerts'), '<path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/>'], ['report', t('report'), '<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13 7l4 4"/>']]
+  : [['gov', t('dash'), '<path d="M4 13h6V4H4zM14 20h6v-9h-6zM4 20h6v-3H4zM14 7h6V4h-6z"/>']];
+const render = () => {
+  $('#clk').textContent = hhmm(S.clock);
+  $('#upd').textContent = `${t('upd')} ${hhmm(S.clock)}`;
+  $('#rRes').textContent = t('res'); $('#rGov').textContent = t('gov');
+  const open = S.alerts.filter(a => !['confirmed', 'false', 'closed'].includes(a.status)).length;
+  $('#bellCnt').hidden = !open; $('#bellCnt').textContent = open;
+  $('#tabs').innerHTML = tabsHtml().map(([k, l, ic]) => `<button type="button" role="tab" aria-selected="${S.tab === k}" data-tab="${k}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ic}</svg>${esc(l)}${k === 'alerts' && open ? ` (${open})` : ''}</button>`).join('');
+  $$('.view').forEach(v => v.classList.remove('on'));
+  if (S.tab === 'map') { $('#vMap').classList.add('on'); drawMap(); stnCard(); }
+  if (S.tab === 'alerts') { $('#vAlerts').classList.add('on'); $('#vAlerts').innerHTML = alertList(); }
+  if (S.tab === 'report') { const v = $('#vReport'); v.classList.add('on'); if (!v.dataset.built || v.dataset.lang !== L) { v.innerHTML = reportForm(); v.dataset.built = 1; v.dataset.lang = L; bindReport(); } }
+  if (S.tab === 'gov') { $('#vGov').classList.add('on'); $('#vGov').innerHTML = govView(); }
+  $('#sAl').textContent = S.stats.al; $('#sSp').textContent = S.stats.sp; $('#sTt').textContent = S.stats.tt == null ? '–' : S.stats.tt + ' s';
+};
+const bindReport = () => {
+  $('#rSigns').addEventListener('click', e => { const b = e.target.closest('button'); if (b) b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') !== 'true'); });
+  let img = '';
+  $('#rPh').addEventListener('change', e => { const f = e.target.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => { img = r.result; $('#rPhPrev').innerHTML = `<img src="${img}" alt="">`; }; r.readAsDataURL(f); });
+  $('#rSend').addEventListener('click', () => {
+    const signs = $$('#rSigns button[aria-pressed=true]').map(b => t('sign')[+b.dataset.i]);
+    if (!signs.length) return toast(t('rNeed'));
+    S.reports.unshift({ st: $('#rSt').value, signs, note: $('#rNote').value.trim(), img, at: S.clock });
+    $('#vReport').dataset.built = ''; toast(t('rSent')); S.tab = 'map'; render();
+  });
+};
+let toastT;
+const toast = m => { const el = $('#toast'); el.textContent = m; el.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove('on'), 2600); };
+const showOverlay = a => {
+  const s = stn(a.st);
+  $('#ovBox').innerHTML = `<div class="big"><b id="ovT">${esc(t('ovT'))}</b><span>${esc(s.river)} · ${esc(s.place)} · ${hhmm(a.at)}</span><span>${s.dist} m ${esc(t('away'))}</span></div><ul>${t('ovA').map(x => `<li>${esc(x)}</li>`).join('')}</ul><div class="btns"><button class="btn red" type="button" id="ovOk">${esc(t('ovOk'))}</button><button class="btn" type="button" id="ovMap">${esc(t('ovMap'))}</button></div>`;
+  $('#over').classList.add('on');
+  $('#ovOk').focus();
+  $('#ovOk').onclick = () => $('#over').classList.remove('on');
+  $('#ovMap').onclick = () => { $('#over').classList.remove('on'); S.tab = 'map'; S.sel = s.id; render(); };
+};
+
+/* ---------- events ---------- */
+$('#app').addEventListener('click', e => {
+  const tb = e.target.closest('[data-tab]'); if (tb) { S.tab = tb.dataset.tab; render(); return; }
+  const mk = e.target.closest('.mk'); if (mk) { S.sel = mk.dataset.id; render(); return; }
+  const go = e.target.closest('[data-go]'); if (go) { S.tab = go.dataset.go; $('#vReport').dataset.built = ''; render(); return; }
+  const act = e.target.closest('[data-act]'); if (act) { const a = S.alerts.find(x => x.id == act.dataset.act); a.status = act.dataset.to; if (a.status === 'sent') a.sentAt = S.clock + Math.round(rnd(600, 1500)); if (a.status === 'confirmed' || a.status === 'false') { const s = stn(a.st); s.mode = 'normal'; s.ramp = 0; s.state = 'ok'; s.n = 0; } render(); return; }
+  const rl = e.target.closest('[data-role]'); if (rl) { S.role = rl.dataset.role; $$('.role button').forEach(b => b.setAttribute('aria-pressed', b === rl)); S.tab = S.role === 'res' ? 'map' : 'gov'; render(); }
+});
+$('#app').addEventListener('keydown', e => { const mk = e.target.closest('.mk'); if (mk && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); S.sel = mk.dataset.id; render(); } });
+$('#bell').addEventListener('click', () => { if (S.role === 'res') S.tab = 'alerts'; render(); });
+$('#lang').addEventListener('click', () => { L = L === 'vi' ? 'en' : 'vi'; document.documentElement.lang = L; $('#lang').textContent = L === 'vi' ? 'EN' : 'VI'; render(); });
+$('#bigText').addEventListener('click', () => { S.big = !S.big; $('#app').style.setProperty('--fs', S.big ? 1.18 : 1); $('#bigText').setAttribute('aria-pressed', S.big); });
+$('#stSel').innerHTML = S.stations.map(s => `<option value="${s.id}">${esc(s.id + ' · ' + s.river + ', ' + s.place)}</option>`).join('');
+const pickSt = () => stn($('#stSel').value);
+$('#bDis').addEventListener('click', () => { const s = pickSt(); if (s.state === 'alert') return toast('Station already in alert. Reset first.'); s.mode = 'discharge'; s.ramp = 0; s.startedAt = S.clock; S.sel = s.id; if (S.role === 'res') S.tab = 'map'; render(); });
+$('#bSpike').addEventListener('click', () => { const s = pickSt(); s.mode = 'spike'; S.sel = s.id; render(); });
+$('#bOff').addEventListener('click', () => { const s = pickSt(); s.mode = s.mode === 'offline' ? 'normal' : 'offline'; render(); });
+$('#bReset').addEventListener('click', () => { S.stations.forEach(s => Object.assign(s, { mode: 'normal', ramp: 0, state: 'ok', n: 0, startedAt: null })); S.alerts = []; S.stats = { al: 0, sp: 0, tt: null }; $('#over').classList.remove('on'); render(); });
+
+render();
+setInterval(tick, 2000);
+}
+</script>
+</body>
+</html>

@@ -1,33 +1,20 @@
 :root {
-  --bg: #1b1d22;
-  --bar: #25282f;
-  --cv: #2b2e35;
-  --dot: #3b3f48;
-  --tx: #e6e8ec;
-  --mu: #9aa0ab;
-  --ln: #3a3e47;
-  --ok: #2ecc71;
-  --bad: #ff4d4d;
-  --warn: #f5b63a;
-  --mon: #0c0d10;
-  --mt: #d6f5e3;
+  --bg: #0b2238;
+  --bar: #0f2c47;
+  --cv: #12304d;
+  --dot: #1f4565;
+  --tx: #e6eef4;
+  --mu: #9db4c4;
+  --ln: #25445f;
+  --ok: #c8f169;
+  --bad: #ff6b57;
+  --warn: #f2a541;
+  --mon: #071827;
+  --mt: #cfe9d8;
+  --teal: #7fd6e8;
   color-scheme: dark;
   padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
-}
-
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) {
-    --bg: #eceff3;
-    --bar: #fff;
-    --cv: #dfe3e9;
-    --dot: #bcc3cd;
-    --tx: #1b1d22;
-    --mu: #5b6270;
-    --ln: #c6ccd6;
-    --mon: #101216;
-    color-scheme: light;
-  }
 }
 
 * {
@@ -41,7 +28,7 @@ html, body {
 body {
   background: var(--bg);
   color: var(--tx);
-  font: 14px/1.4 "Segoe UI", Roboto, Arial, sans-serif;
+  font: 14px/1.4 "Public Sans", system-ui, Arial, sans-serif;
 }
 
 .top {
@@ -75,15 +62,16 @@ button {
 }
 
 button.on {
-  background: #3b82f6;
-  border-color: #3b82f6;
-  color: #fff;
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #0b2238;
+  font-weight: 700;
 }
 
 button.run {
   background: var(--ok);
   border-color: var(--ok);
-  color: #082414;
+  color: #0b2238;
   font-weight: 700;
 }
 
@@ -92,7 +80,7 @@ button:focus-visible {
 }
 
 .tm {
-  font: 13px Consolas, monospace;
+  font: 13px "IBM Plex Mono", Consolas, monospace;
   background: var(--bg);
   padding: 6px 10px;
   border-radius: 6px;
@@ -105,7 +93,7 @@ button:focus-visible {
   font-weight: 700;
   font-size: 13px;
   background: var(--ok);
-  color: #06210f;
+  color: #0b2238;
 }
 
 .chip.warn {
@@ -179,7 +167,7 @@ button:focus-visible {
   flex: 1;
   overflow: auto;
   padding: 10px;
-  font: 12px/1.5 Consolas, "Courier New", monospace;
+  font: 12px/1.5 "IBM Plex Mono", Consolas, monospace;
   color: var(--mt);
   white-space: pre-wrap;
   min-height: 260px;
@@ -244,8 +232,8 @@ button:focus-visible {
 }
 
 .vin:focus {
-  outline: 1.5px solid #3b82f6;
-  border-color: #3b82f6;
+  outline: 1.5px solid var(--teal);
+  border-color: var(--teal);
 }
 
 .assessment {
@@ -262,3 +250,11 @@ button:focus-visible {
 .assessment details { max-height: 180px; overflow: auto; }
 .side { min-height: 0; }
 .mon { min-height: 140px; }
+
+/* embedded in the report: the page sets the frame height, the monitor gets a fixed height */
+.main { height: auto; min-height: 0; }
+.cv { min-height: 420px; }
+.mon { min-height: 200px; max-height: 300px; }
+.top b { font-weight: 700; letter-spacing: .01em; }
+#rules, #modes, #spd { display: inline-flex; gap: 6px; flex-wrap: wrap; }
+.assessment small, .foot { font-size: 12.5px; }

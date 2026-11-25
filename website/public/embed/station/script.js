@@ -10,8 +10,8 @@ hint:"Tap marker 1 (the screen) or 2 (the drain outlet). You can also tap the pa
 disclaimer:"Example values for the demonstration, not real measurements. The probe measures pH, dissolved oxygen, turbidity and temperature only; BOD, COD and heavy metals still need lab samples.",
 SAFE:"SAFE",WATCH:"WATCH",EXCEEDED:"EXCEEDED",
 phOkT:"No alerts near you",phOkM:"All readings at this outlet are within limits.",
-phWT:"Watching outlet NH-03",phWM:"A reading is over the limit. The station is checking the next readings.",
-phBT:"⚠ Red alert · drain outlet NH-03",phBM:"Untreated wastewater detected. Do not use the river water for crops or fish. The environment authority has been notified.",
+phWT:"Watching outlet NH-04",phWM:"A reading is over the limit. The station is checking the next readings.",
+phBT:"⚠ Red alert · drain outlet NH-04",phBM:"Untreated wastewater detected. Do not use the river water for crops or fish. The environment authority has been notified.",
 defE:"Start here",defT:"Tap a part of the station",defP:"Two parts open more detail. The rest of the model shows where the station sits: on the railing of an embankment, above a drain that empties into a polluted city river.",
 m1:"Screen",m2:"Drain outlet + probe",
 scrE:"Part 1",scrT:"Display screen",scrP:"The screen shows the latest readings from the probe and compares each one with the QCVN limit. Move the discharge slider and watch the values change.",
@@ -24,7 +24,7 @@ steps:[
 ["Readings travel up the cable","A sealed cable runs up the embankment wall to the white box on the railing post, above flood level."],
 ["The box checks the limits","The controller compares each reading with the QCVN limit and shows it on the screen. Only 3 readings in a row over the limit turn the light red."],
 ["The alert goes out","The 4G / LoRa antenna sends every reading to the cloud. When the light turns red, the beacon flashes, people nearby get a phone alert and the authority sees it on the map."]],
-lab:{solar:"Solar panel + battery",ant:"4G / LoRa antenna",beacon:"Alert beacon",cable:"Probe cable",river:"Polluted city river (e.g. the Nhue)",homes:"Tube houses along the river"},
+lab:{flood:"Flood line",plate:"Outfall ID + QR",solar:"Solar panel + battery",ant:"4G / LoRa antenna",beacon:"Alert beacon",cable:"Probe cable",river:"Polluted city river (e.g. the Nhue)",homes:"Tube houses along the river"},
 lcdFoot:"Limits: QCVN · example values",rowName:{ph:"pH",do:"Dissolved O₂",tu:"Turbidity",te:"Temperature"}},
 vi:{eyebrow:"Hanoi WaterWatch · mô hình 3D tương tác",title:'Trạm quan trắc trên <em>sông ô nhiễm Hà Nội</em>',
 rot:"Kéo để xoay mọi hướng · cuộn hoặc chụm hai ngón để phóng to · kéo chuột phải để di chuyển",
@@ -35,8 +35,8 @@ hint:"Bấm điểm 1 (màn hình) hoặc 2 (miệng cống xả). Cũng có th�
 disclaimer:"Số liệu minh hoạ để trình bày, không phải số đo thật. Đầu dò chỉ đo pH, oxy hoà tan, độ đục và nhiệt độ; BOD, COD và kim loại nặng vẫn cần lấy mẫu gửi phòng thí nghiệm.",
 SAFE:"AN TOÀN",WATCH:"THEO DÕI",EXCEEDED:"VƯỢT NGƯỠNG",
 phOkT:"Không có cảnh báo gần bạn",phOkM:"Mọi số đo tại cửa xả này đều trong ngưỡng.",
-phWT:"Đang theo dõi cửa xả NH-03",phWM:"Có số đo vượt ngưỡng. Trạm đang kiểm tra các lần đo tiếp theo.",
-phBT:"⚠ Báo động đỏ · cửa xả NH-03",phBM:"Phát hiện nước thải chưa xử lý. Không dùng nước sông để tưới rau hay nuôi cá. Cơ quan môi trường đã được báo.",
+phWT:"Đang theo dõi cửa xả NH-04",phWM:"Có số đo vượt ngưỡng. Trạm đang kiểm tra các lần đo tiếp theo.",
+phBT:"⚠ Báo động đỏ · cửa xả NH-04",phBM:"Phát hiện nước thải chưa xử lý. Không dùng nước sông để tưới rau hay nuôi cá. Cơ quan môi trường đã được báo.",
 defE:"Bắt đầu",defT:"Bấm vào một bộ phận của trạm",defP:"Có hai chỗ bấm để xem chi tiết. Phần còn lại của mô hình cho thấy trạm đặt ở đâu: trên lan can bờ kè, ngay trên miệng cống đổ ra một con sông nội đô bị ô nhiễm.",
 m1:"Màn hình",m2:"Cống xả + đầu dò",
 scrE:"Bộ phận 1",scrT:"Màn hình",scrP:"Màn hình hiện số đo mới nhất từ đầu dò và so từng chỉ số với ngưỡng QCVN. Kéo thanh lượng xả thải để thấy số đo thay đổi.",
@@ -49,9 +49,10 @@ steps:[
 ["Số đo chạy lên theo cáp","Cáp kín nước chạy dọc tường kè lên hộp trắng gắn trên cột lan can, cao hơn mức ngập."],
 ["Hộp so với ngưỡng","Bộ điều khiển so từng số đo với ngưỡng QCVN và hiện lên màn hình. Chỉ khi 3 lần đo liên tiếp vượt ngưỡng thì đèn mới chuyển đỏ."],
 ["Gửi cảnh báo","Ăng-ten 4G / LoRa gửi mọi số đo lên hệ thống. Khi đèn đỏ, đèn báo động nháy, người dân gần đó nhận cảnh báo trên điện thoại và cơ quan quản lý thấy trên bản đồ."]],
-lab:{solar:"Tấm pin mặt trời + pin sạc",ant:"Ăng-ten 4G / LoRa",beacon:"Đèn báo động",cable:"Cáp đầu dò",river:"Sông nội đô ô nhiễm (vd. sông Nhuệ)",homes:"Nhà ống ven sông"},
+lab:{flood:"Mực ngập",plate:"Biển số cống + QR",solar:"Tấm pin mặt trời + pin sạc",ant:"Ăng-ten 4G / LoRa",beacon:"Đèn báo động",cable:"Cáp đầu dò",river:"Sông nội đô ô nhiễm (vd. sông Nhuệ)",homes:"Nhà ống ven sông"},
 lcdFoot:"Ngưỡng: QCVN · số minh hoạ",rowName:{ph:"pH",do:"Oxy hoà tan",tu:"Độ đục",te:"Nhiệt độ"}}};
-let L="en";try{const s=localStorage.getItem("ww-lang");if(s==="vi"||s==="en")L=s}catch(e){}
+const EMBED=/[?&]embed=1/.test(location.search);if(EMBED)document.body.classList.add("embed");
+let L="en";try{const s=localStorage.getItem("ww-lang");if(!EMBED&&(s==="vi"||s==="en"))L=s}catch(e){}
 const t=k=>T[L][k];
 
 /* ================= three.js scene ================= */
@@ -61,8 +62,8 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
 renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 host.appendChild(renderer.domElement);
 const scene=new THREE.Scene();
-scene.background=new THREE.Color(0xC9D6DC);
-scene.fog=new THREE.Fog(0xC9D6DC,30,75);
+scene.background=new THREE.Color(0xBFD6E4);
+scene.fog=new THREE.Fog(0xBFD6E4,30,75);
 const camera=new THREE.PerspectiveCamera(40,1,0.05,200);
 const controls=new THREE.OrbitControls(camera,renderer.domElement);
 controls.enableDamping=true;controls.dampingFactor=.08;controls.minDistance=1.5;controls.maxDistance=30;
@@ -219,6 +220,14 @@ const cableCurve=new THREE.CatmullRomCurve3(cablePts,false,"catmullrom",0.2);
 const cable=new THREE.Mesh(new THREE.TubeGeometry(cableCurve,90,0.022,8,false),M(0x1b1f24));cable.castShadow=true;scene.add(cable);
 const packets=[0,1,2].map(i=>{const p=new THREE.Mesh(new THREE.SphereGeometry(0.06,12,10),new THREE.MeshBasicMaterial({color:0xFFD447}));p.visible=false;p.userData.t=i/3;scene.add(p);return p});
 
+// outfall ID plate + QR (illustrative pattern, not a scannable code)
+const plateC=document.createElement("canvas");plateC.width=256;plateC.height=200;{const c=plateC.getContext("2d");c.fillStyle="#f2f5f8";c.fillRect(0,0,256,200);c.fillStyle="#0b2238";c.fillRect(0,0,256,46);c.fillStyle="#c8f169";c.font='700 34px "IBM Plex Mono",monospace';c.fillText("NH-04",14,35);
+  let q=7;const r=()=>(q=(q*16807)%2147483647)/2147483647;for(let y=0;y<9;y++)for(let x=0;x<9;x++){const f=(x<3&&y<3)||(x>5&&y<3)||(x<3&&y>5);if(f?!(x%3==1&&y%3==1)&&((x%3==0||x%3==2||y%3==0||y%3==2)):r()>.5){c.fillStyle="#0b2238";c.fillRect(70+x*13,64+y*14,12,13)}}}
+const plateTex=new THREE.CanvasTexture(plateC);
+const plate=new THREE.Mesh(new THREE.PlaneGeometry(0.34,0.27),new THREE.MeshBasicMaterial({map:plateTex}));plate.position.set(0.78,1.75,BZ-0.002);plate.rotation.y=Math.PI;st.add(plate);
+box(0.37,0.3,0.03,M(0x55606a),0.78,1.75,BZ+0.012,st);
+// flood line: dashed teal band on the wall face, well below the box
+const FLOOD_Y=-0.8;for(let i=-9;i<=9;i++)box(0.3,0.05,0.02,new THREE.MeshBasicMaterial({color:0x2aa8c4}),i*0.4,FLOOD_Y,NEAR-0.012,null,false);
 /* ================= readings ================= */
 const LO={ph:7.3,do:6.0,tu:15,te:27.0},HI={ph:5.9,do:0.8,tu:110,te:30.5};
 let cur={...LO},level=20,run=0,alertOn=false,linked=null;
@@ -230,7 +239,7 @@ const overBad=()=>linked?linked.breached:Object.keys(cur).some(k=>status(k,cur[k
 const stState=()=>alertOn?"bad":Object.keys(cur).some(k=>status(k,cur[k])!=="ok")?"watch":"ok";
 function sample(){if(linked){cur.ph=linked.v.ph;cur.do=linked.v.do;cur.tu=linked.v.turb;cur.te=linked.v.temp;return}const f=level/100;Object.keys(cur).forEach(k=>{const g=LO[k]+(HI[k]-LO[k])*f;const j={ph:.04,do:.12,tu:2,te:.1}[k];cur[k]=g+(Math.random()-.5)*j})}
 function drawScreen(){const c=sctx;c.fillStyle="#13283A";c.fillRect(0,0,512,316);
-  c.font='700 38px "IBM Plex Mono",monospace';c.fillStyle="#9fcdf5";c.textAlign="left";c.fillText("NH-03",18,44);
+  c.font='700 38px "IBM Plex Mono",monospace';c.fillStyle="#9fcdf5";c.textAlign="left";c.fillText("NH-04",18,44);
   const col={ok:"#7ddc9c",watch:"#f3cf5f",bad:"#ff8c8c"},nm={ph:"pH",do:"DO",tu:"Turb.",te:"Temp"};
   Object.keys(cur).forEach((k,i)=>{const y=110+i*60,s=status(k,cur[k]);c.fillStyle="#ffffff";c.font='600 44px "IBM Plex Mono",monospace';c.textAlign="left";c.fillText(nm[k],18,y);c.textAlign="right";c.fillText(fmt(k,cur[k]),318,y);c.fillStyle=col[s];c.font='700 40px "IBM Plex Mono",monospace';c.fillText(word(s,k),498,y)});
   c.textAlign="left";scrTex.needsUpdate=true}
@@ -248,7 +257,7 @@ function render(){
   water.material.color.setHex(level>60?0x3F4636:0x48523F);
   if(view==="screen")fillLcd();
 }
-function tickData(){sample();run=overBad()?run+1:0;alertOn=run>=3;render()}
+function tickData(){sample();if(linked&&linked.cnt!=null){run=linked.cnt;alertOn=!!linked.alert}else{run=overBad()?run+1:0;alertOn=run>=3}render()}
 
 /* ================= panel ================= */
 let view="default",step=0,playing=null;
@@ -261,7 +270,7 @@ function showPanel(animate){
   let num="?",eye=t("defE"),title=t("defT"),html="";
   if(view==="default"){html=`<p>${t("defP")}</p><div class="legend"><button id="go1"><b>1</b>${t("m1")}</button><button id="go2"><b>2</b>${t("m2")}</button></div>`}
   else if(view==="screen"){num="1";eye=t("scrE");title=t("scrT");
-    html=`<div class="lcd"><div class="t"><span>STATION NH-03</span><span id="lcdTime"></span></div><table><tbody id="lcdRows"></tbody></table><div class="f">${t("lcdFoot")}</div></div>
+    html=`<div class="lcd"><div class="t"><span>STATION NH-04</span><span id="lcdTime"></span></div><table><tbody id="lcdRows"></tbody></table><div class="f">${t("lcdFoot")}</div></div>
     <p>${t("scrP")}</p><ul class="facts"><li><span class="dot" style="background:#5ee08a"></span><span>${t("lG")}</span></li><li><span class="dot" style="background:#ffd34d"></span><span>${t("lY")}</span></li><li><span class="dot" style="background:#ff4a4a"></span><span>${t("lR")}</span></li></ul><p class="note">${t("btns")}</p>`}
   else{num="2";eye=t("howE");title=t("howT");
     html=`<p class="note">${t("howP")}</p><ol class="steps">${T[L].steps.map((s,i)=>`<li><button data-step="${i+1}" aria-expanded="${i+1===step}"><span class="n">${i+1}</span><span>${s[0]}<span class="d">${s[1]}</span></span><span class="bar"></span></button></li>`).join("")}</ol>`}
@@ -275,8 +284,10 @@ function setStep(n){step=n;pbody.querySelectorAll("[data-step]").forEach(b=>b.se
   if(n===4&&level<80&&playing){animateLevel(85)}
   const foc={1:[V(0.1,-1.6,-1.0),V(3.2,0.2,-5.6)],2:[V(0.4,-1.8,-1.1),V(2.4,-0.6,-4.2)],3:[V(0.25,0.2,-0.4),V(4.2,1.6,-5.4)],4:[V(0,2.15,-0.4),V(1.6,2.6,-3.2)],5:[V(0.1,2.2,-0.3),V(5.5,4.2,-7.2)]}[n];
   if(foc)flyTo(foc[1],foc[0])}
-function select(v){stopPlay();view=v;step=v==="outlet"?1:0;showPanel(true);openSheet();
+function select(v){say(v==="screen"?1:v==="outlet"?2:-1);stopPlay();view=v;step=v==="outlet"?1:0;showPanel(true);openSheet();
   if(v==="screen")flyTo(V(1.5,2.5,-3.4),V(0,2.1,-0.4));else if(v==="outlet")setStep(1);else flyTo(HOME.pos,HOME.tgt)}
+const FOCI=[[V(3.2,5.2,-3.8),V(0,3.5,0.05)],[V(1.5,2.5,-3.4),V(0,2.1,-0.4)],[V(2.4,-0.6,-4.2),V(0.4,-1.8,-1.1)],[V(5.0,1.0,-6.4),V(0.3,-0.3,-0.4)],[V(1.9,2.0,-2.7),V(0.78,1.75,BZ)]];
+function say(part){try{if(window.parent!==window)window.parent.postMessage({type:"station-part",part},"*")}catch(e){}}
 function openSheet(){panel.classList.add("open")}
 $("closeBtn").onclick=()=>panel.classList.remove("open");
 $("infoBtn").onclick=()=>panel.classList.toggle("open");
@@ -304,7 +315,7 @@ function mk(id,n,key){const b=document.createElement("button");b.className="hot"
 const hot1=mk("hot1","1","m1"),hot2=mk("hot2","2","m2");
 hot1.onclick=()=>select("screen");hot2.onclick=()=>select("outlet");
 const anchors=[{el:hot1,p:V(-0.5,2.3,BZ-0.2)},{el:hot2,p:V(-0.55,-1.55,NEAR-0.6)}];
-const tags=[["solar",V(0,3.95,0.05)],["ant",V(0.28,3.3,BZ)],["beacon",V(-0.26,2.76,BZ)],["cable",V(0.32,-0.6,NEAR-0.06)],["river",V(-5,WATER_Y,-7)],["homes",V(-6,8.5,FAR-8)]].map(([k,p])=>{const e=document.createElement("div");e.className="tag";e.dataset.k=k;stage.appendChild(e);return {el:e,p,k}});
+const tags=[["flood",V(1.6,FLOOD_Y,NEAR-0.012)],["plate",V(0.78,1.95,BZ)],["solar",V(0,3.95,0.05)],["ant",V(0.28,3.3,BZ)],["beacon",V(-0.26,2.76,BZ)],["cable",V(0.32,-0.6,NEAR-0.06)],["river",V(-5,WATER_Y,-7)],["homes",V(-6,8.5,FAR-8)]].map(([k,p])=>{const e=document.createElement("div");e.className="tag";e.dataset.k=k;stage.appendChild(e);return {el:e,p,k}});
 const tmp=new THREE.Vector3();
 function place(el,p,dx=0){tmp.copy(p).project(camera);const w=stage.clientWidth,h=stage.clientHeight;
   if(tmp.z>1||Math.abs(tmp.x)>1.05||Math.abs(tmp.y)>1.05){el.style.display="none";return}
@@ -368,14 +379,15 @@ let lastBreach=null;
 window.addEventListener("message",e=>{
   if(e.source!==window.parent||window.parent===window)return;
   const d=e.data;if(!d||typeof d!=="object")return;
+  if(d.type==="station-focus"){const f=FOCI[d.part];if(f){stopPlay();flyTo(f[0],f[1])}return}
   if(d.type==="station-unlink"){linked=null;lastBreach=null;document.body.classList.remove("linked");$("discharge").disabled=false;$("spikeBtn").disabled=false;sample();render();return}
   if(d.type!=="station-state")return;
   const v=d.values,b=d.bad,ok=x=>typeof x==="number"&&isFinite(x);
   if(!v||!b||!["ph","do","turb","temp"].every(k=>ok(v[k])))return;
-  linked={v:{ph:v.ph,do:v.do,turb:v.turb,temp:v.temp},bad:{ph:!!b.ph,do:!!b.do,turb:!!b.turb,temp:!!b.temp},breached:!!d.breached};
+  linked={v:{ph:v.ph,do:v.do,turb:v.turb,temp:v.temp},bad:{ph:!!b.ph,do:!!b.do,turb:!!b.turb,temp:!!b.temp},breached:!!d.breached,cnt:d.cnt,alert:d.alert};
   document.body.classList.add("linked");$("discharge").disabled=true;$("spikeBtn").disabled=true;
   if(lastBreach!==linked.breached){lastBreach=linked.breached;animateLevel(linked.breached?85:20)}
-  sample();render();
+  sample();if(typeof d.cnt==="number"){run=d.cnt;alertOn=!!d.alert}render();
 });
 sample();applyLang();setInterval(tickData,2000);loop();
 })();
