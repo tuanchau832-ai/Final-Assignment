@@ -1,0 +1,50 @@
+.water-dashboard { --editorial-rule: #cdded9; }
+.water-dashboard .page-title { align-items: end; }
+.dashboard-filters { display: flex; flex-wrap: wrap; gap: 12px 15px; padding: 14px 0 20px; border-block: 1px solid var(--editorial-rule); }
+.dashboard-filters label { display: grid; gap: 5px; color: #3f5961; font-weight: 650; flex: 1 1 120px; min-width: 0; }
+.dashboard-filters :is(select,input) { min-width: 0; width: 100%; color: var(--text); background: #fff; border: 1px solid #c6dad4; padding: 0 8px; }
+.dashboard-section { margin-top: 27px; min-width: 0; }
+.dashboard-section h2,.dashboard-chart h3 { font-size: 18px; }
+.dashboard-kpis { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); border-block: 1px solid var(--editorial-rule); }
+.dashboard-kpis > div { display: grid; align-content: start; gap: 8px; padding: 15px 12px; }
+.dashboard-kpis > div + div { border-left: 1px solid var(--editorial-rule); }
+.dashboard-kpis span { font-size: 12px; color: #405967; }
+.dashboard-kpis strong,.dashboard-events section > strong { font-size: clamp(26px,4vw,42px); line-height: 1; font-variant-numeric: tabular-nums; color: #12585b; }
+.dashboard-kpis .dashboard-timestamp { font-size: 18px; line-height: 1.25; }
+.water-dashboard .sensor-grid { margin: 9px 0 0; }
+.water-dashboard .sensor-card { border: 0; border-bottom: 1px solid var(--editorial-rule); border-radius: 0; background: transparent; box-shadow: none; }
+.water-dashboard .sensor-card .reading { font-size: 25px; color: #163f45; }
+.dashboard-chart { padding: 12px 0; min-width: 0; border-top: 1px solid var(--editorial-rule); }
+.dashboard-chart .section-heading { margin-bottom: 5px; align-items: start; }
+.dashboard-chart .section-heading p,.range-summary { color: #435e66; font-size: 12px; }
+.range-summary { margin: 0 0 10px; }
+.chart-series { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 4px; }
+.chart-series button { display: inline-flex; align-items: center; gap: 5px; border: 0; border-radius: 7px; min-height: 34px; background: transparent; color: #34545b; font-size: 11px; padding: 4px 8px; }
+.chart-series button[aria-pressed=true] { background: #e0f0ec; color: #004a50; font-weight: 650; }
+.chart-series button span { width: 8px; height: 8px; border-radius: 50%; }
+.water-dashboard .chart-content { min-height: 244px; max-width: 100%; }
+.dashboard-chart .table-wrap { max-height: min(310px,50dvh); overflow-x: auto; }
+.dashboard-chart thead { position: sticky; top: 0; background: #f7fbfa; }
+.dashboard-events .timeline { list-style: none; padding: 0; margin-top: 8px; }
+.dashboard-events li { display: flex; flex-wrap: wrap; gap: 8px 12px; padding: 8px 0; border-top: 1px solid var(--editorial-rule); }
+.dashboard-events a { color: #00666b; text-decoration: underline; }
+@media (max-width:720px) {
+  .dashboard-kpis { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .dashboard-kpis > div:nth-child(odd) { border-left: 0; }
+  .dashboard-kpis > div:nth-child(n+3) { border-top: 1px solid var(--editorial-rule); }
+  .dashboard-filters label { flex-basis: calc(50% - 12px); }
+}
+@media (max-width:520px) {
+  .dashboard-chart .section-heading { display: flex; flex-wrap: wrap; }
+}
+.dashboard-network { display:flex; align-items:center; flex-wrap:wrap; gap:10px 18px; padding:0 0 12px; color:#31545b; font-size:12px; }
+.dashboard-network a { color:#005763; text-decoration:underline; font-weight:650; }
+.dashboard-network strong { color:#168076; font-size:18px; margin-right:3px; }
+.water-dashboard .chart-grid:has(>.dashboard-chart:only-child) { grid-template-columns:minmax(0,1fr); }
+.water-dashboard .sensor-card { padding:12px; min-width:0; }
+.water-dashboard .sensor-card .reading { margin:8px 0; }
+@media (max-width:720px) {
+  .water-dashboard .sensor-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .water-dashboard .sensor-grid:has(>.sensor-card:only-child) { grid-template-columns:1fr; }
+  .water-dashboard .sensor-card .status { white-space:normal; }
+}

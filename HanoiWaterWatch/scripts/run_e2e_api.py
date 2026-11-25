@@ -20,7 +20,7 @@ def main():
             'COOKIE_SECURE': 'false',
             'DEMO_MODE': 'true',
             'REPLAY_TLH_ENABLED': 'false',
-            'FRONTEND_DIST': str(ROOT / 'frontend' / 'dist'),
+            'FRONTEND_DIST': os.environ.get('HWW_E2E_FRONTEND_DIST', str(ROOT / 'frontend' / 'dist')),
             'DEMO_REVIEWER_USERNAME': os.environ['HWW_E2E_USERNAME'],
             'DEMO_REVIEWER_PASSWORD': os.environ['HWW_E2E_PASSWORD'],
         })

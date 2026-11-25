@@ -6,6 +6,8 @@ const baseURL = `http://127.0.0.1:${port}`;
 export default defineConfig({
   testDir: './e2e',
   workers: 1,
+  timeout: 45000,
+  expect: { timeout: 12000 },
   forbidOnly: !!process.env.CI,
   use: {
     baseURL,

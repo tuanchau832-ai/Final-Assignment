@@ -9,10 +9,10 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('renders the three stations and the simulated-data notice on every public page', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/overview');
   await expect(page.locator('.station-row')).toHaveCount(3);
   await expect(page.locator('.station-row').filter({ hasText: 'HWW-NHU-001' })).toContainText('Planned station');
-  for (const path of ['/', `${station}/dashboard`, `${station}/model`, '/alerts', '/simulation', '/login']) {
+  for (const path of ['/map', '/overview', `${station}/dashboard`, `${station}/model`, '/alerts', '/simulation', '/login']) {
     await page.goto(path);
     await expect(page.getByRole('note')).toContainText('All readings on this site');
     await expect(page.locator('main h1')).toBeVisible();
@@ -35,19 +35,39 @@ test('keeps sensor selection keyboard-accessible when the 3D asset is unavailabl
 });
 
 test('staff can run a replay, see the resulting alert, and stop the replay', async ({ page }) => {
-  test.setTimeout(45_000);
+  test.setTimeout(90_000);
   await page.goto('/login?returnTo=%2Fsimulation');
   await page.getByLabel('Username').fill(process.env.HWW_E2E_USERNAME!);
-  await page.getByLabel('Password').fill(process.env.HWW_E2E_PASSWORD!);
+  await page.getByLabel('Password', { exact: true }).fill(process.env.HWW_E2E_PASSWORD!);
   await page.getByRole('button', { name: 'Sign in', exact: true }).click();
   await expect(page).toHaveURL(/\/simulation$/);
   await page.getByLabel('Playback speed').selectOption('5');
   const start = page.getByRole('button', { name: 'Start replay' });
   await start.click();
   await expect(page.locator('.payload')).toContainText('hww.frames.v1');
-  await expect(page.getByRole('link', { name: 'Review alert' })).toBeVisible({ timeout: 25_000 });
+  const alertLink = page.getByRole('link', { name: 'Review alert' });
+  await expect(alertLink).toBeVisible({ timeout: 30_000 });
+  const detailPath = await alertLink.getAttribute('href');
+  expect(detailPath).toMatch(/^\/alerts\/\d+$/);
   await page.getByRole('button', { name: 'Stop replay' }).click();
   await expect(start).toBeEnabled();
+  await page.goto('/map');
+  await page.getByRole('button', { name: 'Notifications' }).click();
+  const notifications = page.getByRole('region', { name: 'Notifications' });
+  const record = notifications.locator('a[href="' + detailPath + '"]');
+  await expect(record).toContainText('HWW-KNG-001');
+  await record.click();
+  page.on('dialog', dialog => dialog.accept());
+  await page.getByRole('button', { name: 'Acknowledge', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Acknowledge', exact: true })).toBeDisabled();
+  await page.getByRole('button', { name: 'Start review', exact: true }).click();
+  await page.getByLabel('Review note').fill('Reviewed the simulated replay in browser QA.');
+  await page.getByRole('button', { name: 'Submit and close', exact: true }).click();
+  await expect(page.getByText('alert closed', { exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Account' }).click();
   await page.getByRole('button', { name: 'Sign out' }).click();
-  await expect(page.getByRole('link', { name: 'Sign in' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Sign in', exact: true })).toBeVisible();
+  await page.goto(detailPath!);
+  await expect(page.getByRole('link', { name: 'Sign in for staff actions' })).toBeVisible();
+  await expect(page.getByText('Reviewed the simulated replay in browser QA.')).toHaveCount(0);
 });

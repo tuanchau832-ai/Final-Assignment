@@ -1,26 +1,98 @@
-import { lazy, Suspense, useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Routes, Route, NavLink, Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { BrowserRouter, Link, Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
-import { Activity, Droplets, LayoutDashboard, Box, Bell, FlaskConical, ArrowUpRight, ArrowRight, MapPin, Radio, ShieldCheck, LogIn, Globe, Menu, X } from 'lucide-react';
-import { useAlerts, useStations, useStationState, useUser, useAction, useResource } from './api';
-import { AlertRows, StatusBadge, Source, QueryState, useText, Clock, Empty } from './common';
-import type { Station, Snapshot } from './types';
+import { FlaskConical } from 'lucide-react';
+import { useAlerts, useOnline, useResource, useUser } from './api';
 import { AlertNotification } from './AlertNotification';
+import WorkspaceHeader from './WorkspaceHeader';
+import { demoMode } from './features';
 import './i18n';
 import './styles.css';
-const Model = lazy(() => import('./ModelPage')), Dashboard = lazy(() => import('./DashboardPage')), Alerts = lazy(() => import('./AlertsPage')), Simulation = lazy(() => import('./SimulationPage')), StationMap = lazy(() => import('./StationMap'));
-const client = new QueryClient({ defaultOptions: { queries: { staleTime: 1500, retry: 1, refetchOnWindowFocus: true } } });
-function App() { const { t, i18n } = useTranslation(), user = useUser(), action = useAction(), loc = useLocation(), nav = useNavigate(); const health = useResource<{
-    status: string;
-}>('health', '/health', 5000); const alerts = useAlerts('review_status=open&limit=5'); const [menu, setMenu] = useState(false); useEffect(() => { setMenu(false); }, [loc.pathname]); useEffect(() => { document.documentElement.lang = i18n.language; localStorage.setItem('hww-language', i18n.language); }, [i18n.language]); useEffect(() => { document.title = (user.data && alerts.data?.total ? `(${alerts.data.total}) ` : '') + 'Hanoi WaterWatch'; }, [alerts.data?.total, user.data]); const navigation = [{ to: '/', label: 'overview', icon: LayoutDashboard }, { to: '/stations/HWW-KNG-001/model', label: 'model', icon: Box }, { to: '/stations/HWW-KNG-001/dashboard', label: 'dashboard', icon: Activity }, { to: '/alerts', label: 'alerts', icon: Bell }, { to: '/simulation', label: 'simulation', icon: FlaskConical }]; return <div className="app"><a href="#main" className="skip">Skip to content</a><aside className={'sidebar ' + (menu ? 'open' : '')}><Link className="brand" to="/"><span className="brand-mark"><Droplets size={25}/></span><div>Hanoi<span>WATERWATCH</span></div></Link><div className="nav-caption">{t('monitoringPlatform')}</div><nav>{navigation.map(n => <NavLink end={n.to === '/'} key={n.to} to={n.to}><n.icon size={19}/>{t(n.label)}{n.label === 'alerts' && user.data && !!alerts.data?.total && <b>{alerts.data.total}</b>}</NavLink>)}</nav><div className="sidebar-bottom"><div className="demo-seal"><FlaskConical size={20}/><div><strong>{t('demoNetwork')}</strong><small>{t('simInputsOnly')}</small></div></div><p>Hanoi, Vietnam <span>21.0278° N · 105.8342° E</span></p><small className="version">PLATFORM v1.0.0</small></div></aside><div className="workspace"><header className="topbar"><button className="mobile-menu icon-button" aria-label="Toggle menu" onClick={() => setMenu(!menu)}>{menu ? <X size={20}/> : <Menu size={20}/>}</button><span className="breadcrumb">{t('workspace')} <span>/</span> <strong>{t(loc.pathname.includes('model') ? 'model' : loc.pathname.includes('dashboard') ? 'dashboard' : loc.pathname.startsWith('/alerts') ? 'alerts' : loc.pathname === '/simulation' ? 'simulation' : loc.pathname === '/login' ? 'login' : 'overview')}</strong></span><div className="top-actions"><span className={'connection ' + (health.isSuccess && !health.isError ? 'connected' : 'disconnected')}><i />{health.isSuccess && !health.isError ? t('apiConnected') : health.isLoading ? t('connecting') : t('disconnected')}</span><button className="language" onClick={() => void i18n.changeLanguage(i18n.language === 'vi' ? 'en' : 'vi')}><Globe size={15}/>{i18n.language.toUpperCase()}</button>{user.data ? <><Link className="icon-button" aria-label="Open alerts" to="/alerts?review_status=open"><Bell size={18}/></Link><button className="user-button" onClick={() => action.mutate({ path: '/auth/logout', body: {} }, { onSuccess: () => nav('/') })}><span>{user.data.user.display_name.slice(0, 1)}</span>{t('logout')}</button></> : <Link className="signin" to={'/login?returnTo=' + encodeURIComponent(loc.pathname + loc.search)}><LogIn size={15}/>{t('login')}</Link>}</div></header><div className="sim-banner" role="note"><FlaskConical size={17}/><p>{t('banner')}</p><span className="badge">{t('source')}</span></div>{health.isError && <div className="error global-error" role="alert">{t('error')}</div>}<main id="main"><Suspense fallback={<Empty>{t('loading')}</Empty>}><Routes><Route path="/" element={<Overview />}/><Route path="/stations/:code/model" element={<Model />}/><Route path="/stations/:code/dashboard" element={<Dashboard />}/><Route path="/stations/:code" element={<RedirectStation />}/><Route path="/alerts" element={<Alerts />}/><Route path="/alerts/:id" element={<Alerts />}/><Route path="/simulation" element={<Simulation />}/><Route path="/login" element={<Login />}/><Route path="*" element={<Empty><h1>{t('notFound')}</h1><Link to="/">{t('return')}</Link></Empty>}/></Routes></Suspense></main><footer>{t('simFooter')}<span>API v1 · Registry v1</span></footer>{user.data && <AlertNotification key={user.data.user.username} alerts={alerts.data?.items}/>}</div></div>; }
-function Overview() { const { t } = useTranslation(), text = useText(), registry = useStations(), alerts = useAlerts('limit=5'); const q1 = useStationState('HWW-KNG-001'), q2 = useStationState('HWW-TLH-001'), q3 = useStationState('HWW-NHU-001'); const queries = [q1, q2, q3], states = queries.map(q => q.data), stations = registry.data?.items || []; const metrics = [{ label: t('stations'), value: registry.data ? stations.length : '—', sub: t('threeSites'), icon: MapPin }, { label: t('normal'), value: states.filter(s => s?.station_status === 'normal').length, sub: t('serverComputed'), icon: ShieldCheck }, { label: t('attention'), value: states.filter(s => s && ['abnormal', 'degraded', 'offline'].includes(s.station_status)).length, sub: t('anomaliesConnection'), icon: Activity }, { label: t('openAlerts'), value: states.reduce((n, s) => n + (s?.open_alert_count || 0), 0), sub: t('preliminarySimulated'), icon: Bell }]; return <><div className="page-title"><div><div className="eyebrow">{t('liveWorkspace')}</div><h1>{t('network')}</h1><p>{t('intro')}</p></div><Link className="button primary" to="/simulation"><FlaskConical size={16}/>{t('simulation')}<ArrowUpRight size={16}/></Link></div><div className="metrics">{metrics.map(m => <article key={m.label} className="metric"><div className="between"><span>{m.label}</span><m.icon size={19}/></div><strong>{queries.some(q => q.isLoading || q.isError) ? '—' : m.value}</strong><small>{m.sub}</small></article>)}</div><QueryState loading={registry.isLoading} error={registry.error}/><div className="overview-grid"><section className="panel map-panel"><div className="panel-head"><h2><MapPin size={17}/>{t('stations')}</h2><span className="badge">{t('illustrative')}</span></div><Suspense fallback={<Empty>{t('loading')}</Empty>}><StationMap stations={stations} states={stations.map(s => states.find(st => st?.station_code === s.code))}/></Suspense><div className="map-legend"><StatusBadge status="normal"/><StatusBadge status="abnormal"/><StatusBadge status="offline"/><StatusBadge status="unavailable"/></div></section><section className="panel station-panel"><div className="panel-head"><h2>{t('directory')}</h2><span className="count">03</span></div>{stations.map((s, i) => <StationRow key={s.code} station={s} state={states.find(st => st?.station_code === s.code)} index={i}/>)}</section></div><section className="panel recent-panel"><div className="panel-head"><div><h2>{t('recent')}</h2><p>{t('awaitingContext')}</p></div><Link className="textlink" to="/alerts">{t('allAlerts')}<ArrowRight size={15}/></Link></div><QueryState loading={alerts.isLoading} error={alerts.error}/><AlertRows items={alerts.data?.items || []}/><div className="panel-foot"><ShieldCheck size={15}/>{t('reviewOutcomeNotice')}</div></section><div className="evidence-note"><strong>{t('evidenceClasses')}</strong><span>{t('simulatedAnomaly')} · {t('available')}</span><span>{t('observationReserved')}</span><span>{t('incidentFieldOnly')}</span></div></>; }
-function StationRow({ station: s, state, index }: {
-    station: Station;
-    state?: Snapshot;
-    index: number;
-}) { const { t } = useTranslation(), text = useText(); return <article className="station-row"><div className="station-index">0{index + 1}</div><div className="station-info"><span className="eyebrow">{s.code}</span><h3>{s.river} River</h3><StatusBadge status={state?.station_status}/><div className="station-source">{s.data_mode === 'planned' ? t('planned') : <Source state={state}/>}</div><small className="station-time"><Clock at={state?.last_frame_at}/></small><div className="station-links"><Link to={`/stations/${s.code}/model`}>{t('model')} <ArrowUpRight size={12}/></Link><Link to={`/stations/${s.code}/dashboard`}>{t('dashboard')} <ArrowUpRight size={12}/></Link></div><span className="sr-only">{text(s.name)}</span></div></article>; }
-function RedirectStation() { const { code } = useParams(), nav = useNavigate(); useEffect(() => { void nav(`/stations/${code}/dashboard`, { replace: true }); }, [code, nav]); return null; }
-function Login() { const { t } = useTranslation(), action = useAction(), nav = useNavigate(), loc = useLocation(); const [username, setUsername] = useState(''), [password, setPassword] = useState(''); return <div className="login-wrap"><section className="panel login-panel"><span className="login-icon"><ShieldCheck size={30}/></span><div className="eyebrow">HANOI WATERWATCH / STAFF</div><h1>{t('login')}</h1><p>{t('loginIntro')}</p><form onSubmit={e => { e.preventDefault(); action.mutate({ path: '/auth/login', body: { username, password } }, { onSuccess: () => { const target = new URLSearchParams(loc.search).get('returnTo') || '/'; nav(target.startsWith('/') && !target.startsWith('//') && !target.includes(String.fromCharCode(92)) ? target : '/'); } }); }}><label>{t('username')}<input value={username} onChange={e => setUsername(e.target.value)} autoComplete="username" required/></label><label>{t('password')}<input type="password" value={password} onChange={e => setPassword(e.target.value)} autoComplete="current-password" required/></label>{action.isError && <div className="error" role="alert">{action.error.message}</div>}<button className="button primary" disabled={action.isPending}>{t('login')}<ArrowRight size={16}/></button></form><Link className="textlink" to="/">{t('return')}</Link></section></div>; }
-createRoot(document.getElementById('root')!).render(<QueryClientProvider client={client}><BrowserRouter><App /></BrowserRouter></QueryClientProvider>);
+import './workspace.css';
+import './floating.css';
+
+const MapHome = lazy(() => import('./MapHome'));
+const Overview = lazy(() => import('./OverviewPage'));
+const Login = lazy(() => import('./LoginPage'));
+const Model = lazy(() => import('./ModelPage'));
+const Dashboard = lazy(() => import('./DashboardPage'));
+const Alerts = lazy(() => import('./AlertsPage'));
+const Simulation = lazy(() => import('./SimulationPage'));
+const client = new QueryClient({ defaultOptions: { queries: { staleTime: 1500, retry: 1 } } });
+
+function Loading() {
+  const { t } = useTranslation();
+  return <p className="skeleton" role="status">{t('loading')}</p>;
+}
+
+function Entry() {
+  const user = useUser();
+  if (user.isPending) return <Loading/>;
+  return <Navigate replace to={user.data ? '/map' : '/login'}/>;
+}
+
+function StationRedirect() {
+  const { code } = useParams(), { search } = useLocation();
+  return <Navigate replace to={'/stations/' + encodeURIComponent(code || '') + '/dashboard' + search}/>;
+}
+
+function Workspace() {
+  const { t } = useTranslation(), location = useLocation();
+  const user = useUser(), online = useOnline(), health = useResource<{status: string}>('health', '/health', 5000);
+  const alerts = useAlerts('review_status=open&limit=5');
+  const main = useRef<HTMLElement>(null), previous = useRef(location.pathname);
+  const isMap = location.pathname.replace(/\/+$/, '').toLowerCase() === '/map';
+  useEffect(() => {
+    if (previous.current !== location.pathname) {
+      const mapContext = new URLSearchParams(location.search);
+      if (!(isMap && mapContext.has('search'))) {
+        main.current?.focus({ preventScroll: true });
+      }
+      window.scrollTo(0, 0);
+      previous.current = location.pathname;
+    }
+  }, [isMap, location.pathname, location.search]);
+  useEffect(() => {
+    document.title = (user.data && alerts.data?.total ? '(' + alerts.data.total + ') ' : '') + 'Hanoi WaterWatch';
+    return () => { document.title = 'Hanoi WaterWatch'; };
+  }, [user.data, alerts.data?.total]);
+  return <div className={'workspace-view' + (isMap ? ' map-workspace' : '')}>
+    <a href="#main" className="skip">{t('skipToContent')}</a>
+    <WorkspaceHeader floating={isMap} health={!online || health.isError ? 'disconnected' : health.isPending ? 'connecting' : 'apiConnected'}
+      alerts={alerts.data?.items} pending={alerts.isPending} alertError={!online || alerts.isError} retryAlerts={() => void alerts.refetch()}/>
+    {!isMap && <div className={demoMode ? "provenance-strip demo-provenance" : "provenance-strip"} role="note"><FlaskConical size={15} aria-hidden="true"/><p>{demoMode ? <><strong className="demo-indicator">{t('demoIndicator')}</strong> {t('demoExplanation')}</> : t('banner')}</p></div>}
+    {!isMap && (!online || health.isError) && <div className="workspace-error" role="alert">{t('error')} <button onClick={() => void health.refetch()}>{t('retry')}</button></div>}
+    <main id="main" tabIndex={-1} ref={main} className={isMap ? 'map-main' : 'content-main'}>
+      <Suspense fallback={<Loading/>}><Routes>
+        <Route path="/map" element={<MapHome/>}/>
+        <Route path="/overview" element={<Overview/>}/>
+        <Route path="/stations/:code" element={<StationRedirect/>}/>
+        <Route path="/stations/:code/model" element={<Model/>}/>
+        <Route path="/stations/:code/dashboard" element={<Dashboard/>}/>
+        <Route path="/alerts" element={<Alerts/>}/>
+        <Route path="/alerts/:id" element={<Alerts/>}/>
+        <Route path="/simulation" element={<Simulation/>}/>
+        <Route path="*" element={<section className="panel detail-body"><h1>{t('notFound')}</h1><Link to="/map">{t('mapHome')}</Link></section>}/>
+      </Routes></Suspense>
+    </main>
+    {!isMap && <footer>{t('simFooter')}<span>API v1 · Registry v1</span></footer>}
+    {user.data && <AlertNotification key={user.data.user.username} alerts={alerts.data?.items}/>}
+  </div>;
+}
+function App() {
+  const { i18n } = useTranslation();
+  useEffect(() => {
+    document.documentElement.lang = i18n.language;
+    localStorage.setItem('hww-language', i18n.language);
+  }, [i18n.language]);
+  return <Suspense fallback={<Loading/>}><Routes>
+    <Route path="/" element={<Entry/>}/>
+    <Route path="/login" element={<Login/>}/>
+    <Route path="*" element={<Workspace/>}/>
+  </Routes></Suspense>;
+}
+createRoot(document.getElementById('root')!).render(
+  <QueryClientProvider client={client}><BrowserRouter><App/></BrowserRouter></QueryClientProvider>
+);

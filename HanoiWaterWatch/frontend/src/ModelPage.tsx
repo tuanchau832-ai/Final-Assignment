@@ -2,10 +2,10 @@ import { Component, lazy, Suspense, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { Box, ArrowUpRight, RotateCcw } from 'lucide-react';
-import { useStationState, useStation } from './api';
+import { useStationState, useStation, useOnline } from './api';
 import { SensorCard, QueryState, StatusBadge, useText, Source, statusColor, Empty } from './common';
 import type { Sensor } from './types';
-import { displayCurrent, formatValue } from './domain';
+import { displayCurrent, formatTime, formatValue } from './domain';
 const ModelCanvas = lazy(() => import('./ModelCanvas'));
 class Boundary extends Component<{
     children: React.ReactNode;
@@ -19,11 +19,12 @@ class Boundary extends Component<{
 }
 export default function ModelPage() {
     const { code = 'HWW-KNG-001' } = useParams();
-    const q = useStationState(code), meta = useStation(code);
+    const q = useStationState(code), meta = useStation(code), online = useOnline();
+    const disconnected = !online || q.isError;
     const { t } = useTranslation(), text = useText();
     const [params, setParams] = useSearchParams();
     const selected = params.get('sensor') || 'turbidity';
-    const select = (channel: string) => { setParams({ sensor: channel }, { replace: true }); };
+    const select = (channel: string) => { const next = new URLSearchParams(params); next.set('sensor',channel); setParams(next); };
     const [mode, setMode] = useState('2d');
     const [asset, setAsset] = useState<boolean | null>(null);
     const [reset, setReset] = useState(0);
@@ -43,7 +44,8 @@ export default function ModelPage() {
     } }
     useEffect(() => { void open3d(); }, []);
     useEffect(() => { const handler = () => { setMode('2d'); setAsset(false); }; document.addEventListener('hww-context-lost', handler); return () => document.removeEventListener('hww-context-lost', handler); }, []);
-    return <><div className="page-title"><div><div className="eyebrow">{t('model')} / {code}</div><h1>{text(meta.data?.name)}</h1><p>{t('selectSensor')}</p></div><Link className="button" to={`/stations/${code}/dashboard`}>{t('dashboard')} <ArrowUpRight size={16}/></Link></div><QueryState loading={q.isLoading} error={q.error}/><div className="station-meta"><StatusBadge status={q.data?.station_status}/><Source state={q.data}/><span>{t('snapshot')} v{q.data?.version ?? '—'}</span></div><div className={'model-layout ' + (q.isError ? 'stale-state' : '')}><section className="panel model-panel"><div className="panel-head"><h2><Box size={18}/>{t('model')}</h2><div className="button-group"><button className={mode === '2d' ? 'active' : ''} onClick={() => setMode('2d')}>{t('schematic')}</button><button className={mode === '3d' ? 'active' : ''} onClick={() => void open3d()}>{t('model3d')}</button><button aria-label={t('reset')} onClick={() => setReset(v => v + 1)}><RotateCcw size={14}/></button></div></div><div className="model-viewport" aria-label={q.isError ? t('error') : undefined}>{mode === '3d' ? <Boundary fallback={schematic}><Suspense fallback={<Empty>{t('loading')}</Empty>}><ModelCanvas key={reset} sensors={sensors} status={q.data?.station_status || 'unavailable'} onSelect={select}/></Suspense></Boundary> : schematic}</div><div className="model-foot">{q.isError ? t('error') : asset === false ? t('modelMissing') : mode === '2d' ? t('selectSensor') : t('selectSensor')}</div></section><aside className="model-aside"><section className="panel"><div className="panel-head"><h2>{t('parameters')}</h2><span className="badge">4</span></div><div className="sensor-list">{sensors.map(s => <button className={s.channel === selected ? 'selected' : ''} key={s.uid} onClick={() => select(s.channel)}><span><strong>{s.channel === 'temp' ? t('tempLabel') : s.channel === 'do' ? t('oxygenLabel') : s.channel === 'ph' ? 'pH' : t('turbidityLabel')}</strong><StatusBadge status={s.status}/></span><b>{formatValue(displayCurrent(s.value, s.status, q.isError), s.decimals)}<small>{s.unit === 'degC' ? '°C' : s.unit}</small></b></button>)}</div></section>{sensor && <SensorCard sensor={sensor} disconnected={q.isError}/>}</aside></div></>;
+    if (q.isPending || meta.isPending) return <section className="panel detail-body"><h1>{code}</h1><QueryState loading error={null}/></section>;
+    return <><div className="page-title"><div><div className="eyebrow">{t('model')} / {code}</div><h1>{text(meta.data?.name)}</h1><p>{t('selectSensor')}</p></div><Link className="button" to={`/stations/${code}/dashboard?${params}`}>{t('dashboard')} <ArrowUpRight size={16}/></Link></div><QueryState loading={q.isLoading} error={q.error}/><div className="station-meta"><StatusBadge status={disconnected ? 'unavailable' : q.data?.station_status}/><Source state={q.data}/><Link className="textlink" to={'/map?station=' + code}>{t('viewMap')}</Link><span>{t('lastFrame')}: {formatTime(q.data?.last_frame_at)}</span><span>{t('snapshot')} v{q.data?.version ?? '—'}</span></div><div className={'model-layout ' + (disconnected ? 'stale-state' : '')}><section className="panel model-panel"><div className="panel-head"><h2><Box size={18}/>{t('model')}</h2><div className="button-group"><button className={mode === '2d' ? 'active' : ''} onClick={() => setMode('2d')}>{t('schematic')}</button><button className={mode === '3d' ? 'active' : ''} onClick={() => void open3d()}>{t('model3d')}</button><button aria-label={t('reset')} disabled={mode !== "3d"} onClick={() => setReset(v => v + 1)}><RotateCcw size={14}/></button></div></div><div className="model-viewport" aria-label={disconnected ? t('error') : undefined}>{mode === '3d' ? <Boundary fallback={schematic}><Suspense fallback={<Empty>{t('loading')}</Empty>}><ModelCanvas key={reset} sensors={sensors} status={disconnected ? 'unavailable' : q.data?.station_status || 'unavailable'} onSelect={select}/></Suspense></Boundary> : schematic}</div><div className="model-foot">{disconnected ? t('error') : asset === false ? t('modelMissing') : mode === '2d' ? t('selectSensor') : t('selectSensor')}</div></section><aside className="model-aside"><details className="model-inspector" open><summary>{t('parameters')}</summary><section className="panel"><div className="panel-head"><h2>{t('sensor')}</h2><span className="badge">{q.isSuccess ? sensors.length : '—'}</span></div><div className="sensor-list scroll-list" role="region" aria-label={t('sensor')} tabIndex={0}>{sensors.map(s => <button className={s.channel === selected ? 'selected' : ''} key={s.uid} onClick={() => select(s.channel)}><span><strong>{s.channel === 'temp' ? t('tempLabel') : s.channel === 'do' ? t('oxygenLabel') : s.channel === 'ph' ? 'pH' : t('turbidityLabel')}</strong><StatusBadge status={disconnected ? 'unavailable' : s.status}/></span><b>{formatValue(displayCurrent(s.value, s.status, disconnected), s.decimals)}<small>{s.unit === 'degC' ? '°C' : s.unit}</small></b></button>)}</div></section>{sensor && <SensorCard sensor={sensor} disconnected={disconnected}/>}</details></aside></div></>;
 }
 function Schematic({ sensors, selected, onSelect }: {
     sensors: Sensor[];
