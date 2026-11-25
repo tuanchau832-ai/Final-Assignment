@@ -44,7 +44,7 @@ Không báo cộng đồng thời board tích hợp và module M.2 riêng vào c
 
 1. Cáp ngoài trời, đầu nối, giá/rack cảm biến và phụ kiện gá lắp.
 2. Lắp đặt, commissioning, hiệu chuẩn ban đầu và nghiệm thu.
-3. Hiệu chuẩn, vệ sinh và kiểm tra định kỳ trong 12 tháng: báo **hai lựa chọn 24 và 26 lượt vệ sinh/năm** nếu có thể; ghi rõ 12 lần hiệu chuẩn có trùng lượt vệ sinh không, công di chuyển, vật tư chuẩn và lượt bổ sung sau mưa lũ.
+3. Hiệu chuẩn, vệ sinh và kiểm tra định kỳ trong 12 tháng: báo **lịch chính 26 lượt vệ sinh/năm (mỗi 14 ngày)**; nếu thuận tiện, thêm phương án so sánh 24 lượt/năm (hai lần/tháng). Ghi rõ 12 lần hiệu chuẩn có trùng lượt vệ sinh không, công di chuyển, vật tư chuẩn và lượt bổ sung sau mưa lũ.
 4. Bảo trì, sửa chữa, thay màng hoặc sửa cảm biến DO và thu gom/thải bỏ cuối vòng đời.
 
 Vui lòng tách từng hạng mục trong báo giá thay vì báo một khoản trọn gói. Báo giá sẽ được dùng để lập ngân sách sơ bộ; không được hiểu là cam kết mua hàng.

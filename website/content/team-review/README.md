@@ -27,9 +27,9 @@ Patch không chọn thay nhóm 3 hay 10 trạm, không thay giá LILYGO bằng g
 
 Đây là kiểm patch/logic, **chưa phải full build hoặc browser/mobile test của `final-website`**. Build/link của website React được ghi riêng trong handoff.
 
-## Tích hợp sau khi Bá Nguyên duyệt
+## Tích hợp do Tuấn phụ trách theo quyết định D7
 
-Hướng dẫn dành cho người phụ trách trên checkout được phép và đã có hai file đích; agent chưa áp các bước này lên source nhóm.
+Bá Nguyên đã đồng ý Tuấn tích hợp patch trên source website cuối `final-website` theo [quyết định D7](../ba-nguyen-decisions-2026-11-25.md). Hướng dẫn dưới đây dành cho người phụ trách trên checkout được phép và đã có hai file đích; agent chưa áp các bước này lên source nhóm. Lịch vận hành được chọn là 26 lượt/năm; các tổng 24 lượt trong patch vẫn là kịch bản cũ và cần giữ nhãn giả định hoặc cập nhật sau khi có báo giá.
 
 1. Xác nhận branch/snapshot, giữ thay đổi chưa commit; không yêu cầu Bá Nguyên chuyển sang nhánh đồng đội.
 2. Từ repository root, chạy `git apply --check` với đường dẫn thực tới patch. Nguồn đã thay đổi thì port từng hunk sau khi đọc; không ép apply hoặc reset.

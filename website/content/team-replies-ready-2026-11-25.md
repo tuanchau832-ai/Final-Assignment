@@ -1,6 +1,6 @@
 # Tin nhắn chờ xác nhận — Bá Nguyên
 
-Soạn ngày 25/11/2026. Đây là bản câu hỏi chi tiết để đối chiếu với các comment gửi trong Draft PR #3. Mỗi người có thể trả lời ngay dưới comment gắn tên mình bằng ID D1–D8. Nếu chưa chốt, xin ghi `TBD + ai kiểm tra + khi nào + tài liệu cần có` để không tự điền số. Bằng chứng giá mới và ảnh gốc nằm trong [cost-evidence/README.md](cost-evidence/README.md).
+Soạn ngày 25/11/2026. Đây là bản câu hỏi chi tiết để đối chiếu với các comment gửi trong PR #3. D5/D7 đã có [quyết định của Bá Nguyên](ba-nguyen-decisions-2026-11-25.md); phần còn lại vẫn chờ nhóm. Mỗi người có thể trả lời ngay dưới comment gắn tên mình bằng ID D1–D8. Nếu chưa chốt, xin ghi `TBD + ai kiểm tra + khi nào + tài liệu cần có` để không tự điền số. Bằng chứng giá mới và ảnh gốc nằm trong [cost-evidence/README.md](cost-evidence/README.md).
 
 ## Akai — cấu hình, phạm vi và phương án so sánh
 
@@ -22,7 +22,7 @@ Soạn ngày 25/11/2026. Đây là bản câu hỏi chi tiết để đối chi�
 >
 > **D1/D4:** Pilot chính 3 hay 10 trạm? Cho biết site nào chỉ là ví dụ, ai xác nhận GPS/permission, flood line, cable length, shade và 4G coverage. Hộp, cage/arm, wiper, grounding/surge sẽ được khảo sát hoặc thiết kế bởi ai? Gói **80 USD** đang bao gồm chính xác vật tư nào, có quote chưa?
 >
-> **D5:** Chọn **24 lần/năm (hai lần/tháng)** hay khoảng **26 lần/năm (mỗi hai tuần)** để vệ sinh? 12 lần hiệu chuẩn có đi cùng lượt vệ sinh không? Lượt sau mưa lũ, di chuyển, vật tư DO/pH và phụ tùng cho mục tiêu sửa trong 48h đã tính ở đâu?
+> **D5:** Mình chọn **26 lượt/năm/trạm (mỗi 14 ngày)** làm lịch lập kế hoạch; 24 lượt chỉ là kịch bản so sánh. Nhờ bạn xác nhận site có khả thi không, 12 lần hiệu chuẩn có đi cùng 12 lượt vệ sinh không, và xin báo giá cho lượt định kỳ, sau mưa lũ, di chuyển, vật tư DO/pH và phụ tùng cho mục tiêu sửa trong 48h.
 >
 > **D6:** Người vận hành/nhận cảnh báo/bên trả tiền đã có thỏa thuận hay mới là đề xuất trong report? Chốt acceptance criteria và những công việc cần báo giá: lắp đặt, an toàn gần nước/đường, training, lab, SMS, bảo trì.
 >
@@ -34,7 +34,7 @@ Soạn ngày 25/11/2026. Đây là bản câu hỏi chi tiết để đối chi�
 
 > Tuấn ơi, mình đã rà hai phản hồi của Akai/Đạt. Hiện scope **3 trạm/3 năm** trong file Akai khác **10 trạm/1 năm** trong implementation/summary website cuối. Nhờ bạn cùng nhóm chốt D1 trước khi mình đưa tổng chi phí vào bài. Ngoài ra phương án C trong file Akai là **AI + IoT**, nhưng website cuối vẫn là **manual sampling** (D8), nên matrix cần được nhóm đánh giá lại nếu đổi phương án.
 >
-> Mình đã chuẩn bị bản sửa lỗi summary/calculator tại `website/content/team-review/final-website-cost-summary.patch` và review tại `website/content/team-confirmation-review-2026-11-25.md`. Source summary thuộc `final-website`, khác cấu trúc React ở PR #3 của mình. Bạn cho biết **source/branch nào là bản báo cáo cuối và ai tích hợp patch** (D7), để không mất nội dung chi phí khi gộp.
+> **D7:** Mình đồng ý để bạn tích hợp bản sửa summary/calculator tại `website/content/team-review/final-website-cost-summary.patch` vào source `final-website`, sau khi kiểm tra snapshot và thay đổi đang có. Source này khác cấu trúc React ở PR #3, nên không dùng merge PR #3 để áp patch. Nhờ bạn gửi link bản tích hợp và kết quả build/QA để mình rà lại số.
 >
 > Nhờ bạn xác nhận cách đếm **4.000 từ**, vị trí evidence/báo giá và prompt log/AI screenshots theo template; payer trong report vẫn là đề xuất nếu chưa có bên tài trợ cam kết. Sau khi D1/D2 chốt, mình sẽ gửi CSV giá và bảng cost mới để bạn kiểm APA.
 >
@@ -46,6 +46,6 @@ Soạn ngày 25/11/2026. Đây là bản câu hỏi chi tiết để đối chi�
 
 ## Nhà cung cấp/đơn vị thi công — chỉ gửi khi đã có cấu hình và site tối thiểu
 
-> Chào anh/chị, nhóm đang lập dự toán cho trạm theo dõi chất lượng nước ngoài trời tại Hà Nội. Xin báo giá bằng văn bản cho **[số trạm, vị trí/địa chỉ, model và sơ đồ đính kèm]**, tách từng dòng và số lượng: (1) panel/battery/controller/DC/protection và phụ kiện lắp; (2) hộp IP, cáp/gland, cage/arm/wiper, chống ăn mòn và tiếp địa/chống xung; (3) lắp đặt gần nước/đường, commissioning, hiệu chuẩn ban đầu; (4) bảo trì/vệ sinh 24 hoặc 26 lượt/năm, hiệu chuẩn 12 lần/năm, lượt sau mưa lũ; (5) vật tư thay pH/DO, thu hồi/thải bỏ. Xin ghi rõ model, điều kiện địa điểm, VAT, giao hàng, công đi lại, bảo hành, loại trừ, thời gian giao và hiệu lực báo giá. Nếu không cung cấp được mục nào, xin đánh dấu rõ để nhóm xin nhà cung cấp khác. Xin cảm ơn.
+> Chào anh/chị, nhóm đang lập dự toán cho trạm theo dõi chất lượng nước ngoài trời tại Hà Nội. Xin báo giá bằng văn bản cho **[số trạm, vị trí/địa chỉ, model và sơ đồ đính kèm]**, tách từng dòng và số lượng: (1) panel/battery/controller/DC/protection và phụ kiện lắp; (2) hộp IP, cáp/gland, cage/arm/wiper, chống ăn mòn và tiếp địa/chống xung; (3) lắp đặt gần nước/đường, commissioning, hiệu chuẩn ban đầu; (4) bảo trì/vệ sinh **26 lượt/năm (mỗi 14 ngày)**, nếu được thì thêm mức so sánh 24 lượt/năm, hiệu chuẩn 12 lần/năm và lượt sau mưa lũ; (5) vật tư thay pH/DO, thu hồi/thải bỏ. Xin ghi rõ model, điều kiện địa điểm, VAT, giao hàng, công đi lại, bảo hành, loại trừ, thời gian giao và hiệu lực báo giá. Nếu không cung cấp được mục nào, xin đánh dấu rõ để nhóm xin nhà cung cấp khác. Xin cảm ơn.
 
 Mẫu quote đầy đủ còn ở [supplier-quote-request-template.md](supplier-quote-request-template.md). Không gửi yêu cầu có ô `[...]` cho nhà cung cấp trước khi người phụ trách kỹ thuật xác nhận dữ liệu.

@@ -55,7 +55,7 @@ Không khẳng định tiêu đề US$430 chính là lỗi cụ thể Đạt đ�
 | Solar | Đạt/Akai đề xuất 20 W; panel/charging kit 46.99 USD | Chưa có Wh/ngày, upload interval, battery Ah/Wh, autonomy, sơ đồ 12 V → board, controller/converter/protection. 20 W là đề xuất, chưa được tính đủ tải | Akai + Đạt |
 | Vỏ/gá/cáp | Box khóa trên flood line, cage inox và wiper | Kích thước box, IP với lỗ cáp, flood level, chiều dài cáp, vật liệu gá, wiper model chưa có | Đạt + nhà cung cấp |
 | Tiếp địa/chống xung | Đạt chỉ ra chưa nằm trong register nhóm | Thêm scope báo giá riêng; cần thiết kế điện phù hợp site | Đạt + đơn vị điện |
-| Vệ sinh | Đạt: hai tuần/lần và 24 lượt/năm; Akai giữ 24 lượt | **Cần chọn** khoảng 26 lượt/52 tuần hoặc 24 lượt kiểu hai lần/tháng. Khảo sát/đột xuất sau lũ tách riêng | Đạt |
+| Vệ sinh | Đạt: hai tuần/lần và 24 lượt/năm; Akai giữ 24 lượt | **Bá Nguyên chọn 26 lượt/12 tháng/trạm làm lịch lập kế hoạch** để khớp mỗi 14 ngày. Đạt xác nhận khả thi và báo giá; lượt sau lũ tách riêng | Bá Nguyên + Đạt |
 | Calibration | Hàng tháng = 12 lần/năm | Giá 10 USD/năm chỉ là solutions allowance; chưa đủ service, labour, travel, reference meter/lab | Đạt + báo giá |
 | Repair | Mục tiêu 48 giờ, dùng spare units | Chưa có số spare, SLA, phí standby và người trực; chưa phải cam kết hợp đồng | Đạt |
 | Commissioning | Hai tuần baseline, so chuẩn/lab, thử alert/tamper, bàn giao | Ngưỡng pass/fail và chi phí chưa có. Thử tín hiệu/sự kiện mô phỏng hoặc mẫu chuẩn có kiểm soát; không hiểu “test discharge” là xả chất ô nhiễm vào sông | Đạt + Akai |

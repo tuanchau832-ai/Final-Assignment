@@ -1,6 +1,6 @@
 # Kế hoạch phần việc Bá Nguyên — Cost Analysis
 
-Cập nhật: **25/11/2026**, sau phản hồi Đạt/Akai và kiểm chứng ảnh giá. Nhánh làm việc: `feature/ba-nguyen-cost-analysis`; xem Draft PR #3 để biết commit và trao đổi mới nhất. Không tự merge hoặc chuyển nhánh.
+Cập nhật: **25/11/2026**, sau phản hồi Đạt/Akai, kiểm chứng ảnh giá và quyết định D5/D7. Nhánh làm việc: `feature/ba-nguyen-cost-analysis`; xem PR #3 để biết commit và trao đổi mới nhất. Không tự merge hoặc chuyển nhánh. [Quyết định D5/D7](ba-nguyen-decisions-2026-11-25.md) ghi lịch và trách nhiệm tích hợp.
 
 ## Kết luận và tổng quan công việc tiếp theo
 
@@ -8,7 +8,7 @@ Cập nhật: **25/11/2026**, sau phản hồi Đạt/Akai và kiểm chứng �
 
 Đã làm thêm ngày 25/11: mở lại chín URL trong bảng giá và ghi [live-price-audit-2026-11-25.csv](live-price-audit-2026-11-25.csv); phát hiện mô tả đường kính cable gland trên chính trang bán không thống nhất nên sửa hàng bảng thành cần xác nhận fit. Đã lập [kịch bản chi phí có công thức](cost-scenarios-2026-11-25.csv), [bảng đầu vào nguồn điện](power-sizing-inputs-2026-11-25.csv) và [tin nhắn gửi từng người](team-replies-ready-2026-11-25.md). Những số và giả định chờ nhóm vẫn để nguyên trạng thái chờ.
 
-Đã chụp và xem bằng mắt sáu trang giá rõ thông tin; Bá Nguyên gửi thêm bốn ảnh gốc từ thư mục Desktop. Đã sao chép nguyên bản bốn ảnh vào [manifest ảnh](cost-evidence/README.md) và đối chiếu SHA-256: pH SEN0169-V2 giá 64,90 USD, turbidity SEN0710 giá 229 USD và hai ảnh cable gland PG13.5 chứng minh giá sau VAT 3.175 VND cùng mâu thuẫn đường kính cáp 7–12/D6–12 mm. Cả chín dòng giá hiện có ảnh local đọc được; ảnh không thay báo giá và chưa xác nhận BOM. [Mẫu xin báo giá](supplier-quote-request-template.md) nay tách riêng phương án ESP32 + M.2 và phương án LILYGO tích hợp, cùng hai lịch 24/26 lượt vệ sinh; chỉ gửi phương án phù hợp sau khi Akai/Đạt chốt.
+Đã chụp và xem bằng mắt sáu trang giá rõ thông tin; Bá Nguyên gửi thêm bốn ảnh gốc từ thư mục Desktop. Đã sao chép nguyên bản bốn ảnh vào [manifest ảnh](cost-evidence/README.md) và đối chiếu SHA-256: pH SEN0169-V2 giá 64,90 USD, turbidity SEN0710 giá 229 USD và hai ảnh cable gland PG13.5 chứng minh giá sau VAT 3.175 VND cùng mâu thuẫn đường kính cáp 7–12/D6–12 mm. Cả chín dòng giá hiện có ảnh local đọc được; ảnh không thay báo giá và chưa xác nhận BOM. [Mẫu xin báo giá](supplier-quote-request-template.md) tách phương án ESP32 + M.2 và LILYGO tích hợp; lịch chính là 26 lượt vệ sinh/năm, còn 24 lượt chỉ là phương án so sánh. Chỉ gửi phần cấu hình phù hợp sau khi Akai/Đạt xác nhận.
 
 Bá Nguyên chịu trách nhiệm chi phí mua sắm, lắp đặt, vận hành, bảo trì, thay thế và thải bỏ; mỗi dòng cần quantity, unit price, source, date, inclusions và proposed payer. Akai chốt cấu hình; Đạt chốt triển khai/vận hành; Tuấn nhận evidence và kiểm toàn báo cáo; Thư dùng kết luận được duyệt cho recommendations.
 
@@ -20,7 +20,7 @@ Bá Nguyên chịu trách nhiệm chi phí mua sắm, lắp đặt, vận hành,
 | D. Hoàn thiện Cost Analysis | Đang sửa phần có bằng chứng | Summary/design/implementation/cost/recommendations cùng scope và version |
 | E. QA, bàn giao, review | Chờ hoàn thiện | Có calculation/link/build/mobile/APA/AI records; Bá Nguyên duyệt trước publishing |
 
-**Chờ ai, chờ gì:** Akai: D1–D3/D8, SKU và nguồn của BOM, sơ đồ nguồn, chọn phương án C. Đạt: D1/D4–D6, site/permission, 24 hay 26 lượt, calibration overlap, vai trò và scope thi công. Tuấn: D1/D7/D8, source website cuối, cách tích hợp patch và yêu cầu APA/word count/AI evidence. Nhà cung cấp: báo giá có VAT/phụ kiện/công lắp/dịch vụ sau khi nhóm cho đủ model và site. Thư: chỉ cần nhận kết luận chi phí sau khi nhóm chốt, hiện chưa phải blocker để Bá Nguyên tiếp tục rà giá. Mẫu tin nhắn cụ thể ở file trên.
+**Chờ ai, chờ gì:** Akai: D1–D3/D8, SKU và nguồn của BOM, sơ đồ nguồn, chọn phương án C. Đạt: D1/D4–D6, site/permission, xác nhận khả thi lịch 26 lượt và gộp 12 lần hiệu chuẩn, vai trò và scope thi công. Tuấn: D1/D8, kiểm source rồi tích hợp patch theo D7 đã phân công, xác nhận APA/word count/AI evidence. Nhà cung cấp: báo giá có VAT/phụ kiện/công lắp/dịch vụ sau khi nhóm cho đủ model và site. Thư: nhận kết luận chi phí sau khi nhóm chốt, hiện chưa phải blocker để Bá Nguyên tiếp tục rà giá. Mẫu tin nhắn cụ thể ở file trên.
 
 ## Quyết định phải chốt trước tiên
 
@@ -30,9 +30,9 @@ Bá Nguyên chịu trách nhiệm chi phí mua sắm, lắp đặt, vận hành,
 | D2 | Final hardware | LILYGO thay ESP32/M.2? DO 169 USD SKU nào? Turbidity 9.90 USD hay SEN0710 229 USD? pH electrode 49.50 có tương thích? | Akai |
 | D3 | Power chain | 20 W là đề xuất; thiếu load, upload interval, battery Wh/Ah, autonomy, sơ đồ 12 V tới board và converter/protection | Akai + Đạt |
 | D4 | Site/lắp đặt | GPS, permission, flood line, box size, chiều dài cáp, cage/arm/wiper và grounding/surge | Đạt + đơn vị thi công |
-| D5 | Maintenance/service | Hai tuần/lần ~26 lượt/năm khác 24; calibration 12 lần có đi chung không; spare/SLA cho repair target 48h | Đạt |
+| D5 | Maintenance/service | Bá Nguyên chọn 26 lượt định kỳ/năm/trạm; 12 lần hiệu chuẩn dự kiến gộp. Đạt xác nhận khả thi, chuyến riêng, sau lũ và báo giá | Bá Nguyên chốt lịch; Đạt xác nhận vận hành |
 | D6 | Shared costs, payer/operator | Vai trò trong report chưa phải hợp đồng/tài trợ; cloud/app/training/lab/SMS chưa đủ scope | Đạt + Tuấn |
-| D7 | Tích hợp website cuối | Summary nằm trên `final-website` trong `page.html/site.ts`, chưa có ở nhánh cá nhân | Tuấn + Bá Nguyên |
+| D7 | Tích hợp website cuối | Bá Nguyên đồng ý Tuấn tích hợp patch trên `final-website` sau khi kiểm snapshot; chưa áp patch hay sửa nhánh Tuấn | Tuấn tích hợp; Bá Nguyên rà số |
 | D8 | Cùng bộ phương án so sánh | File Akai: AI + IoT; final website và matrix OPTS C: manual sampling | Akai + nhóm + Tuấn |
 
 ## Buổi 1 — Tiếp nhận phản hồi và sửa sai lệch có căn cứ (1–2 giờ)
@@ -43,14 +43,14 @@ Bá Nguyên chịu trách nhiệm chi phí mua sắm, lắp đặt, vận hành,
 2. Đọc hai file gửi kèm; đối chiếu mọi hàng BOM/OPEX của Akai với Đạt, section/CSV đang có và source `final-website` bằng `git show`.
 3. Kiểm `10 × (468.07 + 142.50) = 6,105.70 USD`: summary “about 6,100” là làm tròn. Equipment 428.07 khác installed 468.07; heading 430 cần làm rõ phạm vi.
 4. Chuẩn bị patch đồng bộ summary/heading/calculator và gắn nhãn scenario chưa đầy đủ. Patch đã kiểm trên bản sao tạm; chưa áp lên website cuối vì nhánh cá nhân thiếu hai file đích.
-5. Sửa section đang có: candidate BOM, một trạm là đơn vị tính; pH reserve không phải lịch thay bắt buộc; ghi rõ mâu thuẫn 24/26 visits. Không thay subtotal cũ bằng số khác model trong file Akai.
+5. Sửa section đang có: candidate BOM, một trạm là đơn vị tính; pH reserve không phải lịch thay bắt buộc; ghi rõ lịch chọn 26 lượt/năm và giá dịch vụ vẫn cần báo giá. Không thay subtotal cũ bằng số khác model trong file Akai.
 6. Kiểm trực tiếp pH/turbidity/LILYGO và lưu CSV riêng ngày 25/11; không gắn ngày mới cho những giá chưa mở lại.
 
 **Đầu ra:** review, source-check CSV, patch và plan cập nhật. Chi tiết phương pháp và giới hạn nằm trong review.
 
 ## Buổi 2 — Khóa scope và thông số ảnh hưởng tiền (45–90 phút chủ động; thời gian chờ riêng)
 
-1. Bá Nguyên chuyển bảng D1–D7 cho Akai/Đạt/Tuấn sau khi tự duyệt; đề nghị dùng mẫu trả lời bên dưới. Agent chưa nhắn hay đăng comment thay.
+1. Các câu hỏi D1–D8 đã đăng trong PR #3. Gửi thêm quyết định D5/D7, rồi theo dõi phản hồi theo từng ID.
 2. Chốt một bản ghi có ngày: số trạm, evaluation period, thời điểm bắt đầu OPEX và shared/per-station costs. Nếu dùng 3/3, sửa summary/implementation/recommendations cùng scope; nếu giữ 10/1 thì 3/3 chỉ là comparison scenario có nhãn.
 3. Akai cung cấp exact SKU/revision, LILYGO E/G/SA variant, package/accessories, sensor interfaces và danh sách linh kiện bỏ/thêm khi dùng board tích hợp. Không cộng hai cấu hình ESP32/M.2 và LILYGO.
 4. Đạt xác nhận 24 hoặc 26 visits, calibration overlap, flood extras, spare/48h repair, enclosure/cable/site/protection và acceptance criteria. Mục chưa khảo sát ghi TBD kèm người thu thập, cách thu thập và thời điểm dự kiến.
@@ -103,7 +103,7 @@ Bá Nguyên chịu trách nhiệm chi phí mua sắm, lắp đặt, vận hành,
 3. Khi được phép áp patch: reviewer dùng `git apply --check`, xem diff, áp trên checkout được phép rồi build/test `#home-summary` và `#implementation-cost`. Kiểm 1/3/10 trạm, 1/3 năm, heading/summary và đổi một giá BOM để thử mọi số có cập nhật.
 4. Desktop + phone thật: bảng đủ cột/cuộn ngang; toàn trang không tràn ngang; chữ/số đọc được; menu/References đúng. Dùng port Vite và IPv4 từ `ipconfig` lúc test, không dùng IP cũ như cố định. Ghi device/browser/viewport/date/result/screenshot lỗi. Emulation không thay phone thật.
 5. Bàn giao Tuấn: review, BOM/cost CSV, nguồn/quotes, patch/handoff, build/link/mobile, APA notes và screenshots prompt/output AI. Chỉ ghi contribution thật và approvals có bằng chứng.
-6. Cuối cùng chạy `git diff --check`, `git status --short`, `git diff --stat`, rà file. Chỉ commit/push/cập nhật PR sau khi Bá Nguyên duyệt cụ thể; không merge/publish. Giữ Draft tới khi mâu thuẫn quan trọng được giải quyết hoặc reviewer chấp nhận giới hạn rõ.
+6. Cuối cùng chạy `git diff --check`, `git status --short`, `git diff --stat`, rà file. Chỉ commit/push/cập nhật PR khi Bá Nguyên cho phép; không merge/publish. Không coi trạng thái PR là bằng chứng ngân sách đã đủ hoặc nội dung đã được nhóm duyệt.
 
 **Đầu ra:** gói review được; các quyết định chưa có evidence tiếp tục ở TBD, không điền số giả để hoàn thành bảng.
 
@@ -122,24 +122,24 @@ Bá Nguyên chịu trách nhiệm chi phí mua sắm, lắp đặt, vận hành,
 
 1. **D1/D4:** Đồng ý scope nào? Sites/GPS/permissions nào vẫn TBD, ai khảo sát flood/cable/shade/signal và dự kiến khi nào có?
 2. **D4:** Có thông số hoặc cách thu thập enclosure/cable/arm/cage/wiper/grounding/surge chưa? Gói 80 USD gồm những gì và chưa gồm gì?
-3. **D5:** Chọn 24 lần kiểu hai lần/tháng hay khoảng 26 lần kiểu hai tuần/lần trong 12 tháng? Calibration 12 lần có chung cleaning visits không? Flood extra/spares/48h repair tính thế nào?
+3. **D5:** Bá Nguyên chọn 26 lượt vệ sinh/kiểm tra định kỳ mỗi 14 ngày trong 12 tháng; nhờ Đạt xác nhận khả thi. Có thể gộp 12 lần hiệu chuẩn với 12 lượt này không? Flood extra/spares/48h repair và báo giá tính thế nào?
 4. **D5/D6:** Operator/responder/payer vẫn là đề xuất hay có thỏa thuận? Acceptance criteria và travel/lab/training/SMS cần quotation nào?
 5. **Summary:** Review cho thấy 6,100 là làm tròn của 6,105.70; header 430 chưa gồm labour 40 và khác installed 468.07. Nếu lỗi bạn nói là con số khác, chỉ đúng dòng hoặc giá trị để đối chiếu tiếp.
 
 ### Tuấn — integration and final review
 
 1. Thống nhất D1 xuyên suốt report; một trạm chỉ là unit-cost.
-2. Xác nhận source cuối và cách tích hợp patch/register; PR #3 target `main` chưa có source `final-website`, cần rà kiến trúc trước khi đưa nội dung vào.
+2. **D7:** Bá Nguyên đồng ý Tuấn tích hợp patch vào source `final-website` sau khi kiểm snapshot; Tuấn báo link bản tích hợp và kết quả build/QA để Bá Nguyên rà số. PR #3 target `main` chưa có source này nên không dùng merge PR làm bước tích hợp.
 3. Nhận evidence để kiểm APA, word count, appendix và AI log; tách payer proposal với commitment.
 
-Mẫu trả lời ngay trong Draft PR #3: `Decision ID | Confirmed / Proposed / TBD | lựa chọn + SKU/scope | source/ảnh/quote | người quyết định | ngày | thông tin còn cần`. “Confirmed in report” không đồng nghĩa đã có giấy phép, quotation hoặc hợp đồng.
+Mẫu trả lời ngay trong PR #3: `Decision ID | Confirmed / Proposed / TBD | lựa chọn + SKU/scope | source/ảnh/quote | người quyết định | ngày | thông tin còn cần`. “Confirmed in report” không đồng nghĩa đã có giấy phép, quotation hoặc hợp đồng.
 
 ## Nếu hôm nay chỉ có một giờ
 
 1. **10 phút:** đọc review, phân biệt các tổng khác scope.
 2. **15 phút:** nhờ Akai/Đạt/Tuấn chốt D1–D3, nhất là số trạm và LILYGO/turbidity/DO SKU.
 3. **20 phút:** tập hợp evidence của sensor và LILYGO đúng variant; chưa có model thì không thay giá.
-4. **15 phút:** rà patch summary với Tuấn và chọn 24/26 visits với Đạt. Chưa có câu trả lời thì tiếp tục quote scope, giữ unknown đúng trạng thái.
+4. **15 phút:** gửi quyết định D7 cho Tuấn và lịch 26 lượt D5 cho Đạt; lấy phản hồi về kết quả tích hợp, khả thi và báo giá. Chưa có câu trả lời thì giữ unknown đúng trạng thái.
 
 <details>
 <summary>Kế hoạch 19/11 — lưu lịch sử, đã được kế hoạch 25/11 phía trên thay thế</summary>
