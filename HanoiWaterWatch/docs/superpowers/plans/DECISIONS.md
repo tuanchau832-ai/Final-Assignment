@@ -58,3 +58,6 @@ This log separates user requirements from proposed design choices. No implementa
 - D-027. Replace the desktop cursor with soap and bubbles across the public entry, including the form. Retain the native cursor for reduced motion and workspace routes.
 - D-028. Restore the native cursor over the sign-in card. Keep the soap and bubbles outside the card on the public entry.
 - D-029. Remove the manual background playback button. The film and current follow page visibility and the visitor’s reduced-motion preference.
+- D-030. Apply cursor and touch pushes as a separate, decaying velocity on trash, directed along the swipe. Increase the reach for larger objects and time the 2.5-second cooldown independently for each piece.
+- D-031. Shorten the trash cooldown to 1.5 seconds and keep the timer on each piece.
+- D-032. Set the cooldown to 0.75 seconds per piece.

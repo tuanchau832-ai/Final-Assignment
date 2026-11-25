@@ -1,6 +1,8 @@
 import { makeAtlas, CLOUD, SILT, RING, ROD } from './atlas';
 
 const capacity = 96;
+const trashPushDecay = 1.05;
+const trashPushCooldownMs = 750;
 const random = (low: number, high: number) => low + Math.random()*(high-low);
 const vertex = `
 attribute vec2 position;
@@ -50,7 +52,9 @@ export function startCurrent(canvas: HTMLCanvasElement, surface: HTMLElement, fa
   gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);
   gl.enable(gl.BLEND); gl.blendFuncSeparate(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA,gl.ONE,gl.ONE_MINUS_SRC_ALPHA);
   const viewport=gl.getUniformLocation(program,'viewport'),density=gl.getUniformLocation(program,'density');
-  const pool=Array.from({length:capacity},()=>({life:0,age:0,x:0,y:0,vx:0,vy:0,size:0,spin:0,angle:0,kind:0,depth:0}));
+  const pool=Array.from({length:capacity},()=>({
+    life:0,age:0,x:0,y:0,vx:0,vy:0,pushX:0,pushY:0,nextPushAt:0,size:0,spin:0,angle:0,kind:0,depth:0,
+  }));
   let w=1,h=1,sourceX=0,sourceY=0,budget=capacity, nextObject=0,nextCloud=0;
   function resize(){
     w=canvas.clientWidth; h=canvas.clientHeight;
@@ -67,8 +71,9 @@ export function startCurrent(canvas: HTMLCanvasElement, surface: HTMLElement, fa
     const p=pool.find(p=>p.life<=0);
     if(!p || (kind<SILT && pool.filter(p=>p.life>0).length>=budget-8)) return;
     const depth=random(.45,1);
-    Object.assign(p,{kind,x,y,depth,age:0,angle:random(-3,3),spin:random(-.42,.42),vx:random(44,84)*depth,vy:random(-12,19),
-      life:kind<CLOUD?random(19,34):random(4,8),size:kind<CLOUD?random(38,66)*depth*1.3:random(24,45)});
+    const sizeScale=kind<ROD ? 2.6 : 1.3;
+    Object.assign(p,{kind,x,y,depth,age:0,pushX:0,pushY:0,nextPushAt:0,angle:random(-3,3),spin:random(-.42,.42),vx:random(44,84)*depth,vy:random(-12,19),
+      life:kind<CLOUD?random(19,34):random(4,8),size:kind<CLOUD?random(38,66)*depth*sizeScale:random(24,45)});
     if(kind===SILT || kind===RING){
       p.life=random(.64,1.1); p.size=kind===RING?12:random(3,7);
       p.vx=kind===RING?0:random(-34,34); p.vy=kind===RING?0:random(-34,34);
@@ -78,6 +83,7 @@ export function startCurrent(canvas: HTMLCanvasElement, surface: HTMLElement, fa
     nextObject-=dt; nextCloud-=dt;
     if(nextObject<=0){emit(Math.floor(random(0,6))); nextObject=random(.65,1.55)*(capacity/budget);}
     if(nextCloud<=0){emit(CLOUD); nextCloud=random(.25,.48)*(capacity/budget);}
+    const pushRetention=Math.exp(-dt*trashPushDecay);
     let count=0;
     for(const p of pool){
       if(p.life<=0) continue;
@@ -93,7 +99,8 @@ export function startCurrent(canvas: HTMLCanvasElement, surface: HTMLElement, fa
         p.vx+=(flow+11*Math.sin(p.age*.6+p.angle)-p.vx)*drag;
         p.vy+=(-5+16*Math.sin(p.age*.54+6*p.depth)-p.vy)*drag;
       }
-      p.x+=p.vx*dt; p.y+=p.vy*dt; p.angle+=p.spin*dt;
+      p.x+=(p.vx+p.pushX)*dt; p.y+=(p.vy+p.pushY)*dt; p.angle+=p.spin*dt;
+      p.pushX*=pushRetention; p.pushY*=pushRetention;
       if(driftingObject) p.y=Math.max(0,Math.min(h,p.y));
       let size=p.size,alpha=p.depth*.86;
       if(p.kind===CLOUD){size+=p.age*21; alpha=.32;}
@@ -109,8 +116,17 @@ export function startCurrent(canvas: HTMLCanvasElement, surface: HTMLElement, fa
   }
   // Prime the same emitter so first paint shows a current already in motion.
   for(let i=0;i<360;i++) step(.1);
+  let lastPointer: { id: number; x: number; y: number } | undefined;
+  function resetPointer(){lastPointer=undefined;}
   function interact(e:PointerEvent){
     if (!surface.hasAttribute('data-current-running')) return;
+    const previousPointer=lastPointer?.id===e.pointerId ? lastPointer : undefined;
+    const movementX=previousPointer ? e.clientX-previousPointer.x : e.movementX;
+    const movementY=previousPointer ? e.clientY-previousPointer.y : e.movementY;
+    lastPointer={id:e.pointerId,x:e.clientX,y:e.clientY};
+    if(e.type==='pointerdown') return;
+    const pointerTravel=Math.hypot(movementX,movementY);
+    if(e.type==='pointermove' && !pointerTravel) return;
     if ((e.target as Element)?.closest('a,button,input,label,.entry-card')) return;
     const rect=canvas.getBoundingClientRect(),x=e.clientX-rect.left,y=e.clientY-rect.top;
     for(const p of pool){
@@ -119,15 +135,21 @@ export function startCurrent(canvas: HTMLCanvasElement, surface: HTMLElement, fa
       if(e.type==='pointerup' && p.kind>=ROD && p.kind<CLOUD && dist<Math.max(16,p.size*.46)){
         p.life=0; emit(RING,x,y); for(let j=0;j<7;j++) emit(SILT,x,y); break;
       }
-      if(e.type==='pointermove' && p.kind<ROD && dist<90){
-        const force=(1-dist/90)*Math.min(16,Math.hypot(e.movementX,e.movementY)+2);
-        p.vx=Math.max(-95,Math.min(110,p.vx+dx/(dist||1)*force));
-        p.vy=Math.max(-95,Math.min(95,p.vy+dy/(dist||1)*force));
+      if(e.type==='pointermove' && p.kind<ROD && e.timeStamp>=p.nextPushAt){
+        const reach=Math.max(145,p.size*.5+80);
+        if(dist>=reach) continue;
+        const impulse=(1-dist/reach)*Math.min(220,150+pointerTravel*10);
+        p.pushX=movementX/pointerTravel*impulse;
+        p.pushY=movementY/pointerTravel*impulse;
+        p.nextPushAt=e.timeStamp+trashPushCooldownMs;
       }
     }
   }
+  surface.addEventListener('pointerdown',interact,{passive:true});
   surface.addEventListener('pointermove',interact,{passive:true});
   surface.addEventListener('pointerup',interact,{passive:true});
+  surface.addEventListener('pointerleave',resetPointer);
+  surface.addEventListener('pointercancel',resetPointer);
   canvas.addEventListener('webglcontextlost',fallback);
   let frame=0, previous=0, elapsed=0, frames=0, slow=0;
   function render(now:number){
@@ -148,12 +170,16 @@ export function startCurrent(canvas: HTMLCanvasElement, surface: HTMLElement, fa
   function setRunning(active:boolean){
     cancelAnimationFrame(frame);
     previous=0; elapsed=0; frames=0;
+    resetPointer();
     surface.toggleAttribute('data-current-running',active);
     if(active) frame=requestAnimationFrame(render);
   }
   return { setRunning, dispose: ()=>{
     setRunning(false); observer.disconnect();
+    surface.removeEventListener('pointerdown',interact);
     surface.removeEventListener('pointermove',interact); surface.removeEventListener('pointerup',interact);
+    surface.removeEventListener('pointerleave',resetPointer);
+    surface.removeEventListener('pointercancel',resetPointer);
     canvas.removeEventListener('webglcontextlost',fallback);
     gl.deleteBuffer(buffer); gl.deleteTexture(texture); gl.deleteProgram(program);
   }};

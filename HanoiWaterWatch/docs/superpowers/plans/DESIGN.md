@@ -512,6 +512,8 @@ The anonymous homepage and sign-in route share a local underwater film and match
 
 The phone composition leaves the pipe visible above the scrollable form. The film and pooled WebGL layer pause when the page is hidden and resume when it becomes visible. Reduced motion, constrained devices, data saving, sustained low frame rates and unavailable rendering select the poster.
 
-Trash and microorganism sprites render at 130% of their original size.
+Trash sprites render at twice their previous size, or 260% of their original size. Microorganism sprites render at 130% of their original size.
+
+Small cursor sweeps and touch swipes push nearby trash in the direction of the gesture. The reach grows with larger debris. Each piece reacts immediately, drifts as the added momentum fades and can be pushed again after its own 0.75-second cooldown.
 
 Intact trash and microorganisms drift from the outfall past the right edge at a pace that adapts to the viewport width. Clicked microorganisms still disperse into fragments and a fading ring.

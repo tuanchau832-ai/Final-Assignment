@@ -85,3 +85,8 @@ Status conventions: `[ ]` TODO; `[ ]` IN_PROGRESS or BLOCKED when explicitly lab
 - U-04 DONE. Kept intact trash and microorganisms in the current until they travel beyond the right edge. Verified both groups against the built renderer at three viewport widths.
 - U-05 IN_PROGRESS. Restore the native mouse cursor over the sign-in card and resume the soap cursor when the pointer leaves it.
 - U-06 DONE. Removed the public entry background playback button and verified automatic playback, hidden-tab pause and static fallbacks.
+- U-07 DONE. Doubled drifting trash sprite dimensions and verified the WebGL sizes for all trash and microorganism types.
+- U-08 DONE. Verified stronger pushes in all four swipe directions and a separate 2.5-second cooldown for each piece.
+- U-09 DONE. Increased cursor reach and verified nearly twice the travel on a short swipe near the trash.
+- U-10 DONE. Reduced the cooldown to 1.5 seconds and verified independent timers for two pieces.
+- U-11 IN_PROGRESS. Set the per-piece cooldown to 0.75 seconds and verify the new threshold.

@@ -106,3 +106,43 @@ U-05 is in progress. Scope the native cursor exception to the sign-in card and u
 U-06 starts from the current entry page. Remove the button, its layout rules and manual pause state. Update the existing browser check to cover automatic playback and page visibility.
 
 U-06 verified. Removed the control, translations and styles. Restored the English illustration disclosure, which was missing from the starting checkout. The production build, 22 frontend unit tests and both underwater Chromium checks passed. Chromium confirmed the button is absent and playback still responds to page visibility and reduced motion. The failed-film check triggered a local test server connection-reset message as the request was aborted.
+
+## Larger drifting trash
+
+U-07 starts from the verified underwater scene. Double the scale of the bottle, bag and wrapper sprites from their current size. Verify their rendered dimensions against the previous scale.
+
+U-07 verified. The production build passed. A seeded Chromium WebGL comparison confirmed 2× dimensions for every trash type and 1× for every microorganism type.
+
+## Stronger cursor interaction with trash
+
+U-08 starts from the verified larger trash sprites. Measure the existing response to a short cursor movement, then extend reach and give trash a decaying push independent of its drift.
+
+The baseline Chromium probe measured 2.3 px of extra travel after one second and no response 100 px from the sprite center. The updated current gives nearby trash a stronger push with a larger reach, bounded speed and gradual decay. Next rerun the probe and verify the production build.
+
+The stronger push passed the first probe at 47.4 px after one second. The user then requested that trash travel in the direction of the cursor swipe. Measure all four directions with the cursor positioned on the same side of the sprite.
+
+The directional probe reproduced the radial behavior, then confirmed about 47.4 px of displacement after one second in all four swipe directions. Next check touch coordinate tracking and rebuild the preview.
+
+The touch coordinate probe also passed. The user added a 2.5-second wait between pushes. Apply the cooldown to each piece of trash and verify its first push is immediate, extra pushes have no effect during the wait and it responds again at 2.5 seconds.
+
+The seeded Chromium probe reproduced a second push taking effect too early, then verified the fix. The first swipe moved trash on the next frame. Repeating it at 2,499 ms had no effect, and repeating it at 2,500 ms pushed the sprite in the new direction. The updated production build and route smoke checks are in progress.
+
+U-08 verified. The production build and both underwater browser checks passed on the cooldown build. Direction and timing were checked with seeded mouse and touch events in Chromium.
+
+## Longer trash movement
+
+U-09 starts from the verified directional pushes. Increase swipe strength and reach, then measure the change against the 47.4 px baseline without changing the cooldown.
+
+The Chromium probe measured 88.6 px of extra travel after one second for a two-pixel swipe near the sprite, up from 47.4 px. At a distance of 100 px, travel rose from 11.7 px to 32.9 px. All four directions and the exact cooldown boundary passed. Next verify the production build.
+
+U-09 verified. The production build passed.
+
+## Shorter per-piece cooldown
+
+U-10 starts from the verified longer swipe response. Update the cooldown duration and verify the exact threshold and independent responses of two pieces.
+
+The Chromium probe confirmed no second push at 1,499 ms and a renewed push at 1,500 ms. A separate piece responded while the first was still cooling down. The production build is in progress.
+
+U-10 verified. The production build passed.
+
+U-11 starts from the verified per-piece timer. Set the cooldown to 750 ms and check a repeat swipe on each side of the threshold.
