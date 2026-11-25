@@ -57,3 +57,4 @@ This log separates user requirements from proposed design choices. No implementa
 - D-026. Apply the scene to the public entry where the background film lives. Keep discharge illustrative and independent of monitoring data. Anchor the emitter to the cropped film coordinates.
 - D-027. Replace the desktop cursor with soap and bubbles across the public entry, including the form. Retain the native cursor for reduced motion and workspace routes.
 - D-028. Restore the native cursor over the sign-in card. Keep the soap and bubbles outside the card on the public entry.
+- D-029. Remove the manual background playback button. The film and current follow page visibility and the visitor’s reduced-motion preference.

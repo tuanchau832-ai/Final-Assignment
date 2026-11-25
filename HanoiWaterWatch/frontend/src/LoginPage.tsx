@@ -19,6 +19,7 @@ const copy = {
     submitting: 'Signing in…', guest: 'Explore the map', show: 'Show password', hide: 'Hide password',
     denied: 'Sign-in failed. Check your username and password.', wait: 'Too many attempts. Try again in a minute.',
     failed: 'Unable to reach the sign-in service. Check your connection and try again.',
+    credit: 'Illustrative river pollution simulation · No pathogen measurements',
     skip: 'Skip to sign in', language: 'Switch to Vietnamese',
   },
   vi: {
@@ -28,7 +29,7 @@ const copy = {
     submitting: 'Đang đăng nhập…', guest: 'Khám phá bản đồ', show: 'Hiện mật khẩu', hide: 'Ẩn mật khẩu',
     denied: 'Đăng nhập thất bại. Hãy kiểm tra tên đăng nhập và mật khẩu.', wait: 'Bạn đã thử quá nhiều lần. Vui lòng thử lại sau một phút.',
     failed: 'Không thể kết nối dịch vụ đăng nhập. Hãy kiểm tra kết nối và thử lại.',
-    pause: 'Tạm dừng hình nền', play: 'Phát hình nền', credit: 'Mô phỏng minh họa ô nhiễm sông · Không đo mầm bệnh',
+    credit: 'Mô phỏng minh họa ô nhiễm sông · Không đo mầm bệnh',
     skip: 'Chuyển đến đăng nhập', language: 'Switch to English',
   },
 };
@@ -147,7 +148,7 @@ export default function LoginPage() {
   const error = login.error instanceof ApiError && login.error.status === 429 ? strings.wait
     : login.error instanceof ApiError && [401, 403, 422].includes(login.error.status) ? strings.denied : strings.failed;
   return <div className="entry-page" ref={surface}>
-    <RiverBackground pause={strings.pause} play={strings.play}/>
+    <RiverBackground/>
     <div className="entry-shade" aria-hidden="true" />
     <span className="entry-pointer" aria-hidden="true">{pointerIcon}</span>
     <a className="skip" href="#entry-username">{strings.skip}</a>

@@ -84,3 +84,4 @@ Status conventions: `[ ]` TODO; `[ ]` IN_PROGRESS or BLOCKED when explicitly lab
 - U-03 DONE. Replaced the desktop cursor throughout the public entry with soap and bubbles. Verified cursor visibility, form focus and reduced motion in an isolated Chromium run.
 - U-04 DONE. Kept intact trash and microorganisms in the current until they travel beyond the right edge. Verified both groups against the built renderer at three viewport widths.
 - U-05 IN_PROGRESS. Restore the native mouse cursor over the sign-in card and resume the soap cursor when the pointer leaves it.
+- U-06 DONE. Removed the public entry background playback button and verified automatic playback, hidden-tab pause and static fallbacks.

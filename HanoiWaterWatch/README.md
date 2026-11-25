@@ -40,7 +40,7 @@ npm run dev
 
 Vite proxies `/api` to port 8000. Visitors start at sign-in and can choose **Explore the map** for public monitoring. Staff sign-in opens `/map` or restores a supported deep link. The logo opens all six workspace destinations, including the network summary at `/overview`. Operators can acknowledge alerts and run replays. Reviewers can classify simulated anomalies. Admins manage rules and device keys.
 
-The public entry uses a local eight-second underwater MP4 loop, a matching static poster and an independent WebGL discharge. Move across debris to disturb it, or tap a magnified microorganism to disperse it. The scene is illustrative. Pause background freezes the film and current. Reduced motion, constrained devices, data saving and playback failures select the poster. An optional VITE_LOGIN_VIDEO_URL replaces the local film and disables the pipe-specific overlay. The entry component lives in frontend/src/underwater/.
+The public entry uses a local eight-second underwater MP4 loop, a matching static poster and an independent WebGL discharge. Move across debris to disturb it, or tap a magnified microorganism to disperse it. The scene is illustrative. The film and current pause while the page is hidden. Reduced motion, constrained devices, data saving and playback failures select the poster. An optional VITE_LOGIN_VIDEO_URL replaces the local film and disables the pipe-specific overlay. The entry component lives in frontend/src/underwater/.
 
 ## Synthetic demonstration mode
 

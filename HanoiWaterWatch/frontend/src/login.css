@@ -52,14 +52,10 @@
   display: grid; place-items: center; width: 38px; height: 38px; margin-right: 10px;
   border-radius: 11px; border: 1px solid #91d8d3; color: #b6ffec; background: #123f4b;
 }
-.entry-language, .entry-film-control {
+.entry-language {
   color: #fff; border: 1px solid #afc3ca; border-radius: 9px; padding: 0 12px;
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   min-height: 44px; font-size: 13px; font-weight: 600; background: rgb(6 31 46 / 68%);
-}
-.entry-film-control {
-  position: absolute; right: calc(max(var(--entry-edge), env(safe-area-inset-right)) + 126px);
-  top: max(24px, env(safe-area-inset-top)); z-index: 1;
 }
 main.entry-content {
   flex: 1;
@@ -135,7 +131,6 @@ main.entry-content {
   .entry-card > p { margin-bottom: 20px; }
   .entry-foot { max-width: 430px; }
   .entry-foot small { max-width: 100%; }
-  .entry-film-control { position: static; align-self: flex-start; order: 3; margin-top: 12px; }
   .entry-page .entry-poster { object-position: 11.5% 50%; }
 }
 /* Reserve the outfall in the first phone viewport. The form scrolls over the river. */
@@ -146,11 +141,5 @@ main.entry-content {
   }
   .entry-content:has(.entry-intro) { justify-content: flex-start; }
   .entry-page:has(.entry-current) .entry-intro { min-height: calc(69svh - 86px); }
-  .entry-page:has(.entry-current) .entry-film-control {
-    position: absolute;
-    top: max(69px, env(safe-area-inset-top));
-    right: var(--entry-edge);
-    margin: 0;
-  }
   .entry-page:has(.entry-current) .entry-intro h1 { max-width: 65%; }
 }

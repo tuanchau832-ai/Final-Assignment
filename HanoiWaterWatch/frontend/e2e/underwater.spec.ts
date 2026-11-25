@@ -1,12 +1,20 @@
 import { test, expect } from '@playwright/test';
 
-test('the underwater film plays, pauses, and yields to the static poster', async ({ page }) => {
+test('the underwater film plays automatically, pauses when hidden, and honors reduced motion', async ({ page }) => {
   await page.goto('/login');
   const video=page.locator('.entry-video');
   await expect.poll(()=>video.evaluate((v:HTMLVideoElement)=>v.currentTime)).toBeGreaterThan(0);
   expect(await video.evaluate((v:HTMLVideoElement)=>[v.loop,v.muted,v.playsInline,v.duration])).toEqual([true,true,true,8]);
+  await expect(page.getByRole('button', { name: /^(pause|play) background$/i })).toHaveCount(0);
+  await page.evaluate(() => {
+    Object.defineProperty(document, 'hidden', { configurable: true, value: true });
+    document.dispatchEvent(new Event('visibilitychange'));
+  });
   await expect.poll(()=>video.evaluate((v:HTMLVideoElement)=>v.paused)).toBe(true);
-  await page.getByRole('button',{name:'Play background'}).click();
+  await page.evaluate(() => {
+    Reflect.deleteProperty(document, 'hidden');
+    document.dispatchEvent(new Event('visibilitychange'));
+  });
   await expect.poll(()=>video.evaluate((v:HTMLVideoElement)=>v.paused)).toBe(false);
   await page.emulateMedia({reducedMotion:'reduce'});
   await expect(video).toHaveCount(0);

@@ -178,7 +178,7 @@ Create a full-viewport cinematic entry screen. A video of Hanoi's waterways, riv
 │      Respond.                       │ [     Sign in     ]    │   │
 │                                     │ [Recover access*]     │   │
 │                                     └───────────────────────┘   │
-│ [Pause background]                               [Attribution] │
+│                                                  [Attribution] │
 └─────────────────────────────────────────────────────────────────┘
 * Only expose supported functionality.
 ```
@@ -198,7 +198,7 @@ The pointer interaction should feel like moving across the surface of water, not
 ### 5.3 Background video and mobile behaviour
 
 - Use a muted, looping, inline video with a compressed WebM/MP4 source and a poster image.
-- Avoid autoplay audio. Provide a visible pause/play control and use a static poster for reduced-motion preferences or when autoplay fails.
+- Keep autoplay muted. Use a static poster for reduced-motion preferences or when autoplay fails, and pause playback when the page is hidden.
 - Treat video as decorative; the login must be usable before it downloads and when video is disabled.
 - On mobile, prioritise the login form: compact branding above a full-width card, generous touch targets, scrollable layout and safe-area padding.
 - Use a static poster on low-bandwidth or data-saving connections where detectable; optional lightweight video on capable mobile devices.
@@ -510,7 +510,7 @@ Checked with the local browser suite and rendered desktop and mobile inspection.
 
 The anonymous homepage and sign-in route share a local underwater film and matching static poster. The illustrative outfall continuously emits translucent wastewater, individually drifting debris and magnified microorganisms. Pointer motion disturbs nearby trash. A click or tap disperses one microorganism into fragments and a fading ring. Discharge continues independently from these gestures. Content, authentication, station data and the map operate independently from the decorative scene.
 
-The phone composition leaves the pipe visible above the scrollable form. The film and pooled WebGL layer share pause and page visibility state. Reduced motion, constrained devices, data saving, sustained low frame rates and unavailable rendering select the poster.
+The phone composition leaves the pipe visible above the scrollable form. The film and pooled WebGL layer pause when the page is hidden and resume when it becomes visible. Reduced motion, constrained devices, data saving, sustained low frame rates and unavailable rendering select the poster.
 
 Trash and microorganism sprites render at 130% of their original size.
 

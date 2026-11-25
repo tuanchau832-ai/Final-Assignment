@@ -100,3 +100,9 @@ The edge check failed against the old current. The updated current scales speed 
 U-03 and U-04 verified. The isolated Chromium cursor check passed once separated from video playback. The built renderer probe verified the edge behavior without relying on video. The combined browser run did not verify film playback or poster fallback because those checks timed out. No code change to film playback was made for U-03 or U-04.
 
 U-05 is in progress. Scope the native cursor exception to the sign-in card and update the existing Chromium cursor check to cover entering and leaving the card.
+
+## Background playback button removal
+
+U-06 starts from the current entry page. Remove the button, its layout rules and manual pause state. Update the existing browser check to cover automatic playback and page visibility.
+
+U-06 verified. Removed the control, translations and styles. Restored the English illustration disclosure, which was missing from the starting checkout. The production build, 22 frontend unit tests and both underwater Chromium checks passed. Chromium confirmed the button is absent and playback still responds to page visibility and reduced motion. The failed-film check triggered a local test server connection-reset message as the request was aborted.
