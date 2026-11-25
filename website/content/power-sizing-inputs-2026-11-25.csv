@@ -1,0 +1,10 @@
+component,selected_model,supply_voltage_v,average_current_a,active_hours_per_day,peak_current_a,energy_wh_per_day,source_or_measurement,owner,status
+Controller plus 4G board,TBD,TBD,TBD,TBD,TBD,TBD,Measure at actual selected board and upload interval,Akai,pending
+pH channel,TBD,TBD,TBD,TBD,TBD,TBD,Datasheet plus measured duty cycle,Akai,pending
+DO channel,TBD,TBD,TBD,TBD,TBD,TBD,Datasheet plus measured duty cycle,Akai,pending
+Turbidity channel,TBD,TBD,TBD,TBD,TBD,TBD,Datasheet plus measured duty cycle,Akai,pending
+Temperature channel,TBD,TBD,TBD,TBD,TBD,TBD,Datasheet plus measured duty cycle,Akai,pending
+Wiper and indicators,TBD,TBD,TBD,TBD,TBD,TBD,Confirm whether installed and daily actuation,Akai,pending
+Power conversion losses,TBD,TBD,TBD,TBD,TBD,TBD,Select compatible panel controller battery and converter,Akai,pending
+Site solar resource,TBD,TBD,TBD,TBD,TBD,TBD,Survey shading orientation and rainy season assumption,Dat,pending
+Required battery autonomy days,TBD,TBD,TBD,TBD,TBD,TBD,Team design decision,Akai and Dat,pending

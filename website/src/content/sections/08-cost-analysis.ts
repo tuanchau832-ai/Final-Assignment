@@ -6,14 +6,14 @@ const reference = (id: string) => references.find((item) => item.id === id)!;
 export default {
   title: 'Cost analysis',
   label: 'Cost analysis',
-  summary: 'A transparent one-station price register for a proposed physical pilot, not a complete procurement quote or a cost claim for the simulated prototype.',
+  summary: 'A one-station candidate price register. The final hardware, rollout scope and complete pilot budget remain subject to review.',
   topics: [
     {
       id: 'cost-scope',
       title: 'Costing scope and assumptions',
       paragraphs: [
         {
-          text: 'This register models one proposed physical station for an unconfirmed 12-month pilot; current readings and locations remain simulated. The BOM uses pH, dissolved oxygen (DO), turbidity and temperature; earlier TDS and ThingSpeak material is excluded unless the team changes the four-sensor design.',
+          text: 'This register is a one-station, 12-month unit-cost reference, not an agreed rollout budget. Readings and locations remain simulated. It prices candidate pH, dissolved oxygen (DO), turbidity and temperature hardware; final models, station count and evaluation period require reconciliation with the team submissions.',
           citations: [reference('hww-blueprint')],
         },
         {
@@ -31,11 +31,11 @@ export default {
           citations: [reference('dfrobot-ph'), reference('hshop-do'), reference('dfrobot-turbidity'), reference('hshop-temperature'), reference('hshop-rs485'), reference('vinadenki-enclosure'), reference('daihoaphu-gland')],
         },
         {
-          text: 'For a 24/7 pH channel, the manufacturer states a lifespan exceeding 4,380 hours, about six months. One conservative full-kit re-purchase provision makes the 12-month listed-price subtotal 15,578,972 VND. Calibration, DO-film replacement, field work, connectivity, hosting, power maintenance and disposal still require quotations.',
+          text: 'The manufacturer states pH life exceeds 4,380 hours, depending on water quality; this is not a fixed six-month replacement deadline. One conservative full-kit reserve makes the 12-month listed-price subtotal 15,578,972 VND. Calibration, DO-film replacement, field work, connectivity, hosting, power maintenance and disposal remain unpriced.',
           citations: [reference('dfrobot-ph'), reference('hshop-do')],
         },
         {
-          text: 'The physical choice uses an IP68 RS485 fluorescence DO probe and industrial RS485 turbidity sensor rather than Wokwi sliders. The DS18B20 preserves the temperature channel but needs site approval for wastewater use, sealing and calibration. The SIM7600G-H-M.2 listing supplies only the module, so its carrier, antenna set, regulated power path and ESP32 integration must be selected before purchase.',
+          text: 'This candidate BOM uses RS485 fluorescence DO and industrial turbidity sensors. Teammate proposals use different hardware; their USD totals cannot be substituted without model and interface checks. If an integrated ESP32/4G board is selected, replace the separate board and modem rows and recheck included antennas, charging, sensor interfaces and power compatibility.',
           citations: [reference('hshop-do'), reference('dfrobot-turbidity'), reference('hshop-temperature'), reference('hshop-sim7600')],
         },
       ],
@@ -54,7 +54,7 @@ export default {
           ['TTL-to-RS485 converter for shared sensor bus', 'each', '1', '35,000', 'Supplier-listed CAPEX', 'once', '35,000', 'Hshop listing, VAT stated; delivery not stated; checked 19 Nov 2026', 'TBD by team', 'Test after cable changes'],
           ['SIM7600G-H-M.2 4G LTE module only', 'each', '1', '1,566,000', 'Supplier-listed CAPEX', 'once', '1,566,000', 'Hshop listing, VAT stated; module only; checked 19 Nov 2026', 'TBD by team', 'Carrier, LTE antenna set, power path and integration test are separate quote-required items'],
           ['Viger ABS IP65 enclosure (candidate price reference)', 'each', 'TBD', '305,000', 'Price reference only', 'once', 'Not included', 'Vinadenki listing; VAT excluded; nationwide delivery stated but charge not stated; checked 19 Nov 2026', 'TBD by team', 'Exact model and size are not selected, so this price is not included in a subtotal'],
-          ['PG13.5 cable gland, 6-12 mm cable', 'each', '4', '3,175', 'Supplier-listed CAPEX', 'once', '12,700', 'Dai Hoa Phu price after 8% VAT; delivery not stated; checked 19 Nov 2026', 'TBD by team', 'Quantity and gland sizes must follow final cable schedule'],
+          ['PG13.5 cable gland (cable diameter to confirm)', 'each', '4', '3,175', 'Supplier-listed CAPEX', 'once', '12,700', 'Dai Hoa Phu price after 8% VAT; delivery not stated; checked 19 Nov 2026; page rechecked 25 Nov', 'TBD by team', 'Listing says 7–12 mm near price but 6–12 mm in details; confirm fit and count against final cable schedule'],
           ['Listed-price procurement subtotal - not total CAPEX', 'station', '1', '-', 'Partial subtotal', 'once', '13,895,466', 'Formula: numeric supplier-listed procurement rows only', 'TBD by team', 'Excludes all quote-required rows below and the unselected enclosure reference'],
           ['Selected enclosure, cable entries and waterproofing', 'system', '1', 'Quote required', 'CAPEX', 'once', 'Not included', 'Choose dimensions, material, cable entries and seals after the equipment layout and site survey', 'TBD by team', 'Quote must state model, IP rating, VAT, delivery, penetrations and warranty'],
           ['Solar panel, battery, charge controller and regulated supply', 'system', '1', 'Quote required', 'CAPEX', 'once', 'Not included', 'No selected panel/battery capacity or current complete-kit price; size after load and shading survey', 'TBD by team', 'Quote must state panel, battery, controller, converter, protection and warranty'],
@@ -64,9 +64,9 @@ export default {
           ['Operator training and deployment preparation', 'service', '1', 'Quote required', 'CAPEX', 'once', 'Not included', 'Training scope, provider and participants unconfirmed', 'TBD by team', 'Handover record and refresher scope need confirmation'],
           ['4G data plan', 'month', '12', 'Quote required', 'OPEX', 'monthly', 'Not included', 'Carrier, data volume, coverage and SIM registration not selected', 'TBD by team', 'Review coverage at authorised site'],
           ['Managed hosting and database', 'month', '12', 'Quote required', 'OPEX', 'monthly', 'Not included', 'Production host, retention and support level not selected', 'TBD by team', 'Obtain annual invoice or supplier quotation'],
-          ['Calibration, cleaning and field inspection', 'visit', 'TBD', 'Quote required', 'OPEX', 'TBD', 'Not included', 'Frequency, travel, labour and standards must be defined with the site owner', 'TBD by team', 'Log each cleaning and calibration result'],
+          ['Calibration, cleaning and field inspection', 'service schedule', 'TBD', 'Quote required', 'OPEX', 'Proposed: fortnightly cleaning; monthly calibration', 'Not included', 'Dat proposes cleaning every two weeks but budgets 24 visits/year; a full 52-week schedule is about 26. Monthly calibration is 12/year; confirm overlap, travel and labour', 'TBD by team', 'Agree 24 twice-monthly or about 26 fortnightly visits; add post-flood inspections separately'],
           ['Routine maintenance, repair and power-system maintenance', 'year', '1', 'Quote required', 'OPEX', 'annual', 'Not included', 'No field failure history or selected power system', 'TBD by team', 'Separate minor repair from major replacement approval'],
-          ['pH kit re-purchase provision (conservative, full-kit price)', 'each', '1', '1,683,506', 'Lifecycle priced provision', 'after about 6 months if 24/7', '1,683,506', 'Same DFRobot USD 64.90 x 25,940; this is not a verified spare-probe price', 'TBD by team', 'Recalibrate after replacement'],
+          ['pH kit re-purchase provision (conservative, full-kit price)', 'each', '1', '1,683,506', 'Lifecycle priced provision', 'One reserve within 12 operating months', '1,683,506', 'Same DFRobot USD 64.90 x 25,940; this is not a verified spare-probe price or a manufacturer-mandated six-month schedule', 'TBD by team', 'Confirm replacement on condition and supplier advice; recalibrate after replacement'],
           ['DO film/sensor replacement', 'year', '1', 'Quote required', 'Lifecycle', 'at about 12 months', 'Not included', 'One-year film life stated, but no accessible replacement price', 'TBD by team', 'Obtain consumable or repair quotation before approval'],
           ['End-of-life collection and disposal', 'station', '1', 'Quote required', 'Lifecycle', 'at pilot close', 'Not included', 'Licensed e-waste and probe disposal route not selected', 'TBD by team', 'Confirm compliant collection route'],
           ['12-month listed-price subtotal - not full pilot cost', 'station', '1', '-', 'Partial subtotal', '12 months', '15,578,972', 'Formula: 13,895,466 + 1,683,506 pH re-purchase provision', 'TBD by team', 'Do not use for affordability, procurement approval or funding commitment'],

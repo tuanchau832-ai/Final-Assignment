@@ -3,6 +3,8 @@
 Checked by: Ba Nguyen  
 Check date: 19 November 2026
 
+Update 25 November 2026: direct pages were reopened and the observed prices were logged in `../live-price-audit-2026-11-25.csv`. Browser captures were saved locally for some rows. Ba Nguyen also supplied four readable screenshots in chat and then placed the original PNG files in `Desktop/ảnh bằng chứng`. Exact byte copies of those four files are now in this folder; SHA-256 hashes matched source and destination. Filenames and file timestamps indicate the capture date, but the page images do not display a trusted clock. These are product-page screenshots, not supplier quotations or proof of VAT/shipping beyond what is visible on the page.
+
 This manifest maps every supplier-listed item used in the Cost Analysis to its direct source and the matching row in `../cost-price-evidence.csv`. It is evidence of the price audit, not a supplier quotation. VAT and delivery treatment are recorded exactly as available from the listing.
 
 | Evidence ID | Item / model | Direct source | Recorded price | VAT / delivery note |
@@ -19,4 +21,23 @@ This manifest maps every supplier-listed item used in the Cost Analysis to its d
 
 ## Before sending the handoff
 
-Open each direct source in a standard browser and save one visible screenshot showing the product model and price. Name it `price-001-...` through `price-009-...`, include the browser date/time where possible, and store it beside this manifest. Replace a record if the page price, availability or tax treatment has changed.
+| ID | Screenshot captured 25 Nov | Review status |
+| --- | --- | --- |
+| price-001 | `price-001-2026-11-25.png` | Clear title, SKU, price and VAT |
+| price-002 | `price-002-2026-11-25-user.png` (clear); `price-002-2026-11-25.png` (older partial capture) | Clear image shows SEN0169-V2 and USD 64.90; older capture has a region popup |
+| price-003 | `price-003-2026-11-25.png` | Clear title, SKU, price and VAT |
+| price-004 | `price-004-2026-11-25-user.png` | Clear image shows SEN0710 and USD 229.00 |
+| price-005 | `price-005-2026-11-25.png` | Clear title, SKU, price and VAT |
+| price-006 | `price-006-2026-11-25.png` | Clear title, SKU, price and VAT |
+| price-007 | `price-007-2026-11-25.png` | Clear title, SKU, price and VAT |
+| price-008 | `price-008-2026-11-25.png` | Clear title, listed price and VAT exclusion; actual enclosure size must still be selected |
+| price-009 | `price-009-price-2026-11-25-user.png`; `price-009-spec-2026-11-25-user.png` | Price image shows 2,940 VND + 235 VND VAT = 3,175 VND; specifications say D6–12 mm while price-area text says 7–12 mm. Confirm fit before purchase |
+
+The four user-supplied images are now archived as exact copies. Source files remain on Ba Nguyen's Desktop. The DFRobot images do not establish VAT, delivery, import costs or an exchange rate. Do not treat the candidate enclosure or four-gland count as approved quantities until the layout and cable schedule are confirmed.
+
+| Original Desktop file | Archived file | SHA-256 |
+| --- | --- | --- |
+| `Screenshot 2026-11-25 165243.png` | `price-002-2026-11-25-user.png` | `40AB30D9CBD19024028B121BA8C95C9DA22160518F490F4A090F7CF7B8AC2D5A` |
+| `Screenshot 2026-11-25 165300.png` | `price-004-2026-11-25-user.png` | `A09EDA7E08899C3BF31C54A7B60E812AB166B05A4ACA62E1E82576E9C5E7BE91` |
+| `Screenshot 2026-11-25 165326.png` | `price-009-price-2026-11-25-user.png` | `122AC594ECE05A39BD2E721EED3616E0B5A5BD26899A2EDC0989C3FC24988049` |
+| `Screenshot 2026-11-25 165351.png` | `price-009-spec-2026-11-25-user.png` | `05263FF976909EE13C19434A13E5049CB3401B74B188128B6DBC91A25E014605` |
