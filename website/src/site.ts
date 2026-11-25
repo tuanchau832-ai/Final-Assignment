@@ -22,9 +22,10 @@ const CRIT = [
   { k: 'Affordable', w: 10, c: '#ff9b8a', d: 'Low enough cost per site to cover many outfalls, including upkeep.', why: 'The city budget is already stretched.' }
 ];
 const OPTS = [
-  { k: 'A · Sensor stations', s: [5, 5, 4, 4, 3, 3], r: ['Reads every 2 s; alerts in minutes', 'One station per outfall', 'Three-reading rule; probes can drift', 'Colour map plus SMS', 'Fouling and floods need care', 'About US$430 per site plus upkeep'] },
+  { k: 'A · Sensor stations', s: [5, 5, 4, 4, 3, 3], r: ['Reads every 2 s; alerts in minutes', 'One station per outfall', 'Three-reading rule; probes can drift', 'Colour map plus SMS', 'Fouling and floods need care', 'Installation and ongoing upkeep require funding'] },
   { k: 'B · Test kits and app', s: [2, 2, 2, 4, 5, 4], r: ['Only when a volunteer tests', 'Tests river water, not outfalls', 'Kit accuracy and training vary', 'Residents take part directly', 'Kits are simple', 'Kits are cheap'] },
-  { k: 'C · Manual sampling', s: [1, 3, 5, 2, 4, 2], r: ['Days between visits, plus lab time', 'Samples one outfall, if it is the right one', 'Laboratory accuracy', 'Results rarely reach residents', 'No equipment left on site', 'Staff time grows with every site'] }
+  { k: 'C · Manual sampling', s: [1, 3, 5, 2, 4, 2], r: ['Days between visits, plus lab time', 'Samples one outfall, if it is the right one', 'Laboratory accuracy', 'Results rarely reach residents', 'No equipment left on site', 'Staff time grows with every site'] },
+  { k: 'D · AI + IoT', s: [], r: [] }
 ];
 const STAKE = [
   { n: 'Environment authorities', c: '#c8f169', i: 5, need: 'Reliable evidence to target inspections and enforce discharge rules.', more: 'Hanoi People’s Committee and the Department of Agriculture and Environment receive alerts, send inspectors and issue fines.' },
@@ -44,11 +45,11 @@ const BUILD = [
   { n: 'Waterproof temperature sensor', s: 'DFRobot (2026)', p: 7.50 },
   { n: '20 W solar panel with charge controller', s: 'eBay (2026)', p: 46.99 },
   { n: 'Enclosure, battery, steel cage, wiper, cables', s: 'Team estimate', p: 80, est: 1 },
-  { n: 'Installation labour', s: 'Team estimate', p: 40, est: 1 }
+  { n: 'Installation labour', s: 'Team estimate', p: 40, est: 1, installation: true }
 ];
 const RUN = [
   { n: 'Replacement pH electrode', s: 'DFRobot (2026)', p: 49.50 },
-  { n: 'Cleaning visits, 24 a year', s: 'Team estimate', p: 60, est: 1 },
+  { n: 'Cleaning and inspection, 26 visits a year', s: 'Internal assumption: US$2.50 per visit', p: 26 * 2.50, est: 1 },
   { n: '4G data plan', s: 'Team estimate', p: 18, est: 1 },
   { n: 'Calibration solutions', s: 'Team estimate', p: 10, est: 1 },
   { n: 'Cloud hosting share', s: 'Team estimate', p: 5, est: 1 }
@@ -92,17 +93,23 @@ $$('#stakeGrid button').forEach(b => b.addEventListener('click', () => b.setAttr
 /* decision matrix */
 const total = o => o.s.reduce((a, v, i) => a + v * CRIT[i].w, 0) / 5;
 $('#legend').innerHTML = CRIT.map(c => `<span><i style="background:${c.c}"></i>${esc(c.k)} ${c.w}%</span>`).join('');
-$('#matrix').innerHTML = OPTS.map((o, oi) => `
+$('#matrix').innerHTML = OPTS.map((o, oi) => {
+  const scored = o.s.length === CRIT.length;
+  return `
   <div class="mrow ${oi === 0 ? 'win' : ''}">
-    <div class="nm">${esc(o.k)}<small>${oi === 0 ? 'Selected' : 'Not selected'}</small></div>
-    <div class="mbar" role="img" aria-label="${esc(o.k)}: ${total(o)} out of 100">${o.s.map((v, i) => `<i style="background:${CRIT[i].c}" data-w="${v * CRIT[i].w / 5}" title="${esc(CRIT[i].k)}: ${v}/5"></i>`).join('')}</div>
-    <div class="tot">${total(o)}</div>
-  </div>`).join('');
+    <div class="nm">${esc(o.k)}<small>${scored ? (oi === 0 ? 'Pilot design' : 'Compared') : 'Scoring pending'}</small></div>
+    <div class="mbar" role="img" aria-label="${esc(o.k)}: ${scored ? total(o) + ' out of 100' : 'not scored'}">${o.s.map((v, i) => `<i style="background:${CRIT[i].c}" data-w="${v * CRIT[i].w / 5}" title="${esc(CRIT[i].k)}: ${v}/5"></i>`).join('')}</div>
+    <div class="tot">${scored ? total(o) : '—'}</div>
+  </div>`;
+}).join('');
 const pick = $('#pick');
 pick.innerHTML = OPTS.map((o, i) => `<button type="button" aria-pressed="${i === 0}" data-o="${i}">${esc(o.k)}</button>`).join('');
 const showScores = i => {
   $$('button', pick).forEach(b => b.setAttribute('aria-pressed', b.dataset.o == i));
-  $('#scoreDetail').innerHTML = OPTS[i].s.map((v, k) => `<div><b>${esc(CRIT[k].k)}</b><span>${v} / 5</span><em>${esc(OPTS[i].r[k])}</em></div>`).join('');
+  const option = OPTS[i];
+  $('#scoreDetail').innerHTML = option.s.length
+    ? option.s.map((v, k) => `<div><b>${esc(CRIT[k].k)}</b><span>${v} / 5</span><em>${esc(option.r[k])}</em></div>`).join('')
+    : '<p>Scores are pending. This option needs evidence against all six criteria before a weighted total can be calculated.</p>';
 };
 pick.addEventListener('click', e => { const b = e.target.closest('button'); if (b) showScores(+b.dataset.o); });
 showScores(0);
@@ -111,19 +118,24 @@ showScores(0);
 const bomHtml = (list, max) => list.map(x => `
   <div class="it ${x.est ? 'est' : ''}"><div><b>${esc(x.n)}</b><small>${esc(x.s)}</small></div><div class="bar"><i data-w="${(x.p / max * 100).toFixed(1)}"></i></div><span class="p">$${fmt(x.p, 2)}</span></div>`).join('');
 const buildSum = BUILD.reduce((a, x) => a + x.p, 0), runSum = RUN.reduce((a, x) => a + x.p, 0);
-$('#bomBuild').innerHTML = bomHtml(BUILD, 169) + `<div class="tot"><span>Total to build and install</span><span>$${fmt(buildSum, 2)}</span></div>`;
-$('#bomRun').innerHTML = bomHtml(RUN, 169) + `<div class="tot"><span>Total per year</span><span>$${fmt(runSum, 2)}</span></div>`;
-const VND = 26000, NHUE = 75115e9;
+const stationInput = $('#nSt');
+const yearInput = $('#nYr');
+const scenarioSubtotal = (stations, years) => stations * (buildSum + runSum * years);
+const pilotSubtotal = scenarioSubtotal(Number(stationInput.defaultValue), Number(yearInput.defaultValue));
+$$('[data-hww-pilot-cost]').forEach(el => { el.textContent = 'US$' + fmt(pilotSubtotal, 2); });
+$('#equipmentSubtotal').textContent = 'US$' + fmt(BUILD.filter(item => !item.installation).reduce((sum, item) => sum + item.p, 0), 2);
+$('#installedSubtotal').textContent = 'US$' + fmt(buildSum, 2);
+$('#bomBuild').innerHTML = bomHtml(BUILD, 169) + `<div class="tot"><span>Scenario build and installation subtotal</span><span>$${fmt(buildSum, 2)}</span></div>`;
+$('#bomRun').innerHTML = bomHtml(RUN, 169) + `<div class="tot"><span>Scenario annual operating subtotal</span><span>$${fmt(runSum, 2)}</span></div>`;
+const VND = 26000;
 const calc = () => {
-  const n = +$('#nSt').value, y = +$('#nYr').value;
-  const usd = n * (buildSum + runSum * y), vnd = usd * VND, share = vnd / NHUE * 100;
+  const n = Number(stationInput.value), y = Number(yearInput.value);
+  const usd = scenarioSubtotal(n, y), vnd = usd * VND;
   $('#nOut').textContent = n; $('#yOut').textContent = y;
-  $('#cUsd').textContent = '$' + fmt(Math.round(usd));
+  $('#cUsd').textContent = '$' + fmt(usd, 2);
   $('#cVnd').textContent = vnd >= 1e9 ? '₫' + fmt(vnd / 1e9, 2) + ' bn' : '₫' + fmt(Math.round(vnd / 1e6)) + ' m';
-  $('#cBar').style.width = Math.max(share, 0) + '%';
-  $('#cTxt').textContent = `${share < 0.001 ? share.toFixed(5) : share.toFixed(4)}% of the ₫75,115 billion budget for restoring the Nhuệ River.`;
 };
-$('#nSt').addEventListener('input', calc); $('#nYr').addEventListener('input', calc); calc();
+stationInput.addEventListener('input', calc); yearInput.addEventListener('input', calc); calc();
 
 /* life-cycle wheel */
 const wheel = $('#wheel');

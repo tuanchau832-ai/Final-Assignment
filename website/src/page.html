@@ -14,8 +14,8 @@
       <li><button class="top" data-group="design" aria-expanded="false">Design <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
         <div class="drop">
           <a href="#design-criteria"><b>Design criteria</b><small>Six things a good solution must do, and how much each matters.</small></a>
-          <a href="#design-options"><b>Solution options</b><small>Three different ways to catch a discharge.</small></a>
-          <a href="#design-selection"><b>Design selection</b><small>The weighted decision matrix and why sensors won.</small></a>
+          <a href="#design-options"><b>Solution options</b><small>Four ways to monitor discharges.</small></a>
+          <a href="#design-selection"><b>Design selection</b><small>The weighted decision matrix and the pilot design.</small></a>
         </div></li>
       <li><button class="top" data-group="solution" aria-expanded="false">Solution <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
         <div class="drop">
@@ -94,14 +94,14 @@
         <h2>Every discharge, visible within minutes</h2>
         <p>Hanoi’s rivers receive large volumes of untreated wastewater every day. Only about 30% of the city’s domestic wastewater is treated (VnExpress, 2024), and factories and drains can discharge at night or in heavy rain, when nobody is watching. Inspections rely on hand-taken samples and laboratory tests that take days, so polluters are rarely traced and residents downstream are not warned.</p>
         <p>This report proposes Hanoi WaterWatch: small solar-powered sensor stations at high-risk drain outfalls that measure pH, dissolved oxygen, turbidity and temperature every few seconds. When readings stay outside national QCVN limits, the system alerts the environment authority, turns the outfall red on a public map app and warns nearby residents. An inspector then takes a laboratory sample at that exact outfall before any fine is issued.</p>
-        <p>The team chose this design over resident test kits and more frequent manual sampling because it is the only option that is both real-time and traceable to a single outfall. A simulated prototype, built without hardware, demonstrates the full chain from a polluted reading to a phone alert. A ten-station pilot would cost about US$6,100 in its first year, a tiny fraction of what Hanoi now spends restoring one river.</p>
+        <p>Sensor stations are the proposed pilot design. The comparison also includes resident test kits, manual sampling and AI-assisted IoT. A simulated prototype demonstrates the alert flow. The three-station, three-year pilot has an illustrative subtotal of <span data-hww-pilot-cost>US$2,731.71</span>, using the team’s assumption of 26 routine visits per station per year. The final equipment list and service quotations are pending.</p>
         <p><span class="pending">Add one sentence on prototype test results after Week 10</span></p>
       </div>
       <dl class="glance reveal d2" style="margin:0">
         <div><dt>Problem</dt><span>Discharges are found days late, and the polluter cannot be traced.</span></div>
         <div><dt>Solution</dt><span>Sensor stations at outfalls, a colour-coded map app and instant alerts.</span></div>
         <div><dt>Who benefits</dt><span>Riverside residents, environment authorities, downstream farmers.</span></div>
-        <div><dt>Pilot cost</dt><span>About US$6,100 for ten stations in year one.</span></div>
+        <div><dt>Pilot scenario</dt><span>Three stations over three operating years. Illustrative subtotal <span data-hww-pilot-cost>US$2,731.71</span>.</span></div>
         <div><dt>Status</dt><span>Working simulated prototype; user testing in progress.</span></div>
       </dl>
     </div>
@@ -180,7 +180,7 @@
       <nav class="explore" aria-label="Report sections">
         <a class="reveal" href="#background"><i>Context</i><b>Background</b><span>The rivers, the people affected and what Hanoi does today.</span></a>
         <a class="reveal d1" href="#problem"><i>Challenge</i><b>Problem</b><span>Why pollution is found too late, and the ideal state.</span></a>
-        <a class="reveal d2" href="#design-criteria"><i>Decision</i><b>Design</b><span>Criteria, three options and how the team chose.</span></a>
+        <a class="reveal d2" href="#design-criteria"><i>Decision</i><b>Design</b><span>Criteria, four options and the proposed pilot design.</span></a>
         <a class="reveal" href="#solution-how"><i>How it works</i><b>Solution</b><span>The station, the app, the prototypes and testing.</span></a>
         <a class="reveal d1" href="#implementation-plan"><i>Delivery</i><b>Implementation</b><span>Rollout plan, ownership and full cost analysis.</span></a>
         <a class="reveal d2" href="#considerations"><i>Beyond the build</i><b>Considerations</b><span>Life cycle, risks, a resident’s journey and next steps.</span></a>
@@ -295,7 +295,7 @@
   <header class="phead"><canvas class="stream" aria-hidden="true"></canvas><div class="wrap">
     <p class="crumbs"><a href="#home">Home</a> / Design</p>
     <h1>Design</h1>
-    <p class="lede">Six criteria drawn from stakeholder needs, three different options, and one weighted decision.</p>
+    <p class="lede">Four options assessed against six criteria drawn from stakeholder needs. AI-assisted IoT scoring is pending.</p>
     <nav class="subnav" aria-label="On this page"><a href="#design-criteria">Criteria</a><a href="#design-options">Options</a><a href="#design-selection">Selection</a></nav>
   </div></header>
 
@@ -308,7 +308,7 @@
 
   <section class="band" id="design-options" style="background:var(--surface-2)">
     <div class="wrap">
-      <div class="head reveal"><p class="kicker">Solution options</p><h2>Three ways to catch a discharge</h2></div>
+      <div class="head reveal"><p class="kicker">Solution options</p><h2>Four ways to monitor discharges</h2></div>
       <div class="opts">
         <article class="opt win reveal">
           <div class="art"><svg viewBox="0 0 300 170" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="300" height="170" fill="#0b2238"/><rect y="118" width="300" height="52" fill="#164466"/><path d="M0 60h150v70H0z" fill="#3b5568"/><circle cx="90" cy="104" r="16" fill="#061424" stroke="#6d8fa5" stroke-width="4"/><path d="M90 110c2 14 10 20 40 26-24 4-46 2-50-6z" fill="#ff6b57" opacity=".5"/><rect x="128" y="22" width="5" height="40" fill="#8ea6b8"/><path d="M112 16l40-3 4 11-40 3z" fill="#2f6d8a"/><rect x="120" y="34" width="22" height="22" rx="3" fill="#e9eef3"/><circle cx="134" cy="44" r="3" fill="#c8f169"/><path d="M131 56v24l-14 40" stroke="#c9d3dc" stroke-width="3" fill="none"/><g stroke="#c8f169" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M164 30a14 14 0 0 1 12-12"/><path d="M172 40a26 26 0 0 1 20-22"/></g><rect x="214" y="18" width="52" height="92" rx="10" fill="#f3f6f8"/><circle cx="246" cy="64" r="7" fill="#ff6b57"/></svg></div>
@@ -322,20 +322,23 @@
           <div class="art"><svg viewBox="0 0 300 170" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="300" height="170" fill="#0b2238"/><rect y="124" width="300" height="46" fill="#164466"/><circle cx="96" cy="50" r="16" fill="#e9eef3"/><path d="M72 124l8-50h32l8 50z" fill="#2f6d8a"/><path d="M112 82l26 22" stroke="#e9eef3" stroke-width="7" stroke-linecap="round"/><rect x="136" y="96" width="16" height="26" rx="4" fill="#7fd6e8"/><circle cx="222" cy="64" r="34" fill="none" stroke="#f2a541" stroke-width="5"/><path d="M222 44v20l14 10" stroke="#f2a541" stroke-width="5" stroke-linecap="round" fill="none"/></svg></div>
           <div class="body"><p class="lab">Option C</p><h3>More frequent manual sampling</h3><p>Inspectors visit outfalls more often with portable meters and send samples to a laboratory, the traditional method that wireless monitoring is designed to complement (Adu-Manu et al., 2017).</p><div class="pc"><span class="p">Accurate, legally accepted</span><span class="p">Uses existing staff</span><span class="m">Labour-heavy and costly to scale</span><span class="m">Still hours to days behind</span></div></div>
         </article>
+        <article class="opt reveal">
+          <div class="body"><p class="lab">Option D</p><h3>AI-assisted IoT monitoring</h3><p>Connected sensors would feed an anomaly detection model that flags unusual readings for review. To compare this option, the team needs to define the model, the data needed to train and validate it, service costs and how operators would verify alerts.</p></div>
+        </article>
       </div>
     </div>
   </section>
 
   <section class="band" id="design-selection">
     <div class="wrap">
-      <div class="head reveal"><p class="kicker">Design selection</p><h2>Why sensor stations won</h2><p class="lede">Each option was scored from 1 to 5 on every criterion and multiplied by the criterion’s weight, giving a total out of 100.</p></div>
+      <div class="head reveal"><p class="kicker">Design selection</p><h2>Comparing the pilot design with the alternatives</h2><p class="lede">Each criterion is scored from 1 to 5. The weighted scores add to a total out of 100. The AI-assisted IoT option will receive a total once its scores are supported.</p></div>
       <div class="legend reveal" id="legend" style="margin-bottom:22px"></div>
       <div class="matrix reveal" id="matrix"></div>
       <p class="cap" style="margin-top:14px"><b>Figure 2.</b> Weighted decision matrix. Each coloured block is one criterion’s contribution to the total.</p>
       <div class="grid2" style="margin-top:clamp(32px,4vw,56px);align-items:start">
         <div class="prose reveal">
-          <p>Option A is the only option that scores highly on both of the most heavily weighted criteria, timeliness and traceability. Its weaknesses, start-up cost and probe maintenance, are addressed in the Implementation plan and Cost analysis.</p>
-          <p>The team also kept the strongest idea from each other option: from B, residents can report pollution with a photo in the app; from C, every alert is confirmed by a laboratory sample before a fine.</p>
+          <p>Among the three scored options, sensor stations scored highest on timeliness and traceability. The implementation and cost sections address start-up costs and probe maintenance. The comparison with AI-assisted IoT remains open.</p>
+          <p>The proposed design retains two features from the scored alternatives. Residents can report pollution with a photo in the app, and inspectors can seek laboratory confirmation before enforcement.</p>
         </div>
         <div class="reveal d1">
           <p style="font:700 15px/1.3 var(--sans);margin-bottom:10px">See the scores behind each total</p>
@@ -532,7 +535,7 @@
   <header class="phead"><canvas class="stream" aria-hidden="true"></canvas><div class="wrap">
     <p class="crumbs"><a href="#home">Home</a> / Implementation</p>
     <h1>Implementation</h1>
-    <p class="lede">A one-year pilot at ten outfalls, owned by the city and maintained by the team, before any wider rollout.</p>
+    <p class="lede">Three stations operating for three years before any decision to expand. Proposed ownership, installation sites and service arrangements still need confirmation.</p>
     <nav class="subnav" aria-label="On this page"><a href="#implementation-plan">Rollout plan</a><a href="#implementation-owners">Ownership</a><a href="#implementation-cost">Cost analysis</a></nav>
   </div></header>
 
@@ -540,48 +543,50 @@
     <div class="wrap">
       <div class="head reveal"><p class="kicker">Rollout plan</p><h2>Start small, prove it, then scale</h2></div>
       <div class="road">
-        <div class="phase reveal"><span class="bar"></span><span class="when">Months 0–3</span><h3>Prepare</h3><ul><li>Agree pilot sites and alert steps with the Department of Agriculture and Environment.</li><li>Get access from the drainage company.</li><li>Train inspectors and ward staff.</li></ul></div>
-        <div class="phase reveal d1"><span class="bar"></span><span class="when">Months 3–9</span><h3>Pilot</h3><ul><li>Install ten stations at high-risk outfalls on the Nhuệ and Tô Lịch.</li><li>Run a two-week baseline.</li><li>Launch the app in two wards.</li></ul></div>
-        <div class="phase reveal d2"><span class="bar"></span><span class="when">Months 9–12</span><h3>Evaluate</h3><ul><li>Compare every alert with a lab sample.</li><li>Measure detection time, false alarms and app use.</li><li>Publish the results.</li></ul></div>
-        <div class="phase reveal d3"><span class="bar"></span><span class="when">Year 2 onward</span><h3>Scale</h3><ul><li>Extend to industrial clusters such as Thanh Oai.</li><li>Open a public data portal.</li><li>Hand day-to-day operation to the city.</li></ul></div>
+        <div class="phase reveal"><span class="bar"></span><span class="when">Before operations</span><h3>Prepare</h3><ul><li>Agree pilot sites and alert steps with the Department of Agriculture and Environment.</li><li>Get access from the drainage company.</li><li>Train inspectors and ward staff.</li></ul></div>
+        <div class="phase reveal d1"><span class="bar"></span><span class="when">Year 1</span><h3>Commission</h3><ul><li>Commission three stations at approved high-risk outfalls. The Nhuệ and Tô Lịch are candidate rivers.</li><li>Run a two-week baseline.</li><li>Launch the app with participating wards.</li></ul></div>
+        <div class="phase reveal d2"><span class="bar"></span><span class="when">Years 1–3</span><h3>Operate and evaluate</h3><ul><li>Compare investigated alerts with laboratory samples where available.</li><li>Measure detection time, false alarms and app use.</li><li>Review outcomes at the end of the pilot.</li></ul></div>
+        <div class="phase reveal d3"><span class="bar"></span><span class="when">After year 3</span><h3>Decide whether to scale</h3><ul><li>Use pilot results to assess expansion to industrial clusters.</li><li>Review the scope of a public data portal.</li><li>Confirm the operator and funding before expansion.</li></ul></div>
       </div>
     </div>
   </section>
 
   <section class="band" id="implementation-owners" style="background:var(--surface-2)">
     <div class="wrap">
-      <div class="head reveal"><p class="kicker">Ownership and operation</p><h2>Who owns, runs and repairs it</h2></div>
+      <div class="head reveal"><p class="kicker">Ownership and operation</p><h2>Proposed roles and maintenance</h2></div>
       <div class="owners">
         <div class="card lift reveal"><b>Department of Agriculture and Environment</b><p>Owns the stations and data, receives alerts and sends inspectors.</p></div>
         <div class="card lift reveal d1"><b>Our team</b><p>Builds, installs and maintains stations under a service contract, and runs the platform.</p></div>
         <div class="card lift reveal d2"><b>Accredited laboratories</b><p>Test the confirmation samples that support any fine.</p></div>
         <div class="card lift reveal"><b>Ward People’s Committees</b><p>Share alerts locally and collect residents’ feedback.</p></div>
         <div class="card lift reveal d1"><b>Residents</b><p>Report pollution with photos and help watch the sites.</p></div>
-        <div class="card lift reveal d2"><b>Maintenance routine</b><p>Clean probes every two weeks, calibrate monthly, repair within 48 hours using spare units.</p></div>
+        <div class="card lift reveal d2"><b>Maintenance routine</b><p>Plan 26 cleaning and inspection visits per station per year, every 14 days. Combine the 12 monthly calibrations with site visits where feasible. Quote post-flood and extra visits separately.</p></div>
       </div>
     </div>
   </section>
 
   <section class="band" id="implementation-cost">
     <div class="wrap">
-      <div class="head reveal"><p class="kicker">Cost analysis</p><h2>About US$430 to build a station</h2><p class="lede">Hardware prices come from supplier listings; amber bars are team estimates. Costs are shown in US dollars, converted at about ₫26,000 per dollar.</p></div>
+      <div class="head reveal"><p class="kicker">Cost analysis</p><h2>Illustrative cost per station</h2><p class="lede">Equipment and materials subtotal <strong id="equipmentSubtotal">US$428.07</strong>. Including assumed installation, the subtotal is <strong id="installedSubtotal">US$468.07</strong>. The calculator uses provisional team inputs, including 26 routine visits at an assumed US$2.50 per visit. Supplier quotations, final equipment and site costs are pending.</p></div>
       <div class="grid2" style="align-items:start">
         <div class="reveal">
           <h3 style="margin-bottom:12px">Build, per station</h3>
           <div class="bom" id="bomBuild"></div>
           <h3 style="margin:28px 0 12px">Run, per station per year</h3>
           <div class="bom" id="bomRun"></div>
-          <p class="cap"><b>End of life (after about five years):</b> boards and batteries go to a certified e-waste recycler and cages are reused, about US$10 per station (estimate).</p>
+          <p class="cap"><b>End of life:</b> the team previously assumed disposal after about five years at US$10 per station. This unverified allowance is excluded from the scenario calculator; obtain a collection quotation and confirm component lifetimes.</p>
         </div>
         <div style="display:grid;gap:20px">
           <div class="calc reveal d1" id="calc">
-            <label for="nSt">Stations in the pilot <output id="nOut">10</output></label>
-            <input type="range" id="nSt" min="5" max="100" step="5" value="10">
-            <label for="nYr">Years of operation <output id="yOut">1</output></label>
-            <input type="range" id="nYr" min="1" max="5" step="1" value="1">
-            <div class="out"><div><small>Total cost</small><b id="cUsd">$6,106</b></div><div><small>In Vietnamese dong</small><b id="cVnd">₫159 m</b></div></div>
-            <div class="vs"><div class="track"><i id="cBar"></i></div><p id="cTxt">Share of the ₫75,115 billion Nhuệ restoration budget.</p></div>
+            <label for="nSt">Stations in the scenario <output id="nOut">3</output></label>
+            <input type="range" id="nSt" min="1" max="100" step="1" value="3">
+            <label for="nYr">Operating years per station <output id="yOut">3</output></label>
+            <input type="range" id="nYr" min="1" max="5" step="1" value="3">
+            <div class="out"><div><small>Provisional scenario subtotal</small><b id="cUsd">$2,731.71</b></div><div><small>Illustrative VND conversion</small><b id="cVnd">₫71 m</b></div></div>
+            <p class="scenario-note">Illustrative rate: ₫26,000 per US dollar. The subtotal excludes unpriced lab services, SMS, software development, training, electrical protection, additional replacements and post-flood visits.</p>
           </div>
+          <p class="cap">The earlier 10-station, one-year scenario came to US$6,105.70 under the old 24-visit assumption. See the <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/8ea9e9078c82241fbca170672b844cafcba429f9/website/content/cost-scenarios-2026-11-25.csv">scenario calculations</a> and <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/8ea9e9078c82241fbca170672b844cafcba429f9/website/content/cost-evidence/README.md">supplier-listing evidence</a>.</p>
+          <h3>Potential funding sources</h3>
           <div class="fund">
             <div class="card reveal"><b>City environment budget</b><p>Monitoring sits within the Department’s existing role.</p></div>
             <div class="card reveal d1"><b>Polluter pays</b><p>Fines and wastewater fees from confirmed violations.</p></div>
@@ -647,7 +652,7 @@
     <div class="wrap">
       <div class="head reveal"><p class="kicker">Recommendations</p><h2>What should happen next</h2></div>
       <div class="recs">
-        <div class="card reveal"><div><b>Run a field pilot with real sensors</b><p>Test probe accuracy, fouling and battery life at one outfall before buying more.</p></div></div>
+        <div class="card reveal"><div><b>Run a field pilot with real sensors</b><p>Check probe accuracy, fouling and battery life at the first outfall before commissioning the other two pilot stations.</p></div></div>
         <div class="card reveal d1"><div><b>Add ammonium sensing</b><p>Ammonium is a direct sign of sewage, which the current four probes only show indirectly.</p></div></div>
         <div class="card reveal d2"><div><b>Agree the legal role of the data</b><p>Work with the city on how alerts and lab results are used as evidence.</p></div></div>
         <div class="card reveal"><div><b>Test with older residents</b><p>Check SMS and loudspeaker alerts with the people least likely to use the app.</p></div></div>
