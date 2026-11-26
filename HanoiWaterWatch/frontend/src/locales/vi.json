@@ -217,5 +217,15 @@
   "demoExplanation": "Chế độ demo. Số đo, cảnh báo và đánh giá được tạo để minh họa. Vị trí trạm chỉ mang tính minh họa.",
   "demoSimulation": "Kết quả mô phỏng · Không phải số đo quan trắc",
   "demoProfile": "Hồ sơ không gian demo",
-  "offlineStations": "Trạm ngoại tuyến"
+  "offlineStations": "Trạm ngoại tuyến",
+  "virtualStation": "Trạm cảm biến ảo",
+  "openFull": "Mở toàn màn hình",
+  "simCredit": "Trạm ESP32 ảo do Tuấn và Đạt xây dựng. Kéo thanh trượt để đổi số đo nước.",
+  "modelCredit": "Mô hình 3D trạm đo do Thư thiết kế. Kéo để xoay, cuộn để phóng to.",
+  "short_mapHome": "Bản đồ",
+  "short_overview": "Tổng quan",
+  "short_model": "Trạm đo",
+  "short_dashboard": "Số đo",
+  "short_alerts": "Cảnh báo",
+  "short_simulation": "Mô phỏng"
 }

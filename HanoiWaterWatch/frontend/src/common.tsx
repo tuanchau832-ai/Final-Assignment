@@ -3,7 +3,8 @@ import { ApiError } from './api';
 import { demoMode } from './features';
 import { useClock } from './clock';
 import { useTranslation } from 'react-i18next';
-import { AlertTriangle, CheckCircle2, WifiOff, Wrench, MinusCircle, AlertCircle, ArrowUpRight } from 'lucide-react';
+import { AlertTriangle, CheckCircle2, WifiOff, Wrench, MinusCircle, AlertCircle, ArrowUpRight, Beaker, Wind, Waves, Thermometer } from 'lucide-react';
+const SENSOR_ICON: Record<string, typeof Beaker> = { ph: Beaker, do: Wind, turbidity: Waves, temp: Thermometer };
 import { Link } from 'react-router-dom';
 import visuals from '../../shared/registry/status_visuals.json';
 import sensorTypes from '../../shared/registry/sensor_types.json';
@@ -34,7 +35,7 @@ export function SensorCard({ sensor, disconnected = false, onClick }: {
 }) { const { t, i18n } = useTranslation(); const text = useText(); const types = sensorTypes.types as Record<string, {
     label: LocalText;
     unit_display: string;
-}>; const v = displayCurrent(sensor.value, sensor.status, disconnected); return <article className={'sensor-card ' + (disconnected ? 'stale-state ' : '') + (onClick ? 'clickable' : '')} onClick={onClick}><div className="between"><span className="eyebrow">{text(types[sensor.channel]?.label) || sensor.channel}</span><span className="sensor-dot" style={{ background: statusColor(disconnected ? 'unavailable' : sensor.status) }}/></div><div className="reading">{formatValue(v, sensor.decimals, i18n.language)} <small>{types[sensor.channel]?.unit_display || sensor.unit}</small></div><StatusBadge status={disconnected ? 'unavailable' : sensor.status}/>{disconnected && <small>{t('lastKnown')}</small>}<div className="measured"><Clock at={sensor.measured_at}/></div>{sensor.last_valid && <small>{t('lastValid')}: {formatValue(sensor.last_valid.value, sensor.decimals)} · {formatTime(sensor.last_valid.measured_at)}</small>}{sensor.fault_reason && <small>{sensor.fault_reason}</small>}{sensor.active_alert_id && <Link className="textlink" to={'/alerts/' + sensor.active_alert_id}>#{sensor.active_alert_id} <ArrowUpRight size={12}/></Link>}</article>; }
+}>; const v = displayCurrent(sensor.value, sensor.status, disconnected); const Icon = SENSOR_ICON[sensor.channel] || Waves; return <article data-channel={sensor.channel} className={'sensor-card ' + (disconnected ? 'stale-state ' : '') + (onClick ? 'clickable' : '')} onClick={onClick}><div className="between"><span className="eyebrow"><i className="sensor-icon"><Icon size={16}/></i>{text(types[sensor.channel]?.label) || sensor.channel}</span><span className="sensor-dot" style={{ background: statusColor(disconnected ? 'unavailable' : sensor.status) }}/></div><div className="reading">{formatValue(v, sensor.decimals, i18n.language)} <small>{types[sensor.channel]?.unit_display || sensor.unit}</small></div><StatusBadge status={disconnected ? 'unavailable' : sensor.status}/>{disconnected && <small>{t('lastKnown')}</small>}<div className="measured"><Clock at={sensor.measured_at}/></div>{sensor.last_valid && <small>{t('lastValid')}: {formatValue(sensor.last_valid.value, sensor.decimals)} · {formatTime(sensor.last_valid.measured_at)}</small>}{sensor.fault_reason && <small>{sensor.fault_reason}</small>}{sensor.active_alert_id && <Link className="textlink" to={'/alerts/' + sensor.active_alert_id}>#{sensor.active_alert_id} <ArrowUpRight size={12}/></Link>}</article>; }
 export function AlertRows({ items, search }: {
     search?: string;
     items: Alert[];

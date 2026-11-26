@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ESP32 Simulator - Station ST-TOLICH-01</title>
+  <link rel="stylesheet" href="./Simulation.css">
+</head>
+<body>
+  <div class="top">
+    <b>ESP32 Simulator</b>
+    <button class="run" id="run">⏸ Pause</button>
+    <button id="rst">Reset</button>
+    <span class="tm" id="clk">00:00.000</span>
+    <span class="sp"></span>
+    <span id="modes"></span>
+    <span id="spd"></span>
+    <span class="chip" id="chip">SAFE</span>
+  </div>
+
+  <div class="main">
+    <div class="cv">
+      <svg id="svg" viewBox="0 0 760 540" role="img" aria-label="ESP32 DevKit circuit with 4 potentiometers, DS18B20, and 2 LEDs">
+        <defs>
+          <linearGradient id="mg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#d9dde2"/>
+            <stop offset="1" stop-color="#8d949c"/>
+          </linearGradient>
+          <filter id="gl" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="9"/>
+          </filter>
+        </defs>
+        <g id="wires"></g>
+        <g id="parts"></g>
+      </svg>
+    </div>
+
+    <div class="side">
+      <div class="tabs">
+        <button class="on" data-t="ser">Serial Monitor</button>
+        <button data-t="ts">ThingSpeak</button>
+      </div>
+      <section class="assessment" aria-label="Assessment explanation">
+        <strong>Current inputs · experimental screening</strong>
+        <p id="rule"></p>
+        <p id="reason" aria-live="polite"></p>
+        <small>The alert changes at each 3-second sample. Three consecutive breached samples confirm alert = 1.</small>
+        <details>
+          <summary>How to read the result</summary>
+          <p>Any failed limit counts as one breached sample. Samples 1–2 show a yellow warning with alert = 0. Sample 3 confirms red with alert = 1. A sample within all limits resets the count and alert.</p>
+          <p>Limits: pH 6.00–8.50, DO ≥ 4.00 mg/L, TDS ≤ 500 ppm, temperature ≤ 35 °C. Turbidity is allowed up to 75 NTU when DO ≥ 4.20 and TDS ≤ 400; otherwise 50 NTU.</p>
+          <p>This sensor combination is a project heuristic. It cannot establish the cause of turbidity or certify water safety.</p>
+        </details>
+      </section>
+      <div class="mon" id="ser"></div>
+      <div class="mon" id="ts" hidden></div>
+      <div class="foot">
+        <span id="f1">Next read: 3.0s</span>
+        <span id="f2">Next upload: 15.0s</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="./sim.js"></script>
+</body>
+</html>
