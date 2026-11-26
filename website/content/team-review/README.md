@@ -1,5 +1,7 @@
 # Bản vá summary và chi phí cho website cuối
 
+> **Cập nhật 26/11:** Đọc [bảng đối chiếu mới dành cho Đạt/Tuấn](../final-website-vs-ba-nguyen-2026-11-26.md) trước khi dùng patch. Scope làm việc là 3 trạm/3 năm; testing 6 tháng/lần và review mòn/ăn mòn năm 3. Các số 10/1, 24/26 lượt và hướng dẫn lịch bên dưới là lịch sử của patch ngày 25/11. Patch không tự giải quyết BOM/báo giá, scope hoặc lịch mới; source cuối đã đổi snapshot nên phải review/port từng thay đổi phù hợp.
+
 Ngày chuẩn bị: 25/11/2026. Bản vá: [final-website-cost-summary.patch](final-website-cost-summary.patch).
 
 ## Vì sao là patch?

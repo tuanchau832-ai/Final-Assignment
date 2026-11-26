@@ -1,5 +1,11 @@
 # Kế hoạch phần việc Bá Nguyên — Cost Analysis
 
+**Đạt/Tuấn bắt đầu tại [bảng final-website đối chiếu với Bá Nguyên](final-website-vs-ba-nguyen-2026-11-26.md):** có ID các số khớp, mục cần sửa, model cần xác nhận và giới hạn của các subtotal. Đây là bản đối chiếu 26/11 để tích hợp, thay cho việc lấy lịch/số cũ bên dưới làm kết luận hiện tại.
+
+Bảng làm việc hiện tại: [chi phí mỗi trạm → 3 trạm → 3 năm](cost-rollup-3stations-3years-2026-11-26.md), kèm CSV giá có nguồn, dự phòng riêng và các khoản cần báo giá. Mục tiêu tiếp theo là xác nhận BOM và scope để điền các dòng còn thiếu, không dùng subtotal làm tổng ngân sách.
+
+> **Cập nhật 26/11/2026:** Akai đã trả lời D1 là 3 trạm/3 năm; D2/D3 chuyển Đạt/Tuấn; D8 cần so sánh HWW với cả hai phương án. Theo góp ý Đạt do Bá Nguyên chuyển, kiểm tra chức năng/bảo dưỡng 6 tháng/lần và rà mòn/ăn mòn ở năm thứ ba để thay theo tình trạng. Các đoạn bên dưới ghi 26 lượt vệ sinh + 12 hiệu chuẩn là kế hoạch ngày 25/11, **chưa phải lịch bảo dưỡng mới được xác nhận**. Xem [kế hoạch tiếp theo](ba-nguyen-next-steps-2026-11-26.md) và [quyết định cập nhật](ba-nguyen-decisions-2026-11-25.md) trước khi dùng số hoặc gửi báo giá.
+
 Cập nhật: **25/11/2026**, sau phản hồi Đạt/Akai, kiểm chứng ảnh giá và quyết định D5/D7. Nhánh làm việc: `feature/ba-nguyen-cost-analysis`; xem PR #3 để biết commit và trao đổi mới nhất. Không tự merge hoặc chuyển nhánh. [Quyết định D5/D7](ba-nguyen-decisions-2026-11-25.md) ghi lịch và trách nhiệm tích hợp.
 
 ## Kết luận và tổng quan công việc tiếp theo

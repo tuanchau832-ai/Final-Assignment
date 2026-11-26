@@ -1,5 +1,7 @@
 # Cost-analysis handoff for Tuan
 
+> **Current handoff, 26 November 2026:** Start with the [final-website versus Ba Nguyen comparison](final-website-vs-ba-nguyen-2026-11-26.md), the [three-station/three-year rollup](cost-rollup-3stations-3years-2026-11-26.md) and its [CSV](cost-rollup-3stations-3years-2026-11-26.csv). Akai confirmed the working scope as 3 stations/3 years. Dat's newer suggestion, relayed by Ba Nguyen, separates six-month functional checks from a year-three wear/corrosion review; cleaning/calibration scope and prices remain pending. The 25 November notes below are historical, including 26 visits and unresolved D1, and do not supersede the update. Latest source review is at final-website commit a85be4e; integration remains unconfirmed. This assigned branch's build does not validate final-website.
+
 Prepared by: Ba Nguyen  
 Date: updated 25 November 2026
 Scope: one-station candidate unit-cost reference; final rollout scope and hardware are unresolved. This is not the simulated prototype cost.

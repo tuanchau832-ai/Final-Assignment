@@ -13,7 +13,7 @@ export default {
       title: 'Costing scope and assumptions',
       paragraphs: [
         {
-          text: 'This register is a one-station, 12-month unit-cost reference, not an agreed rollout budget. Readings and locations remain simulated. It prices candidate pH, dissolved oxygen (DO), turbidity and temperature hardware; final models, station count and evaluation period require reconciliation with the team submissions.',
+          text: 'This register is a one-station, 12-month unit-cost reference for a proposed three-station, three-year pilot, not an agreed rollout budget. Readings and locations remain simulated. It prices candidate pH, dissolved oxygen (DO), turbidity and temperature hardware; final models and the three-year cost basis still require reconciliation with the team submissions.',
           citations: [reference('hww-blueprint')],
         },
         {
@@ -37,6 +37,9 @@ export default {
         {
           text: 'This candidate BOM uses RS485 fluorescence DO and industrial turbidity sensors. Teammate proposals use different hardware; their USD totals cannot be substituted without model and interface checks. If an integrated ESP32/4G board is selected, replace the separate board and modem rows and recheck included antennas, charging, sensor interfaces and power compatibility.',
           citations: [reference('hshop-do'), reference('dfrobot-turbidity'), reference('hshop-temperature'), reference('hshop-sim7600')],
+        },
+        {
+          text: 'The proposed service plan separates routine cleaning from a functional test every six months (two checks per station-year). At the three-year review, inspect corrosion and component wear and replace parts only when inspection, test results or manufacturer guidance justify it. The number of cleaning visits and sensor calibration frequency still need the operations team to confirm; historical 24/26-visit examples are not approved service prices.',
         },
       ],
       table: {
@@ -64,8 +67,10 @@ export default {
           ['Operator training and deployment preparation', 'service', '1', 'Quote required', 'CAPEX', 'once', 'Not included', 'Training scope, provider and participants unconfirmed', 'TBD by team', 'Handover record and refresher scope need confirmation'],
           ['4G data plan', 'month', '12', 'Quote required', 'OPEX', 'monthly', 'Not included', 'Carrier, data volume, coverage and SIM registration not selected', 'TBD by team', 'Review coverage at authorised site'],
           ['Managed hosting and database', 'month', '12', 'Quote required', 'OPEX', 'monthly', 'Not included', 'Production host, retention and support level not selected', 'TBD by team', 'Obtain annual invoice or supplier quotation'],
-          ['Calibration, cleaning and field inspection', 'service schedule', '26 cleaning visits + 12 monthly calibrations', 'Quote required', 'OPEX', 'Every 14 days; monthly calibration', 'Not included', 'Ba Nguyen planning decision 25 Nov 2026: 26 scheduled visits/station-year; combine 12 calibrations with visits if feasible. Service, travel and labour still require a quote', 'TBD by team', 'Dat to confirm site feasibility and overlap; quote extra post-flood visits separately'],
-          ['Routine maintenance, repair and power-system maintenance', 'year', '1', 'Quote required', 'OPEX', 'annual', 'Not included', 'No field failure history or selected power system', 'TBD by team', 'Separate minor repair from major replacement approval'],
+          ['Cleaning, calibration and event-triggered field visits', 'service schedule', 'TBD', 'Quote required', 'OPEX', 'Frequency to confirm', 'Not included', 'Earlier 24/26 cleaning-visit and 12 monthly-calibration examples are provisional; Dat to confirm the actual schedule and any overlap with six-month functional checks', 'TBD by team', 'Quote travel, labour, supplies and post-flood visits separately'],
+          ['Functional testing and preventive maintenance', 'check', '2 per station-year', 'Quote required', 'OPEX', 'Every six months', 'Not included', 'Dat recommendation, 26 Nov 2026; check sensor readings, connectivity, power and physical condition; exact test protocol and quote pending', 'TBD by team', 'Record pass/fail and repair needs; do not count a test as component replacement'],
+          ['Three-year wear and corrosion review', 'review', '1 at year 3', 'Quote required', 'Lifecycle', 'At three-year review', 'Not included', 'Dat recommendation, 26 Nov 2026; inspect ageing and corrosion; replacement quantities and unit prices depend on findings', 'TBD by team', 'Replace worn parts only if inspection or manufacturer guidance warrants it; disposal quoted separately'],
+          ['Unscheduled repair and power-system maintenance', 'service', 'TBD', 'Quote required', 'OPEX', 'As needed', 'Not included', 'No field failure history or selected power system', 'TBD by team', 'Separate minor repair from major replacement approval'],
           ['pH kit re-purchase provision (conservative, full-kit price)', 'each', '1', '1,683,506', 'Lifecycle priced provision', 'One reserve within 12 operating months', '1,683,506', 'Same DFRobot USD 64.90 x 25,940; this is not a verified spare-probe price or a manufacturer-mandated six-month schedule', 'TBD by team', 'Confirm replacement on condition and supplier advice; recalibrate after replacement'],
           ['DO film/sensor replacement', 'year', '1', 'Quote required', 'Lifecycle', 'at about 12 months', 'Not included', 'One-year film life stated, but no accessible replacement price', 'TBD by team', 'Obtain consumable or repair quotation before approval'],
           ['End-of-life collection and disposal', 'station', '1', 'Quote required', 'Lifecycle', 'at pilot close', 'Not included', 'Licensed e-waste and probe disposal route not selected', 'TBD by team', 'Confirm compliant collection route'],

@@ -1,8 +1,16 @@
 # Bá Nguyên chốt D5 và D7 — 25/11/2026
 
-Đây là quyết định cho **bản kế hoạch chi phí** và cách phối hợp tích hợp website. Nó không xác nhận BOM, báo giá, địa điểm triển khai hoặc ngân sách pilot cuối cùng. Draft PR #3 là nơi ghi phản hồi của nhóm.
+Đây là quyết định cho **bản kế hoạch chi phí** và cách phối hợp tích hợp website. Nó không xác nhận BOM, báo giá, địa điểm triển khai hoặc ngân sách pilot cuối cùng. PR #3 là nơi ghi phản hồi của nhóm. Xem [bảng đối chiếu dành cho Đạt/Tuấn](final-website-vs-ba-nguyen-2026-11-26.md) trước khi sửa source cuối.
 
-## D5 — lịch vệ sinh và kiểm tra hiện trường
+## Cập nhật 26/11/2026 — phản hồi Akai và đề xuất bảo trì của Đạt
+
+- **D1:** Akai xác nhận phạm vi thiết kế **3 trạm/3 năm** trên [comment PR #3](https://github.com/tuanchau832-ai/Final-Assignment/pull/3#issuecomment-7188129413). Dùng phạm vi này làm phương án chính để chuẩn bị bảng ba năm; Tuấn và Đạt vẫn cần đồng bộ phần summary/implementation đang ghi 10 trạm/1 năm. Chưa gọi là ngân sách đã duyệt.
+- **D2/D3:** Akai nói model linh kiện và nguồn điện do Đạt/Tuấn nghiên cứu, đồng thời cần hỏi Thư xem linh kiện có liên quan phần của Thư không. Chưa có SKU, sơ đồ nguồn hoặc phụ kiện được xác nhận từ comment này.
+- **D8:** Akai yêu cầu so sánh HWW với **cả hai phương án thay thế**, chấm nhiều tiêu chí rồi giải thích vì sao HWW được chọn. Tuấn/nhóm cần thống nhất tên, phạm vi và điểm của từng phương án; không dùng lại điểm của phương án manual sampling cho một phương án AI + IoT khác.
+- **D5 mới, theo góp ý Đạt được Bá Nguyên chuyển ngày 26/11:** Kiểm tra chức năng và bảo dưỡng phòng ngừa **mỗi 6 tháng** (2 lần/trạm/năm, 6 lần/trạm/3 năm; 18 lần cho 3 trạm/3 năm), gồm thử cảm biến, truyền dữ liệu, nguồn và tình trạng vật lý theo checklist được Đạt xác nhận. **Ở mốc 3 năm**, kiểm tra độ cũ/ăn mòn và thay những linh kiện được xác định cần thay; không coi toàn bộ linh kiện tự động phải thay sau 3 năm. Cần báo giá công kiểm tra, vật tư thay và xử lý thải bỏ riêng.
+- Lịch 26 lượt vệ sinh và 12 hiệu chuẩn hằng tháng ở quyết định 25/11 **không được dùng làm lịch bảo dưỡng đã chốt**. Đó là giả định/kịch bản cũ về vệ sinh và hiệu chuẩn, khác với hai lần kiểm tra chức năng/năm. Chờ Đạt xác nhận có còn cần các lượt vệ sinh, hiệu chuẩn đó không và có gộp với kiểm tra 6 tháng được không. Các sensitivity USD 147,50 và USD 6.155,70 không phản ánh lịch D5 mới.
+
+## D5 ngày 25/11 — lịch sử, đã được cập nhật bởi mục 26/11 ở trên
 
 - Chọn **mỗi 14 ngày, dự trù 26 lượt vệ sinh/kiểm tra định kỳ cho mỗi trạm trong 12 tháng**. Không gọi 24 lượt là “mỗi hai tuần”; 24 lượt là hai lần mỗi tháng và chỉ giữ làm kịch bản so sánh lịch sử.
 - Dự trù **12 lần hiệu chuẩn theo tháng**. Lập lịch cùng 12 trong 26 lượt hiện trường khi quy trình và thời gian làm việc cho phép; nếu cần chuyến riêng, Đạt phải báo số lượt và xin báo giá bổ sung.
@@ -16,6 +24,6 @@
 - Trước khi áp dụng, Tuấn kiểm tra bản source đích và thay đổi chưa commit. Patch được soạn cho snapshot `556fb6e92d5f1abc34b70d7711ab5ffd36da25a0`. Nếu source khác, đọc từng thay đổi và port phù hợp; không ép patch, reset hoặc tự merge PR #3 vào `main`.
 - Sau tích hợp, Tuấn chạy build và kiểm tra summary/heading/calculator trên các kịch bản **1, 3, 10 trạm × 1, 3 năm**. Điểm đối chiếu cũ: thiết bị/vật tư **428,07 USD**; cộng lắp đặt giả định 40 USD thành **468,07 USD/trạm**; 10 trạm × (468,07 + 142,50) = **6.105,70 USD** cho kịch bản cũ 24 lượt. Với lịch 26 lượt và cùng giả định nội bộ 2,50 USD/lượt, subtotal minh họa là **6.155,70 USD**; không đưa số này thành tổng pilot đã duyệt.
 - Kiểm tra phần cost/summary trên desktop và điện thoại: bảng không mất cột khi cuộn ngang, toàn trang không tràn ngang, menu và link nguồn hoạt động. Bá Nguyên đối chiếu số/câu chữ sau khi Tuấn có bản tích hợp để xem. Chưa dùng kết quả build của website React để tuyên bố `final-website` đã được kiểm.
-- D1 (số trạm/thời hạn) và D2 (BOM) vẫn chờ nhóm chốt. Summary phải giữ nhãn `provisional scenario subtotal` và nêu khoản chưa tính cho tới khi các quyết định và báo giá đầy đủ.
+- Cập nhật 26/11: Akai đã xác nhận D1 là 3 trạm/3 năm, còn Tuấn/Đạt cần đồng bộ source cuối; D2 (BOM) vẫn chờ xác nhận. Summary giữ nhãn `provisional scenario subtotal` và nêu khoản chưa tính cho tới khi các quyết định và báo giá đầy đủ. Các điểm số 24/26 lượt ở trên chỉ là kiểm logic lịch sử.
 
 Mẫu xác nhận từ Đạt/Tuấn trên PR: `D5 hoặc D7 | đã thực hiện / cần điều chỉnh / TBD | bằng chứng hoặc link | người phụ trách | ngày`.

@@ -1,5 +1,7 @@
 # Tin nhắn chờ xác nhận — Bá Nguyên
 
+> **Lưu trữ câu hỏi 25/11.** Trạng thái hiện tại và yêu cầu sửa source nằm trong [bảng đối chiếu 26/11](final-website-vs-ba-nguyen-2026-11-26.md). Akai đã trả lời 3 trạm/3 năm và chuyển D2/D3 cho Đạt/Tuấn; D5 mới tách testing 6 tháng/lần với review năm 3. Không gửi lại nguyên văn lịch 26 lượt hoặc câu hỏi D1 cũ dưới đây như thể chưa có cập nhật. Các câu hỏi bổ sung đã đăng trong PR #3 ngày 26/11.
+
 Soạn ngày 25/11/2026. Đây là bản câu hỏi chi tiết để đối chiếu với các comment gửi trong PR #3. D5/D7 đã có [quyết định của Bá Nguyên](ba-nguyen-decisions-2026-11-25.md); phần còn lại vẫn chờ nhóm. Mỗi người có thể trả lời ngay dưới comment gắn tên mình bằng ID D1–D8. Nếu chưa chốt, xin ghi `TBD + ai kiểm tra + khi nào + tài liệu cần có` để không tự điền số. Bằng chứng giá mới và ảnh gốc nằm trong [cost-evidence/README.md](cost-evidence/README.md).
 
 ## Akai — cấu hình, phạm vi và phương án so sánh

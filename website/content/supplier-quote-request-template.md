@@ -2,7 +2,7 @@
 
 Ngày gửi: [dd/mm/yyyy]  
 Người liên hệ: Bá Nguyên, nhóm Hanoi Water Watch  
-Mục đích: khảo sát chi phí cho trạm giám sát chất lượng nước thử nghiệm tại Hà Nội; số trạm và địa điểm cụ thể sẽ được nhóm xác nhận. Đây chưa phải đơn đặt hàng.
+Mục đích: khảo sát chi phí cho phương án 3 trạm giám sát chất lượng nước trong 3 năm tại Hà Nội theo phản hồi Akai; địa điểm và cấu hình cụ thể vẫn cần nhóm xác nhận. Đây chưa phải đơn đặt hàng.
 
 Kính gửi [tên nhà cung cấp],
 
@@ -44,8 +44,9 @@ Không báo cộng đồng thời board tích hợp và module M.2 riêng vào c
 
 1. Cáp ngoài trời, đầu nối, giá/rack cảm biến và phụ kiện gá lắp.
 2. Lắp đặt, commissioning, hiệu chuẩn ban đầu và nghiệm thu.
-3. Hiệu chuẩn, vệ sinh và kiểm tra định kỳ trong 12 tháng: báo **lịch chính 26 lượt vệ sinh/năm (mỗi 14 ngày)**; nếu thuận tiện, thêm phương án so sánh 24 lượt/năm (hai lần/tháng). Ghi rõ 12 lần hiệu chuẩn có trùng lượt vệ sinh không, công di chuyển, vật tư chuẩn và lượt bổ sung sau mưa lũ.
-4. Bảo trì, sửa chữa, thay màng hoặc sửa cảm biến DO và thu gom/thải bỏ cuối vòng đời.
+3. Kiểm tra chức năng và bảo dưỡng phòng ngừa **6 tháng/lần/trạm** trong 3 năm: báo riêng 2 lượt/trạm/năm (18 lượt cho 3 trạm/3 năm), checklist cảm biến, truyền dữ liệu, nguồn, hộp/cáp, công di chuyển và vật tư. Cho biết việc hiệu chuẩn/vệ sinh nào có thể gộp vào lượt này.
+4. Vệ sinh và hiệu chuẩn ngoài hai lượt kiểm tra trên: xin đơn giá/lượt và tần suất kỹ thuật khuyến nghị; 24/26 lượt vệ sinh và 12 hiệu chuẩn/năm trong bảng cũ chỉ là kịch bản cần Đạt xác nhận, không là số lượng đặt dịch vụ. Báo riêng lượt sau mưa lũ.
+5. Ở mốc 3 năm: báo giá kiểm tra hao mòn/ăn mòn và đơn giá từng linh kiện có thể phải thay, tiêu chí quyết định thay, công tháo/lắp, hiệu chuẩn lại và thu gom/thải bỏ. Không mặc định thay toàn bộ linh kiện sau 3 năm; báo riêng sửa chữa phát sinh và vật tư DO/pH.
 
 Vui lòng tách từng hạng mục trong báo giá thay vì báo một khoản trọn gói. Báo giá sẽ được dùng để lập ngân sách sơ bộ; không được hiểu là cam kết mua hàng.
 
