@@ -89,4 +89,4 @@ Status conventions: `[ ]` TODO; `[ ]` IN_PROGRESS or BLOCKED when explicitly lab
 - U-08 DONE. Verified stronger pushes in all four swipe directions and a separate 2.5-second cooldown for each piece.
 - U-09 DONE. Increased cursor reach and verified nearly twice the travel on a short swipe near the trash.
 - U-10 DONE. Reduced the cooldown to 1.5 seconds and verified independent timers for two pieces.
-- U-11 IN_PROGRESS. Set the per-piece cooldown to 0.75 seconds and verify the new threshold.
+- U-11 DONE. Set the per-piece cooldown to 0.75 seconds and verified the new threshold.

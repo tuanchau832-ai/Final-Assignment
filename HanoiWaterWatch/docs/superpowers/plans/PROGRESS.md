@@ -146,3 +146,5 @@ The Chromium probe confirmed no second push at 1,499 ms and a renewed push at 1,
 U-10 verified. The production build passed.
 
 U-11 starts from the verified per-piece timer. Set the cooldown to 750 ms and check a repeat swipe on each side of the threshold.
+
+U-11 verified. The seeded Chromium probe confirmed that a second swipe has no effect at 749 ms and pushes the same piece again at 750 ms. A second piece responded independently. The production build passed.
