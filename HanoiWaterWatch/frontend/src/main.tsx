@@ -12,6 +12,7 @@ import './i18n';
 import './styles.css';
 import './workspace.css';
 import './floating.css';
+import './theme.css';
 
 const MapHome = lazy(() => import('./MapHome'));
 const Overview = lazy(() => import('./OverviewPage'));

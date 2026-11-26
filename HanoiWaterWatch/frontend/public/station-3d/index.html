@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>WaterWatch River Station</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+  <main class="stage" id="stage">
+    <div id="gl" aria-label="3D model of a WaterWatch station on a polluted Hanoi river"></div>
+    <div class="titlebar">
+      <div class="brand">
+        <div class="eyebrow" data-i="eyebrow">Hanoi WaterWatch · interactive 3D</div>
+        <h1 data-i="title" data-html>A station on a <em>polluted Hanoi river</em></h1>
+        <p data-i="rot">Drag to rotate in any direction · scroll or pinch to zoom · right-drag to move</p>
+      </div>
+      <div class="tr">
+        <button class="focus" id="focusBtn" data-i="focus">◎ Focus on station</button>
+        <div class="lang" role="group" aria-label="Language">
+          <button id="lang-en" aria-pressed="true">EN</button><button id="lang-vi" aria-pressed="false">VI</button>
+        </div>
+      </div>
+    </div>
+    <div class="dock">
+      <div class="sl">
+        <div class="row"><label for="discharge" data-i="sliderT">Wastewater discharge</label><span class="val" id="sval">20%</span></div>
+        <input type="range" id="discharge" min="0" max="100" value="20">
+        <div class="ticks"><span data-i="tLow">Light</span><span data-i="tMid">Normal</span><span data-i="tHigh">Heavy</span></div>
+      </div>
+      <div class="btns">
+        <button class="btn primary" id="playBtn" data-i="play">Play: how it works</button>
+        <button class="btn warn" id="spikeBtn" data-i="spike">Simulate a discharge</button>
+        <button class="btn" id="spinBtn" aria-pressed="false" data-i="spin">Auto-rotate</button>
+        <button class="btn" id="resetBtn" data-i="reset">Reset</button>
+        <button class="btn infoBtn" id="infoBtn" data-i="info">Details</button>
+      </div>
+      <div class="stat">
+        <div><small data-i="tStatus">Status</small><span class="pill ok" id="pill">SAFE</span></div>
+        <div><small data-i="tRun">Over limit in a row</small><span class="run" id="run">0<span> / 3</span></span></div>
+      </div>
+      <div class="hint" data-i="hint">Tap marker 1 (the screen) or 2 (the drain outlet). You can also tap the parts on the model.</div>
+    </div>
+  </main>
+
+  <aside class="panel" id="panel" aria-live="polite">
+    <div class="head"><div style="display:flex;gap:12px;align-items:center;min-width:0"><span class="num" id="pNum">?</span><div style="min-width:0"><div class="eyebrow" id="pEye"></div><h2 id="pTitle"></h2></div></div><button class="close" id="closeBtn" aria-label="Close">×</button></div>
+    <div class="pbody" id="pbody"></div>
+    <div class="phone" id="phone">
+      <div class="ph"><span>WaterWatch Hanoi</span><span id="clock">--:--</span></div>
+      <b id="phT"></b><span class="msg" id="phM"></span>
+    </div>
+    <p class="disc" data-i="disclaimer">Example values for the demonstration, not real measurements.</p>
+  </aside>
+</div>
+
+<script src="./vendor/three.min.js"></script>
+<script src="./vendor/OrbitControls.js"></script>
+<script src="./script.js"></script>
+</body>
+</html>

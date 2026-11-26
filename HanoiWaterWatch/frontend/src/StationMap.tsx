@@ -98,13 +98,15 @@ function Pins({ stations, states, selected, counts, onSelect }: MapProps) {
     const title = station.river + ' · ' + station.code + ' · ' + visuals.statuses[status].label[i18n.language === 'vi' ? 'vi' : 'en'];
     const icon = L.divIcon({
       className: 'station-pin pin-' + status + (station.data_mode === 'planned' ? '' : ' pin-simulated') + (selected === station.code ? ' pin-selected' : ''),
-      html: '<span class="pin-glyph"></span>', iconSize: [42, 42], iconAnchor: [21, 21]
+      // A large teardrop pin coloured by status, with a water-drop sensor glyph, so stations stand out on busy streets.
+      html: '<span class="pin-pulse"></span><svg class="pin-svg" viewBox="0 0 44 54" aria-hidden="true"><path class="pin-shape" d="M22 52C22 52 4 33 4 20.5A18 18 0 0 1 40 20.5C40 33 22 52 22 52Z"/><circle class="pin-core" cx="22" cy="20.5" r="11.5"/><path class="pin-drop" d="M22 12.5C22 12.5 16.5 19 16.5 22.6A5.5 5.5 0 0 0 27.5 22.6C27.5 19 22 12.5 22 12.5Z"/></svg>',
+      iconSize: [44, 54], iconAnchor: [22, 52]
     });
     const open = states[first]?.open_alert_count;
     return <Marker key={station.code} position={xy(station)} title={title} icon={icon}
       eventHandlers={{ click: () => onSelect?.(station.code) }}>
-      <Tooltip key={String(counts)} permanent direction="top" offset={[0, -18]} className="station-pin-label">
-        {station.river}{counts && open !== undefined && <b> · {open} ⚑</b>}
+      <Tooltip key={String(counts) + status} permanent direction="top" offset={[0, -50]} className={'station-pin-label label-' + status}>
+        <i className="label-dot"/>{station.river}{counts && open !== undefined && <b> · {open} ⚑</b>}
       </Tooltip>
     </Marker>;
   })}</>;

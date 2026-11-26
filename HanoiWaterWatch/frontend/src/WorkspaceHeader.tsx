@@ -9,6 +9,7 @@ import { Cascade, IconButton, stagger } from './FloatingControls';
 import { demoMode } from './features';
 import { destinations } from './navigation';
 import type { Alert } from './types';
+import NavArt from './NavArt';
 
 const items = [
   ['mapHome', Map], ['overview', LayoutDashboard], ['model', Box],
@@ -65,6 +66,9 @@ export default function WorkspaceHeader({ health, floating, alerts, pending, ale
         </nav>
       </Cascade>
     </div>
+    <nav className={floating ? 'dest-dock' : 'dest-tabs'} aria-label={t('workspace')}>
+      {items.map(([key]) => <NavLink key={key} to={paths[key]} className="dest-link" title={t(key)}><NavArt kind={key}/><span>{t('short_' + key)}</span></NavLink>)}
+    </nav>
     <div className="header-tools">
       {!floating && !demoMode && <span className={'health-light ' + health}>{t(health)}</span>}
       {!floating && <Link className="floating-icon station-search-shortcut" aria-label={t('stationSearch')} title={t('stationSearch')} to={paths.mapHome + (paths.mapHome.includes('?') ? '&' : '?') + 'search=1'}><Search size={21}/></Link>}

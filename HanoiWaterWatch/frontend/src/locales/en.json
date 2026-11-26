@@ -217,5 +217,15 @@
   "demoExplanation": "Demo mode. Synthetic station measurements, alerts and reviews for demonstration. Station locations are illustrative.",
   "demoSimulation": "Simulated result · Not an observed measurement",
   "demoProfile": "Demo workspace profile",
-  "offlineStations": "Offline stations"
+  "offlineStations": "Offline stations",
+  "virtualStation": "Virtual sensor station",
+  "openFull": "Open full screen",
+  "simCredit": "Virtual ESP32 station built by Tuấn and Đạt. Move the sliders to change the water readings.",
+  "modelCredit": "3D station model designed by Thư. Drag to rotate, scroll to zoom.",
+  "short_mapHome": "Map",
+  "short_overview": "Overview",
+  "short_model": "Station",
+  "short_dashboard": "Readings",
+  "short_alerts": "Alerts",
+  "short_simulation": "Simulation"
 }

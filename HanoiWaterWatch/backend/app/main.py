@@ -55,8 +55,8 @@ def create_app(database_url=None,testing=False):
     async def security(request,call_next):
         if request.method in ('POST','PUT','PATCH','DELETE') and request.url.path.startswith('/api/v1/') and not request.url.path.endswith('/ingest/frames'):
             if request.headers.get('X-Requested-With')!='hww' or not request.headers.get('Content-Type','').startswith('application/json'):return await problem(request,Problem(403,'forbidden','JSON and X-Requested-With: hww are required'))
-        response=await call_next(request);response.headers.update({'X-Content-Type-Options':'nosniff','Referrer-Policy':'same-origin','Strict-Transport-Security':'max-age=31536000; includeSubDomains'})
-        if response.headers.get('Content-Type','').startswith('text/html'):response.headers['Content-Security-Policy']="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://tile.openstreetmap.org; connect-src 'self'; frame-ancestors 'none'"
+        response=await call_next(request);response.headers.update({'X-Content-Type-Options':'nosniff','Referrer-Policy':'strict-origin-when-cross-origin','Strict-Transport-Security':'max-age=31536000; includeSubDomains'})
+        if response.headers.get('Content-Type','').startswith('text/html'):response.headers['Content-Security-Policy']="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://tile.openstreetmap.org; connect-src 'self'; frame-ancestors 'self'"
         return response
     def current(request,role=None):
         token=request.cookies.get('hww_session');user=None
