@@ -52,7 +52,7 @@ export function useAction() {
     mutationFn: ({ path, body }: { path: string; body: unknown }) => api<Record<string, unknown>>(path, body),
     onSuccess: async (_, { path }) => {
       if (path === '/auth/logout') {
-        const privateKeys = ['alert', 'alerts', 'replays', 'sessions'];
+        const privateKeys = ['alert', 'alerts', 'replays', 'sessions', 'admin', 'notifications'];
         const privateQuery = (q: { queryKey: readonly unknown[] }) => privateKeys.includes(String(q.queryKey[0]));
         await client.cancelQueries({ predicate: q => q.queryKey[0] === 'user' || privateQuery(q) });
         client.setQueryData(['user'], null);

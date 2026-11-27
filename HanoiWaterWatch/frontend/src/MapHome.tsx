@@ -15,6 +15,7 @@ import StationMap, { fitStations } from './StationMap';
 import { Cascade, IconButton, stagger } from './FloatingControls';
 import { matchesStation, snapshotStatus } from './mapStations';
 import { useMapLabel } from './mapLabels';
+import StationLifecycle from './StationLifecycle';
 import visuals from '../../shared/registry/status_visuals.json';
 import sensorTypes from '../../shared/registry/sensor_types.json';
 
@@ -54,7 +55,7 @@ function Inspector({ station, state, disconnected, loading, close, retry, channe
         {size === 'preview' && <IconButton className="sheet-resize" aria-label={label('minimize')} onClick={() => setSize('min')}><ChevronDown/></IconButton>}
         <IconButton aria-label={label('close')} onClick={close}><X size={19}/></IconButton></div></div>
     <h2 tabIndex={-1} ref={ref}>{text(station.name)}</h2>
-    <div className="inspect-status"><StatusBadge status={snapshotStatus(state, disconnected)}/>{station.data_mode === 'planned' ? <small>{t('planned')}</small> : <Source state={state}/>}</div>
+    <div className="inspect-status"><StationLifecycle lifecycle={station.lifecycle}/><StatusBadge status={snapshotStatus(state, disconnected)}/>{station.data_mode === 'planned' ? <small>{t('planned')}</small> : <Source state={state}/>}</div>
     <div className="inspect-body">
       <dl className="inspect-metadata"><div><dt>{label('river')}</dt><dd>{station.river}</dd></div>
         <div><dt>{label('coords')}</dt><dd>{station.location.lat.toFixed(3)}° N · {station.location.lng.toFixed(3)}° E</dd></div>
@@ -72,13 +73,12 @@ function Inspector({ station, state, disconnected, loading, close, retry, channe
       <section className="inspect-section"><h3>{label('active')}</h3>
         {alerts.isError || alerts.isPaused ? <p>{t('error')} <button onClick={() => void alerts.refetch()}>{label('retry')}</button></p>
           : alerts.isLoading ? <p>{t('loading')}</p> : alerts.data?.items.length
-            ? alerts.data.items.map(alert => <Link className="inspect-alert" to={'/alerts/' + alert.id} key={alert.id}>{text(alert.rule_name)} · {alert.severity}<ArrowUpRight size={14}/></Link>) : <p>{t('noAlerts')}</p>}
+            ? alerts.data.items.map(alert => <Link className="inspect-alert" to={'/overview/alerts/' + alert.id + stationQuery} key={alert.id}>{text(alert.rule_name)} · {alert.severity}<ArrowUpRight size={14}/></Link>) : <p>{t('noAlerts')}</p>}
       </section>
       <nav className="inspect-links" aria-label={label('details')}>
         <Link to={'/stations/' + station.code + '/dashboard'}>{t('dashboard')} <ArrowUpRight/></Link>
         <Link to={'/stations/' + station.code + '/model'}>{t('model')} <ArrowUpRight/></Link>
-        <Link to={'/alerts' + stationQuery}>{t('alerts')} <ArrowUpRight/></Link>
-        <Link to={'/simulation' + stationQuery}>{t('simulation')} <ArrowUpRight/></Link>
+        <Link to={'/overview/alerts' + stationQuery}>{t('alerts')} <ArrowUpRight/></Link>
       </nav>
     </div>
   </aside>;
@@ -149,7 +149,13 @@ export default function MapHome() {
     window.addEventListener('online', update); window.addEventListener('offline', update);
     return () => { window.removeEventListener('online', update); window.removeEventListener('offline', update); };
   }, []);
-  useEffect(() => { if (new URLSearchParams(location.search).has('search')) setSearchOpen(true); }, [location.key]);
+  useEffect(() => {
+    if (new URLSearchParams(location.search).has('search')) {
+      setSearchOpen(true);
+      setExpanded(false);
+      setTool(null);
+    }
+  }, [location.key]);
   useEffect(() => {
     if (!expanded) return;
     if (tool) toolsRef.current?.querySelector<HTMLButtonElement>('.map-pop-head button')?.focus();
@@ -205,10 +211,10 @@ export default function MapHome() {
           </details></div>
         </div>
         {demoMode && <div className="demo-map-flag"><FlaskConical size={14} aria-hidden="true"/>{t('demoIndicator')}</div>}
-        <div className="station-search-origin" ref={searchGroup} data-expanded={searchOpen}>
-          <IconButton ref={searchButton} className="station-search-trigger" aria-label={t('stationSearch')}
+        <div className="map-list-control" ref={searchGroup}>
+          <IconButton ref={searchButton} className="station-search-trigger" aria-label={t('stationSearch')} title={label('list')}
             aria-controls="station-search-panel" aria-expanded={searchOpen} onClick={() => searchOpen ? setSearchOpen(false) : openSearch()}>
-            {searchOpen ? <X size={21}/> : <Search size={21}/>}
+            {searchOpen ? <X size={21}/> : <List size={21}/>}
           </IconButton>
           <Cascade open={searchOpen} className="station-search-cascade">
             <section id="station-search-panel" className="floating-list station-search-panel" aria-label={label('list')}>
@@ -217,7 +223,7 @@ export default function MapHome() {
                   value={params.get('q') || ''} onChange={e => change({ q: e.target.value, search: null }, true)}/></label>
               {shown.length ? <ul className="map-results">{shown.map(({station, i}) => <li key={station.code}>
                 <button aria-pressed={station.code === stationCode} onClick={() => showStation(station.code)}>
-                  <span><strong>{text(station.name)}</strong><small>{station.code} · {station.river}</small>
+                  <span><strong>{text(station.name)}</strong><StationLifecycle lifecycle={station.lifecycle}/><small>{station.code} · {station.river}</small>
                     <small>{station.location.lat.toFixed(3)}° N · {station.location.lng.toFixed(3)}° E</small></span>
                   <span className="station-result-meta"><StatusBadge status={snapshotStatus(snapshots[i], disconnected[i])}/>
                     <Source state={snapshots[i]}/>
@@ -227,21 +233,16 @@ export default function MapHome() {
             </section>
           </Cascade>
         </div>
-        <div className="map-zoom-stack" aria-label={label('stationMap')}>
-          <IconButton aria-label={label('zoomIn')} title={label('zoomIn')} disabled={!map} onClick={() => map?.zoomIn()}><Plus size={21}/></IconButton>
-          <IconButton aria-label={label('zoomOut')} title={label('zoomOut')} disabled={!map} onClick={() => map?.zoomOut()}><Minus size={21}/></IconButton>
-        </div>
         <div className="map-tools" ref={toolsRef}>
           <IconButton ref={toolTrigger} className="map-tools-trigger" aria-label={label('tools')} title={label('tools')}
-            aria-controls={tool ? 'map-tool-panel' : 'map-tool-choices'} aria-expanded={expanded} onClick={() => { setExpanded(!expanded); setTool(null); }}>
+            aria-controls={tool ? 'map-tool-panel' : 'map-tool-choices'} aria-expanded={expanded} onClick={() => { setExpanded(!expanded); setTool(null); setSearchOpen(false); }}>
             {expanded ? <X size={21}/> : <SlidersHorizontal size={21}/>}
           </IconButton>
           <Cascade open={expanded && !tool} className="map-tools-cascade">
             <div id="map-tool-choices" className="floating-list">
-              <button className="cascade-item" style={stagger(0, tools.length + 2)} disabled={!map || !stations.length}
+              <button className="cascade-item" style={stagger(0, tools.length + 1)} disabled={!map || !stations.length}
                 onClick={() => { if (map) fitStations(map, stations); }}><LocateFixed size={18}/><span>{label('fit')}</span></button>
-              <button className="cascade-item" style={stagger(1, tools.length + 2)} onClick={openSearch}><List size={18}/><span>{label('list')}</span></button>
-              {tools.map(({id, name, Icon}, index) => <button key={id} className="cascade-item" style={stagger(index + 2, tools.length + 2)}
+              {tools.map(({id, name, Icon}, index) => <button key={id} className="cascade-item" style={stagger(index + 1, tools.length + 1)}
                 ref={node => { buttons.current[id] = node; }} onClick={() => setTool(id)}><Icon size={18}/><span>{name}</span>
                 {id === 'filters' && activeFilters > 0 && <b>{activeFilters}</b>}</button>)}
             </div>
@@ -266,6 +267,10 @@ export default function MapHome() {
               <li key={status}><span aria-hidden="true" className={'key-symbol pin-' + status}><span className="pin-glyph"/></span><StatusBadge status={status}/></li>)}
               <li><strong className="sim-symbol">S</strong>{t('source')}</li></ul>}
           </section>}
+        </div>
+        <div className="map-zoom-stack" role="group" aria-label={label('stationMap')}>
+          <IconButton aria-label={label('zoomIn')} title={label('zoomIn')} disabled={!map} onClick={() => map?.zoomIn()}><Plus size={21}/></IconButton>
+          <IconButton aria-label={label('zoomOut')} title={label('zoomOut')} disabled={!map} onClick={() => map?.zoomOut()}><Minus size={21}/></IconButton>
         </div>
         {(failure || pending || !shown.length || (stationCode && !selected)) && <div className="map-message" role="status">
           {failure ? <>{label('stale')} <button onClick={retry}>{label('retry')}</button></> : pending ? t('loading')

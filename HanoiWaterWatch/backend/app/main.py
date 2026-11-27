@@ -13,6 +13,7 @@ import jwt
 from .service import Service,Problem,now,stamp,dt,ROOT
 from .schemas import Batch
 from .models import *
+from .notifications import notification_routes
 
 def create_app(database_url=None,testing=False):
     service=Service(database_url or os.getenv('DATABASE_URL','sqlite:///./waterwatch.db'),testing)
@@ -38,7 +39,11 @@ def create_app(database_url=None,testing=False):
         service.seed()
         if not testing:
             track(asyncio.create_task(monitor()))
-            if os.getenv('DEMO_MODE','true').lower()=='true' and os.getenv('REPLAY_TLH_ENABLED','true').lower()=='true' and (ROOT/'shared/fixtures/replays/tlh-loop.jsonl').exists():await start_replay('tlh-loop',{'station_code':'HWW-TLH-001','speed':1,'takeover':True,'loop':True})
+            if os.getenv('DEMO_MODE','true').lower()=='true' and os.getenv('REPLAY_TLH_ENABLED','true').lower()=='true' and (ROOT/'shared/fixtures/replays/tlh-loop.jsonl').exists():
+                with service.DB() as db:
+                    autorun = service.station(db, 'HWW-TLH-001').lifecycle == 'active'
+                if autorun:
+                    await start_replay('tlh-loop',{'station_code':'HWW-TLH-001','speed':1,'takeover':True,'loop':True})
         yield
         pending = list(tasks)
         for task in pending:task.cancel()
@@ -91,10 +96,10 @@ def create_app(database_url=None,testing=False):
         return {'status':'ok','db':'ok','app_version':'1.0.0','uptime_s':time.monotonic()-started,'ingest_enabled':os.getenv('INGEST_ENABLED','true').lower()=='true','is_simulated':True}
     @app.get('/api/v1/meta')
     def meta():return dict(app_version='1.0.0',version='1.0.0',features={'sse':False},languages=['en','vi'],model={'glb_path':'/models/station-v1.glb','version':1},api_version='v1',registry_version=1,server_time=stamp(),frame_interval_ms=int(os.getenv('FRAME_INTERVAL_MS','2000')),offline_after_s=int(os.getenv('OFFLINE_AFTER_S','15')),session_end_after_s=int(os.getenv('SESSION_END_AFTER_S','60')),wokwi_project_url=os.getenv('WOKWI_PROJECT_URL') or None,sse_enabled=False,is_simulated=True)
-    def metadata(st):return {**st.registry['station'],'sensors':[{**s,**service.types[s['channel']]} for s in st.registry['sensors']],'model':st.registry['model'],'device':st.registry.get('device'),'registry_version':st.registry['registry_version'],'is_simulated':True}
+    def metadata(st):return {**st.registry['station'],'lifecycle':st.lifecycle,'sensors':[{**s,**service.types[s['channel']]} for s in st.registry['sensors']],'model':st.registry['model'],'device':st.registry.get('device'),'registry_version':st.registry['registry_version'],'is_simulated':True}
     @app.get('/api/v1/stations')
     def stations():
-        with service.DB() as db:return {'items':[metadata(s) for s in db.scalars(select(Station).order_by(Station.code))],'is_simulated':True}
+        with service.DB() as db:return {'items':[metadata(s) for s in db.scalars(select(Station).where(Station.lifecycle != 'archived').order_by(Station.code))],'is_simulated':True}
     @app.get('/api/v1/stations/{code}')
     def station(code):
         with service.DB() as db:return metadata(service.station(db,code))
@@ -327,6 +332,10 @@ def create_app(database_url=None,testing=False):
             await asyncio.gather(*stopped,return_exceptions=True)
             runs.clear()
             with service.lock,service.DB.begin() as db:
+                quality_events = select(Notification.id).where(Notification.kind == 'water_quality')
+                db.execute(delete(NotificationDelivery).where(NotificationDelivery.notification_id.in_(quality_events)))
+                db.execute(delete(Notification).where(Notification.kind == 'water_quality'))
+                db.execute(delete(WaterCondition))
                 counts={name:db.scalar(select(func.count()).select_from(model)) for name,model in [('sessions',Session),('frames',FrameRow),('measurements',Measurement),('alerts',Alert)]};db.execute(delete(Event));db.execute(delete(Measurement));db.execute(delete(Alert));db.execute(delete(Review));db.execute(delete(FrameRow));db.execute(delete(Session))
                 for s in db.scalars(select(Sensor)):s.value=None;s.measured_at=None;s.received_at=None;s.quality=None;s.gen=None;s.fault_reason=None;s.status='unavailable';s.status_since=stamp();s.last_valid_at=None;s.last_valid_value=None;s.rule_state={};s.historical_rule_state={}
                 for s in db.scalars(select(Station)):s.version+=1;s.status='unavailable';s.status_since=stamp();s.active_device=None;s.current_session=None;s.last_frame=None;s.last_measured=None
@@ -384,6 +393,7 @@ def create_app(database_url=None,testing=False):
         if not lines:raise Problem(422,'validation_error')
         with service.DB() as db:
             station = service.station(db,code)
+            if station.lifecycle != 'active':raise Problem(409,'station_inactive')
             if station.registry['station']['data_mode']=='planned':raise Problem(409,'station_busy')
             device = db.get(Device,'replay-'+code.lower())
             previous_id = station.current_session
@@ -432,6 +442,10 @@ def create_app(database_url=None,testing=False):
             with service.DB() as db:return {**service.session_dict(db.get(Session,id)),'is_simulated':True}
     @app.get('/api/v1/stream')
     def stream():raise Problem(503,'sse_disabled','Polling is supported; SSE is deferred')
+    notification_routes(app, service, current)
+    from .admin import register_admin
+    register_admin(app, service, current, payload, parse_range, metadata, replay_control,
+                   restart_tickets, cancel_replay)
     @app.api_route('/{path:path}',methods=['GET','HEAD'],include_in_schema=False)
     def spa(path:str):
         if path.startswith('api/'):raise Problem(404,'not_found')

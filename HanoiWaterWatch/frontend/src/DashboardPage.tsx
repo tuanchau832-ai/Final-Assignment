@@ -1,4 +1,5 @@
-import { memo, useEffect, useMemo, useRef, useState } from 'react';
+import StationLifecycle from './StationLifecycle';
+import { memo, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Brush, CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
@@ -58,6 +59,8 @@ function Value({ value, decimals = 0, suffix = '' }: { value: number | null | un
 export default function DashboardPage() {
   const { code = 'HWW-KNG-001' } = useParams(), { t, i18n } = useTranslation(), text = useText(), navigate = useNavigate();
   const [params, setParams] = useSearchParams();
+  const latestFilters = useRef(params);
+  useLayoutEffect(() => { latestFilters.current = params; }, [params]);
   const { registry, stations, snapshotQueries } = useNetworkStations();
   const station = useStation(code), q = useStationState(code), online = useOnline();
   const now = useClock(), range = params.get('range') || '1', channel = params.get('sensor') || '';
@@ -74,16 +77,24 @@ export default function DashboardPage() {
   const timeline = useResource<Timeline>('timeline', `/stations/${code}/timeline?${period}&limit=30`, 10000, !!window);
   const warning = useAlerts(`station=${code}&active=true&severity=warning&limit=1`);
   const critical = useAlerts(`station=${code}&active=true&severity=critical&limit=1`);
+  const alertFilters = new URLSearchParams(period);
+  alertFilters.set('station', code);
+  if (channel) alertFilters.set('channel', channel);
+  if (severity) alertFilters.set('severity', severity);
   const periodAlerts = useResource<{total:number;items:Array<{id:number;opened_at:string}>}>('dashboard-alerts',
-    `/alerts?station=${code}&${period}${channel ? '&channel='+encodeURIComponent(channel) : ''}${severity ? '&severity='+encodeURIComponent(severity) : ''}&limit=12`, 10000, !!window);
-  function filter(key: string, value: string) {
-    const next = new URLSearchParams(params);
+    `/alerts?${alertFilters}&limit=12`, 10000, !!window);
+  function updateFilter(key: string, value: string) {
+    // A second input can change before the router renders the first navigation.
+    const next = new URLSearchParams(latestFilters.current);
     if (value) next.set(key, value); else next.delete(key);
-    setParams(next);
+    latestFilters.current = next;
+    return next;
+  }
+  function filter(key: string, value: string) {
+    setParams(updateFilter(key, value));
   }
   function selectRiver(value: string) {
-    const next = new URLSearchParams(params);
-    if (value) next.set('river', value); else next.delete('river');
+    const next = updateFilter('river', value);
     const first = stations.find(s => s.river === value);
     if (value && first && station.data?.river !== value) navigate(`/stations/${first.code}/dashboard?${next}`);
     else setParams(next);
@@ -125,7 +136,7 @@ export default function DashboardPage() {
     <QueryState loading={q.isPending} error={q.error || station.error}/>
     <section className="dashboard-section" aria-label={t('currentSnapshot')}>
       <div className="section-heading"><div><h2>{t('currentSnapshot')}</h2><p>{demoMode ? t('demoSource') : t('historicalSource')}</p></div>
-        <div className="station-meta"><StatusBadge status={disconnected ? 'unavailable' : q.data?.station_status}/><Source state={disconnected ? undefined : q.data}/></div></div>
+        <div className="station-meta"><StationLifecycle lifecycle={station.data?.lifecycle}/><StatusBadge status={disconnected ? 'unavailable' : q.data?.station_status}/><Source state={disconnected ? undefined : q.data}/></div></div>
       <div className="dashboard-kpis">
         <div><span>{t('activeWarnings')}</span><Value value={online && warning.isSuccess ? warning.data.total : null}/></div>
         <div><span>{t('criticalAlerts')}</span><Value value={online && critical.isSuccess ? critical.data.total : null}/></div>
@@ -147,20 +158,20 @@ export default function DashboardPage() {
         <QueryState loading={timeline.isLoading} error={timeline.error}/>
         {timeline.data?.items.length ? <ul className="timeline scroll-list" tabIndex={0} aria-label={t('timeline')}>
           {timeline.data.items.map((e, i) => <li key={e.at + i}><strong>{e.type.replaceAll('_', ' ')}</strong><small>{formatTime(e.at, i18n.language)}</small>
-            {e.data.alert_id != null && <Link to={'/alerts/' + e.data.alert_id}>{t('alerts')} #{String(e.data.alert_id)}</Link>}</li>)}
+            {e.data.alert_id != null && <Link to={'/overview/alerts/' + e.data.alert_id + '?station=' + encodeURIComponent(code)}>{t('alerts')} #{String(e.data.alert_id)}</Link>}</li>)}
         </ul> : timeline.isSuccess && <Empty>{t('noEvents')}</Empty>}
       </section>
       <section className="dashboard-section"><h2>{t('alertsInPeriod')}</h2>
         <QueryState loading={periodAlerts.isLoading} error={periodAlerts.error}/>
         {periodAlerts.isSuccess && <><Value value={periodAlerts.data.total}/><ul className="timeline scroll-list" tabIndex={0} aria-label={t('alertsInPeriod')}>
-          {periodAlerts.data.items.map(alert => <li key={alert.id}><Link to={'/alerts/' + alert.id}>{t('alerts')} #{alert.id}</Link>
+          {periodAlerts.data.items.map(alert => <li key={alert.id}><Link to={'/overview/alerts/' + alert.id + '?' + alertFilters}>{t('alerts')} #{alert.id}</Link>
             <small>{formatTime(alert.opened_at, i18n.language)}</small></li>)}</ul></>}
       </section>
     </div>}
   </div>;
 }
 
-const HistoryChart = memo(function HistoryChart({ sensor, code, compare, window, disconnected }: { sensor: Sensor; code: string; compare?: string; window: Window; disconnected: boolean }) {
+export const HistoryChart = memo(function HistoryChart({ sensor, code, compare, window, disconnected }: { sensor: Sensor; code: string; compare?: string; window: Window; disconnected: boolean }) {
   const { t, i18n } = useTranslation(), text = useText(), reduced = useReducedMotion();
   const [table, setTable] = useState(false), [hidden, setHidden] = useState<string[]>([]), [animated, setAnimated] = useState(false);
   const bucket = compare && Date.parse(window.to) - Date.parse(window.from) <= 3600000 ? '10s' : 'auto';

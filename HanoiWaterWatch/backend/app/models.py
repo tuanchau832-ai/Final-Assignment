@@ -18,6 +18,8 @@ Base=declarative_base()
 J=JSON().with_variant(JSONB(),'postgresql')
 class Station(Base):
     __tablename__='stations'
+    lifecycle=Column(String,nullable=False,default='active',server_default='active')
+    monitoring_since=Column(UTCStamp())
     code=Column(String,primary_key=True); registry=Column(J,nullable=False); active_device=Column(String); version=Column(Integer,default=0,nullable=False); status=Column(String,default='unavailable'); status_since=Column(UTCStamp()); last_frame=Column(UTCStamp()); last_measured=Column(UTCStamp()); current_session=Column(String)
 class Device(Base):
     __tablename__='devices'
@@ -35,6 +37,7 @@ class FrameRow(Base):
     __table_args__=(UniqueConstraint('device','boot_id','seq'),)
 class Measurement(Base):
     __tablename__='measurements'
+    quality_eligible = Column(Boolean, nullable=False, default=False, server_default='0')
     id=Column(Integer,primary_key=True); frame_id=Column(Integer,ForeignKey('frames.id')); sensor=Column(String,ForeignKey('sensor_state.uid')); session=Column(String,ForeignKey('simulation_sessions.id')); measured_at=Column(UTCStamp(),index=True); received_at=Column(UTCStamp()); value=Column(Float); quality=Column(String); source=Column(String,nullable=False); is_simulated=Column(Boolean,default=True,nullable=False); raw=Column(Integer); gen=Column(String); fault_reason=Column(String)
     __table_args__=(UniqueConstraint('frame_id','sensor'),CheckConstraint("source IN ('simulated_wokwi','simulated_script','simulated_replay')"),CheckConstraint('is_simulated = true'),CheckConstraint("(quality = 'fault' AND value IS NULL) OR (quality <> 'fault' AND value IS NOT NULL)"))
 class Rule(Base):
@@ -53,6 +56,55 @@ class User(Base):
 class Review(Base):
     __tablename__='incident_reviews'
     id=Column(Integer,primary_key=True); status=Column(String,default='in_progress'); alert_ids=Column(J); created_by=Column(String,ForeignKey('users.username')); started_at=Column(UTCStamp()); submitted_at=Column(UTCStamp()); note=Column(String); outcome=Column(String); lab_reference=Column(String)
+
+class AdminAudit(Base):
+    __tablename__ = 'admin_audit'
+    id = Column(Integer, primary_key=True)
+    request_id = Column(String, nullable=False)
+    fingerprint = Column(String, nullable=False)
+    actor = Column(String, ForeignKey('users.username'), nullable=False)
+    action = Column(String, nullable=False)
+    station = Column(String, ForeignKey('stations.code'), index=True)
+    at = Column(UTCStamp(), nullable=False)
+    reason = Column(String)
+    before = Column(String)
+    after = Column(String)
+    audience = Column(String)
+    recipient_count = Column(Integer)
+    notification_id = Column(Integer)
+    __table_args__ = (UniqueConstraint('actor', 'request_id'),)
+
+class WaterCondition(Base):
+    __tablename__ = 'water_conditions'
+    station = Column(String, ForeignKey('stations.code'), primary_key=True)
+    session = Column(String, ForeignKey('simulation_sessions.id'), nullable=False)
+    condition = Column(String)
+    deferred_alert = Column(Integer)
+    sequence = Column(Integer, nullable=False, default=0)
+
+
+class Notification(Base):
+    __tablename__ = 'notifications'
+    id = Column(Integer, primary_key=True)
+    kind = Column(String, nullable=False)
+    at = Column(UTCStamp(), nullable=False)
+    station = Column(String, ForeignKey('stations.code'))
+    sequence = Column(Integer)
+    detail = Column(J, nullable=False)
+    __table_args__ = (UniqueConstraint('station', 'sequence'), {'sqlite_autoincrement': True})
+
+
+class NotificationInbox(Base):
+    __tablename__ = 'notification_inboxes'
+    username = Column(String, ForeignKey('users.username'), primary_key=True)
+
+
+class NotificationDelivery(Base):
+    __tablename__ = 'notification_deliveries'
+    username = Column(String, ForeignKey('users.username'), primary_key=True)
+    notification_id = Column(Integer, ForeignKey('notifications.id'), primary_key=True)
+    claim = Column(String)
+
 # At most one currently active episode; station-level alerts use a separate index because NULL is distinct.
 live_sensor_alert = Alert.cleared_at.is_(None) & Alert.sensor.is_not(None) & Alert.detected_late.is_(False)
 Index('uq_active_sensor_alert', Alert.sensor, Alert.rule_code, unique=True,

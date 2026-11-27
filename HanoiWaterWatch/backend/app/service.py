@@ -1,11 +1,12 @@
 import os,json,hashlib,hmac,secrets,uuid,statistics,threading
 from pathlib import Path
 from datetime import datetime,timezone,timedelta
-from sqlalchemy import create_engine,select,delete,func
+from sqlalchemy import create_engine,select,delete,func,text
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 from argon2 import PasswordHasher
 from .models import *
+from .notifications import update_condition
 ROOT=Path(__file__).resolve().parents[2]
 def now(): return datetime.now(timezone.utc)
 def stamp(t=None): return (t or now()).astimezone(timezone.utc).isoformat(timespec='milliseconds').replace('+00:00','Z')
@@ -77,18 +78,29 @@ class Service:
         if a and not a.cleared_at: a.cleared_at=t; self.event(db,a.station,'alert_cleared',{'alert_id':a.id},a.sensor,a.id,at=t)
     def evaluate(self,db,st,sensor,session,m,rules,*,historical=False):
         states=json.loads(json.dumps(sensor.rule_state or {})); t=m.measured_at; value=m.value
+        ready = pending = False
+        changes = []
         for rule in rules:
             code=rule['code']
             if not rule['enabled'] or rule['applies_to'] not in ('all',sensor.channel): continue
             rs=states.setdefault(code,{'pending':0,'active':False,'clear_count':0})
-            if rule['category']=='water_quality' and m.quality!='ok': rs['pending']=0;continue
+            if rule['category']=='water_quality' and not historical:
+                previous_at = rs.get('last_live_at')
+                if previous_at and (dt(t) - dt(previous_at)).total_seconds() > float(os.getenv('OFFLINE_AFTER_S','15')) / session.speed:
+                    rs['pending'] = rs['clear_count'] = 0
+                rs['last_live_at'] = t
+            if rule['category']=='water_quality' and m.quality!='ok':
+                rs['pending']=0;rs['clear_count']=0;continue
             p=rule['params'];base=rs.get('frozen_baseline'); threshold=None
             if rs.get('active') and rs.get('alert_id'):
                 episode=db.get(Alert,rs['alert_id'])
                 if episode:p=episode.params_snapshot
             if code.startswith('CHG_') and not rs['active']:
                 window=300/session.speed; gap=10/session.speed
-                vals=db.scalars(select(Measurement.value).where(Measurement.sensor==sensor.uid,Measurement.session==session.id,Measurement.quality=='ok',Measurement.measured_at>=stamp(dt(t)-timedelta(seconds=window)),Measurement.measured_at<=stamp(dt(t)-timedelta(seconds=gap)))).all()
+                baseline_query = select(Measurement.value).where(Measurement.sensor==sensor.uid,Measurement.session==session.id,Measurement.quality=='ok',Measurement.measured_at>=stamp(dt(t)-timedelta(seconds=window)),Measurement.measured_at<=stamp(dt(t)-timedelta(seconds=gap)))
+                if not historical:
+                    baseline_query = baseline_query.where(Measurement.quality_eligible.is_(True))
+                vals=db.scalars(baseline_query).all()
                 if len(vals)<30 or (dt(t)-dt(session.started_at)).total_seconds()<60/session.speed: rs['warming_up']=True;rs['pending']=0;continue
                 base=statistics.median(vals);rs['warming_up']=False
             if code=='VALID_RANGE': hit=m.quality!='ok';clear=not hit
@@ -97,6 +109,7 @@ class Service:
             elif code=='CHG_TURB_SPIKE': threshold=max(p['multiplier']*base,base+p['delta']);hit=value>=threshold;clear=value<threshold
             elif code=='CHG_DO_DROP': threshold=p['ratio']*base;hit=value<=threshold and base-value>=p['delta'];clear=value>=p['clear_ratio']*base
             else: continue
+            was_active = rs['active']
             if not rs['active']:
                 rs['pending']=rs['pending']+1 if hit else 0
                 if rs['pending']>=rule['persistence']:
@@ -105,7 +118,13 @@ class Service:
                 rs['clear_count']=rs['clear_count']+1 if clear else 0
                 if rs['clear_count']>=rule['clear_persistence']:
                     self.clear_alert(db,db.get(Alert,rs['alert_id']),t);rs.update(active=False,pending=0,clear_count=0,frozen_baseline=None)
+            if rule['category'] == 'water_quality':
+                ready = True
+                pending |= bool(rs['pending'] and not rs['active'])
+                if was_active != rs['active']:
+                    changes.append(rs['alert_id'])
         sensor.rule_state=states
+        return ready, pending, changes
 
     def evaluate_history(self, db, station, sensor, session, measurement, rules):
         # A later batch can contain readings from an already reconciled episode.
@@ -162,6 +181,9 @@ class Service:
             elif st.status=='offline': status='offline'
             elif s.quality in ('fault','invalid') or (s.rule_state or {}).get('VALID_RANGE',{}).get('active'): status='sensor_fault'
             elif any(v.get('active') for k,v in (s.rule_state or {}).items() if k!='VALID_RANGE'): status='abnormal'
+            elif not any(k != 'VALID_RANGE' for k in (s.rule_state or {})) and any(
+                v.get('active') for k,v in (s.historical_rule_state or {}).items() if k != 'VALID_RANGE'
+            ): status='abnormal'
             else: status='normal'
             s.status=status
             if old!=status: s.status_since=t;self.event(db,st.code,'status_changed',{'from':old,'to':status},s.uid,at=t)
@@ -177,7 +199,11 @@ class Service:
         received=received or now(); rt=stamp(received)
         if batch.station_code!=device.station or batch.device_code!=device.code: raise Problem(403,'station_mismatch')
         with self.lock,self.DB.begin() as db:
+            if db.bind.dialect.name == 'sqlite':
+                db.execute(text('BEGIN IMMEDIATE'))
             st=self.station(db,batch.station_code,True)
+            if st.lifecycle != 'active':
+                raise Problem(409, 'station_inactive')
             if st.registry['station']['data_mode']=='planned': raise Problem(403,'station_mismatch')
             channels={s['channel'] for s in st.registry['sensors']}
             for f in batch.frames:
@@ -191,6 +217,9 @@ class Service:
                 if f.seq in seen or db.scalar(select(FrameRow.id).where(FrameRow.device==device.code,FrameRow.boot_id==batch.boot_id,FrameRow.seq==f.seq)):
                     results.append({'seq':f.seq,'status':'duplicate'});continue
                 measured=received-timedelta(milliseconds=batch.sent_uptime_ms-f.uptime_ms) if f.time_source=='uptime' else f.measured_at
+                if st.monitoring_since and stamp(measured) < st.monitoring_since:
+                    results.append({'seq': f.seq, 'status': 'rejected', 'reason': 'before_monitoring_restart'})
+                    continue
                 age=(received-measured).total_seconds()
                 if age>86400 or age < -300:
                     results.append({'seq':f.seq,'status':'rejected','reason':'too_old' if age>86400 else 'future_timestamp'});continue
@@ -199,6 +228,14 @@ class Service:
                 duplicates=sum(r['status']=='duplicate' for r in results)
                 return dict(results=results,accepted=0,duplicates=duplicates,rejected=len(results)-duplicates,station_status=st.status,state_version=st.version,server_time=rt,next_min_interval_ms=int(os.getenv('FRAME_INTERVAL_MS','2000')),is_simulated=True)
             active=db.scalar(select(Session).where(Session.station==st.code,Session.ended_at.is_(None)))
+            if active and not expected_session and active.last_frame_at and (
+                received - dt(active.last_frame_at)
+            ).total_seconds() > float(os.getenv('SESSION_END_AFTER_S', '60')) / active.speed:
+                active.ended_at = rt
+                active.end_reason = 'idle_timeout'
+                self.event(db, st.code, 'session_ended', {'session_id': active.id, 'reason': active.end_reason})
+                db.flush()
+                active = None
             if expected_session and (not active or active.id != expected_session):
                 raise Problem(409,'station_busy')
             if active and (active.device!=device.code or replay_name) and not takeover:
@@ -228,20 +265,37 @@ class Service:
             rules=[r.data for r in db.scalars(select(Rule))]
             touched_sensors = set()
             for t,f,row in sorted(new,key=lambda x:x[0]):
+                ready = pending = False
+                changes = []
+                age = (received - dt(t)).total_seconds()
+                freshness_window = float(os.getenv('OFFLINE_AFTER_S','15')) / session.speed
+                fresh = not f.buffered and 0 <= age <= freshness_window
                 for c,r in f.readings.items():
                     sensor=db.get(Sensor,st.code+':'+c);spec=self.types[c]
                     quality='fault' if r.q=='fault' else 'invalid' if not spec['valid_min']<=r.v<=spec['valid_max'] else 'ok'
                     m=Measurement(frame_id=row.id,sensor=sensor.uid,session=session.id,measured_at=t,received_at=rt,value=r.v,quality=quality,source=session.source,raw=r.raw,gen=r.gen,fault_reason=r.fr if quality=='fault' else 'out_of_range' if quality=='invalid' else None)
+                    latest = not sensor.measured_at or t > sensor.measured_at
+                    m.quality_eligible = fresh and latest and quality == 'ok'
                     db.add(m);db.flush()
                     touched_sensors.add(sensor.uid)
-                    if sensor.measured_at and t<=sensor.measured_at:
+                    if not latest:
                         self.evaluate_history(db,st,sensor,session,m,rules)
+                    elif not fresh:
+                        # Historical readings can produce review evidence but never
+                        # advance the persistence or recovery count of a live episode.
+                        self.evaluate(db, st, sensor, session, m, [r for r in rules if r['category'] != 'water_quality'])
+                        self.evaluate_history(db, st, sensor, session, m, [r for r in rules if r['category'] == 'water_quality'])
                     else:
-                        self.evaluate(db,st,sensor,session,m,rules)
+                        eligible, confirming, changed = self.evaluate(db,st,sensor,session,m,rules)
+                        ready |= eligible
+                        pending |= confirming
+                        changes.extend(changed)
                     if not sensor.measured_at or t>sensor.measured_at:
                         sensor.value=r.v;sensor.measured_at=t;sensor.received_at=rt;sensor.quality=quality;sensor.gen=r.gen;sensor.fault_reason=m.fault_reason
                         if quality=='ok':sensor.last_valid_value=r.v;sensor.last_valid_at=t
                 db.flush()
+                update_condition(db, st, session, t, ready=ready, pending=pending, changes=changes,
+                                 freshness_window=freshness_window)
             for uid in touched_sensors:
                 self.reconcile_history(db,st,db.get(Sensor,uid),session,rules)
             accepted=len(new); duplicates=sum(r['status']=='duplicate' for r in results);rejected=len(results)-accepted-duplicates
@@ -256,7 +310,7 @@ class Service:
     def freshness(self,at=None):
         at=at or now();t=stamp(at)
         with self.lock,self.DB.begin() as db:
-            for st in db.scalars(select(Station).with_for_update()):
+            for st in db.scalars(select(Station).where(Station.lifecycle == 'active').with_for_update()):
                 if st.registry['station']['data_mode']=='planned':continue
                 if not st.last_frame:
                     empty=db.scalar(select(Session).where(Session.station==st.code,Session.ended_at.is_(None)))

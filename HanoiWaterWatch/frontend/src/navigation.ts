@@ -15,7 +15,6 @@ export function destinations(path: string, search: string) {
     overview: '/overview' + stationSearch,
     model: '/stations/' + code + '/model' + details,
     dashboard: '/stations/' + code + '/dashboard' + details,
-    alerts: '/alerts' + stationSearch,
-    simulation: '/simulation' + stationSearch,
+    admin: '/admin',
   };
 }

@@ -12,7 +12,7 @@ test('renders the three stations and the simulated-data notice on every public p
   await page.goto('/overview');
   await expect(page.locator('.station-row')).toHaveCount(3);
   await expect(page.locator('.station-row').filter({ hasText: 'HWW-NHU-001' })).toContainText('Planned station');
-  for (const path of ['/map', '/overview', `${station}/dashboard`, `${station}/model`, '/alerts', '/simulation', '/login']) {
+  for (const path of ['/map', '/overview', `${station}/dashboard`, `${station}/model`, '/overview/alerts', '/login']) {
     await page.goto(path);
     await expect(page.getByRole('note')).toContainText('All readings on this site');
     await expect(page.locator('main h1')).toBeVisible();
@@ -22,9 +22,10 @@ test('renders the three stations and the simulated-data notice on every public p
 });
 
 test('keeps sensor selection keyboard-accessible when the 3D asset is unavailable', async ({ page }) => {
-  await page.route('**/models/station-v1.glb', route => route.fulfill({ status: 404 }));
+  await page.route('**/station-3d/**', route => route.fulfill({ status: 404 }));
   await page.goto(`${station}/model`);
-  const temperature = page.getByRole('button', { name: 'Select temp sensor', exact: true });
+  await page.getByRole('button', { name: '3D model', exact: true }).click();
+  const temperature = page.getByRole('button', { name: /Water temperature/i });
   await temperature.focus();
   await temperature.press('Enter');
   await expect(page).toHaveURL(/sensor=temp/);
@@ -34,33 +35,49 @@ test('keeps sensor selection keyboard-accessible when the 3D asset is unavailabl
   expect(serious.flatMap(violation => violation.nodes.map(node => `${violation.id}: ${node.target.join(' ')}`))).toEqual([]);
 });
 
-test('staff can run a replay, see the resulting alert, and stop the replay', async ({ page }) => {
-  test.setTimeout(90_000);
-  await page.goto('/login?returnTo=%2Fsimulation');
+test('staff review scoped replay evidence in Overview and guests see public history', async ({ page }) => {
+  test.setTimeout(180_000);
+  const filter = 'station=HWW-KNG-001&category=water_quality';
+  await page.goto('/login?returnTo=' + encodeURIComponent('/overview/alerts?' + filter));
   await page.getByLabel('Username').fill(process.env.HWW_E2E_USERNAME!);
   await page.getByLabel('Password', { exact: true }).fill(process.env.HWW_E2E_PASSWORD!);
   await page.getByRole('button', { name: 'Sign in', exact: true }).click();
-  await expect(page).toHaveURL(/\/simulation$/);
-  await page.getByLabel('Playback speed').selectOption('5');
-  const start = page.getByRole('button', { name: 'Start replay' });
-  await start.click();
-  await expect(page.locator('.payload')).toContainText('hww.frames.v1');
-  const alertLink = page.getByRole('link', { name: 'Review alert' });
-  await expect(alertLink).toBeVisible({ timeout: 30_000 });
+  await expect(page).toHaveURL(url => url.pathname === '/overview/alerts');
+  const headers = { 'X-Requested-With':'hww', Origin:new URL(page.url()).origin };
+  const run = await page.request.post('/api/v1/replays/turbidity-spike/runs', {headers,
+    data:{station_code:'HWW-KNG-001', speed:5, takeover:true, loop:false}});
+  expect(run.ok()).toBeTruthy();
+  const session = await run.json();
+  const alertLink = page.locator('.alert-directory .alert-row').first();
+  await expect(alertLink).toBeVisible({ timeout: 45_000 });
   const detailPath = await alertLink.getAttribute('href');
-  expect(detailPath).toMatch(/^\/alerts\/\d+$/);
-  await page.getByRole('button', { name: 'Stop replay' }).click();
-  await expect(start).toBeEnabled();
-  await page.goto('/map');
-  await page.getByRole('button', { name: 'Notifications' }).click();
-  const notifications = page.getByRole('region', { name: 'Notifications' });
-  const record = notifications.locator('a[href="' + detailPath + '"]');
-  await expect(record).toContainText('HWW-KNG-001');
-  await record.click();
+  expect(detailPath).toContain('/overview/alerts/');
+  expect(detailPath).toContain(filter);
+  await alertLink.click();
+  await expect(page.locator('.evidence-values')).toBeVisible();
+  await page.request.post('/api/v1/replay-runs/' + session.session_id + '/stop', {headers,data:{}});
+  await page.locator('.back-link').filter({hasText:'Alerts & review'}).click();
+  await expect(page).toHaveURL(url => url.pathname + url.search === '/overview/alerts?' + filter);
+  await page.goto(detailPath!);
   page.on('dialog', dialog => dialog.accept());
   await page.getByRole('button', { name: 'Acknowledge', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Acknowledge', exact: true })).toBeDisabled();
   await page.getByRole('button', { name: 'Start review', exact: true }).click();
+  await expect(page.getByRole('button',{name:'Submit and close'})).toBeVisible();
+  // Reopen the same incident in each user's actual session, then return to the owner.
+  for (const role of ['OPERATOR', 'ADMIN', 'REVIEWER']) {
+    expect((await page.request.post('/api/v1/auth/logout', {headers,data:{}})).ok()).toBeTruthy();
+    const prefix = role === 'REVIEWER' ? 'HWW_E2E_' : 'HWW_E2E_' + role + '_';
+    const signedIn = await page.request.post('/api/v1/auth/login', {headers, data:{
+      username:process.env[prefix + 'USERNAME'], password:process.env[prefix + 'PASSWORD'],
+    }});
+    expect(signedIn.ok()).toBeTruthy();
+    await page.reload();
+    await page.getByLabel('Review note').fill('Peer role check');
+    const submit = page.getByRole('button',{name:'Submit and close',exact:true});
+    if (role === 'OPERATOR') await expect(submit).toBeDisabled();
+    else await expect(submit).toBeEnabled();
+  }
   await page.getByLabel('Review note').fill('Reviewed the simulated replay in browser QA.');
   await page.getByRole('button', { name: 'Submit and close', exact: true }).click();
   await expect(page.getByText('alert closed', { exact: true })).toBeVisible();

@@ -2,12 +2,12 @@ import { expect, test, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
 const station = 'HWW-TLH-001';
-const nav = (page: Page) => page.getByRole('button', { name: /workspace navigation/i });
+const nav = (page: Page) => page.getByRole('navigation', { name: 'Workspace navigation', exact: true });
 const password = (page: Page) => page.getByLabel('Password', { exact: true });
 const viewports = [
-  [360, 740], [390, 844], [768, 1024], [1024, 768], [1280, 800], [1440, 900], [844, 390],
+  [320, 640], [360, 740], [390, 844], [768, 1024], [1024, 768], [1280, 800], [1440, 900], [844, 390],
 ];
-const pages = ['/login', '/map', '/overview', `/stations/${station}/model`, `/stations/${station}/dashboard`, '/alerts', '/simulation'];
+const pages = ['/login', '/map', '/overview', `/stations/${station}/model`, `/stations/${station}/dashboard`, '/overview/alerts'];
 
 test.beforeEach(async ({ page }) => {
   await page.route('https://tile.openstreetmap.org/**', route => route.abort());
@@ -32,26 +32,32 @@ test('public entry validates staff credentials and lands on the map', async ({ p
   await expect(page.getByLabel('Username')).toBeVisible();
 });
 
-test('logo disclosure supports keyboard, outside dismissal, route selection and Back', async ({ page }) => {
+test('one dock supports keyboard navigation and legacy URLs preserve context', async ({ page }) => {
   await page.goto('/map');
-  const trigger = nav(page);
-  await trigger.focus();
-  await trigger.press('Enter');
-  const navigation = page.getByRole('navigation');
-  await expect(navigation.getByRole('link')).toHaveCount(6);
-  await expect(navigation.locator('a[aria-current="page"]')).toHaveCount(1);
-  await page.keyboard.press('Escape');
-  await expect(trigger).toHaveAttribute('aria-expanded', 'false');
-  await expect(trigger).toBeFocused();
-  await trigger.click();
-  await page.locator('.leaflet-container').click({ position: { x: 15, y: 170 } });
-  await expect(trigger).toHaveAttribute('aria-expanded', 'false');
-  await trigger.click();
-  await navigation.getByRole('link', { name: 'Overview' }).click();
+  const dock = nav(page);
+  await expect(dock.getByRole('link')).toHaveCount(4);
+  await expect(page.locator('.workspace-brand')).toHaveText('HanoiWaterWatch');
+  await expect(page.locator('.brand-group :is(button,a)')).toHaveCount(0);
+  await dock.getByRole('link', { name: 'Overview' }).focus();
+  await page.keyboard.press('Enter');
   await expect(page).toHaveURL(/\/overview$/);
-  await expect(trigger).toHaveAttribute('aria-expanded', 'false');
+  await expect(dock.locator('[aria-current="page"]')).toHaveText('Overview');
   await page.goBack();
   await expect(page.locator('.leaflet-container')).toBeVisible();
+  for (const [old, current] of [
+    ['/simulation?station=' + station, '/map?station=' + station],
+    ['/stations?station=' + station, '/map?station=' + station],
+    ['/stations/' + station + '?range=6', '/stations/' + station + '/dashboard?range=6'],
+    ['/alerts?severity=critical', '/overview/alerts?severity=critical'],
+    ['/alerts/17?station=' + station, '/overview/alerts/17?station=' + station],
+  ]) {
+    await page.goto(old);
+    await expect(page).toHaveURL(url => url.pathname + url.search === current);
+  }
+  await expect(dock.getByRole('link', { name: 'Overview' })).toHaveAttribute('aria-current', 'page');
+  await page.getByRole('button',{name:'Account'}).click();
+  await page.getByRole('button',{name:'Tiếng Việt'}).click();
+  await expect(page.locator('.dock-destinations a[aria-current="page"]')).toHaveAccessibleName('Tổng quan');
 });
 
 test('station result selects the map and preserves station context through the dashboard', async ({ page }) => {
@@ -93,6 +99,12 @@ test('workspace and sign-in fit the designated viewports, including landscape', 
     await expect(page.locator('main h1')).toBeAttached();
     for (const [width, height] of viewports) {
       await page.setViewportSize({ width, height });
+      if (path !== '/login') {
+        await expect(nav(page)).toBeInViewport({ ratio: 1 });
+        const box = (await page.locator('.dest-dock').boundingBox())!;
+        expect(Math.abs(height - box.y - box.height)).toBeLessThan(1);
+        await expect(nav(page).getByRole('link')).toHaveCount(4);
+      }
       await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth - innerWidth),
         { message: `${path} overflows ${width} × ${height}` }).toBeLessThanOrEqual(1);
     }
@@ -217,13 +229,76 @@ test('a disconnected dashboard marks its cached station snapshot stale', async (
   await expect(page.locator('.sensor-card .reading').first()).toContainText('—');
 });
 
+test('map controls align in two evenly spaced stacks above the footer', async ({ page }) => {
+  await page.goto('/map', { waitUntil: 'domcontentloaded' });
+  const search = page.getByRole('button', { name: 'Search stations', exact: true });
+  const tools = page.getByRole('button', { name: 'Map tools', exact: true });
+  const zoomIn = page.getByRole('button', { name: 'Zoom in', exact: true });
+  const zoomOut = page.getByRole('button', { name: 'Zoom out', exact: true });
+  const navigation = page.getByRole('navigation', { name: 'Workspace navigation', exact: true });
+  const attribution = page.locator('.leaflet-control-attribution');
+
+  for (const [width, height] of [[320, 640], [360, 740], [768, 1024], [1440, 900]]) {
+    await page.setViewportSize({ width, height });
+    const items = [page.locator('.dest-dock'), attribution, search, tools, zoomIn, zoomOut];
+    await Promise.all(items.map(item => expect(item).toBeInViewport({ ratio: 1 })));
+    const [dock, credit, left, tool, plus, minus] = await Promise.all(items.map(item => item.boundingBox()));
+    for (const box of [dock!, credit!]) {
+      expect(Math.abs(height - (box.y + box.height))).toBeLessThan(1);
+    }
+    expect(dock!.x + dock!.width).toBeLessThan(credit!.x);
+    expect(left!.x).toBeLessThan(30);
+    expect(left!.x + left!.width).toBeLessThan(dock!.x);
+    expect(tool!.x).toBe(left!.x);
+    expect(width - (minus!.x + minus!.width)).toBeLessThan(30);
+    expect(plus!.x).toBe(minus!.x);
+    const zoomGap = minus!.y - (plus!.y + plus!.height);
+    const toolsGap = left!.y - (tool!.y + tool!.height);
+    expect(zoomGap).toBeGreaterThan(0);
+    expect(Math.abs(toolsGap - zoomGap)).toBeLessThan(1);
+    expect(Math.abs(tool!.y - plus!.y)).toBeLessThan(1);
+    expect(Math.abs(left!.y - minus!.y)).toBeLessThan(1);
+    expect(minus!.y + minus!.height).toBeLessThan(credit!.y);
+    const links = navigation.getByRole('link');
+    await expect(links).toHaveCount(4);
+    await Promise.all((await links.all()).map(async link => {
+      await expect(link).toBeInViewport({ ratio: 1 });
+      expect((await link.boundingBox())!.width).toBeGreaterThanOrEqual(24);
+    }));
+
+    await search.click();
+    const list = page.getByRole('region', { name: 'Station list' });
+    await expect(list).toBeInViewport();
+    const box = (await list.boundingBox())!;
+    expect(box.y + box.height).toBeLessThan(left!.y);
+    await page.keyboard.press('Escape');
+  }
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/map?station=' + station, { waitUntil: 'domcontentloaded' });
+  const details = page.getByRole('complementary', { name: 'Station details' });
+  const list = page.getByRole('region', { name: 'Station list' });
+  await expect(details).toBeVisible();
+  await search.click();
+  await expect(list).toBeVisible();
+  const [mobileList, mobileDetails, searchBox, minusBox] = await Promise.all(
+    [list, details, search, zoomOut].map(item => item.boundingBox()));
+  expect(mobileList!.y + mobileList!.height).toBeLessThan(mobileDetails!.y);
+  expect(Math.abs(searchBox!.y - minusBox!.y)).toBeLessThan(1);
+  expect(searchBox!.y + searchBox!.height).toBeLessThan(mobileDetails!.y);
+
+  await page.setViewportSize({ width: 1024, height: 768 });
+  const [desktopList, desktopDetails] = await Promise.all([list.boundingBox(), details.boundingBox()]);
+  expect(desktopList!.x + desktopList!.width).toBeLessThan(desktopDetails!.x);
+});
+
 test('map fills the viewport behind independent floating controls', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/map');
   const canvas = page.locator('.leaflet-container');
   await expect(canvas).toBeVisible();
   await expect.poll(async () => (await canvas.boundingBox())?.height).toBe(844);
-  const logo = await nav(page).boundingBox();
+  const logo = await page.locator('.workspace-brand').boundingBox();
   expect(Math.abs(logo!.x + logo!.width / 2 - 195)).toBeLessThan(1);
   const tools = page.getByRole('button', { name: 'Map tools', exact: true });
   await expect(tools).toHaveAttribute('aria-expanded', 'false');
@@ -239,8 +314,7 @@ test('map fills the viewport behind independent floating controls', async ({ pag
   await expect(scale).toHaveText(initialScale!);
   await page.keyboard.press('Escape');
   await expect(tools).toBeFocused();
-  await nav(page).click();
-  await expect(page.getByRole('navigation', { name: 'Workspace' })).toBeVisible();
+  await expect(nav(page)).toBeVisible();
   await page.getByRole('button', { name: 'Notifications', exact: true }).click();
   await expect(page.getByRole('region', { name: 'Notifications' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Account' })).toBeVisible();
@@ -250,14 +324,12 @@ test('floating lists stay inside a short viewport and honor reduced motion', asy
   await page.setViewportSize({ width: 360, height: 360 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/map?station=' + station);
-  await nav(page).click();
-  const list = page.getByRole('navigation', { name: 'Workspace' });
-  await expect(list).toBeVisible();
-  expect(await list.evaluate(el => el.scrollHeight > el.clientHeight)).toBe(true);
-  expect(await list.locator('..').evaluate(el => getComputedStyle(el).transitionDuration)).toBe('0s');
-  await list.getByRole('link', { name: 'Simulation' }).focus();
-  await expect(list.getByRole('link', { name: 'Simulation' })).toBeInViewport();
-  await page.keyboard.press('Escape');
+  const dock = nav(page);
+  await expect(dock).toBeInViewport({ratio:1});
+  const link = dock.getByRole('link', {name:'Dashboard'});
+  await link.focus();
+  await expect(link).toBeInViewport();
+  expect(await link.evaluate(el => getComputedStyle(el).transitionDuration)).toBe('0s');
 
   await page.getByRole('button', { name: 'Expand details' }).click();
   const tools = page.getByRole('button', { name: 'Map tools', exact: true });
@@ -266,7 +338,9 @@ test('floating lists stay inside a short viewport and honor reduced motion', asy
   expect(toolsBox!.y + toolsBox!.height).toBeLessThan(sheetBox!.y);
   await tools.click();
   const options = page.locator('#map-tool-choices');
-  await expect(options).toBeInViewport();
+  await expect(options).toBeInViewport({ ratio: 1 });
+  const optionsBox = (await options.boundingBox())!;
+  expect(optionsBox.y + optionsBox.height).toBeLessThan(sheetBox!.y);
   expect(await options.evaluate(el => el.scrollHeight > el.clientHeight)).toBe(true);
 });
 
@@ -295,6 +369,8 @@ test('dashboard comparison requests the same channel and period for both station
   });
   await page.getByLabel('Compare station').selectOption('HWW-TLH-001');
   await page.getByRole('combobox',{name:'Time range',exact:true}).selectOption('168');
+  await expect(page).toHaveURL(url => url.searchParams.get('range') === '168' &&
+    url.searchParams.get('compare') === 'HWW-TLH-001');
   await expect.poll(() => preceding.some(a =>
     a.pathname.includes('KNG') && a.searchParams.get('channel') === 'ph' && preceding.some(b =>
       b.pathname.includes('TLH') && a.search === b.search && Date.parse(a.searchParams.get('to')!) - Date.parse(a.searchParams.get('from')!) === 7 * 86400000)

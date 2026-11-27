@@ -1,6 +1,3 @@
-/* Small illustrated tiles for the main destinations, in the platform's colours, so each page can be
-   recognised at a glance: the river map, the network overview, the station, the readings, the alert
-   on a phone and the ESP32 simulator. */
 import type { ReactNode } from 'react';
 
 const Tile = ({ id, children }: { id: string; children: ReactNode }) => (
@@ -41,22 +38,9 @@ export default function NavArt({ kind }: { kind: string }) {
       <path className="art-line" d="M7 30 L12 27 L16 28 L20 22 L24 12 L28 21 L33 18" fill="none" stroke="#7cc0e8" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" pathLength="1" />
       <circle className="art-blink" cx="24" cy="12" r="2.3" fill="#ff6b57" />
     </Tile>;
-    case 'alerts': return <Tile id="al">
-      <path className="art-blink" d="M28.5 12.5 A7 7 0 0 1 28.5 22.5" fill="none" stroke="#ff8a75" strokeWidth="1.6" strokeLinecap="round" />
-      <g className="art-shake">
-        <rect x="11" y="7" width="14" height="26" rx="3.4" fill="#0a1828" stroke="#7cc0e8" strokeWidth="1.2" />
-        <rect x="13.2" y="10.5" width="9.6" height="17" rx="1.6" fill="#ff6b57" />
-        <rect x="17" y="13" width="2" height="8" rx="1" fill="#fff" /><circle cx="18" cy="24" r="1.2" fill="#fff" />
-      </g>
-    </Tile>;
-    case 'simulation': return <Tile id="sm">
-      <rect x="6" y="8" width="28" height="24" rx="3" fill="#1d5a3a" stroke="#8cc152" strokeWidth=".9" />
-      <rect x="9" y="11" width="7" height="5" rx="1" fill="#0b2036" stroke="#a7d47a" strokeWidth=".6" />
-      {[0, 1, 2].map(i => <g key={i}>
-        <path d={`M${21 + i * 4.5} 12 V29`} stroke="#0b2036" strokeWidth="2.4" strokeLinecap="round" />
-        <rect className={'art-knob k' + i} x={19.6 + i * 4.5} y={[22, 15, 19][i]} width="3.4" height="3.2" rx="1" fill={['#7cc0e8', '#f2a541', '#c8f169'][i]} />
-      </g>)}
-      <path d="M9 21 H15 M9 24.5 H14 M9 28 H15" stroke="#a7d47a" strokeWidth=".8" opacity=".7" />
+    case 'admin': return <Tile id="ad">
+      <path d="M20 6 32 11v9c0 6-6 11-12 14-6-3-12-8-12-14v-9z" fill="#84ada9"/>
+      <path d="m13 20 5 5 9-10" fill="none" stroke="#102d41" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"/>
     </Tile>;
     default: return null;
   }

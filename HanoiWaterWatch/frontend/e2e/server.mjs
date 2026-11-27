@@ -9,6 +9,10 @@ const env = {
   ...process.env,
   HWW_E2E_USERNAME: 'e2e.reviewer',
   HWW_E2E_PASSWORD: randomBytes(24).toString('hex'),
+  HWW_E2E_ADMIN_USERNAME: 'e2e.admin',
+  HWW_E2E_ADMIN_PASSWORD: randomBytes(24).toString('hex'),
+  HWW_E2E_OPERATOR_USERNAME: 'e2e.operator',
+  HWW_E2E_OPERATOR_PASSWORD: randomBytes(24).toString('hex'),
 };
 const port = env.HWW_E2E_PORT || '8176';
 const health = `http://127.0.0.1:${port}/api/v1/health`;

@@ -1,3 +1,4 @@
+import StationLifecycle from './StationLifecycle';
 import { useEffect, useMemo, useState } from 'react';
 import { MapContainer, Marker, ScaleControl, TileLayer, Tooltip, useMap, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
@@ -106,7 +107,7 @@ function Pins({ stations, states, selected, counts, onSelect }: MapProps) {
     return <Marker key={station.code} position={xy(station)} title={title} icon={icon}
       eventHandlers={{ click: () => onSelect?.(station.code) }}>
       <Tooltip key={String(counts) + status} permanent direction="top" offset={[0, -50]} className={'station-pin-label label-' + status}>
-        <i className="label-dot"/>{station.river}{counts && open !== undefined && <b> · {open} ⚑</b>}
+        <i className="label-dot"/>{station.river}<StationLifecycle lifecycle={station.lifecycle}/>{counts && open !== undefined && <b> · {open} ⚑</b>}
       </Tooltip>
     </Marker>;
   })}</>;

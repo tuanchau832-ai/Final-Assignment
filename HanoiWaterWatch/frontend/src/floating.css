@@ -76,6 +76,8 @@
   width: min(292px, calc(100vw - 24px));
 }
 .notification-group { position: relative; }
+.announcement-item { padding: .65rem .75rem; overflow-wrap: anywhere; }
+.announcement-item :is(span, small, strong), .alert-notification :is(span, small, strong) { display: block; }
 .notification-menu { right: calc(-1 * (var(--control-size) + 6px)); width: min(340px, calc(100vw - 24px)); }
 .account-menu { right: 0; width: min(225px, calc(100vw - 24px)); }
 .floating-list {
@@ -154,17 +156,19 @@
 .brand-chevron { transition: transform 180ms var(--cascade-ease); }
 .brand-trigger[aria-expanded=true] .brand-chevron { transform: rotate(180deg); }
 
-.map-workspace {
+.workspace-view {
   --map-edge: max(16px, env(safe-area-inset-left, 0px));
   --map-right: max(16px, env(safe-area-inset-right, 0px));
   --map-top: max(16px, env(safe-area-inset-top, 0px));
   --map-bottom: max(8px, env(safe-area-inset-bottom, 0px));
+}
+.map-workspace {
   position: relative;
   overflow: hidden;
 }
 .map-chrome { position: absolute; z-index: 1100; inset: 0 0 auto; pointer-events: none; }
 .map-chrome .brand-group { position: absolute; left: 50%; top: var(--map-top); transform: translateX(-50%); pointer-events: auto; }
-.map-chrome .brand-trigger {
+.map-chrome .workspace-brand {
   gap: 9px;
   min-height: var(--control-size);
   padding: 4px 11px 4px 5px;
@@ -181,18 +185,16 @@
 .map-chrome .floating-icon { box-shadow: var(--float-shadow); }
 .map-chrome .station-search-shortcut { position: fixed; top: var(--map-top); left: var(--map-edge); }
 .map-chrome .notification-menu { right: calc(-1 * (var(--control-size) + 8px)); }
-.map-workspace .alert-notification { top: calc(var(--map-top) + var(--control-size) + 14px); bottom: auto; right: var(--map-right); z-index: 1050; }
+body > .alert-notification { top: calc(env(safe-area-inset-top, 0px) + 70px); bottom: auto; right: max(.75rem, env(safe-area-inset-right, 0px)); z-index: 1200; }
 
 @media (max-width: 599px) {
   :root { --control-size: 48px; }
-  .map-workspace { --map-edge: max(12px, env(safe-area-inset-left, 0px)); --map-right: max(12px, env(safe-area-inset-right, 0px)); --map-top: max(10px, env(safe-area-inset-top, 0px)); }
-  .map-chrome .brand-wordmark { position: absolute; height: 1px; width: 1px; overflow: hidden; clip-path: inset(50%); }
-  .map-chrome .brand-trigger { gap: 6px; padding: 4px 8px 4px 5px; }
+  .workspace-view { --map-edge: max(12px, env(safe-area-inset-left, 0px)); --map-right: max(12px, env(safe-area-inset-right, 0px)); --map-top: max(10px, env(safe-area-inset-top, 0px)); }
+  .map-chrome .workspace-brand { gap: 6px; padding: 4px 8px 4px 5px; }
   .workspace-header .destination-menu { width: min(292px, calc(100vw - 24px)); }
   .workspace-header .notification-menu { right: calc(-1 * var(--control-size)); }
 }
 @media (max-width: 599px) {
-  .workspace-header .brand-wordmark { position: absolute; height: 1px; width: 1px; overflow: hidden; clip-path: inset(50%); }
 }
 @media (prefers-reduced-motion: reduce) {
   .cascade, .cascade-item, .floating-icon, .brand-chevron, .floating-list :is(a,button) { transition: none; }
@@ -202,3 +204,12 @@
 .demo-result-note { color:#483469; padding:8px 14px; background:#f1eaf7; }
 .demo-provenance { position:sticky; z-index:900; top:64px; }
 @media (max-width:767px) { .demo-provenance { top:56px; } }
+
+@media (max-width: 599px) {
+  .workspace-view .workspace-brand {
+    flex-direction: column; justify-content: center; gap: 2px; padding: 3px 7px;
+    font-size: 11px; letter-spacing: -.3px; line-height: 1.1; border-radius: 10px;
+  }
+  .workspace-brand .watermark { width: 23px; height: 23px; border-radius: 7px; }
+  .workspace-brand .watermark svg { width: 18px; height: 18px; }
+}

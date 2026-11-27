@@ -1,6 +1,6 @@
 # Hanoi WaterWatch
 
-A simulated water-monitoring platform for the CITP final assignment. React presents a station map, monitoring dashboard, digital station model, preliminary alerts and staff review, and a simulation demonstration. FastAPI validates incoming device frames, stores measurements, evaluates rules, and provides the shared versioned station snapshot.
+A simulated water-monitoring platform for the CITP final assignment. React presents the station map, monitoring dashboards, digital station models, Overview with alerts and staff review, and an administration workspace. FastAPI validates device frames, stores measurements, evaluates rules, and records confirmed station water-quality transitions.
 
 **Simulated data.** All readings on this site come from a Wokwi electronics simulation or a recorded replay. They are not measurements of water in Hanoi. Station locations are illustrative.
 
@@ -38,13 +38,13 @@ npm ci
 npm run dev
 ```
 
-Vite proxies `/api` to port 8000. Visitors start at sign-in and can choose **Explore the map** for public monitoring. Staff sign-in opens `/map` or restores a supported deep link. The logo opens all six workspace destinations, including the network summary at `/overview`. Operators can acknowledge alerts and run replays. Reviewers can classify simulated anomalies. Admins manage rules and device keys.
+Vite proxies `/api` to port 8000. Visitors start at sign-in and can choose **Explore the map** for public monitoring. Staff sign-in opens `/map` or restores a supported deep link. The bottom dock opens Map Home, Overview, Digital Model and Dashboard. Overview includes Alerts & Review. Admins also have an Admin destination for station lifecycle, announcements, audit history and monitoring statistics. The bell shows confirmed water-quality changes and addressed announcements for signed-in staff.
 
 The public entry uses a local eight-second underwater MP4 loop, a matching static poster and an independent WebGL discharge. Move across debris to disturb it, or tap a magnified microorganism to disperse it. The scene is illustrative. The film and current pause while the page is hidden. Reduced motion, constrained devices, data saving and playback failures select the poster. An optional VITE_LOGIN_VIDEO_URL replaces the local film and disables the pipe-specific overlay. The entry component lives in frontend/src/underwater/.
 
 ## Synthetic demonstration mode
 
-Use the explicitly enabled, local-only demo provider to explore example histories, alerts and replay results. The demo uses the existing sign-in service and stores demonstration actions in browser memory. [Demo setup and removal](frontend/src/demo/README.md).
+Use the explicitly enabled, local-only demo provider to explore sample histories, alert reviews and Admin workflows. The demo uses the existing sign-in service and stores demonstration actions in browser memory. [Demo setup and removal](frontend/src/demo/README.md).
 
 ## Verify
 
@@ -72,7 +72,7 @@ python -m app.cli devices rotate-key wokwi-esp32-01
 
 Store the returned key privately. Follow [firmware setup](firmware/README.md) to configure the firmware or use the software-device CLI in [tools/sim_device.py](tools/sim_device.py). Wokwi needs a reachable HTTPS endpoint and a trusted root CA. Set `WOKWI_PROJECT_URL` when the hosted simulation exists. The application links to Wokwi; it does not embed it.
 
-The Simulation page provides operator-controlled replay takeover when Wokwi is unavailable. The Tô Lịch station uses a looping replay; the Nhuệ station is planned and remains unavailable.
+The internal replay API supports operator-controlled replay takeover. The local configuration can start a looping replay for Tô Lịch. Nhuệ is a planned station and has no current readings.
 
 The team’s earlier standalone simulator remains available in `Simulation.html`. Its five-input threshold experiment is documented in [the simulator guide](SIMULATOR_GUIDE.md). The platform’s station snapshots use the four-sensor API contract in the implementation blueprint.
 

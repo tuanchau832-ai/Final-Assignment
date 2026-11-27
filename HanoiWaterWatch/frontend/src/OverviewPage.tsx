@@ -1,15 +1,24 @@
+import StationLifecycle from './StationLifecycle';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { MapPin, Activity, Bell, Radio, ArrowUpRight, Map } from 'lucide-react';
-import { useAlerts, useOnline } from './api';
-import { AlertRows, Clock, QueryState, Source, StatusBadge, useText } from './common';
+import { MapPin, Activity, Bell, Radio, Map } from 'lucide-react';
+import { useOnline } from './api';
+import AlertsPage from './AlertsPage';
+import { Clock, QueryState, Source, StatusBadge, useText } from './common';
 import { useNetworkStations } from './useNetworkStations';
 
-export default function OverviewPage() {
+export default function OverviewPage({ alertsFirst = false }: { alertsFirst?: boolean }) {
+  const { t } = useTranslation();
+  return <>
+    {alertsFirst ? <Link className="back-link" to="/overview">{t('networkSummary')}</Link> : <NetworkSummary/>}
+    <AlertsPage embedded={!alertsFirst}/>
+  </>;
+}
+
+function NetworkSummary() {
   const { t } = useTranslation(), text = useText();
   const { registry, snapshotQueries } = useNetworkStations();
   const online = useOnline();
-  const alerts = useAlerts('limit=5');
   const stations = registry.data?.items || [];
   const states = snapshotQueries.map(q => online && q.isSuccess && !q.isPaused ? q.data : undefined);
   const complete = registry.isSuccess && states.length === stations.length && states.every(Boolean);
@@ -28,17 +37,14 @@ export default function OverviewPage() {
     <div className="metrics">{metrics.map(({label,value,icon:Icon}) => <article className="metric" key={label}><div className="between">{t(label)}<Icon size={18}/></div><strong>{value}</strong>{label === 'coverage' && <small>{t('coverageDetail')}</small>}</article>)}</div>
     
     {(registry.isError || snapshotQueries.some(q => q.isError)) && <button className="button" onClick={retry}>{t('error')} · {t('retry')}</button>}
-    <div className="overview-columns"><section className="panel overview-directory"><div className="panel-head"><h2>{t('directory')}</h2><MapPin size={18}/></div>
+    <section className="panel overview-directory"><div className="panel-head"><h2>{t('directory')}</h2><MapPin size={18}/></div>
       <QueryState loading={registry.isLoading} error={registry.error}/>
       {stations.map((s,i) => <article className="overview-station station-row" key={s.code}>
-        <div><small>{s.code}</small><h3>{text(s.name)}</h3><StatusBadge status={states[i]?.station_status}/></div>
+        <div><small>{s.code}</small><h3>{text(s.name)}</h3><StationLifecycle lifecycle={s.lifecycle}/><StatusBadge status={states[i]?.station_status}/></div>
         <div>{s.data_mode === 'planned' ? t('planned') : <Source state={states[i]}/>}<small><Clock at={states[i]?.last_frame_at}/></small></div>
         <Link className="button" to={'/map?station=' + encodeURIComponent(s.code)} aria-label={t('viewMap') + ' · ' + s.code}><Map size={16}/></Link>
       </article>)}{registry.isSuccess && !stations.length && <p className="detail-body">{t('noData')}</p>}
     </section>
-    <section className="panel"><div className="panel-head"><h2>{t('recent')}</h2><Link className="textlink" to="/alerts">{t('allAlerts')} <ArrowUpRight size={14}/></Link></div>
-      <QueryState loading={alerts.isLoading} error={alerts.error}/>{alerts.isSuccess && <AlertRows items={alerts.data.items}/>}
-      <div className="panel-foot">{t('reviewOutcomeNotice')}</div></section></div>
     <div className="evidence-note"><strong>{t('evidenceClasses')}</strong><span>{t('simulatedAnomaly')}</span><span>{t('observationReserved')}</span><span>{t('incidentFieldOnly')}</span></div>
   </>;
 }

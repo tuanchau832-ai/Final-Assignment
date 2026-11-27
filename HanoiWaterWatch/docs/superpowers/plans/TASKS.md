@@ -1,92 +1,68 @@
 # HanoiWaterWatch — Implementation Tasks
 
+## Current revision · 26 November 2026
+
+Requirements and decision status are in [DECISIONS.md](DECISIONS.md), D-037–D-044. See [PROGRESS.md](PROGRESS.md) for verification evidence. NW-01 through NW-04 are verified. NW-05 through NW-07 remain in progress.
+
+### NW-01 — Confirm the implementation baseline
+
+- [x] Verify the parent Git root, status and HEAD. Preserve pre-existing changes. Read the root and planning `AGENTS.md` and the relevant portions of DESIGN.md. Record conflicting historical requirements and use the reconciliation in D-044.
+- [x] Inventory the dock’s current geometry, frontend routes and login allowlist, station and alert links, backend rule configuration, between-poll delivery behavior, role boundaries and demo provider. Confirm the exact frontend, backend, migration, contract and browser test commands. Keep the unresolved broad browser cases and physical-device checks visible.
+- [x] Record the exact next task, intended files and baseline test evidence. This inventory is complete when each revision item maps to source or a confirmed gap.
+
+### NW-02 — Shared dock, brand and retired pages
+
+Depends on NW-01. Start with `main.tsx`, `WorkspaceHeader.tsx`, `navigation.ts`, `NavArt.tsx`, `MapHome.tsx`, `theme.css`, `map.css`, the login destination helper and locale files.
+
+- [x] Move the existing Map Home dock to shared workspace chrome and preserve its bottom safe-area placement and responsive fit. Render one dock and one static top logo/name. Remove duplicate tabs and destination disclosure. Keep only the four standard destinations and leave the Admin destination to NW-05.
+- [x] Retire the Simulation page route and contextual entry points and any standalone Stations page. Preserve station data, map/search, station-scoped Model/Dashboard and compatible legacy redirects. Update return-to handling and regressions for the revised route set.
+- [x] Verify dock geometry across Map Home, Overview, Digital Model and Dashboard at phone, tablet and desktop widths. Include 320 px, landscape and a selected station with its inspector open. Verify keyboard usage, localized accessible labels, active state and reduced motion. Check that dock, map attribution, station-search trigger, tool disclosure, right-hand zoom and content scroll/focus have room. Verify smooth marker/search focus, URL context and expected legacy redirects.
+
+### NW-03 — Overview with alert and review workflows
+
+Depends on NW-01. Coordinate route changes with NW-02 before the final browser run. Start with `OverviewPage.tsx`, `AlertsPage.tsx`, `main.tsx`, `MapHome.tsx`, `DashboardPage.tsx`, `WorkspaceHeader.tsx`, `AlertNotification.tsx` and the login destination helper.
+
+- [x] Mount the reusable alert list and detail/review workflow in Overview. Preserve filters, paging if supported, evidence, historical timeline, notes, acknowledgement and submit flow. Reuse existing API query and mutation contracts.
+- [x] Route legacy alert URLs to canonical Overview views with applicable station, filter and alert context. Update all navigable links and return-to handling while preserving browser back/forward, reload and direct open.
+- [x] Verify responsive list/detail and scoped review flow for guest, operator, reviewer and admin using existing permissions and ownership rules. Check private-note visibility and confirm writes remain server-protected. Exercise a map/dashboard/bell link to the expected detail and back to its filtered list.
+
+### NW-04 — Condition transitions and notification feed
+
+Depends on NW-01. Coordinate notification links with NW-03. Start with `backend/app/service.py`, `main.py`, `models.py`, `schemas.py`, Alembic and backend tests, then `api.ts`, `main.tsx`, `AlertNotification.tsx`, `WorkspaceHeader.tsx` and the demo provider.
+
+- [x] Pin the configured water-quality categories, thresholds, persistence, clear persistence and valid-data eligibility in backend checks. Implement the per-station classification and durable transition identity per D-040. Use the condition event feed for new notifications and keep the alert/review history accessible.
+- [x] Use an authenticated, per-user delivery cursor and stable event IDs. Test silent startup, no replay on reload, ordered catch-up on reconnect, multiple events between polls, account switch/logout, retries, duplicate/out-of-order frames and concurrent deliveries. Confirm exactly one event for each qualifying escalation, de-escalation and recovery, including a repeated sequence of genuine new transitions.
+- [x] Verify that same-class sensor/rule changes, stale/unknown states, faults, connectivity, lifecycle changes, historical reprocessing and review updates never cause automatic quality notifications. Exercise a valid clear while another qualifying rule remains active, and a real recovery after the final active rule clears. Check that public or shared caches cannot reveal private delivery data. Preserve source labels through the delivery UI.
+
+### NW-05 — Admin permissions and station lifecycle
+
+Depends on NW-01 and NW-02. Define and test its monitoring-state handoff with NW-04. Start with `backend/app/main.py`, `service.py`, `models.py`, `schemas.py`, Alembic and backend tests, then the shared workspace routes/nav, station query/cache, map and demo provider.
+
+- [x] Add the Admin destination and protected route. Apply the existing admin session/role check to every privileged read and write. Verify guest/expired session gets 401 and operator/reviewer gets 403 at each protected API. Verify admin access, role removal, direct URL behavior, no protected-data flash and no stale admin state across account changes.
+- [ ] Implement validated station creation, maintenance on/off and archive/removal with audit records and safe migrations. Confirm API/data contracts for active, maintenance and archived station visibility, historical lookup and map/search refresh. Preserve measurements, reviews and references. Validate safe handling of ingestion, freshness and active replay jobs during lifecycle changes, including duplicate/concurrent actions and restart/seed behavior.
+- [x] Verify that maintenance and archival operations write audit events without emitting fake quality changes. Re-enable with a new baseline and allow the next genuine, verified change to notify. Cover an existing database migrated with station history as well as a clean database.
+
+### NW-06 — Admin announcements and deeper statistics
+
+Depends on NW-04 and NW-05.
+
+- [x] Add the admin announcement flow to the authorized feed, with separate type/label, message validation, intended audience confirmation, server-side recipient selection and audit results. Verify duplicate requests, unauthorized send and cross-account read attempts, eligible user delivery, and handling when there are no eligible recipients or a queue/write fails.
+- [ ] Add station, sensor and date comparisons, anomaly/trend drill-down and availability/coverage where the backend supports them. Verify reference counts, time ranges, missing and sparse data, maintenance exclusion or explicit reporting, units, source labels and access control. Reuse existing range limits and chart components. Verify the normal Dashboard interactions still work.
+- [ ] Exercise both standard and explicit demo modes. Keep synthetic samples flagged and removable, with no demo mutations, announcements or fixture data reaching the real monitoring provider.
+
+### NW-07 — Reconcile specifications and verify the release candidate
+
+Depends on NW-02–NW-06.
+
+- [x] Reconcile conflicting DESIGN and planning AGENTS directions as in D-044. Change those files only as part of an authorized reconciliation. Preserve unrelated guidance and historical evidence.
+- [x] From the project root, run the applicable documented backend tests, contract tests and generated-schema checks, including `python -m pytest backend/tests -q` and `python scripts/generate_contracts.py --check`. Verify database migrations, including PostgreSQL when available for state/uniqueness and concurrency coverage. Use an isolated test database.
+- [ ] From `frontend/`, run `npm.cmd test`, `npm.cmd run build` and `npm.cmd run test:e2e` on Windows, or their `npm` equivalents elsewhere. Verify the built demo separately with the repo’s test setup, and ensure the standard build contains no demo provider/dataset. Review intentionally changed route/notification assertions and rerun the remaining broad browser failures. Run `git diff --check`.
+- [ ] Record real results and blockers in PROGRESS.md. Run guest-to-admin journey checks, responsive/accessibility checks and regressions for login, map/search, model, Dashboard, review and provenance. Keep physical keyboard, manual assistive-technology or other external checks open until exercised. Update task status and leave the next action in the checkpoint.
+
+## Prior implementation checklist
+
+Historical checkmarks apply to the earlier product behavior. Some checked tasks describe navigation or screens that the latest revision retires. Retain their evidence and use NW-01–NW-07 to track the new acceptance criteria. In the original checklist, M-01–M-03 appear in two revisions. Refer to the revision heading when citing those IDs.
+
 Canonical design: `DESIGN.md`. Agent protocol: `AGENTS.md`. Current state: `PROGRESS.md`.
 
 Status conventions: `[ ]` TODO; `[ ]` IN_PROGRESS or BLOCKED when explicitly labelled; `[x]` DONE only with evidence. Record evidence and blockers in `PROGRESS.md`. Initial checklist is unverified, not a claim about existing repository features.
-
-## Phase 0 — Audit
-
-- [x] P0-01 — Locate project and Git roots; inspect branch, working tree and existing instructions.
-- [x] P0-02 — Inventory frontend framework, routes, auth, API/data fields, map/chart/model libraries, permissions and all five existing modules.
-- [x] P0-03 — Capture baseline screenshots where possible; run existing checks and distinguish pre-existing failures from regressions.
-- [x] P0-04 — Inventory logo, video/poster assets and licenses; document unavailable assets and unsupported features.
-
-**Exit gate:** Actual functionality and integration constraints recorded in the checkpoint; safe incremental approach identified.
-
-## Phase 1 — Foundation and navigation
-
-- [x] P1-01 — Implement shared tokens, typography, spacing, accessible semantic status colors and UI primitives.
-- [x] P1-02 — Implement responsive application shell with top logo, utility controls and appropriate focus management.
-- [x] P1-03 — Implement logo dropdown: Map Home, Overview, Digital Model, Dashboard, Alerts & Review, Simulation; keyboard and touch behavior.
-- [x] P1-04 — Integrate existing routes and auth protections; preserve deep links and avoid adding permanent side/bottom navigation.
-
-**Exit gate:** All existing destinations reachable on desktop and mobile; menu works with keyboard, pointer and touch.
-
-## Phase 2 — Map Home
-
-- [x] P2-01 — Make the Hanoi map the default authenticated destination while preserving valid deep links.
-- [x] P2-02 — Reuse actual station data and map library; add or adapt markers, legend, search, available filters and supported layers.
-- [x] P2-03 — Add desktop station inspector and mobile bottom sheet, preserving map controls and attribution.
-- [x] P2-04 — Support station context navigation and existing functionality; handle loading, empty, stale, offline and error states.
-- [x] P2-05 — Verify map interaction, accessibility alternatives and performance at representative breakpoints.
-
-**Exit gate:** Real station information and supported map interactions work on desktop and mobile without fabricated data.
-
-## Phase 3 — Login and landing experience
-
-- [x] P3-01 — Redesign login layout and branding with existing auth workflow, validation and error states.
-- [x] P3-02 — Integrate licensed/configurable video background and static poster fallback; keep video out of authenticated bundles where practical.
-- [x] P3-03 — Implement subtle pointer-responsive animation with cleanup, reduced-motion and touch fallback.
-- [ ] P3-04 — BLOCKED — Test mobile keyboard, portrait/landscape, video unavailable, reduced motion, login/logout and redirects.
-
-**Exit gate:** Authentication remains functional with or without video; animation does not obstruct form use.
-
-## Phase 4 — Existing modules
-
-- [x] P4-01 — Overview: responsive system snapshot and geographic drill-down using available data.
-- [x] P4-02 — Digital Model: responsive canvas and inspector; preserve the actual model and its controls.
-- [x] P4-03 — Dashboard: responsive charts, filters, data units, freshness and available comparisons.
-- [x] P4-04 — Alerts & Review: responsive alert list/detail, severity labels and existing review workflow/permissions.
-- [x] P4-05 — Simulation: responsive configuration/results, explicit scenario labels and separation from live data.
-- [x] P4-06 — Verify contextual links and cross-module consistency; do not invent backend capabilities.
-
-**Exit gate:** Each existing module retains its functional behavior and follows the common design system.
-
-## Phase 5 — Quality assurance and delivery
-
-- [ ] P5-01 — BLOCKED — Test 360, 390, 768, 1024, 1280 and 1440 px, landscape and mobile keyboard.
-- [x] P5-02 — Test keyboard, focus, labels, contrast, reduced motion and map accessibility.
-- [x] P5-03 — Test stale/empty/error data, auth/deep links, permissions, all five module workflows and simulation separation.
-- [x] P5-04 — Assess load performance, map/list rendering, animation cleanup and media optimization; document measured results or limitations.
-- [x] P5-05 — Verify no fabricated production data, leaked secrets, unsupported controls or missing attribution; verify asset rights.
-- [x] P5-06 — Run existing lint, type check, tests and production build; compare with baseline.
-- [x] P5-07 — Review every `DESIGN.md` §13 item, reconcile checklist and checkpoint, and report changes, test evidence and remaining issues.
-
-**Exit gate:** Mandatory acceptance criteria verified or explicitly marked blocked; no false completion claims.
-## Full-screen map homepage revision
-
-- [x] M-01 — Integrate the full-viewport shell, centered cascading logo, and independent account and notification controls. Add a failing browser regression, then verify dimensions, six destinations and focus/dismissal behavior.
-- [x] M-02 — Replace visible map tools with the bottom-left circular disclosure, existing Leaflet actions and scrollable contextual lists. Preserve search, status, layers, sheet and attribution. Verify desktop and touch flows.
-- [x] M-03 — Inspect rendered desktop and mobile maps, including a selected station and expanded menus. Run production build, unit and browser suites, and reconcile the homepage checklist.
-## Interaction and demo revision
-
-- [x] R-01 — Audit and bound overflow across headers, overlays, stations, alerts, dashboard data and simulation outputs.
-- [x] R-02 — Anchor responsive search and fly to stations. Retain search URLs and bottom-right zoom.
-- [x] R-03 — Unify active rows and center the brand across workspace routes.
-- [x] R-04 — Build synchronized interactive dashboard charts, comparisons and current indicators for supported fields.
-- [x] R-05 — Implement and test shared deterministic demo provider, records, alert review and replay.
-- [x] R-06 — Add explicit demo flag and global data provenance.
-- [x] R-07 — Validate production isolation, permissions and documented removal.
-- [x] R-08 — Run local responsive, accessibility, functional and performance checks.
-
-- U-01 DONE. Public underwater film, pooled interactive discharge, accessible fallback and browser verification.
-- U-02 DONE. Enlarged drifting trash and microorganisms by 30% and replaced the mouse-following glow with soap and bubbles. Verified press, release, form hover and reduced motion in Chromium.
-- U-03 DONE. Replaced the desktop cursor throughout the public entry with soap and bubbles. Verified cursor visibility, form focus and reduced motion in an isolated Chromium run.
-- U-04 DONE. Kept intact trash and microorganisms in the current until they travel beyond the right edge. Verified both groups against the built renderer at three viewport widths.
-- U-05 IN_PROGRESS. Restore the native mouse cursor over the sign-in card and resume the soap cursor when the pointer leaves it.
-- U-06 DONE. Removed the public entry background playback button and verified automatic playback, hidden-tab pause and static fallbacks.
-- U-07 DONE. Doubled drifting trash sprite dimensions and verified the WebGL sizes for all trash and microorganism types.
-- U-08 DONE. Verified stronger pushes in all four swipe directions and a separate 2.5-second cooldown for each piece.
-- U-09 DONE. Increased cursor reach and verified nearly twice the travel on a short swipe near the trash.
-- U-10 DONE. Reduced the cooldown to 1.5 seconds and verified independent timers for two pieces.
-- U-11 DONE. Set the per-piece cooldown to 0.75 seconds and verified the new threshold.

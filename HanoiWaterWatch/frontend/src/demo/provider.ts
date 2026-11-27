@@ -2,6 +2,7 @@ import { ApiError, type DataProvider } from '../dataProvider';
 import { visibleAlertEvents } from '../domain';
 import type { Alert, User } from '../types';
 import { channels, createDataset, demoStations, stamp } from './dataset';
+import { demoAdmin } from './admin';
 
 const recordings = [
   { name:'demo-golden', duration_s:90 },
@@ -28,6 +29,7 @@ function dateRange(query: URLSearchParams, anchor: number) {
 
 export function createDemoProvider(authorize: () => Promise<User | null>, now = Date.now()): DataProvider {
   const dataset = createDataset(now);
+  const admin = demoAdmin(authorize, demoStations, dataset);
   const { alerts, anchor } = dataset;
   const runs = new Map<string, DemoRun>(), reviewOwners = new Map<number,string>();
   let version = 1, nextReview = 7000, nextRun = 1;
@@ -51,6 +53,14 @@ export function createDemoProvider(authorize: () => Promise<User | null>, now = 
     if (!payload || typeof payload !== 'object' || Array.isArray(payload)) return error(422,'Expected a demo action payload');
     const data = payload as Record<string,unknown>;
     const [resource,id,action] = parts;
+    if (resource === 'admin') {
+      const [,operation,code,scope] = parts;
+      if (code && scope !== 'lifecycle') return error(404,'Unsupported demonstration action');
+      const result = await admin.mutate(operation,code,data);
+      version++;
+      return result;
+    }
+    if (resource === 'notifications') return admin.mutate(resource,id,data);
     if (resource === 'alerts' && ['acknowledge','notes'].includes(action)) {
       const user = await staff('operator'), alert = getAlert(id);
       if (action === 'acknowledge') {
@@ -87,7 +97,9 @@ export function createDemoProvider(authorize: () => Promise<User | null>, now = 
     if (resource === 'replays' && action === 'runs') {
       const user = await staff('operator');
       const recording = recordings.find(item => item.name === id);
-      const site = demoStations.find(station => station.code === data.station_code && station.data_mode !== 'planned');
+      const site = admin.stations.find(station => station.code === data.station_code &&
+        station.data_mode !== 'planned' && station.lifecycle === 'active' &&
+        demoStations.some(entry => entry.code === station.code));
       const speed = Number(data.speed);
       if (!site || !recording || ![1,2,5].includes(speed)) return error(422,'Select an available station, replay and speed.');
       const previous = runs.get(site.code);
@@ -128,25 +140,39 @@ export function createDemoProvider(authorize: () => Promise<User | null>, now = 
   }
   async function read(parts: string[], query: URLSearchParams) {
     const [resource,id,scope] = parts;
+    if (resource === 'admin') return admin.read(id,query);
+    if (resource === 'notifications') return admin.read(resource,query);
     if (resource === 'health') return {status:'ok',db:'demo',ingest_enabled:false,is_simulated:true};
     if (resource === 'meta') return {wokwi_project_url:null,server_time:stamp(anchor),is_simulated:true};
     if (resource === 'replays' && !id) { await staff('operator'); return {items:recordings,is_simulated:true}; }
     if (resource === 'stations') {
-      if (!id) return {items:demoStations,is_simulated:true};
-      const site = demoStations.find(station => station.code === id) ?? error(404,'Demo station not found');
+      if (!id) return {items:admin.stations.filter(station => station.lifecycle !== 'archived'),is_simulated:true};
+      const site = admin.stations.find(station => station.code === id) ?? error(404,'Demo station not found');
+      const seeded = demoStations.some(station => station.code === id);
       if (!scope) return site;
-      if (scope === 'state') return dataset.state(site,version);
-      if (scope === 'link') return link(id);
+      if (scope === 'state') {
+        const state = seeded ? dataset.state(site,version) : {
+          station_code:site.code, version, generated_at:stamp(anchor), station_status:'unavailable',
+          last_frame_at:null, session:null, sensors:[], open_alert_count:0,
+        };
+        if (site.lifecycle === 'active') return {...state, lifecycle:site.lifecycle};
+        return {...state, lifecycle:site.lifecycle, station_status:site.lifecycle === 'maintenance' ? 'maintenance' : 'unavailable',
+          sensors:state.sensors.map(sensor => ({...sensor, value:null, measured_at:null, status:'unavailable'}))};
+      }
+      if (scope === 'link') return seeded && site.lifecycle === 'active' ? link(id) :
+        {station_code:id, link_status:'waiting', session:null, last_batch:null, is_simulated:true};
       const {from,to} = dateRange(query,anchor);
       if (scope === 'measurements') {
         const channel = channels.find(value => value === query.get('channel'));
         if (!channel) return error(422,'Unsupported demo sensor.');
-        return dataset.history(id,channel,from,to,query.get('bucket'));
+        const history = dataset.history(id,channel,from,to,query.get('bucket'));
+        return seeded ? history : {...history, points:[]};
       }
       if (scope === 'timeline') {
         const items = alerts.filter(alert => alert.station_code === id && Date.parse(alert.opened_at) >= from && Date.parse(alert.opened_at) <= to)
           .map(alert => ({at:alert.opened_at,type:'alert_opened',sensor_uid:alert.sensor_uid,data:{alert_id:alert.id}}));
-        return {...page(items,query),availability:dataset.availability(id,from,to)};
+        const availability = seeded ? dataset.availability(id,from,to) : {expected_frames:0,received_frames:0,pct:null};
+        return {...page(items,query),availability};
       }
     }
     if (resource === 'alerts') {

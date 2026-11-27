@@ -1,6 +1,6 @@
 # HanoiWaterWatch demonstration provider
 
-The demo provider uses the same query and UI contracts as the API. Fixture station locations are illustrative. An instance anchors measurements to a two-second timestamp. Given the same timestamp, readings, alert evidence and histories repeat. Browser refresh discards local reviews and replay runs.
+The demo provider uses the same query and UI contracts as the API. Fixture station locations are illustrative. An instance anchors measurements to a two-second timestamp. Given the same timestamp, readings, alert evidence and histories repeat. Browser refresh resets local reviews, lifecycle changes, announcement delivery and internal replay runs.
 
 ## Run locally
 
@@ -11,7 +11,7 @@ $env:VITE_DEMO_MODE = 'true'
 npm.cmd run dev -- --mode demo
 ```
 
-Open the loopback address printed by Vite. Public monitoring is read-only. Review actions and replay controls require the same staff roles as the regular application. After authentication, all demonstration mutations remain in the browser. Replay outputs use their own result envelope and leave station snapshots and history independent.
+Open the loopback address printed by Vite. Public monitoring is read-only. Review and Admin actions require the same roles as the regular application. All demonstration mutations remain in the browser. The local announcement audience is limited to the signed-in admin profile. The static quality examples appear in Overview history with a silent notification baseline. Internal replay outputs use their own result envelope and leave station snapshots and history independent.
 
 An explicit `npm.cmd run build -- --mode demo` writes `dist-demo/` for a local preview. The demo provider accepts loopback origins. A standard `npm.cmd run build` rejects `VITE_DEMO_MODE=true`.
 

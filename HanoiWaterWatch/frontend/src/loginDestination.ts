@@ -1,5 +1,6 @@
 const destinations = [
-  /^\/(?:map|overview|simulation)\/?$/,
+  /^\/(?:map|admin|stations|simulation)\/?$/,
+  /^\/overview(?:\/alerts(?:\/\d+)?)?\/?$/,
   /^\/alerts(?:\/\d+)?\/?$/,
   /^\/stations\/[A-Za-z0-9_-]+(?:\/(?:dashboard|model))?\/?$/,
 ];

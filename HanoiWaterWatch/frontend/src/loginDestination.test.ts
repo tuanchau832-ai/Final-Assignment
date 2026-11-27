@@ -8,7 +8,7 @@ describe('post-login navigation', () => {
     }
   });
   it('returns the full supported deep link', () => {
-    for (const target of ['/map?station=HWW-TLH-001', '/alerts/12?station=HWW-KNG-001#history', '/simulation', '/overview', '/stations/HWW-NHU-001/model?sensor=ph', '/stations/HWW-KNG-001/dashboard?range=24']) {
+    for (const target of ['/map?station=HWW-TLH-001', '/alerts/12?station=HWW-KNG-001#history', '/simulation', '/overview', '/overview/alerts/12?station=HWW-KNG-001#history', '/overview/alerts', '/admin', '/stations/HWW-NHU-001/model?sensor=ph', '/stations/HWW-KNG-001/dashboard?range=24']) {
       expect(loginDestination(target)).toBe(target);
     }
   });

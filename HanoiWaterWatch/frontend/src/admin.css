@@ -1,0 +1,19 @@
+.admin-page { max-width: 1160px; margin: 0 auto; color: var(--text); }
+.admin-section,.admin-confirm { border-top: 1px solid #bfd6cf; padding: 18px 0; min-width: 0; }
+.admin-section h2,.admin-confirm h2 { font-size: 20px; margin: 0 0 14px; }
+.admin-workflows { border: 0; padding: 0; margin: 0; min-width: 0; }
+.admin-fields { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(190px,100%),1fr)); gap: 12px; margin-bottom: 12px; }
+.admin-fields label { display: grid; gap: 6px; align-content: start; color: #314f58; font-weight: 600; min-width: 0; }
+.admin-fields input,.admin-fields select,.admin-fields textarea { width: 100%; min-width: 0; border: 1px solid #abcac0; border-radius: 7px; padding: 7px; background: white; color: #11383f; }
+.admin-page details { margin-top: 16px; }
+.admin-page summary { cursor: pointer; font-weight: 650; padding: 8px 0; }
+.admin-confirm { padding: 16px; background: #e8f5ef; border-radius: 8px; overflow-wrap: anywhere; }
+.admin-page button,.admin-measures a { margin: 4px 10px 4px 0; }
+.admin-measures { border-top: 1px solid #d4e4df; padding: 12px 0; }
+.admin-measures dl { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(170px,100%),1fr)); gap: 10px; }
+.admin-measures dt { font-size: 13px; color: #435c64; }
+.admin-measures dd { margin: 3px 0; font-variant-numeric: tabular-nums; }
+.admin-measures a { display: inline-block; color: #005e63; text-decoration: underline; }
+.admin-audit { list-style: none; padding: 0; overflow-wrap: anywhere; }
+.admin-audit li { border-top: 1px solid #d4e4df; padding: 8px 0; }
+.admin-audit p { margin: 4px 0; }

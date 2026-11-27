@@ -20,6 +20,7 @@ export interface Sensor {
     active_alert_id: number | null;
 }
 export interface Station {
+    lifecycle?: 'active' | 'maintenance' | 'archived';
     code: string;
     name: LocalText;
     river: string;

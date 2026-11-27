@@ -24,6 +24,10 @@ def main():
             'DEMO_REVIEWER_USERNAME': os.environ['HWW_E2E_USERNAME'],
             'DEMO_REVIEWER_PASSWORD': os.environ['HWW_E2E_PASSWORD'],
         })
+        for role in ('ADMIN', 'OPERATOR'):
+            if f'HWW_E2E_{role}_USERNAME' in os.environ:
+                for field in ('USERNAME', 'PASSWORD'):
+                    os.environ[f'DEMO_{role}_{field}'] = os.environ[f'HWW_E2E_{role}_{field}']
         uvicorn.run('app.main:create_app', factory=True, host='127.0.0.1',
                     port=int(os.environ.get('HWW_E2E_PORT', '8176')), access_log=False)
 
