@@ -128,11 +128,13 @@ const calc = () => {
   const rounds = 2 * years;
   $('#nOut').textContent = stations;
   $('#yOut').textContent = years;
+  $('#cFirstStation').textContent = dong(buildSum);
+  $('#cRemainingStations').textContent = stations > 1 ? dong((stations - 1) * buildSum) : 'No additional stations';
   $('#cVnd').textContent = dong(stations * buildSum);
-  $('#cSpare').textContent = dong(stations * PH_KIT.p);
+  $('#cSpare').textContent = stations <= pilotStations ? dong(PH_KIT.p) : 'Stock TBD';
   $('#cVisits').textContent = fmt(rounds * stations);
   $('#cTrips').textContent = stations === pilotStations ? fmt(rounds) : 'Route TBD';
-  $('#cServices').textContent = `${fmt(stations * months)} SIM-months and ${fmt(months)} hosting months, assuming one shared hosting package. Quotes required.`;
+  $('#cServices').textContent = `Planning quantities: ${fmt(stations * months)} SIM-months with one SIM per station and ${fmt(months)} months of shared hosting. Recalculate from commissioning dates. Quotes required.`;
 };
 stationInput.addEventListener('input', calc); yearInput.addEventListener('input', calc); calc();
 

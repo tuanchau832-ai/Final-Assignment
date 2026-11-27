@@ -94,7 +94,7 @@
         <h2>Every discharge, visible within minutes</h2>
         <p>Hanoi’s rivers receive large volumes of untreated wastewater every day. Only about 30% of the city’s domestic wastewater is treated (VnExpress, 2024), and factories and drains can discharge at night or in heavy rain, when nobody is watching. Inspections rely on hand-taken samples and laboratory tests that take days, so polluters are rarely traced and residents downstream are not warned.</p>
         <p>This report proposes Hanoi WaterWatch: small solar-powered sensor stations at high-risk drain outfalls that measure pH, dissolved oxygen, turbidity and temperature every few seconds. When readings stay outside national QCVN limits, the system alerts the environment authority, turns the outfall red on a public map app and warns nearby residents. An inspector then takes a laboratory sample at that exact outfall before any fine is issued.</p>
-        <p>Sensor stations are the proposed pilot design. The comparison also includes resident test kits, manual sampling and AI-assisted IoT. A simulated prototype demonstrates the alert flow. Priced items in the reference equipment list for three stations total <span data-hww-pilot-cost>₫41,686,398</span>. The three-year budget still needs final hardware selection and quotes for installation and services.</p>
+        <p>Sensor stations are the proposed pilot design. The comparison also includes resident test kits, manual sampling and AI-assisted IoT. A simulated prototype demonstrates the alert flow. Test one station before ordering two more. Priced reference equipment for all three totals <span data-hww-pilot-cost>₫41,686,398</span>. The three-year budget still needs final hardware selection and quotes for installation and services.</p>
         <p><span class="pending">Add one sentence on prototype test results after Week 10</span></p>
       </div>
       <dl class="glance reveal d2" style="margin:0">
@@ -541,11 +541,11 @@
 
   <section class="band" id="implementation-plan">
     <div class="wrap">
-      <div class="head reveal"><p class="kicker">Rollout plan</p><h2>Start small, prove it, then scale</h2></div>
+      <div class="head reveal"><p class="kicker">Rollout plan</p><h2>Test one station before ordering two more</h2></div>
       <div class="road">
-        <div class="phase reveal"><span class="bar"></span><span class="when">Before operations</span><h3>Prepare</h3><ul><li>Agree pilot sites and alert steps with the Department of Agriculture and Environment.</li><li>Get access from the drainage company.</li><li>Train inspectors and ward staff.</li></ul></div>
-        <div class="phase reveal d1"><span class="bar"></span><span class="when">Year 1</span><h3>Commission</h3><ul><li>Commission three stations at approved high-risk outfalls. The Nhuệ and Tô Lịch are candidate rivers.</li><li>Run a two-week baseline.</li><li>Launch the app with participating wards.</li></ul></div>
-        <div class="phase reveal d2"><span class="bar"></span><span class="when">Years 1–3</span><h3>Operate and evaluate</h3><ul><li>Schedule field testing in months 6, 12, 18, 24, 30 and 36 of operation.</li><li>Measure detection time, false alarms and app use.</li><li>Review wear and corrosion during the month-36 trip and replace parts as needed.</li></ul></div>
+        <div class="phase reveal"><span class="bar"></span><span class="when">Before operations</span><h3>Survey and quote</h3><ul><li>Survey three candidate outfalls on a shared route. Check access, flood levels, mobile coverage, shade and cable runs.</li><li>Compare complete ESP32 and LILYGO quotes for one station, including installation.</li><li>Agree access and the alert procedure with the responsible agencies.</li></ul></div>
+        <div class="phase reveal d1"><span class="bar"></span><span class="when">First installation</span><h3>Commission one station</h3><ul><li>Check readings against references, measure power use and test 4G recovery and alerts.</li><li>Run a two-week baseline at the first outfall.</li><li>Order the other two stations after the team accepts the results and approves the revised quote.</li></ul></div>
+        <div class="phase reveal d2"><span class="bar"></span><span class="when">Years 1–3</span><h3>Operate and evaluate</h3><ul><li>Plan shared tests in months 6, 12, 18, 24, 30 and 36. Align actual visits with commissioning dates.</li><li>Measure detection time, false alarms and app use.</li><li>Review wear and corrosion during the month-36 trip and replace parts as needed.</li></ul></div>
         <div class="phase reveal d3"><span class="bar"></span><span class="when">After year 3</span><h3>Decide whether to scale</h3><ul><li>Use pilot results to assess expansion to industrial clusters.</li><li>Review the scope of a public data portal.</li><li>Confirm the operator and funding before expansion.</li></ul></div>
       </div>
     </div>
@@ -556,7 +556,7 @@
       <div class="head reveal"><p class="kicker">Ownership and operation</p><h2>Proposed roles and maintenance</h2></div>
       <div class="owners">
         <div class="card lift reveal"><b>Department of Agriculture and Environment</b><p>Proposed owner of the stations and data and point of contact for inspections.</p></div>
-        <div class="card lift reveal d1"><b>System operator</b><p>Confirm the operator, backup, spares and payment responsibilities before deployment. The plan requires repairs within 48 hours of incident receipt. Staffing and service agreements are pending.</p></div>
+        <div class="card lift reveal d1"><b>System operator</b><p>Name a primary operator, backup and payer before deployment. Check that a shared pH spare and local replacement parts can support repair within 48 hours of incident receipt.</p></div>
         <div class="card lift reveal d2"><b>Accredited laboratories</b><p>Test the confirmation samples that support any fine.</p></div>
         <div class="card lift reveal"><b>Ward People’s Committees</b><p>Share alerts locally and collect residents’ feedback.</p></div>
         <div class="card lift reveal d1"><b>Residents</b><p>Report pollution with photos and help watch the sites.</p></div>
@@ -567,7 +567,7 @@
 
   <section class="band" id="implementation-cost">
     <div class="wrap">
-      <div class="head reveal"><p class="kicker">Cost analysis</p><h2>Initial equipment and service quantities</h2><p class="lede">The ESP32 and M.2 reference configuration uses listed prices recorded 19–25 November. USD items were converted at the historical basis of ₫25,940 per US dollar. Hardware selection, installation costs and supplier quotes are pending.</p></div>
+      <div class="head reveal"><p class="kicker">Cost analysis</p><h2>Initial equipment and service quantities</h2><p class="lede">The ESP32 and M.2 reference configuration uses listed prices recorded 19–25 November, with USD items converted at ₫25,940 per US dollar. Compare an exact LILYGO configuration on the same installed scope before ordering.</p></div>
       <div class="grid2" style="align-items:start">
         <div class="reveal">
           <h3 style="margin-bottom:12px">Priced reference items per station</h3>
@@ -582,13 +582,15 @@
             <label for="nYr">Operating years per station <output id="yOut">3</output></label>
             <input type="range" id="nYr" min="1" max="5" step="1" value="3">
             <div class="out">
+              <div><small>First station equipment</small><b id="cFirstStation">₫13,895,466</b></div>
+              <div><small>Remaining station equipment after acceptance</small><b id="cRemainingStations">₫27,790,932</b></div>
               <div><small>Initial listed-price subtotal</small><b id="cVnd">₫41,686,398</b></div>
-              <div><small>Optional pH kits, priced separately</small><b id="cSpare">₫5,050,518</b></div>
+              <div><small>One optional shared pH kit</small><b id="cSpare">₫1,683,506</b></div>
               <div><small>Station checks</small><b id="cVisits">18</b></div>
               <div><small>Shared testing trips</small><b id="cTrips">6</b></div>
             </div>
-            <p class="scenario-note">Shared trips are planned for the three-station pilot, pending route and quote confirmation. One trip covers three station checks. Initial equipment and optional spares are counted once.</p>
-            <p class="scenario-note" id="cServices">108 SIM-months and 36 hosting months, assuming one shared hosting package. Quotes required.</p>
+            <p class="scenario-note">The shared pH kit is separate from the equipment subtotal. Check compatibility, storage and the 48-hour repair requirement. One shared testing trip covers three station checks, pending route confirmation.</p>
+            <p class="scenario-note" id="cServices">Planning quantities: 108 SIM-months with one SIM per station and 36 months of shared hosting. Recalculate from commissioning dates. Quotes required.</p>
             <p class="scenario-note"><strong>Full scenario budget pending:</strong> installation, testing trips, other services and unpriced items still need quotes.</p>
           </div>
           <p class="cap">See the <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/2a3fb2be9f00442dd784af2428c982e966cc9d3d/website/content/cost-rollup-3stations-3years-2026-11-26.md">cost rollup</a>, <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/2a3fb2be9f00442dd784af2428c982e966cc9d3d/website/content/cost-evidence/README.md">supplier-listing evidence</a> and <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/2a3fb2be9f00442dd784af2428c982e966cc9d3d/website/content/maintenance-acceptance-template-2026-11-27.md">draft acceptance and incident checklist</a>.</p>
