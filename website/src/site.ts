@@ -22,7 +22,7 @@ const CRIT = [
   { k: 'Affordable', w: 10, c: '#ff9b8a', d: 'Low enough cost per site to cover many outfalls, including upkeep.', why: 'The city budget is already stretched.' }
 ];
 const OPTS = [
-  { k: 'A · Sensor stations', s: [5, 5, 4, 4, 3, 3], r: ['Reads every 2 s; alerts in minutes', 'One station per outfall', 'Three-reading rule; probes can drift', 'Colour map plus SMS', 'Fouling and floods need care', 'Installation and ongoing upkeep require funding'] },
+  { k: 'A · Sensor stations', s: [5, 5, 4, 4, 3, 3], r: ['Reads every 2 s; alerts in minutes', 'One station per outfall', 'Three-reading rule; probes can drift', 'Colour map plus SMS', 'Fouling and floods need care', 'Provisional score. Review once equipment, installation and service costs are confirmed.'] },
   { k: 'B · Test kits and app', s: [2, 2, 2, 4, 5, 4], r: ['Only when a volunteer tests', 'Tests river water, not outfalls', 'Kit accuracy and training vary', 'Residents take part directly', 'Kits are simple', 'Kits are cheap'] },
   { k: 'C · Manual sampling', s: [1, 3, 5, 2, 4, 2], r: ['Days between visits, plus lab time', 'Samples one outfall, if it is the right one', 'Laboratory accuracy', 'Results rarely reach residents', 'No equipment left on site', 'Staff time grows with every site'] },
   { k: 'D · AI + IoT', s: [], r: [] }

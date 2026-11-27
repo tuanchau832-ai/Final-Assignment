@@ -337,7 +337,7 @@
       <p class="cap" style="margin-top:14px"><b>Figure 2.</b> Weighted decision matrix. Each coloured block is one criterion’s contribution to the total.</p>
       <div class="grid2" style="margin-top:clamp(32px,4vw,56px);align-items:start">
         <div class="prose reveal">
-          <p>Among the three scored options, sensor stations scored highest on timeliness and traceability. The implementation and cost sections address start-up costs and probe maintenance. The comparison with AI-assisted IoT remains open.</p>
+          <p>Among the three scored options, sensor stations scored highest on timeliness and traceability. The team will revisit the provisional affordability score once the hardware and service quotes are confirmed. The comparison with AI-assisted IoT remains open.</p>
           <p>The proposed design retains two features from the scored alternatives. Residents can report pollution with a photo in the app, and inspectors can seek laboratory confirmation before enforcement.</p>
         </div>
         <div class="reveal d1">
@@ -413,7 +413,7 @@
     <div class="wrap grid2" style="align-items:start">
       <div class="head reveal" style="margin:0"><p class="kicker">Community concerns</p><h2>Questions residents asked, and the design’s answers</h2></div>
       <div class="acc reveal d1">
-        <details open><summary>What if the alert is wrong?</summary><div class="in"><p>Three readings in a row must break a limit, faulty probes are flagged, and alerts say “detected, being checked”. A laboratory sample confirms before any fine.</p></div></details>
+        <details open><summary>What if the alert is wrong?</summary><div class="in"><p>The simulator waits for three consecutive readings outside the active screening limits. Field detection of probe faults and drift still needs validation. The proposed response includes laboratory confirmation before enforcement.</p></div></details>
         <details><summary>Will it be stolen or flooded?</summary><div class="in"><p>The box is locked in a steel cage above the flood line, and ward staff help watch the site.</p></div></details>
         <details><summary>My parents do not use smartphones.</summary><div class="in"><p>Alerts also go out by SMS and through ward loudspeaker announcements.</p></div></details>
         <details><summary>Does the app collect my data?</summary><div class="in"><p>No account is needed. Location stays on the phone; only water data is published.</p></div></details>
@@ -478,12 +478,12 @@
       </div>
       <div class="panel on" role="tabpanel" id="pt1" aria-labelledby="tb1">
         <div class="six">
-          <div><b>What and why</b><p>Shows that a station can detect a discharge and raise an alert on its own.</p></div>
-          <div><b>How it was made</b><p>An ESP32 circuit on Wokwi, an online simulator. Sliders stand in for the pH, oxygen and turbidity probes; code is in C++.</p></div>
-          <div><b>Form and function</b><p>Reads every two seconds, applies the QCVN limits and three-reading rule, publishes readings over MQTT and sends a Telegram alert.</p></div>
-          <div><b>How it was tested</b><p>Four scenarios, ten runs each, fed with recorded Hanoi monitoring values.</p></div>
-          <div><b>Results</b><p><span class="pending">Detection rate, false alarms, alert time</span></p></div>
-          <div><b>Changes in version 2</b><p><span class="pending">Add after testing</span></p></div>
+          <div><b>What and why</b><p>Demonstrates how a simulated station screens readings and confirms an alert.</p></div>
+          <div><b>How it was made</b><p>The embedded ESP32 simulation uses JavaScript and adjustable sensor values. The team also prepared a separate Wokwi firmware prototype.</p></div>
+          <div><b>Form and function</b><p>The browser simulator takes a reading every two simulated seconds and passes its alert state to the page. Its MQTT panel displays simulated messages.</p></div>
+          <div><b>How it was tested</b><p>Thirteen automated scenarios exercise both rule modes, including limit boundaries and alert recovery. See the <a href="#appendices-prototype-tests">test record in Appendix D</a>.</p></div>
+          <div><b>Results</b><p>The checks passed for the tested inputs. A continuing breach activates the alert on the third reading, and a passing reading clears it.</p></div>
+          <div><b>Field readiness</b><p>Probe accuracy, drift thresholds and the end-to-end field alert still need acceptance data. The final procedure depends on the selected hardware.</p></div>
         </div>
         <div class="btnrow" style="display:flex;flex-wrap:wrap;gap:10px"><span class="pending">Link the Wokwi circuit</span><span class="pending">Embed the demo video</span></div>
       </div>
@@ -729,8 +729,13 @@
       <details open><summary>Appendix A · Group charter</summary><div class="in"><p>The team’s agreed roles, meeting times and rules, signed in Week 2.</p><p><span class="pending">Link the signed charter</span></p></div></details>
       <details><summary>Appendix B · Meeting minutes and decision-matrix session</summary><div class="in"><p>Weekly minutes: who did what, what was finished and new deadlines, including the session where all members scored the decision matrix.</p><p><span class="pending">Link minutes folder</span></p></div></details>
       <details><summary>Appendix C · Survey and interviews</summary><div class="in"><p>Survey questions, anonymised raw responses and interview notes. Participants were told the purpose and no names or phone numbers were collected.</p><p><span class="pending">Link raw data</span></p></div></details>
-      <details><summary>Appendix D · Prototype test data</summary><div class="in"><p>Scenario results for the sensor station, usability-test task results and SUS scores, and screen recordings.</p><p><span class="pending">Link test sheets and videos</span></p></div></details>
-      <details><summary>Appendix E · Bill of materials and price evidence</summary><div class="in"><p>Dated screenshots of each supplier price used in the Cost analysis.</p><p><span class="pending">Link screenshots</span></p></div></details>
+      <details id="appendices-prototype-tests" open><summary>Appendix D · Prototype test data</summary><div class="in">
+        <p><strong>Embedded simulator, 27 November 2026.</strong> Run <code>node tests/check-embedded-simulator.mjs</code> from the website directory. The test runs the embedded HTML’s JavaScript in Node.js and checks the station messages sent to the parent page.</p>
+        <p><strong>Report rule.</strong> A turbidity reading of 57 NTU is within the simulated station limit. At 57.1 NTU the sample breaches the rule. High TDS and temperature are recorded and do not trigger this mode. <strong>Team rule.</strong> The limit is 75 NTU when DO is at least 4.20 mg/L and TDS is at most 400 ppm, and 50 NTU otherwise. This mode checks TDS and temperature as well.</p>
+        <p>All 13 scenarios passed, including the three-reading count and the return to zero on a passing reading. The test also checked that entering 251 NTU clamps the value to 250 NTU. These results cover simulated alert logic. Model-specific accuracy, calibration, drift, physical 4G and incident response need a separate field test. Record those results in the <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/2a3fb2be9f00442dd784af2428c982e966cc9d3d/website/content/maintenance-acceptance-template-2026-11-27.md">draft acceptance checklist</a>.</p>
+        <p><span class="pending">Link usability test results, Wokwi evidence and screen recordings</span></p>
+      </div></details>
+      <details><summary>Appendix E · Bill of materials and price evidence</summary><div class="in"><p>See the <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/2a3fb2be9f00442dd784af2428c982e966cc9d3d/website/content/cost-evidence/README.md">dated supplier-listing images</a> and the <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/2a3fb2be9f00442dd784af2428c982e966cc9d3d/website/content/cost-rollup-3stations-3years-2026-11-26.md">reference cost rollup and items that still require quotes</a>.</p></div></details>
       <details><summary>Appendix F · Use of generative AI and prompt log</summary><div class="in"><p>The team used Claude (Anthropic) to help design and code this website, structure the report, find candidate sources and check APA formatting, and ChatGPT for brainstorming during research. Every source was checked against the original publication, and all decisions, data and final wording were reviewed by the team.</p><p><span class="pending">Link screenshots of prompts and responses</span></p></div></details>
     </div>
   </section>
