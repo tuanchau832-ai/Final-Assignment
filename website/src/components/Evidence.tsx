@@ -8,12 +8,28 @@ export function Pending({ children }: { children: string }) {
 export function Citation({ reference, references }: { reference?: Reference; references?: readonly Reference[] }) {
   const cited = references ?? (reference ? [reference] : []);
   const ordered = [...cited].sort((first, second) =>
-    first.author.localeCompare(second.author) || first.year.localeCompare(second.year));
+    (first.citationAuthor ?? first.author).localeCompare(second.citationAuthor ?? second.author, 'en')
+    || Number(!first.year.startsWith('n.d.')) - Number(!second.year.startsWith('n.d.'))
+    || first.year.localeCompare(second.year));
+
+  const groups: Reference[][] = [];
+  for (const item of ordered) {
+    const previous = groups.at(-1);
+    if (previous && (previous[0].citationAuthor ?? previous[0].author) === (item.citationAuthor ?? item.author)) {
+      if (!previous.some(({ id }) => id === item.id)) previous.push(item);
+    } else groups.push([item]);
+  }
 
   return <>(
-    {ordered.map((item, index) => (
-      <span key={item.id}>
-        {index > 0 && '; '}<Link to={`/pages/references#${item.id}`}>{item.author}, {item.year}</Link>
+    {groups.map((group, index) => (
+      <span key={group[0].id}>
+        {index > 0 && '; '}{group.map((item, itemIndex) => (
+          <span key={item.id}>
+            {itemIndex > 0 && ', '}<Link to={`/pages/references#${item.id}`}>
+              {itemIndex === 0 ? `${item.citationAuthor ?? item.author}, ${item.year}` : item.year}
+            </Link>
+          </span>
+        ))}
       </span>
     ))}
   )</>;
@@ -26,7 +42,9 @@ export function Bibliography({ references }: { references: readonly Reference[] 
         <li key={reference.id} id={reference.id} tabIndex={-1}>
           {reference.title ? (
             <>
-              {reference.author}. ({reference.date ?? reference.year}). <cite>{reference.title}</cite>{reference.description && <> {reference.description}</>}.
+              {reference.author}. ({reference.date ?? reference.year}). {reference.italicTitle === false
+                ? reference.title : <cite>{reference.title}</cite>}{reference.description && <> {reference.description}</>}.
+              {reference.siteName && reference.siteName !== reference.author && <> {reference.siteName}.</>}
               {reference.retrievedDate && <> Retrieved {reference.retrievedDate}, from</>}
               {reference.url && <> <a href={reference.url}>{reference.url}</a></>}
             </>

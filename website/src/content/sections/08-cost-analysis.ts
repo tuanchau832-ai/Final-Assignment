@@ -18,9 +18,10 @@ export default {
         },
         {
           text: 'The working procurement plan tests one station before ordering the other two after acceptance and a refreshed quotation. Listed equipment is 13,895,466 VND for the first station and 27,790,932 VND for the next two, totalling 41,686,398 VND. These are historical-price subtotals, excluding unquoted equipment, installation and services. Staggered commissioning requires a decision on a common project end date versus three operating years for each station before SIM, hosting and maintenance quantities can be finalised.',
+          citations: [reference('tuan-first-station-plan')],
         },
         {
-          text: 'Prices were checked on 19 November 2026. A supplier-listed price is an online listing, not a quotation. USD prices use 25,940 VND/USD; freight, import and exchange fees are excluded. VAT and delivery are included only where stated. "Quote required" identifies essential scope without a selected public price. Permission, civil works, insurance, flood and vandalism damage are outside this register.',
+          text: 'The unit-price register retains prices checked on 19 November 2026, with subsequent evidence reviews dated separately. A supplier-listed price is an online listing, not a quotation. USD calculations retain the historical 25,940 VND/USD basis. On 27 November, the NDH live table still displayed this figure in its 19 November Vietcombank selling-rate row; it is not a current bank quotation. Freight, import and exchange fees are excluded. VAT and delivery are included only where stated. "Quote required" identifies essential scope without a selected public price. Permission, civil works, insurance, flood and vandalism damage remain uncosted.',
           citations: [reference('vietcombank-rate'), reference('hshop-esp32'), reference('hshop-do'), reference('hshop-sim7600')],
         },
       ],
@@ -35,7 +36,7 @@ export default {
         },
         {
           text: 'The manufacturer states pH life exceeds 4,380 hours, depending on water quality; this is not a fixed six-month replacement deadline. The current optional reserve scenario holds one full pH kit shared across the pilot, costing 1,683,506 VND once. First-station listed procurement plus that shared reserve is 15,578,972 VND; all three stations plus the shared reserve is 43,369,904 VND. Storage, compatibility, replenishment and access within the 48-hour repair requirement remain unconfirmed. Calibration, DO-film replacement, field work, connectivity, hosting, power maintenance and disposal remain unpriced.',
-          citations: [reference('dfrobot-ph'), reference('hshop-do')],
+          citations: [reference('dfrobot-ph'), reference('dfrobot-do-specifications'), reference('tuan-first-station-plan')],
         },
         {
           text: 'This candidate BOM uses RS485 fluorescence DO and industrial turbidity sensors. Teammate proposals use different hardware; their USD totals cannot be substituted without model and interface checks. If an integrated ESP32/4G board is selected, replace the separate board and modem rows and recheck included antennas, charging, sensor interfaces and power compatibility.',
@@ -43,10 +44,11 @@ export default {
         },
         {
           text: 'Dat confirmed six-month functional checks at months 6, 12, 18, 24, 30 and 36, including routine cleaning, calibration checks and a test alert. His proposed quotation basis groups all three stations into one route each time: six shared route visits covering 18 station checks over three years. The month-36 route includes the wear and corrosion review; replacement remains condition-based. Extra cleaning is triggered by drift or suspected fouling, while model-specific calibration requirements remain unresolved. Route feasibility, numerical acceptance thresholds, named testers and service prices still require confirmation.',
+          citations: [reference('dat-maintenance-response')],
         },
         {
-          text: 'Six shared testing trips are a full-rollout planning baseline, not the complete priced calibration schedule. The SEN0710 manufacturer page recommends recalibration every 90 days; additional calibration work and travel require a model-specific service quotation. Reference-instrument comparison near alert thresholds is also required before approving the next two stations. A TDS channel remains conditional on the field alert rule selected by the design team, with no selected price.',
-          citations: [reference('dfrobot-turbidity')],
+          text: 'Six shared testing trips are a full-rollout planning baseline, not the complete priced calibration schedule. The SEN0710 manufacturer page recommends recalibration every 90 days, while the pH guidance describes an ideal monthly interval. Additional calibration work and travel require a model-specific service quotation. The first-station plan proposes reference-instrument comparison near alert thresholds before approving the next two stations. A TDS channel remains conditional on the field alert rule selected by the design team, with no selected price.',
+          citations: [reference('dfrobot-turbidity'), reference('dfrobot-ph-calibration'), reference('tuan-first-station-plan')],
         },
       ],
       table: {
@@ -93,6 +95,7 @@ export default {
       paragraphs: [
         {
           text: 'No full-station or monthly affordability figure is claimed because essential equipment and services remain unpriced. Dat requires upfront agreements involving the Department of Agriculture and Environment, the operating team and suppliers; no signed funding allocation or service commitment has been supplied. Payers remain proposed until each cost and responsibility is agreed. No community fee is assumed.',
+          citations: [reference('dat-maintenance-response')],
         },
         {
           text: 'Before approval, obtain two written quotations for the power system, modem carrier and antennas, outdoor installation, calibration, field visits, SIM data, hosting, DO-film replacement and disposal. Complete load, shading, site, signal and safety surveys, then update the table and evidence register. This keeps the pilot testable while costs remain incomplete.',

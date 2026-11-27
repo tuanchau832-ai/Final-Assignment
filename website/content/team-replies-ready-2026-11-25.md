@@ -1,5 +1,12 @@
 # Tin nhắn chờ xác nhận — Bá Nguyên
 
+> **BẢN HIỆN HÀNH: [Bá Nguyên — bắt đầu đọc tại đây](ba-nguyen-current-handoff.md).** Các hướng dẫn phía dưới được lưu theo thời điểm, không phải danh sách việc/câu hỏi hiện tại. Đặc biệt: 24/26 lượt và ba kit pH reserve đã bị thay thế; không áp lại giá hoặc gửi câu hỏi cũ.
+
+<!-- BA-NGUYEN-HISTORY-BOUNDARY -->
+<details>
+<summary>Tin nhắn dự thảo 25/11 — không gửi lại như câu hỏi hiện tại (lịch sử; bấm để xem)</summary>
+
+
 > **Lưu trữ câu hỏi 25/11.** Trạng thái hiện tại và yêu cầu sửa source nằm trong [bảng đối chiếu 26/11](final-website-vs-ba-nguyen-2026-11-26.md). Akai đã trả lời 3 trạm/3 năm và chuyển D2/D3 cho Đạt/Tuấn; D5 mới tách testing 6 tháng/lần với review năm 3. Không gửi lại nguyên văn lịch 26 lượt hoặc câu hỏi D1 cũ dưới đây như thể chưa có cập nhật. Các câu hỏi bổ sung đã đăng trong PR #3 ngày 26/11.
 
 Soạn ngày 25/11/2026. Đây là bản câu hỏi chi tiết để đối chiếu với các comment gửi trong PR #3. D5/D7 đã có [quyết định của Bá Nguyên](ba-nguyen-decisions-2026-11-25.md); phần còn lại vẫn chờ nhóm. Mỗi người có thể trả lời ngay dưới comment gắn tên mình bằng ID D1–D8. Nếu chưa chốt, xin ghi `TBD + ai kiểm tra + khi nào + tài liệu cần có` để không tự điền số. Bằng chứng giá mới và ảnh gốc nằm trong [cost-evidence/README.md](cost-evidence/README.md).
@@ -51,3 +58,5 @@ Soạn ngày 25/11/2026. Đây là bản câu hỏi chi tiết để đối chi�
 > Chào anh/chị, nhóm đang lập dự toán cho trạm theo dõi chất lượng nước ngoài trời tại Hà Nội. Xin báo giá bằng văn bản cho **[số trạm, vị trí/địa chỉ, model và sơ đồ đính kèm]**, tách từng dòng và số lượng: (1) panel/battery/controller/DC/protection và phụ kiện lắp; (2) hộp IP, cáp/gland, cage/arm/wiper, chống ăn mòn và tiếp địa/chống xung; (3) lắp đặt gần nước/đường, commissioning, hiệu chuẩn ban đầu; (4) bảo trì/vệ sinh **26 lượt/năm (mỗi 14 ngày)**, nếu được thì thêm mức so sánh 24 lượt/năm, hiệu chuẩn 12 lần/năm và lượt sau mưa lũ; (5) vật tư thay pH/DO, thu hồi/thải bỏ. Xin ghi rõ model, điều kiện địa điểm, VAT, giao hàng, công đi lại, bảo hành, loại trừ, thời gian giao và hiệu lực báo giá. Nếu không cung cấp được mục nào, xin đánh dấu rõ để nhóm xin nhà cung cấp khác. Xin cảm ơn.
 
 Mẫu quote đầy đủ còn ở [supplier-quote-request-template.md](supplier-quote-request-template.md). Không gửi yêu cầu có ô `[...]` cho nhà cung cấp trước khi người phụ trách kỹ thuật xác nhận dữ liệu.
+
+</details>

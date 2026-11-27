@@ -1,5 +1,12 @@
 # Cost-analysis handoff for Tuan
 
+> **BẢN HIỆN HÀNH: [Bá Nguyên — bắt đầu đọc tại đây](ba-nguyen-current-handoff.md).** Các hướng dẫn phía dưới được lưu theo thời điểm, không phải danh sách việc/câu hỏi hiện tại. Đặc biệt: 24/26 lượt và ba kit pH reserve đã bị thay thế; không áp lại giá hoặc gửi câu hỏi cũ.
+
+<!-- BA-NGUYEN-HISTORY-BOUNDARY -->
+<details>
+<summary>Các bản bàn giao 19–27/11 trước khi chuẩn hóa chỉ mục (lịch sử; bấm để xem)</summary>
+
+
 > **After Tuan reply, 27 November:** Read the [current review and plan](tuan-response-plan-2026-11-27.md), [staged procurement CSV](staged-procurement-2026-11-27.csv), [commissioning scenarios](commissioning-cost-basis-2026-11-27.csv) and [source-check report](team-review/tuan-integration-check-2026-11-27.md). Tuan integration is verified on proposal branch 7208280, not final-website. The current optional reserve is one shared kit; earlier three-kit reserve figures are historical alternatives. Six testing routes are a baseline, not a complete calibration quote or a proven staggered-commissioning schedule. Role assignments beyond the README remain proposals unless accepted by those responsible.
 
 > **27 November update:** Dat has now answered D5 directly. See the [response review and execution plan](dat-response-plan-2026-11-27.md), [18-check/6-route schedule](maintenance-schedule-2026-11-27.csv) and [acceptance/incident template](maintenance-acceptance-template-2026-11-27.md). Routine cleaning and calibration checks are bundled into testing; the year-three review is included in month36, not another priced trip. The rollup now requests six shared three-station route visits over three years. Numeric thresholds, final models, named operator/record location, quotes and payer agreements remain pending; the 48-hour repair requirement is not a signed or demonstrated SLA. Earlier awaiting-overlap notes are historical.
@@ -105,3 +112,5 @@ The candidate enclosure is excluded because its exact variant is unconfirmed. Im
 ## AI-use record
 
 Text assistance was used to structure the cost audit, calculations, wording and evidence tables. No image-generation model was used for this cost-analysis work. The local deliverables above are the text output record. Before submitting course evidence, capture the relevant conversation prompt/output screens from the chat interface and store them outside the public website unless the teaching team specifically requires publication.
+
+</details>

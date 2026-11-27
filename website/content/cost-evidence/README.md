@@ -41,3 +41,8 @@ The four user-supplied images are now archived as exact copies. Source files rem
 | `Screenshot 2026-11-25 165300.png` | `price-004-2026-11-25-user.png` | `A09EDA7E08899C3BF31C54A7B60E812AB166B05A4ACA62E1E82576E9C5E7BE91` |
 | `Screenshot 2026-11-25 165326.png` | `price-009-price-2026-11-25-user.png` | `122AC594ECE05A39BD2E721EED3616E0B5A5BD26899A2EDC0989C3FC24988049` |
 | `Screenshot 2026-11-25 165351.png` | `price-009-spec-2026-11-25-user.png` | `05263FF976909EE13C19434A13E5049CB3401B74B188128B6DBC91A25E014605` |
+
+
+## Giá phụ kiện ứng viên và tỷ giá — 27/11/2026
+
+Bằng chứng mới ở [thư mục phụ kiện](accessories-2026-11-27/README.md). Giá/phạm vi nằm trong [CSV ứng viên](../accessory-candidates-2026-11-27.csv); chưa thay các dòng price-001…014 hay subtotal hiện tại. Ảnh tỷ giá chứng minh hàng lịch sử 19/11, không biến giá niêm yết thành quote.

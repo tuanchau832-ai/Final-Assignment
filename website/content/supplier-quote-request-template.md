@@ -63,6 +63,16 @@ Không báo cộng đồng thời board tích hợp và module M.2 riêng vào c
 3. Nếu nhóm chọn Team rule cần TDS, báo riêng SKU/giao tiếp/chuẩn/tổng bổ sung vào **cả A và B**. Nếu không cần thì ghi loại trừ có căn cứ; không coi BOM bốn cảm biến tự đủ cho rule TDS.
 4. Cho giá/điều kiện thay DS18B20 bằng temperature channel sẵn trong probe nếu phù hợp; chỉ là phương án so sánh cần kỹ thuật duyệt, không tự bỏ đầu đo trong đơn giá hiện tại.
 
+## Phụ lục hỏi giá phụ kiện — nguồn nghiên cứu ngày 27/11
+
+[Bảng ứng viên](accessory-candidates-2026-11-27.md) và [CSV](accessory-candidates-2026-11-27.csv) chỉ để nhà cung cấp đối chiếu, chưa là danh sách đặt hàng.
+
+1. Tách giá carrier-only cho module HS2164V khỏi full kit SIM7600G-H-M2 4G HAT SKU 21707. Full kit đã có modem/anten/cáp; không cộng lại dòng modem cũ. Xác nhận UART với ESP32, mức logic, cấp nguồn và phạm vi integration test.
+2. Báo đúng cặp IPEX4 và SMA pin/socket/thread, băng tần, suy hao, chống nước, số MAIN/DIV/GNSS. Cáp HS2206V là **IPEX-1**, không chấp nhận thay trực tiếp cho IPEX4. Cáp ITSO ghi SMA đầu kim chưa chứng minh ghép được với anten TX4G-JW-5 SMA-J male.
+3. Với nguồn C/D, ghi rõ biến thể, holder/adapter/cells có trong gói, chemistry và sơ đồ rails. Không ghép bình AGM 12V WP7.2-12 với bộ sạc Li-ion 3,7V C/D. Đầu ra 5V chưa thay nguồn probe 10–30V; xin quote converter, bảo vệ và kiểm tải đầy đủ.
+4. Xác nhận lại giá Goldsun 20W/6V vì trang có 371.349 VND tại giá sản phẩm nhưng 279.000 VND ở mô tả. Chưa chọn panel chỉ vì đúng 20W; cần measured load, shading và autonomy trước.
+5. Ghi đơn vị dây rút SSCT-304-4.6x200 theo gói 100 sợi, VAT/vận chuyển và số gói thực cần. Báo rack/gá/ốc/cáp hiện trường riêng, không coi gói dây rút là hệ gá đã hoàn chỉnh.
+
 Vui lòng tách từng hạng mục trong báo giá thay vì báo một khoản trọn gói. Báo giá sẽ được dùng để lập ngân sách sơ bộ; không được hiểu là cam kết mua hàng.
 
 Trân trọng,

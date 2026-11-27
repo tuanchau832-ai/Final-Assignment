@@ -1,5 +1,7 @@
 # Kiểm bản tích hợp Tuấn — 27/11/2026
 
+> **Kiểm bổ sung bằng trình duyệt thật:** [browser QA và ảnh](browser-qa-2026-11-27.md) đã thử bản sao đúng 7208280 ở 390/1440 px, menu/References và calculator bằng bàn phím. Các dòng VM/DOM bên dưới mô tả lần kiểm trước; giới hạn chưa tự kiểm browser đã được bổ sung bằng báo cáo mới. Điện thoại vật lý và deploy vẫn chưa được kiểm.
+
 Source kiểm: `7208280f9e2c2064ddbab716604d871988b1016d` trên `docs/tuan-d7-maintenance`. Đã đọc diff 5 file so `final-website@a85be4e`: first-station-pilot.md, page.html, site.ts, site.css và check-embedded-simulator.mjs. Nhánh hiện tại của Bá Nguyên không được chuyển sang nhánh Tuấn.
 
 | Kiểm tra | Kết quả thực chạy của Bá Nguyên | Giới hạn |

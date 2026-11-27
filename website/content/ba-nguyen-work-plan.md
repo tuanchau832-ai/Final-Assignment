@@ -1,5 +1,12 @@
 # Kế hoạch phần việc Bá Nguyên — Cost Analysis
 
+> **BẢN HIỆN HÀNH: [Bá Nguyên — bắt đầu đọc tại đây](ba-nguyen-current-handoff.md).** Các hướng dẫn phía dưới được lưu theo thời điểm, không phải danh sách việc/câu hỏi hiện tại. Đặc biệt: 24/26 lượt và ba kit pH reserve đã bị thay thế; không áp lại giá hoặc gửi câu hỏi cũ.
+
+<!-- BA-NGUYEN-HISTORY-BOUNDARY -->
+<details>
+<summary>Kế hoạch và câu hỏi trước đợt audit hiện tại (lịch sử; bấm để xem)</summary>
+
+
 **Sau phản hồi Tuấn: [plan/review hiện tại](tuan-response-plan-2026-11-27.md)**. Bản tích hợp nằm ở `docs/tuan-d7-maintenance@7208280`, chưa vào final-website. Chi phí đã lập theo hai đợt mua 1 + 2 và một pH reserve chung tùy chọn; phải chốt commissioning/horizon và hiệu chuẩn ngoài sáu chuyến testing. Đầu mối theo README: Akai thiết kế, Đạt field/triển khai, Bá Nguyên chi phí; Tuấn mới đề xuất hỗ trợ tích hợp/data/alert, không tự thành người duyệt kỹ thuật hay tài trợ. Các bảng “chờ Đạt + Tuấn” cũ cần đọc theo cập nhật này.
 
 **Cập nhật 27/11: [phản hồi Đạt, plan và kết quả thực hiện](dat-response-plan-2026-11-27.md)** là trạng thái hiện tại. Scope testing/cleaning/calibration-check và review tháng 36 đã được Đạt xác nhận gộp; basis xin giá là 6 chuyến chung cả 3 trạm, bao gồm 18 lượt kiểm trạm. [Lịch CSV](maintenance-schedule-2026-11-27.csv) và [checklist/log](maintenance-acceptance-template-2026-11-27.md) đã chuẩn bị. Chờ model, threshold, operator/site, giá và cam kết thực tế; không hỏi lại các ý scope Đạt đã trả lời. Các mốc 25–26/11 bên dưới giữ làm hồ sơ lịch sử.
@@ -230,5 +237,7 @@ Please reply below the relevant question with either a confirmed choice, a sourc
 ## Thứ tự nếu chỉ có một giờ
 
 Kiểm tra nhánh → hỏi Akai về modem và danh mục → xác minh biến thể/giá hộp Viger → chụp ba giá đắt nhất (turbidity, DO, pH) → gửi Đạt danh sách thông số địa điểm còn thiếu.
+
+</details>
 
 </details>

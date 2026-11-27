@@ -1,11 +1,14 @@
 export interface Reference {
   id: string;
   author: string;
+  citationAuthor?: string;
   year: string;
   entry?: string;
   date?: string;
   title?: string;
   description?: string;
+  siteName?: string;
+  italicTitle?: boolean;
   retrievedDate?: string;
   url?: string;
 }

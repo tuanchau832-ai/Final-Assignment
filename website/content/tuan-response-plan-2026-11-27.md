@@ -1,5 +1,7 @@
 # Phản hồi Tuấn: kiểm tra, kế hoạch và việc thực hiện — 27/11/2026
 
+> **Audit độc lập bổ sung:** [chỉ mục hiện hành](ba-nguyen-current-handoff.md), [APA phần chi phí](cost-apa-audit-2026-11-27.md), [browser QA có ảnh](team-review/browser-qa-2026-11-27.md) và [giá phụ kiện ứng viên](accessory-candidates-2026-11-27.md). Kết quả browser mới thay giới hạn chỉ kiểm DOM ở báo cáo trước; chưa phải điện thoại thật hoặc deployed final-website.
+
 ## Trạng thái GitHub và thông tin đã đủ
 
 Đã đọc [comment Tuấn](https://github.com/tuanchau832-ai/Final-Assignment/pull/3#issuecomment-7221973174), [hồ sơ trạm đầu](https://github.com/tuanchau832-ai/Final-Assignment/blob/7208280f9e2c2064ddbab716604d871988b1016d/website/content/first-station-pilot.md) và diff của cả 5 file trên **`docs/tuan-d7-maintenance@7208280f9e2c2064ddbab716604d871988b1016d`**. [Bản lưu comment](team-review/tuan-response-2026-11-27.json) ghi nguồn/ngày.
@@ -45,7 +47,7 @@ Ngày 27/11 đã kiểm nguồn hãng: [SEN0710](https://www.dfrobot.com/product
 | 4 | Tách baseline từ commissioning thực tế và dịch vụ bổ sung | Worksheet thời gian, chú thích lịch 18 checks chỉ là baseline, scope calibration cần thêm | Đã làm |
 | 5 | Chuẩn bị RFQ A/B, reference instruments, TDS có điều kiện; ghi model specs/acceptance proposal | Quote template và [hồ sơ kỹ thuật kiểm nguồn](sensor-source-checks-2026-11-27.csv); không bịa quote hoặc field results | Đã làm |
 | 6 | Sửa phần phân vai trong kế hoạch hiện tại theo README và đề xuất Tuấn có nhãn | Thiết kế: Akai; triển khai/field: Đạt; chi phí: Bá Nguyên; Tuấn nhận phần tích hợp/data do chính bạn ấy mới đề xuất; chưa coi operator/payer là việc Tuấn tự phải chốt | Đã làm |
-| 7 | Kiểm giá/quantity/link/build nhánh Bá Nguyên; bàn giao nhận xét D7 và câu hỏi còn thiếu qua PR | 30 dòng rollup đạt kiểm số, hai đợt mua, reserve chung và ba ví dụ commissioning đúng; link và build đạt; bàn giao trên nhánh Bá Nguyên | Đã kiểm, chuẩn bị công bố cùng commit này |
+| 7 | Kiểm giá/quantity/link/build nhánh Bá Nguyên; bàn giao nhận xét D7 và câu hỏi còn thiếu qua PR | 30 dòng rollup đạt kiểm số, hai đợt mua, reserve chung và ba ví dụ commissioning đúng; link và build đạt; bàn giao trên nhánh Bá Nguyên | Đã kiểm và bàn giao trong commit 22ef8234 / PR #3; audit bổ sung được Bá Nguyên cho phép công bố cùng PR |
 
 ## Ai cần cung cấp gì để hoàn tất
 

@@ -178,6 +178,16 @@ h2 {
 
 .pending { color: var(--secondary-text); }
 
+.bibliography {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+.bibliography li {
+  padding-inline-start: 1.27cm;
+  text-indent: -1.27cm;
+}
+
 figure { margin: 1.1rem 0; }
 figure img { display: block; max-width: 100%; height: auto; margin-bottom: 0.75rem; }
 

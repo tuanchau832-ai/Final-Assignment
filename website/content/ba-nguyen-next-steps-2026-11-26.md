@@ -1,5 +1,12 @@
 # Kế hoạch tiếp theo của Bá Nguyên — 26/11/2026
 
+> **BẢN HIỆN HÀNH: [Bá Nguyên — bắt đầu đọc tại đây](ba-nguyen-current-handoff.md).** Các hướng dẫn phía dưới được lưu theo thời điểm, không phải danh sách việc/câu hỏi hiện tại. Đặc biệt: 24/26 lượt và ba kit pH reserve đã bị thay thế; không áp lại giá hoặc gửi câu hỏi cũ.
+
+<!-- BA-NGUYEN-HISTORY-BOUNDARY -->
+<details>
+<summary>Kế hoạch 26/11 đã được thay bởi các phản hồi 27/11 (lịch sử; bấm để xem)</summary>
+
+
 > Đã có [kế hoạch cập nhật sau phản hồi Đạt ngày 27/11](dat-response-plan-2026-11-27.md). Lịch/scope đã được xác nhận: 6 chuyến testing chung trong 3 năm, 18 lượt kiểm trạm, gộp vệ sinh/kiểm tra hiệu chuẩn và review tháng 36. Những mục dưới đây ghi “chờ overlap” không còn là câu hỏi mở; model/threshold/operator/site/giá và thỏa thuận chi trả vẫn chờ.
 
 Tài liệu bàn giao Đạt/Tuấn: [bảng đối chiếu final-website và bản hiện tại](final-website-vs-ba-nguyen-2026-11-26.md), gồm các mục khớp, cần sửa và chờ model/báo giá.
@@ -51,3 +58,5 @@ Nếu chưa trả lời được, yêu cầu ghi `TBD | người phụ trách | 
 3. Gửi Thư và Tuấn đúng kết luận chi phí đã kiểm, kèm khoản còn thiếu; nhờ nhóm xác nhận trước khi dùng trong report cuối.
 
 **Điều kiện hoàn tất:** không còn xung đột 3/3 với 10/1, không có giá khác model, lịch sáu tháng và năm ba được phản ánh đúng, các tổng không che khoản thiết yếu chưa báo giá.
+
+</details>

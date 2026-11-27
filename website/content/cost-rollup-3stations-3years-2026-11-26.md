@@ -8,7 +8,7 @@ Lập ngày 26/11/2026, cập nhật sau phản hồi Tuấn ngày 27/11. Đơn 
 
 ## Phạm vi và cách đọc
 
-- Phạm vi làm việc: 3 trạm trong 36 tháng theo phản hồi Akai. BOM ESP32 + modem M.2 và cảm biến dưới đây là cấu hình tham chiếu có chứng cứ giá, chưa được Đạt/Tuấn chốt. Nếu chọn LILYGO hoặc cảm biến khác phải thay dòng và tính lại; không cộng hai cấu hình.
+- Phạm vi làm việc: 3 trạm trong 36 tháng theo phản hồi Akai. BOM ESP32 + modem M.2 và cảm biến dưới đây là cấu hình tham chiếu có chứng cứ giá, chưa được Akai/Đạt chốt. Nếu chọn LILYGO hoặc cảm biến khác phải thay dòng và tính lại; không cộng hai cấu hình.
 - **Giá có nguồn:** dùng hồ sơ và ảnh ngày 19–25/11, chưa kiểm lại giá ngày 26/11. USD quy đổi theo cơ sở lịch sử 25.940 VND/USD; không trộn với basis 26.000 trong scenario cũ. Không tự thêm chiết khấu số lượng.
 - **Giả định:** số lượng BOM tham chiếu, 4 glands/trạm, một dịch vụ hosting chung và dự phòng pH đều cần xác nhận. Giá có nguồn không có nghĩa cấu hình/số lượng đã được duyệt.
 - **Cần báo giá:** ô tiền trống trong CSV là chưa biết. Không dùng SUM của các số đã biết để gọi là tổng ngân sách đầy đủ. Dòng có số lượng 0 chỉ là năm chưa lên lịch mua/kiểm tra, không phải dịch vụ miễn phí.
