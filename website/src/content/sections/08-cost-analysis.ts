@@ -17,6 +17,9 @@ export default {
           citations: [reference('hww-blueprint')],
         },
         {
+          text: 'The working procurement plan tests one station before ordering the other two after acceptance and a refreshed quotation. Listed equipment is 13,895,466 VND for the first station and 27,790,932 VND for the next two, totalling 41,686,398 VND. These are historical-price subtotals, excluding unquoted equipment, installation and services. Staggered commissioning requires a decision on a common project end date versus three operating years for each station before SIM, hosting and maintenance quantities can be finalised.',
+        },
+        {
           text: 'Prices were checked on 19 November 2026. A supplier-listed price is an online listing, not a quotation. USD prices use 25,940 VND/USD; freight, import and exchange fees are excluded. VAT and delivery are included only where stated. "Quote required" identifies essential scope without a selected public price. Permission, civil works, insurance, flood and vandalism damage are outside this register.',
           citations: [reference('vietcombank-rate'), reference('hshop-esp32'), reference('hshop-do'), reference('hshop-sim7600')],
         },
@@ -31,7 +34,7 @@ export default {
           citations: [reference('dfrobot-ph'), reference('hshop-do'), reference('dfrobot-turbidity'), reference('hshop-temperature'), reference('hshop-rs485'), reference('vinadenki-enclosure'), reference('daihoaphu-gland')],
         },
         {
-          text: 'The manufacturer states pH life exceeds 4,380 hours, depending on water quality; this is not a fixed six-month replacement deadline. One conservative full-kit reserve makes the 12-month listed-price subtotal 15,578,972 VND. Calibration, DO-film replacement, field work, connectivity, hosting, power maintenance and disposal remain unpriced.',
+          text: 'The manufacturer states pH life exceeds 4,380 hours, depending on water quality; this is not a fixed six-month replacement deadline. The current optional reserve scenario holds one full pH kit shared across the pilot, costing 1,683,506 VND once. First-station listed procurement plus that shared reserve is 15,578,972 VND; all three stations plus the shared reserve is 43,369,904 VND. Storage, compatibility, replenishment and access within the 48-hour repair requirement remain unconfirmed. Calibration, DO-film replacement, field work, connectivity, hosting, power maintenance and disposal remain unpriced.',
           citations: [reference('dfrobot-ph'), reference('hshop-do')],
         },
         {
@@ -41,10 +44,14 @@ export default {
         {
           text: 'Dat confirmed six-month functional checks at months 6, 12, 18, 24, 30 and 36, including routine cleaning, calibration checks and a test alert. His proposed quotation basis groups all three stations into one route each time: six shared route visits covering 18 station checks over three years. The month-36 route includes the wear and corrosion review; replacement remains condition-based. Extra cleaning is triggered by drift or suspected fouling, while model-specific calibration requirements remain unresolved. Route feasibility, numerical acceptance thresholds, named testers and service prices still require confirmation.',
         },
+        {
+          text: 'Six shared testing trips are a full-rollout planning baseline, not the complete priced calibration schedule. The SEN0710 manufacturer page recommends recalibration every 90 days; additional calibration work and travel require a model-specific service quotation. Reference-instrument comparison near alert thresholds is also required before approving the next two stations. A TDS channel remains conditional on the field alert rule selected by the design team, with no selected price.',
+          citations: [reference('dfrobot-turbidity')],
+        },
       ],
       table: {
         id: 'cost-schedule',
-        caption: 'Table 4. Candidate one-station prices and 12-month partial subtotal; shared three-station service scope is labelled separately (VND)',
+        caption: 'Table 4. Candidate unit prices and first-station partial subtotal; shared pilot services and reserve are labelled separately (VND)',
         wide: true,
         scrollHint: 'Scroll horizontally to view all ten cost columns.',
         columns: ['Item and specification', 'Unit', 'Quantity', 'Unit cost', 'Cost type', 'Frequency', 'Subtotal', 'Price basis, source URL and date', 'Proposed payer', 'Maintenance / end-of-life'],
@@ -71,10 +78,12 @@ export default {
           ['Shared pilot testing route: all three stations, cleaning and calibration checks', 'three-station route visit', '2 routes/year; 6 over three years', 'Quote required', 'Shared pilot OPEX', 'Every six months', 'Not included', 'Dat PR #3 comment 7202126238: six proposed shared routes cover 18 station checks; labour, travel, standards, materials and collection must be itemised', 'Proposed; agreement required', 'Shared group cost, not a per-station rate; route feasibility, tester, thresholds and record location pending'],
           ['Month-36 wear and corrosion review', 'station review within final route', '3 reviews across the pilot', 'Included in unquoted testing scope', 'Lifecycle scope memo', 'With month-36 testing', 'Not priced separately', 'Dat confirms review is bundled into the final testing route; no additional scheduled trip or duplicate full-review fee', 'Proposed; agreement required', 'Parts and replacement labour outside the package need separate approval and prices; no blanket replacement'],
           ['Unscheduled repair and power-system maintenance', 'service', 'TBD', 'Quote required', 'OPEX', 'As needed; 48-hour repair requirement', 'Not included', 'Dat requires restoration within 48 hours from fault receipt by the operating team; actual capacity and contractual SLA are unverified', 'Proposed; agreement required', 'Name operator and escalation owner; quote event travel, labour and DO/pH parts separately'],
-          ['pH kit re-purchase provision (conservative, full-kit price)', 'each', '1', '1,683,506', 'Lifecycle priced provision', 'One reserve within 12 operating months', '1,683,506', 'Same DFRobot USD 64.90 x 25,940; this is not a verified spare-probe price or a manufacturer-mandated six-month schedule', 'TBD by team', 'Confirm replacement on condition and supplier advice; recalibrate after replacement'],
+          ['Optional pH kit reserve shared by the pilot', 'shared kit', '1 across up to three stations', '1,683,506', 'Optional shared reserve', 'Once, not per station or year', '1,683,506', 'Same historical DFRobot USD 64.90 x 25,940; Tuan proposes a shared reserve; this is not a verified spare-probe price', 'Proposed; agreement required', 'Confirm compatibility, storage, replenishment and 48-hour access; do not pay again for the same kit when used'],
           ['DO film/sensor replacement', 'year', '1', 'Quote required', 'Lifecycle', 'at about 12 months', 'Not included', 'One-year film life stated, but no accessible replacement price', 'TBD by team', 'Obtain consumable or repair quotation before approval'],
           ['End-of-life collection and disposal', 'station', '1', 'Quote required', 'Lifecycle', 'at pilot close', 'Not included', 'Licensed e-waste and probe disposal route not selected', 'TBD by team', 'Confirm compliant collection route'],
-          ['12-month listed-price subtotal - not full pilot cost', 'station', '1', '-', 'Partial subtotal', '12 months', '15,578,972', 'Formula: 13,895,466 + 1,683,506 pH re-purchase provision', 'TBD by team', 'Do not use for affordability, procurement approval or funding commitment'],
+          ['Reference-instrument hire, loan or verification service', 'service', 'TBD', 'Quote required', 'Pilot acceptance', 'Before ordering the next two stations', 'Not included', 'Compare candidate DO and turbidity probes near alert limits; availability, reference uncertainty and fee unconfirmed', 'Proposed; agreement required', 'A potential loan is not an arranged free service'],
+          ['Conditional TDS channel for field alert rule', 'device and calibration', 'TBD', 'Quote required', 'Conditional CAPEX/OPEX', 'Only if the selected rule requires it', 'Not included', 'No selected SKU or price; quote both controller alternatives on the same sensor scope', 'Proposed; agreement required', 'Resolve the field rule before declaring the hardware BOM complete'],
+          ['First-station listed equipment plus optional shared reserve', 'phase-one scenario', '1', '-', 'Partial subtotal', 'One initial purchase', '15,578,972', 'Formula: 13,895,466 + 1,683,506 shared pH kit; no recurring services included', 'TBD by team', 'All three stations plus one shared reserve would be 43,369,904 VND, still not a complete budget'],
         ],
       },
     },

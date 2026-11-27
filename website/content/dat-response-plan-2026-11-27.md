@@ -1,5 +1,7 @@
 # Phản hồi Đạt và kế hoạch thực hiện của Bá Nguyên — 27/11/2026
 
+> Có [review/plan sau phản hồi Tuấn](tuan-response-plan-2026-11-27.md) mới hơn: source proposal 7208280 đã được kiểm, procurement 1 + 2 và reserve một kit chung là case làm việc hiện tại. Các số 28 dòng/ba reserve và bảng đầu mối “Đạt + Tuấn” bên dưới là snapshot trước phản hồi Tuấn, không thay phân công gốc README. Các role mới của Tuấn vẫn cần người nhận; không gán quyền duyệt field/payer cho Tuấn chỉ vì làm editing. Sáu chuyến testing là baseline, chưa gồm hết hiệu chuẩn model.
+
 ## Tổng quan và nguồn
 
 Đã đọc toàn bộ [phản hồi của Đạt trên PR #3](https://github.com/tuanchau832-ai/Final-Assignment/pull/3#issuecomment-7202126238), gồm phần sửa cuối lúc 03:18:42 ngày 27/11 theo giờ Việt Nam. [Bản lưu nguyên văn](team-review/dat-response-2026-11-27.json) giữ cả câu hỏi được trích dẫn để có context. Khi kiểm tra, PR có một câu trả lời mới của Đạt về D5; không có review thread theo dòng hoặc commit comment. Chưa có câu trả lời mới cho SKU/nguồn điện/site.

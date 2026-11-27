@@ -4,6 +4,8 @@ Nguồn scope: [Đạt trả lời D5](https://github.com/tuanchau832-ai/Final-A
 
 Các mã `ST-01/ST-02/ST-03` trong lịch chỉ là placeholder của ba trạm dự kiến, không phải site hoặc thiết bị field đã xác minh. Khi nhóm chốt registry và vị trí, thay mã và ngày bắt đầu trước khi dùng để giao việc.
 
+**Sau phản hồi Tuấn:** [review/plan](tuan-response-plan-2026-11-27.md) nhận các mục tiêu sai lệch **3 NTU quanh 57 NTU**, **0,30 mg/L quanh 4,00 mg/L** và độ không chắc chắn **<0,10 mg/L** nếu dùng rule DO 4,00/4,20 như **đề xuất cần Đạt/Akai duyệt**, không là thông số bảo đảm hoặc field test đã đạt. [Nguồn hãng đã kiểm](sensor-source-checks-2026-11-27.csv) cho bound ±50 NTU và ±0,6 mg/L theo toàn thang; cần máy tham chiếu và protocol trước đặt hai trạm sau. Sáu chuyến/18 checks trong lịch là baseline; [commissioning lệch](commissioning-cost-basis-2026-11-27.csv) và hiệu chuẩn model có thể làm phát sinh công việc.
+
 ## 1. Thông tin một lượt kiểm tra
 
 Điền: `route_id`, `station_id`, site/quyền tiếp cận, ngày commissioning, thời điểm đến/rời, người thực hiện, người review, version BOM/firmware, baseline lần trước, số datasheet/quote/procedure, thiết bị chuẩn và hạn hiệu chuẩn, URL thư mục lưu hồ sơ. Các ô chưa có dữ liệu giữ `TBD`.
@@ -31,6 +33,8 @@ Không đánh `Pass` khi chưa có threshold/test evidence. Người có thẩm 
 - Mỗi đợt testing có một chuyến chung cả ba trạm theo đề xuất Đạt; lưu ba biên bản trạm cùng `route_id` và một bảng công/travel. Hai chuyến/năm, sáu chuyến/ba năm; có 18 biên bản kiểm trạm.
 - Vệ sinh/kiểm tra hiệu chuẩn nằm trong scope chuyến testing. Review năm 3 gộp chuyến tháng 36, không tạo thêm chuyến hoặc phí review đã bao gồm. Dung dịch, vật tư, phụ tùng/công thay và thu gom phải nêu khoản đã trong giá gói và khoản báo riêng.
 - Giữa kỳ: chỉ lập yêu cầu khi có dấu drift/số đo bất thường/nghi bám bẩn hoặc sự cố; tần suất, ngưỡng trigger và khả năng phần mềm phải được xác nhận. Đạt loại lịch 24/26 lượt và 12 hiệu chuẩn khỏi basis mới. Nếu datasheet yêu cầu công việc thêm, ghi bổ sung và xin scope/giá trước khi khóa kế hoạch.
+
+Nguồn hãng đã kiểm ngày 27/11: SEN0710 khuyến nghị hiệu chuẩn mỗi 90 ngày; hướng dẫn pH SEN0169-V2 nêu mức lý tưởng tháng. Đạt/Akai cần lập lịch phù hợp model và site, phân biệt calibration theo lịch với vệ sinh do drift. Không dùng việc simulator đạt để bỏ qua những công việc này. Phương án một pH kit chung vẫn cần storage/transport/replenishment và người chịu trách nhiệm, không tự bảo đảm sửa xong trong 48 giờ.
 
 ## 4. Mẫu log sự cố và yêu cầu khắc phục 48 giờ
 

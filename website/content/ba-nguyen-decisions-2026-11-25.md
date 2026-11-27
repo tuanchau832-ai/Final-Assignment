@@ -1,5 +1,7 @@
 # Bá Nguyên chốt D5 và D7 — 25/11/2026
 
+> **Trạng thái sau Tuấn trả lời 27/11:** [review/plan mới](tuan-response-plan-2026-11-27.md) kiểm proposal `docs/tuan-d7-maintenance@7208280`. D7 đã có source tích hợp để rà nhưng chưa ở final-website. Working procurement là một trạm thử trước, hai trạm sau acceptance/duyệt quote; reserve pH tùy chọn chuyển thành **một kit chung 1.683.506 VND**, không là phê duyệt mua. Phân vai nghiệm thu Tuấn đưa ra vẫn là đề xuất cần người nhận việc; không coi những vai kỹ thuật/payer tôi ghi rộng trong plan cũ là phân công gốc README. 108 SIM-tháng/36 hosting/6 chuyến là baseline; phải chốt horizon khi commissioning lệch và thêm scope hiệu chuẩn theo model. Các con số reserve ba bộ ở lịch sử không cộng vào case một bộ chung.
+
 Đây là quyết định cho **bản kế hoạch chi phí** và cách phối hợp tích hợp website. Nó không xác nhận BOM, báo giá, địa điểm triển khai hoặc ngân sách pilot cuối cùng. PR #3 là nơi ghi phản hồi của nhóm. Xem [bảng đối chiếu dành cho Đạt/Tuấn](final-website-vs-ba-nguyen-2026-11-26.md) trước khi sửa source cuối.
 
 ## Cập nhật 26/11/2026 — phản hồi Akai và đề xuất bảo trì của Đạt
