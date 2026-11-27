@@ -6,7 +6,7 @@ const reference = (id: string) => references.find((item) => item.id === id)!;
 export default {
   title: 'Cost analysis',
   label: 'Cost analysis',
-  summary: 'A one-station candidate price register. The final hardware, rollout scope and complete pilot budget remain subject to review.',
+  summary: 'Candidate unit prices for the three-station, three-year working scope; shared maintenance routes and unquoted services are identified separately.',
   topics: [
     {
       id: 'cost-scope',
@@ -39,12 +39,12 @@ export default {
           citations: [reference('hshop-do'), reference('dfrobot-turbidity'), reference('hshop-temperature'), reference('hshop-sim7600')],
         },
         {
-          text: 'The proposed service plan separates routine cleaning from a functional test every six months (two checks per station-year). At the three-year review, inspect corrosion and component wear and replace parts only when inspection, test results or manufacturer guidance justify it. The number of cleaning visits and sensor calibration frequency still need the operations team to confirm; historical 24/26-visit examples are not approved service prices.',
+          text: 'Dat confirmed six-month functional checks at months 6, 12, 18, 24, 30 and 36, including routine cleaning, calibration checks and a test alert. His proposed quotation basis groups all three stations into one route each time: six shared route visits covering 18 station checks over three years. The month-36 route includes the wear and corrosion review; replacement remains condition-based. Extra cleaning is triggered by drift or suspected fouling, while model-specific calibration requirements remain unresolved. Route feasibility, numerical acceptance thresholds, named testers and service prices still require confirmation.',
         },
       ],
       table: {
         id: 'cost-schedule',
-        caption: 'Table 4. One-station physical-pilot price register and 12-month costed subtotal (VND)',
+        caption: 'Table 4. Candidate one-station prices and 12-month partial subtotal; shared three-station service scope is labelled separately (VND)',
         wide: true,
         scrollHint: 'Scroll horizontally to view all ten cost columns.',
         columns: ['Item and specification', 'Unit', 'Quantity', 'Unit cost', 'Cost type', 'Frequency', 'Subtotal', 'Price basis, source URL and date', 'Proposed payer', 'Maintenance / end-of-life'],
@@ -67,10 +67,10 @@ export default {
           ['Operator training and deployment preparation', 'service', '1', 'Quote required', 'CAPEX', 'once', 'Not included', 'Training scope, provider and participants unconfirmed', 'TBD by team', 'Handover record and refresher scope need confirmation'],
           ['4G data plan', 'month', '12', 'Quote required', 'OPEX', 'monthly', 'Not included', 'Carrier, data volume, coverage and SIM registration not selected', 'TBD by team', 'Review coverage at authorised site'],
           ['Managed hosting and database', 'month', '12', 'Quote required', 'OPEX', 'monthly', 'Not included', 'Production host, retention and support level not selected', 'TBD by team', 'Obtain annual invoice or supplier quotation'],
-          ['Cleaning, calibration and event-triggered field visits', 'service schedule', 'TBD', 'Quote required', 'OPEX', 'Frequency to confirm', 'Not included', 'Earlier 24/26 cleaning-visit and 12 monthly-calibration examples are provisional; Dat to confirm the actual schedule and any overlap with six-month functional checks', 'TBD by team', 'Quote travel, labour, supplies and post-flood visits separately'],
-          ['Functional testing and preventive maintenance', 'check', '2 per station-year', 'Quote required', 'OPEX', 'Every six months', 'Not included', 'Dat recommendation, 26 Nov 2026; check sensor readings, connectivity, power and physical condition; exact test protocol and quote pending', 'TBD by team', 'Record pass/fail and repair needs; do not count a test as component replacement'],
-          ['Three-year wear and corrosion review', 'review', '1 at year 3', 'Quote required', 'Lifecycle', 'At three-year review', 'Not included', 'Dat recommendation, 26 Nov 2026; inspect ageing and corrosion; replacement quantities and unit prices depend on findings', 'TBD by team', 'Replace worn parts only if inspection or manufacturer guidance warrants it; disposal quoted separately'],
-          ['Unscheduled repair and power-system maintenance', 'service', 'TBD', 'Quote required', 'OPEX', 'As needed', 'Not included', 'No field failure history or selected power system', 'TBD by team', 'Separate minor repair from major replacement approval'],
+          ['Triggered cleaning and additional model-required calibration', 'service', 'TBD', 'Quote required', 'OPEX', 'Between scheduled checks, as needed', 'Not included', 'Dat PR response reviewed 27 Nov 2026: routine cleaning and calibration checks are included in testing; extra work depends on drift, suspected fouling and final datasheets', 'Proposed; agreement required', 'No separate 24/26 cleaning visits or 12 monthly calibrations in the new costing basis'],
+          ['Shared pilot testing route: all three stations, cleaning and calibration checks', 'three-station route visit', '2 routes/year; 6 over three years', 'Quote required', 'Shared pilot OPEX', 'Every six months', 'Not included', 'Dat PR #3 comment 7202126238: six proposed shared routes cover 18 station checks; labour, travel, standards, materials and collection must be itemised', 'Proposed; agreement required', 'Shared group cost, not a per-station rate; route feasibility, tester, thresholds and record location pending'],
+          ['Month-36 wear and corrosion review', 'station review within final route', '3 reviews across the pilot', 'Included in unquoted testing scope', 'Lifecycle scope memo', 'With month-36 testing', 'Not priced separately', 'Dat confirms review is bundled into the final testing route; no additional scheduled trip or duplicate full-review fee', 'Proposed; agreement required', 'Parts and replacement labour outside the package need separate approval and prices; no blanket replacement'],
+          ['Unscheduled repair and power-system maintenance', 'service', 'TBD', 'Quote required', 'OPEX', 'As needed; 48-hour repair requirement', 'Not included', 'Dat requires restoration within 48 hours from fault receipt by the operating team; actual capacity and contractual SLA are unverified', 'Proposed; agreement required', 'Name operator and escalation owner; quote event travel, labour and DO/pH parts separately'],
           ['pH kit re-purchase provision (conservative, full-kit price)', 'each', '1', '1,683,506', 'Lifecycle priced provision', 'One reserve within 12 operating months', '1,683,506', 'Same DFRobot USD 64.90 x 25,940; this is not a verified spare-probe price or a manufacturer-mandated six-month schedule', 'TBD by team', 'Confirm replacement on condition and supplier advice; recalibrate after replacement'],
           ['DO film/sensor replacement', 'year', '1', 'Quote required', 'Lifecycle', 'at about 12 months', 'Not included', 'One-year film life stated, but no accessible replacement price', 'TBD by team', 'Obtain consumable or repair quotation before approval'],
           ['End-of-life collection and disposal', 'station', '1', 'Quote required', 'Lifecycle', 'at pilot close', 'Not included', 'Licensed e-waste and probe disposal route not selected', 'TBD by team', 'Confirm compliant collection route'],
@@ -83,7 +83,7 @@ export default {
       title: 'Affordability and uncertainty',
       paragraphs: [
         {
-          text: 'No full-station or monthly affordability figure is claimed because essential equipment and services remain unpriced. Funding is proposed only: a university, grant or sponsor could fund approved procurement, while the site owner and operator would agree access, inspections, connectivity, incident response and support. No community fee is assumed.',
+          text: 'No full-station or monthly affordability figure is claimed because essential equipment and services remain unpriced. Dat requires upfront agreements involving the Department of Agriculture and Environment, the operating team and suppliers; no signed funding allocation or service commitment has been supplied. Payers remain proposed until each cost and responsibility is agreed. No community fee is assumed.',
         },
         {
           text: 'Before approval, obtain two written quotations for the power system, modem carrier and antennas, outdoor installation, calibration, field visits, SIM data, hosting, DO-film replacement and disposal. Complete load, shading, site, signal and safety surveys, then update the table and evidence register. This keeps the pilot testable while costs remain incomplete.',

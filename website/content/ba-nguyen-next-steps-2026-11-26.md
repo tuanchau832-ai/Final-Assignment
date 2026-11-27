@@ -1,5 +1,7 @@
 # Kế hoạch tiếp theo của Bá Nguyên — 26/11/2026
 
+> Đã có [kế hoạch cập nhật sau phản hồi Đạt ngày 27/11](dat-response-plan-2026-11-27.md). Lịch/scope đã được xác nhận: 6 chuyến testing chung trong 3 năm, 18 lượt kiểm trạm, gộp vệ sinh/kiểm tra hiệu chuẩn và review tháng 36. Những mục dưới đây ghi “chờ overlap” không còn là câu hỏi mở; model/threshold/operator/site/giá và thỏa thuận chi trả vẫn chờ.
+
 Tài liệu bàn giao Đạt/Tuấn: [bảng đối chiếu final-website và bản hiện tại](final-website-vs-ba-nguyen-2026-11-26.md), gồm các mục khớp, cần sửa và chờ model/báo giá.
 
 ## Quyết định đã có và giới hạn

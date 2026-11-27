@@ -2,6 +2,8 @@
 
 Lập ngày 26/11/2026 bởi Bá Nguyên. Đơn vị: VND, trừ giá gốc USD ghi riêng. [CSV chi tiết mở bằng Excel](cost-rollup-3stations-3years-2026-11-26.csv) gồm 28 dòng, có số lượng từng năm, giá, cách phân bổ, nguồn/ngày, người cần xác nhận và khoản bao gồm/loại trừ.
 
+**Cập nhật scope dịch vụ 27/11:** theo [Đạt trả lời](https://github.com/tuanchau832-ai/Final-Assignment/pull/3#issuecomment-7202126238), gộp vệ sinh/kiểm tra hiệu chuẩn vào testing và review năm 3 vào tháng 36. Xin giá **6 chuyến chung cả ba trạm**, không phải 18 đơn giá chuyến riêng. Khối lượng kỹ thuật vẫn là 18 lượt kiểm từng trạm. [Lịch/checklist và kế hoạch xử lý](dat-response-plan-2026-11-27.md) ghi phần đã xác nhận và các ngưỡng/người/giá còn thiếu. Giá mua ban đầu không được kiểm lại hoặc thay đổi trong cập nhật này.
+
 ## Phạm vi và cách đọc
 
 - Phạm vi làm việc: 3 trạm trong 36 tháng theo phản hồi Akai. BOM ESP32 + modem M.2 và cảm biến dưới đây là cấu hình tham chiếu có chứng cứ giá, chưa được Đạt/Tuấn chốt. Nếu chọn LILYGO hoặc cảm biến khác phải thay dòng và tính lại; không cộng hai cấu hình.
@@ -39,7 +41,7 @@ Giá kit có nguồn nhưng quyết định dự phòng là giả định nội 
 
 ## 3. Khoản cần báo giá và quy tắc nhân
 
-**Toàn bộ tiền ở bảng này: Cần báo giá.** Số lượng có thể tính trước theo lịch hoặc chỉ là cơ sở xin báo giá; CSV ghi rõ trạng thái từng dòng.
+**Tiền dịch vụ/thiết bị chưa có giá ở bảng này cần báo giá.** Riêng quote-13 là scope review đã gộp trong quote-09, không là một khoản thu độc lập. Số lượng có thể tính trước theo lịch hoặc chỉ là cơ sở xin báo giá; CSV ghi rõ trạng thái từng dòng.
 
 | ID / Khoản | 1 trạm/năm 1 | 3 trạm/năm 1 | 1 trạm/3 năm | 3 trạm/3 năm | Chờ ai |
 | --- | --- | --- | --- | --- | --- |
@@ -51,11 +53,11 @@ Giá kit có nguồn nhưng quyết định dự phòng là giả định nội 
 | quote-06: Đào tạo, chuẩn bị triển khai | 1 chương trình chung | 1 chương trình chung | 1 chương trình chung | 1 chương trình chung | Đạt/Tuấn |
 | quote-07: SIM data | 12 SIM-tháng | 36 SIM-tháng | 36 SIM-tháng | 108 SIM-tháng | Đạt/nhà mạng |
 | quote-08: Hosting/database/support | 12 tháng chung | 12 tháng chung | 36 tháng chung | 36 tháng chung | Tuấn/nhà cung cấp |
-| quote-09: Kiểm tra chức năng 6 tháng/lần | 2 lượt cho 1 trạm | 6 lượt kiểm tra trạm (2 mỗi trạm) | 6 lượt cho 1 trạm | 18 lượt kiểm tra trạm (6 mỗi trạm) | Đạt/nhà cung cấp |
-| quote-10: Vệ sinh, hiệu chuẩn và vật tư ngoài scope kiểm tra | TBD | TBD | TBD | TBD | Đạt/nhà cung cấp |
+| quote-09: Testing, vệ sinh và kiểm tra hiệu chuẩn trong chuyến chung | Có 2 lần kiểm kỹ thuật/trạm; chưa có đơn giá một trạm | 2 chuyến chung × 3 trạm = 6 lượt kiểm trạm | Có 6 lần kiểm kỹ thuật/trạm; chưa chia giá chuyến | **6 chuyến chung**, gồm **18 lượt kiểm trạm** | Đạt/nhà cung cấp |
+| quote-10: Vệ sinh phát sinh và hiệu chuẩn thêm theo model | TBD khi drift/nghi bám bẩn hoặc model yêu cầu | TBD | TBD | TBD | Đạt/nhà cung cấp |
 | quote-11: Sau lũ, phản ứng sự cố và sửa nhỏ | TBD | TBD | TBD | TBD | Đạt/nhà cung cấp |
 | quote-12: Màng/vật tư DO và cảm biến | TBD theo model | TBD | TBD | TBD | Đạt/Tuấn/nhà cung cấp |
-| quote-13: Rà mòn/ăn mòn năm 3 | Chưa đến mốc | Chưa đến mốc | 1 rà soát | 3 rà soát | Đạt/nhà cung cấp |
+| quote-13: Rà mòn/ăn mòn năm 3, scope đã gộp | Chưa đến mốc | Chưa đến mốc | 1 rà soát trong kiểm tháng 36 | 3 rà soát **trong chuyến tháng 36**, không thêm chuyến/phí review đã bao gồm | Đạt/nhà cung cấp |
 | quote-14: Thay theo tình trạng, công và hiệu chuẩn lại | TBD | TBD | TBD | TBD | Đạt/Tuấn/nhà cung cấp |
 | quote-15: Thu gom, vận chuyển và thải bỏ | TBD theo tuyến chung | TBD | TBD | TBD | Đạt/nhà cung cấp |
 | quote-16: Lab, training bổ sung, SMS, software | TBD theo dịch vụ chung | TBD | TBD | TBD | Đạt/Tuấn |
@@ -63,9 +65,10 @@ Giá kit có nguồn nhưng quyết định dự phòng là giả định nội 
 | quote-18: Permission, civil works, insurance, thiệt hại | TBD theo site/phạm vi | TBD | TBD | TBD | Đạt/Tuấn |
 
 - SIM tạm tính một SIM/trạm. Hosting tạm tính một hệ thống chung: 36 tháng trong ba năm, không nhân lên 108 nếu nhà cung cấp tính chung. Nếu họ tính theo thiết bị/dung lượng phải đổi cách phân bổ theo báo giá.
-- 18 lượt kiểm tra là số lượt **từng trạm**, chưa chắc là 18 chuyến đi: một tuyến có thể kiểm cả ba trạm. Báo giá công di chuyển cần nêu đơn vị chuyến và phạm vi gộp.
-- Ba rà soát ở tháng 36 có thể gộp với đợt kiểm tra chức năng cuối. Chỉ cộng công bổ sung ngoài checklist đã bao gồm; tránh tính hai lần.
-- Vệ sinh/hiệu chuẩn và vật tư thay vẫn cần lịch phù hợp model/site. Không suy ra chỉ cần vệ sinh sáu tháng/lần, hoặc phải chờ ba năm mới thay linh kiện hỏng. Không cộng 24/26 lượt vệ sinh và 12 hiệu chuẩn cũ khi Đạt chưa xác nhận.
+- Đạt chọn basis xin giá theo chuyến kiểm cả ba trạm: 2 chuyến/năm × 3 năm = **6 chuyến**; mỗi chuyến 3 lượt kiểm trạm, tổng **18 lượt kiểm trạm**. Tuyến/site và năng lực nhà cung cấp còn chờ xác nhận. CSV quote-09 là `shared_system`, giá chuyến cả nhóm chưa được tự chia thành giá một trạm.
+- Đạt đã xác nhận gộp ba rà soát tháng 36 vào chuyến testing cuối. quote-13 là **scope memo nằm trong quote-09**, không cộng đơn giá review độc lập hoặc chuyến thứ 7. Phụ tùng/công thay ngoài gói tính ở quote-14, trừ reserve đã mua nếu dùng.
+- Đạt gộp vệ sinh/kiểm tra hiệu chuẩn vào testing, giữa kỳ chỉ xử lý khi có drift/số đo bất thường/nghi fouling hoặc sự cố và tính thêm. Tần suất hiệu chuẩn bổ sung theo model vẫn TBD; không suy ra mọi model chỉ cần hiệu chuẩn sáu tháng/lần. Không dùng 24/26 lượt vệ sinh hoặc 12 hiệu chuẩn làm basis mới.
+- Yêu cầu khắc phục 48 giờ tính từ lúc nhóm vận hành tiếp nhận lỗi, chưa là khả năng/SLA được ký. Payer phải có cam kết trước triển khai theo yêu cầu Đạt; hiện chưa có văn bản/phân bổ chi trả, không coi là đã có tài trợ.
 - Không cộng đồng thời enclosure tham chiếu và enclosure đã chọn; gói waterproofing cần loại trừ glands đã mua hoặc thay hẳn dòng glands. Gói nguồn/modem/lắp phải nêu thành phần bao gồm để tránh lặp giá. Khoản lab/SMS/software phải tách từng dòng khi có scope/giá cụ thể.
 - Thải bỏ theo lúc thay/đóng pilot; không mặc định tháo bỏ cả hệ thống ở tháng 36. Khoản quote-18 nằm ngoài register cũ, cần nhóm quyết định phạm vi trước khi loại trừ hoặc tính giá.
 
@@ -75,9 +78,9 @@ Giá kit có nguồn nhưng quyết định dự phòng là giả định nội 
 | --- | --- | --- | --- | --- |
 | Mua ban đầu đã có giá, BOM tham chiếu | 41.686.398 | Không lặp tiền mua ban đầu | Không lặp tiền mua ban đầu | 41.686.398 |
 | Dự phòng pH tùy chọn | 5.050.518 | Không tự thêm bộ | Không tự thêm bộ | 5.050.518 |
-| Kiểm tra chức năng | 6 lượt, cần báo giá | 6 lượt, cần báo giá | 6 lượt, cần báo giá | 18 lượt, cần báo giá |
+| Chuyến testing chung, gồm vệ sinh/kiểm tra hiệu chuẩn | 2 chuyến, gồm 6 lượt kiểm trạm | 2 chuyến, gồm 6 lượt kiểm trạm | 2 chuyến, gồm 6 lượt kiểm trạm và review năm 3 | **6 chuyến / 18 lượt kiểm trạm**, cần báo giá |
 | SIM / hosting | 36 SIM-tháng / 12 tháng chung | Như năm 1 | Như năm 1 | 108 SIM-tháng / 36 tháng chung; cần báo giá |
-| Rà mòn/ăn mòn năm 3 | Chưa đến mốc | Chưa đến mốc | 3 rà soát, kiểm tra phần gộp tháng 36 | Cần báo giá phần tăng thêm |
+| Rà mòn/ăn mòn năm 3 | Chưa đến mốc | Chưa đến mốc | 3 rà soát đã gộp chuyến tháng 36 | Không cộng phí review đã gồm; quote riêng phụ tùng/công thay ngoài gói |
 | Mua/lắp, vệ sinh, hiệu chuẩn, thay thế và dịch vụ chưa giá | Cần báo giá | Cần báo giá | Cần báo giá | Cần báo giá |
 | **Tổng ngân sách đầy đủ** | **Chưa xác định** | **Chưa xác định** | **Chưa xác định** | **Chưa xác định** |
 

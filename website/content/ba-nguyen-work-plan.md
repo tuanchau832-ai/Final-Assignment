@@ -1,5 +1,7 @@
 # Kế hoạch phần việc Bá Nguyên — Cost Analysis
 
+**Cập nhật 27/11: [phản hồi Đạt, plan và kết quả thực hiện](dat-response-plan-2026-11-27.md)** là trạng thái hiện tại. Scope testing/cleaning/calibration-check và review tháng 36 đã được Đạt xác nhận gộp; basis xin giá là 6 chuyến chung cả 3 trạm, bao gồm 18 lượt kiểm trạm. [Lịch CSV](maintenance-schedule-2026-11-27.csv) và [checklist/log](maintenance-acceptance-template-2026-11-27.md) đã chuẩn bị. Chờ model, threshold, operator/site, giá và cam kết thực tế; không hỏi lại các ý scope Đạt đã trả lời. Các mốc 25–26/11 bên dưới giữ làm hồ sơ lịch sử.
+
 **Đạt/Tuấn bắt đầu tại [bảng final-website đối chiếu với Bá Nguyên](final-website-vs-ba-nguyen-2026-11-26.md):** có ID các số khớp, mục cần sửa, model cần xác nhận và giới hạn của các subtotal. Đây là bản đối chiếu 26/11 để tích hợp, thay cho việc lấy lịch/số cũ bên dưới làm kết luận hiện tại.
 
 Bảng làm việc hiện tại: [chi phí mỗi trạm → 3 trạm → 3 năm](cost-rollup-3stations-3years-2026-11-26.md), kèm CSV giá có nguồn, dự phòng riêng và các khoản cần báo giá. Mục tiêu tiếp theo là xác nhận BOM và scope để điền các dòng còn thiếu, không dùng subtotal làm tổng ngân sách.
