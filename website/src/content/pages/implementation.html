@@ -1,0 +1,130 @@
+
+<!-- ================= IMPLEMENTATION ================= -->
+<article class="page" id="p-implementation" data-page="implementation" data-count>
+  <header class="phead"><canvas class="stream" aria-hidden="true"></canvas><div class="wrap">
+    <p class="crumbs"><a href="#home">Home</a> / Implementation</p>
+    <h1>Implementation</h1>
+    <p class="lede">Three stations over three years: prove one first, then add two. Roles and budget stay proposals until quotes and agreements are in place.</p>
+    <nav class="subnav" aria-label="On this page"><a href="#implementation-plan">1 · Rollout plan</a><a href="#implementation-owners">2 · Operation</a><a href="#implementation-cost">3 · Cost analysis</a><a href="#implementation-risks">4 · Risks and community reaction</a><a href="#implementation-lifecycle">5 · Life cycle</a><a href="#implementation-journey">6 · Journey map</a><a href="#implementation-recommendations">7 · Recommendations</a></nav>
+  </div></header>
+
+  <section class="band" id="implementation-plan">
+    <div class="wrap">
+      <div class="head reveal"><p class="kicker">1 · Rollout plan</p><h2>Prove one station, then add two</h2></div>
+      <div class="road">
+        <div class="phase reveal"><span class="bar"></span><span class="when">Before launch</span><h3>Survey and quote</h3><ul><li>Survey proposed sites on the Tô Lịch near Cầu Mới, Cầu Dậu and Cầu Thanh Liệt.</li><li>Get matching quotes for a complete installed station.</li><li>Agree site access and alert steps.</li></ul></div>
+        <div class="phase reveal d1"><span class="bar"></span><span class="when">Station 1</span><h3>Install and test</h3><ul><li>Run a two-week baseline.</li><li>Check readings against reference instruments.</li><li>Measure power use and 4G recovery.</li></ul></div>
+        <div class="phase reveal d2"><span class="bar"></span><span class="when">Stations 2 and 3</span><h3>Expand if it passes</h3><ul><li>Order only after the first station is accepted and the new quote approved.</li><li>Reuse the tested design and alert steps.</li></ul></div>
+        <div class="phase reveal d3"><span class="bar"></span><span class="when">To year 3</span><h3>Operate and decide</h3><ul><li>Measure detection time, false alarms and app use.</li><li>Review wear in month 36.</li><li>Decide on wider rollout from the results.</li></ul></div>
+      </div>
+      <div class="gate reveal">
+        <p><b>Gate before buying stations 2 and 3</b><span>Pass levels are agreed before testing starts.</span></p>
+        <ul><li>Readings match a reference instrument</li><li>No data lost after a 4G drop</li><li>Power lasts as planned</li><li>A test alert reaches a named person</li><li>Revised quote approved</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="implementation-owners" style="background:var(--surface-2)">
+    <div class="wrap">
+      <div class="head reveal"><p class="kicker">2 · Operation</p><h2>Who runs it and keeps it working</h2><p class="lede">Proposed roles. Each one still needs a written agreement.</p></div>
+      <div class="owners four">
+        <div class="card lift reveal"><b>Department of Agriculture and Environment</b><p>Owns the stations and data, receives alerts and sends inspectors.</p></div>
+        <div class="card lift reveal d1"><b>System operator</b><p>Runs the platform and repairs stations. A main operator and a backup are still to be named.</p></div>
+        <div class="card lift reveal d2"><b>Accredited laboratory</b><p>Tests the confirmation sample that supports any fine.</p></div>
+        <div class="card lift reveal d3"><b>Wards and residents</b><p>Share alerts locally, report pollution with photos and help watch the sites.</p></div>
+      </div>
+      <div class="sched reveal">
+        <h3>Three-year service schedule</h3>
+        <ol aria-label="Shared testing trips by month"><li><b>6</b><span>month</span></li><li><b>12</b><span>month</span></li><li><b>18</b><span>month</span></li><li><b>24</b><span>month</span></li><li><b>30</b><span>month</span></li><li class="end"><b>36</b><span>+ wear review</span></li></ol>
+        <div class="facts3">
+          <div><span class="num">6</span><p>shared trips, each covering all three stations: cleaning, calibration check and a test alert.</p></div>
+          <div><span class="num">18</span><p>station checks in total. Drift, fouling or faults trigger extra visits.</p></div>
+          <div><span class="num">48 h</span><p>repair target from the time a fault is received. Not yet a signed service agreement.</p></div>
+        </div>
+        <p class="cap">Dates count from commissioning. Makers advise calibrating more often than this, every 90 days for turbidity (DFRobot, n.d.-c) and ideally monthly for pH (DFRobot, 2026), so that extra work must also be scheduled and quoted.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="implementation-cost">
+    <div class="wrap">
+      <div class="head reveal"><p class="kicker">3 · Cost analysis</p><h2>What is priced, and what still needs a quote</h2><p class="lede">Listed prices recorded 19–25 November 2026 for a reference design, not a final order. US dollar prices are converted at ₫25,940, the rate of 19 November (NDH, n.d.).</p></div>
+      <div class="costsum">
+        <div class="reveal"><small>Station 1</small><b data-cost="first">₫13,895,466</b><p>Listed equipment, bought first.</p></div>
+        <div class="reveal d1"><small>Stations 2 and 3</small><b data-cost="rest">₫27,790,932</b><p>Bought only after the gate is passed.</p></div>
+        <div class="reveal d2"><small>One shared spare pH kit</small><b data-cost="spare">₫1,683,506</b><p>Optional, to help meet the repair target.</p></div>
+        <div class="total reveal d3"><small>Priced so far</small><b data-cost="total">₫43,369,904</b><p>Three stations and the spare. Not the full budget.</p></div>
+      </div>
+      <div class="grid2" style="align-items:start">
+        <div class="reveal">
+          <h3 style="margin-bottom:12px">Listed equipment, per station</h3>
+          <div class="bom" id="bomBuild"></div>
+        </div>
+        <div class="reveal d1">
+          <h3 style="margin-bottom:12px">Still to be quoted</h3>
+          <div class="quotes">
+            <div><b>To build</b><ul><li>Solar panel, battery and controller</li><li>4G modem carrier board and antenna</li><li>Enclosure, cables, mounting and protective cage</li><li>Installation, first calibration and training</li><li>Reference instruments for acceptance tests</li></ul></div>
+            <div><b>To run for three years</b><ul><li>Six shared testing trips, plus extra calibration</li><li>SIM data: up to 108 SIM-months</li><li>Shared hosting: 36 months</li></ul></div>
+            <div><b>When needed</b><ul><li>Repairs, oxygen-probe film and spare parts</li><li>Laboratory samples and SMS alerts</li><li>Delivery, taxes, permits and disposal</li></ul></div>
+          </div>
+          <div class="note" style="margin-top:14px"><b>Full three-year budget: not yet known</b><p>Items without a quote are not counted as zero. A payer for each cost must be agreed before deployment; possible sources are the city environment budget, fines and wastewater fees, industrial clusters and development grants.</p></div>
+          <p class="cap">Evidence: <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/0aa14906/website/content/cost-rollup-3stations-3years-2026-11-26.md">cost rollup</a> and <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/0aa14906/website/content/cost-evidence/README.md">price screenshots</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="implementation-risks" style="background:var(--surface-2)">
+    <div class="wrap">
+      <div class="head reveal"><p class="kicker">4 · Risks and community reaction</p><h2>What could go wrong, and the response</h2></div>
+      <div class="risks">
+        <div class="card risk reveal"><div class="lv"><span class="m">Possible</span><span class="h">High impact</span></div><b>Readings near the limit are wrong</b><p>Listed error is about ±50 NTU for turbidity and ±0.6 mg/L for oxygen (DFRobot, n.d.-b, n.d.-c). Test against reference instruments before buying more.</p></div>
+        <div class="card risk reveal d1"><div class="lv"><span class="h">Likely</span><span class="m">Medium impact</span></div><b>Probe fouling and drift</b><p>Wiper brush, scheduled cleaning and an extra visit when readings drift.</p></div>
+        <div class="card risk reveal d2"><div class="lv"><span class="m">Possible</span><span class="h">High impact</span></div><b>Alert fatigue</b><p>Three-reading rule and a baseline for each site keep false alarms rare.</p></div>
+        <div class="card risk reveal"><div class="lv"><span class="m">Possible</span><span class="m">Medium impact</span></div><b>Theft or flooding</b><p>Locked cage above the flood line, with ward staff watching the site.</p></div>
+        <div class="card risk reveal d1"><div class="lv"><span class="m">Possible</span><span class="h">High impact</span></div><b>Factory pushback</b><p>Laboratory confirmation before any fine; clusters can use alerts to fix their own treatment.</p></div>
+        <div class="card risk reveal d2"><div class="lv"><span class="m">Possible</span><span class="m">Medium impact</span></div><b>Digital divide</b><p>SMS and loudspeaker alerts, large text and Vietnamese labels.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="implementation-lifecycle">
+    <div class="wrap cycle">
+      <div class="reveal">
+        <div class="wheel"><svg id="wheel" viewBox="-230 -230 460 460" role="img" aria-label="Life cycle of a station in six stages"></svg></div>
+      </div>
+      <div>
+        <div class="head reveal" style="margin-bottom:18px"><p class="kicker">5 · Life cycle</p><h2>A water sensor should not become water pollution</h2></div>
+        <div class="stage-btns" id="stageBtns" role="group" aria-label="Life-cycle stages" style="margin-bottom:16px"></div>
+        <div class="stage reveal" id="stage" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="implementation-journey" style="background:var(--surface-2)">
+    <div class="wrap">
+      <div class="head reveal"><p class="kicker">6 · Journey map</p><h2>What a working station changes</h2><p class="lede">An illustrative scenario: Mrs Lan, 58, farms fish downstream on the Nhuệ in Thanh Trì.</p></div>
+      <div class="journey">
+        <div class="j reveal"><span class="t">02:00</span><b>Discharge</b><p>Untreated water enters the river upstream of her ponds.</p><span class="mood" style="background:var(--surface-2)"></span></div>
+        <div class="j reveal d1"><span class="t">02:01</span><b>Detected</b><p>A station sees oxygen fall for three readings in a row.</p><span class="mood" style="background:var(--amber)"></span></div>
+        <div class="j reveal d2"><span class="t">02:02</span><b>Warned</b><p>She receives an SMS: do not pump river water tonight.</p><span class="mood" style="background:var(--coral)"></span></div>
+        <div class="j reveal d3"><span class="t">06:00</span><b>Protected</b><p>She keeps the pond gates shut and her fish survive.</p><span class="mood" style="background:var(--teal)"></span></div>
+        <div class="j reveal d4"><span class="t">Day 2</span><b>Followed up</b><p>An inspector’s sample goes to the laboratory to confirm the source.</p><span class="mood" style="background:var(--lime)"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="implementation-recommendations">
+    <div class="wrap">
+      <div class="head reveal"><p class="kicker">7 · Recommendations</p><h2>What should happen next</h2></div>
+      <div class="recs">
+        <div class="card reveal"><div><b>Confirm quotes, operator and payer</b><p>Fix the final parts list and who runs and pays for it before ordering.</p></div></div>
+        <div class="card reveal d1"><div><b>Prove one station in the field</b><p>Test accuracy, fouling and battery life at one outfall before buying more.</p></div></div>
+        <div class="card reveal d2"><div><b>Agree the legal role of the data</b><p>Work with the city on how alerts and laboratory results are used as evidence.</p></div></div>
+        <div class="card reveal"><div><b>Test with older residents</b><p>Check SMS and loudspeaker alerts with people least likely to use the app.</p></div></div>
+        <div class="card reveal d1"><div><b>Add ammonium sensing</b><p>Ammonium points directly to sewage, which the current probes show only indirectly.</p></div></div>
+        <div class="card reveal d2"><div><b>Share and link the data</b><p>Publish quality-labelled data and combine it with the city’s river stations.</p></div></div>
+      </div>
+    </div>
+  </section>
+</article>

@@ -1,0 +1,29 @@
+/* ---------- hidden demo view (#solution-live): phone on the left, 3D station on the right ---------- */
+.demo-bar{display:none}
+#p-solution.livedemo{--phone-w:340px;--z:1;display:grid;grid-template-columns:calc(var(--phone-w) * var(--z)) minmax(0,1fr);grid-template-rows:auto auto;align-content:start;gap:20px clamp(20px,3vw,44px);min-height:calc(100svh - var(--nav-h));padding:18px max(3vw,16px) 28px;background:var(--river)}
+#p-solution.livedemo>*{display:none}
+#p-solution.livedemo>.demo-bar{display:flex;grid-column:1/-1;flex-wrap:wrap;justify-content:space-between;gap:12px}
+.demo-bar .row{display:flex;flex-wrap:wrap;gap:10px}
+.demo-bar .btn.ghost{color:#fff;border-color:rgba(255,255,255,.6)}
+#p-solution.livedemo>#solution-demo,#p-solution.livedemo>#solution-station{display:block;grid-row:2;min-width:0;padding:0;background:none}
+#p-solution.livedemo>#solution-demo{grid-column:1}
+#p-solution.livedemo>#solution-station{grid-column:2}
+#p-solution.livedemo .demo,#p-solution.livedemo .station{display:block;width:100%;max-width:none;margin:0;padding:0}
+#p-solution.livedemo .ctrl,#p-solution.livedemo .station>div:not(.fig){display:none}
+#p-solution.livedemo .phone{width:var(--phone-w);margin:0;zoom:var(--z)}
+#p-solution.livedemo .station .fig{aspect-ratio:auto;height:calc(var(--phone-w) * var(--z) * 18.5 / 9);max-height:none}
+#p-solution.livedemo .reveal{opacity:1;transform:none}
+body.livedemo .cta,body.livedemo footer,body.livedemo .totop{display:none}
+/* shorter screens: scale the whole phone down so both fit without scrolling */
+@media (max-height:900px){#p-solution.livedemo{--z:.9}}
+@media (max-height:810px){#p-solution.livedemo{--z:.84}}
+@media (max-height:770px){#p-solution.livedemo{--z:.76}}
+@media (max-height:715px){#p-solution.livedemo{--z:.68}}
+@media (max-height:660px){#p-solution.livedemo{--z:.6}}
+@media (max-width:860px){
+  #p-solution.livedemo{--z:1;grid-template-columns:minmax(0,1fr);grid-template-rows:none}
+  #p-solution.livedemo>#solution-demo{grid-column:1;grid-row:2}
+  #p-solution.livedemo>#solution-station{grid-column:1;grid-row:3}
+  #p-solution.livedemo .phone{width:min(340px,100%);margin:0 auto}
+  #p-solution.livedemo .station .fig{height:80svh;min-height:520px}
+}

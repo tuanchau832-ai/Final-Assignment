@@ -1,0 +1,177 @@
+
+<!-- ================= SOLUTION ================= -->
+<article class="page" id="p-solution" data-page="solution" data-count>
+  <!-- bar of the hidden demo view (#solution-live): shows the phone and the 3D station side by side -->
+  <div class="demo-bar" id="solution-live">
+    <a class="btn ghost" href="#solution-demo">← Back to Solution</a>
+    <div class="row">
+      <button class="btn lime" type="button" data-proxy="btnDischarge">Simulate a discharge</button>
+      <button class="btn ghost" type="button" data-proxy="btnSpike">Single spike</button>
+      <button class="btn ghost" type="button" data-proxy="btnReset">Reset</button>
+    </div>
+  </div>
+  <header class="phead"><canvas class="stream" aria-hidden="true"></canvas><div class="wrap">
+    <p class="crumbs"><a href="#home">Home</a> / Solution</p>
+    <h1>Solution</h1>
+    <p class="lede">How a WaterWatch station turns a polluted reading into a phone alert, and the prototypes that prove it.</p>
+    <nav class="subnav" aria-label="On this page"><a href="#solution-how">Detailed design</a><a href="#solution-station">Inside a station</a><a href="#solution-rules">Alert rules</a><a href="#solution-demo">Live demo</a><a href="#solution-prototypes">Prototyping</a><a href="#solution-testing">Testing</a></nav>
+  </div></header>
+
+  <section class="band dark" id="solution-how">
+    <div class="wrap">
+      <div class="head reveal"><p class="kicker">Detailed design</p><h2>From the outfall to a phone in seconds</h2></div>
+      <div class="flow reveal">
+        <span class="line"></span><span class="pulse"></span>
+        <div class="st"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v7"/><rect x="9" y="10" width="6" height="11" rx="3"/><path d="M5 7a8 8 0 0 1 3-3M19 7a8 8 0 0 0-3-3"/></svg></span><b>Sense</b><p>Probes read the outflow every 2 seconds.</p></div>
+        <div class="st"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg></span><b>Check</b><p>Three readings in a row outside the limit trigger an alert.</p></div>
+        <div class="st"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18a4 4 0 0 1-.5-8A6 6 0 0 1 18 9a4 4 0 0 1-1 9z"/><path d="M12 12v6M9.5 14.5L12 12l2.5 2.5"/></svg></span><b>Send</b><p>Data travels over 4G and is logged with time and place.</p></div>
+        <div class="st"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg></span><b>Alert</b><p>The dashboard and app turn red; residents get a warning.</p></div>
+        <div class="st"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6L5 19a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2l-5-10V3"/></svg></span><b>Confirm</b><p>An inspector samples the outfall; the lab result comes before any fine.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="solution-station">
+    <div class="wrap station">
+      <div class="fig reveal fig3d">
+        <iframe id="stationFrame" data-src="embed/station/index.html?embed=1" title="Interactive 3D model of a WaterWatch station on a Hanoi embankment. Drag to rotate, scroll to zoom." allow="fullscreen"></iframe>
+      </div>
+      <div>
+        <div class="head reveal" style="margin-bottom:20px"><p class="kicker">Inside a station</p><h2>Built for a dirty, flooding outfall</h2></div>
+        <p class="figcap" style="margin:0 0 12px">Live 3D model: pick a part to fly to it. It follows the sensor simulator in the next section.</p>
+        <div class="hot-list" id="hotList">
+          <button data-h="0"><i>1</i><span><b>Solar panel and battery</b>20 W of solar power keeps the station running without mains power.</span></button>
+          <button data-h="1"><i>2</i><span><b>Control box</b>An ESP32 microcontroller with a 4G modem stores readings offline if the network drops.</span></button>
+          <button data-h="2"><i>3</i><span><b>Probe cage</b>pH, dissolved-oxygen, turbidity and temperature probes sit in a stainless cage with a wiper to reduce fouling.</span></button>
+          <button data-h="3"><i>4</i><span><b>Above the flood line</b>The locked box is bolted to the embankment wall, out of reach of rainy-season floods.</span></button>
+          <button data-h="4"><i>5</i><span><b>Outfall ID and QR code</b>Residents scan the plate to see this outfall’s live status.</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="solution-rules" style="padding-top:0">
+    <div class="wrap">
+      <div class="head reveal"><p class="kicker">Alert rules</p><h2>When a station raises the alarm</h2><p class="lede">Limits follow the national surface-water regulation QCVN 08:2023/BTNMT (Ministry of Natural Resources and Environment, 2023). During a two-week set-up, each station also learns its own baseline, so a river that is already polluted still shows sudden changes.</p></div>
+      <div class="thr">
+        <div data-k="ph" class="card reveal"><span class="k">pH</span><span class="live mono"></span><span class="num">6.0–8.5</span><p>Outside this range is the lowest quality level, D.</p></div>
+        <div data-k="do" class="card reveal d1"><span class="k">Dissolved oxygen</span><span class="live mono"></span><span class="num">&lt; 4 mg/L</span><p>Below the minimum for level C water.</p></div>
+        <div data-k="turb" class="card reveal d2"><span class="k">Turbidity</span><span class="live mono"></span><span class="num">+50%</span><p>QCVN has no turbidity limit, so a sudden rise above baseline signals suspended solids.</p></div>
+        <div data-k="temp" class="card reveal d3"><span class="k">Temperature</span><span class="live mono"></span><span class="num">Logged</span><p>Used to correct pH and oxygen readings.</p></div>
+      </div>
+      <div class="simblock reveal">
+        <div class="head" style="margin:clamp(36px,5vw,64px) 0 20px"><p class="kicker">Try the rules</p><h2>Sensor simulator</h2><p class="lede">Drag a probe value or run a discharge. The cards above, the 3D station and the phone demo all follow this one simulated station.</p></div>
+        <div class="simframe"><iframe id="simFrame" data-src="embed/simulator/Simulation.html" title="ESP32 sensor simulator for station NH-04. Change pH, dissolved oxygen, turbidity, TDS and temperature."></iframe></div>
+        <p class="figcap">Simulation, not field data. Station NH-04, Nhuệ River; a reading every 2 seconds. “Report rule” is the rule on this page; “Team rule” is the team’s experimental sensor-only rule.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="solution-demo">
+    <div class="wrap demo">
+      <div class="phone reveal" aria-label="Interactive app simulation">
+        <div class="screen">
+          <div class="sb"><span id="clock">02:14</span><span>4G ▮▮▮</span></div>
+          <div class="apph"><div>WaterWatch Hà Nội<small>Outfalls near you</small></div><span class="badge" id="appBadge">All clear</span></div>
+          <div class="map">
+            <svg viewBox="0 0 300 330" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="300" height="330" fill="#e6ebf0"/>
+              <g stroke="#ffffff" stroke-width="6"><path d="M0 90h300M0 210h300M90 0v330M210 0v330"/></g>
+              <path d="M260 -10c-30 90 10 170 -20 260s20 90 10 100" stroke="#a9d8ea" stroke-width="22" fill="none"/>
+              <path d="M40 -10c10 80 0 140 20 190s50 80 60 160" stroke="#7fc3dc" stroke-width="9" fill="none"/>
+              <path d="M150 -10c-20 60 10 110 -10 160s-30 60 -20 90" stroke="#7fc3dc" stroke-width="7" fill="none"/>
+              <path d="M200 60c-10 60 10 110 -20 160" stroke="#7fc3dc" stroke-width="6" fill="none"/>
+              <text x="58" y="70" style="font:600 11px Public Sans,Arial;fill:#2a6f87">Nhuệ</text>
+              <text x="156" y="30" style="font:600 11px Public Sans,Arial;fill:#2a6f87">Tô Lịch</text>
+              <text x="150" y="140" style="font:600 11px Public Sans,Arial;fill:#2a6f87">Kim Ngưu</text>
+              <circle cx="50" cy="120" r="8" fill="#4caf50" stroke="#fff" stroke-width="2"/>
+              <circle cx="142" cy="90" r="8" fill="#4caf50" stroke="#fff" stroke-width="2"/>
+              <circle cx="196" cy="160" r="8" fill="#4caf50" stroke="#fff" stroke-width="2"/>
+              <circle cx="132" cy="230" r="8" fill="#4caf50" stroke="#fff" stroke-width="2"/>
+              <circle id="ptRing" cx="70" cy="200" r="11" fill="none" stroke="#4caf50" stroke-width="2" opacity="0"/>
+              <circle id="pt" cx="70" cy="200" r="10" fill="#4caf50" stroke="#fff" stroke-width="2.5"/>
+              <circle cx="108" cy="196" r="7" fill="#2f6df6" stroke="#fff" stroke-width="3"/>
+              <text x="118" y="190" style="font:700 10px Public Sans,Arial;fill:#2f6df6">You</text>
+            </svg>
+            <div class="alert" id="appAlert" role="status"><b>Red alert · Nhuệ River, Hà Đông</b>Untreated wastewater detected at <span id="alertTime">02:15</span>. Do not use river water for crops or fish. 400 m from you.</div>
+          </div>
+          <div class="sheet">
+            <div class="ttl"><span>NH-04 · Nhuệ River</span><span class="badge" id="ptBadge">Normal</span></div>
+            <div class="reads"><div><small>pH</small><b id="rPh">7.2</b></div><div><small>DO</small><b id="rDo">5.1</b></div><div><small>NTU</small><b id="rTu">38</b></div><div><small>°C</small><b id="rTe">27.4</b></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="ctrl">
+        <div class="head reveal" style="margin:0"><p class="kicker">Live demo</p><h2>Make the river dirty</h2><p class="lede">This runs the same alert rule as the prototype: three readings in a row outside the limit. A single spike is ignored.</p></div>
+        <div class="row">
+          <button class="btn lime" id="btnDischarge" type="button">Simulate a discharge</button>
+          <button class="btn ghost" id="btnSpike" type="button">Single spike</button>
+          <button class="btn ghost" id="btnReset" type="button">Reset</button>
+          <a class="btn ghost demo-open" id="btnDemo" href="#solution-live">Full-screen demo ⤢</a>
+        </div>
+        <div class="log mono" id="log" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="solution-prototypes" style="background:var(--surface-2)">
+    <div class="wrap">
+      <div class="head reveal"><p class="kicker">Prototyping</p><h2>Three prototypes, one working chain</h2><p class="lede">Without real sensors, the team split the system into a prototype that works like the station, one that feels like the app and one that looks like the hardware.</p></div>
+      <div class="tabs" role="tablist" aria-label="Prototypes">
+        <button role="tab" aria-selected="true" aria-controls="pt1" id="tb1">P1 · Sensor station</button>
+        <button role="tab" aria-selected="false" aria-controls="pt2" id="tb2">P2 · Map app</button>
+        <button role="tab" aria-selected="false" aria-controls="pt3" id="tb3">P3 · Station model</button>
+      </div>
+      <div class="panel on" role="tabpanel" id="pt1" aria-labelledby="tb1">
+        <div class="six">
+          <div><b>What and why</b><p>Shows that a station can detect a discharge and raise an alert on its own.</p></div>
+          <div><b>How it was made</b><p>An ESP32 circuit on Wokwi, an online simulator. Sliders stand in for the pH, oxygen and turbidity probes; code is in C++.</p></div>
+          <div><b>Form and function</b><p>Reads every two seconds, applies the QCVN limits and three-reading rule, publishes readings over MQTT and sends a Telegram alert.</p></div>
+          <div><b>How it was tested</b><p>Four scenarios, ten runs each, fed with recorded Hanoi monitoring values.</p></div>
+          <div><b>Results</b><p><span class="pending">Detection rate, false alarms, alert time</span></p></div>
+          <div><b>Changes in version 2</b><p><span class="pending">Add after testing</span></p></div>
+        </div>
+        <div class="btnrow" style="display:flex;flex-wrap:wrap;gap:10px"><span class="pending">Link the Wokwi circuit</span><span class="pending">Embed the demo video</span></div>
+      </div>
+      <div class="panel" role="tabpanel" id="pt2" aria-labelledby="tb2">
+        <div class="grid2" style="align-items:start">
+          <div class="six" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+            <div><b>What and why</b><p>Shows residents and authorities what the readings mean for them.</p></div>
+            <div><b>How it was made</b><p>A mobile web app in HTML and JavaScript, fed live by P1 over MQTT and hosted on GitHub Pages. It switches between Vietnamese and English and has a large-text mode.</p></div>
+            <div><b>Form and function</b><p>Colour-coded outfall map, alert with plain advice, photo reporting and an authority dashboard.</p></div>
+            <div><b>How it was tested</b><p>Five to eight users, including older residents, completed three tasks and a SUS questionnaire.</p></div>
+            <div><b>Results</b><p><span class="pending">SUS score, task success, quotes</span></p></div>
+            <div><b>Changes in version 2</b><p><span class="pending">Add after testing</span></p></div>
+          </div>
+          <figure style="margin:0;display:grid;gap:14px"><div class="figframe"><img src="img/app-v1.jpg" alt="First mock-up of the WaterWatch app: a red alert for the Nhue River above a colour-coded map, with callouts explaining push alerts, red points, the river map and station details." loading="lazy"></div><figcaption class="cap"><b>Figure 2.</b> First mock-up of the resident app (Group One, 2026).</figcaption></figure>
+        </div>
+      </div>
+      <div class="panel" role="tabpanel" id="pt3" aria-labelledby="tb3">
+        <div class="six">
+          <div><b>What and why</b><p>Shows the station’s size and how the probe reaches the outflow.</p></div>
+          <div><b>How it was made</b><p>A 3D model in Tinkercad, placed into a photo of a Hanoi embankment.</p></div>
+          <div><b>Form and function</b><p>Control box above the flood line, probe cage on an arm, locked frame.</p></div>
+          <div><b>How it was tested</b><p>Five people were asked what it does and what worries them.</p></div>
+          <div><b>Results</b><p><span class="pending">Feedback summary</span></p></div>
+          <div><b>Changes in version 2</b><p><span class="pending">Add after testing</span></p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="solution-testing">
+    <div class="wrap">
+      <div class="head reveal"><p class="kicker">Testing</p><h2>Does it catch a discharge, and only a real one?</h2></div>
+      <div class="scen">
+        <div class="card reveal"><b>Normal water, 5 minutes</b><p>Expected: no alert, map stays green.</p><span class="pending">Result /10</span></div>
+        <div class="card reveal d1"><b>Sudden discharge</b><p>Expected: alert; time from discharge to phone.</p><span class="pending">Result /10, seconds</span></div>
+        <div class="card reveal d2"><b>Single false spike</b><p>Expected: no alert.</p><span class="pending">Result /10</span></div>
+        <div class="card reveal d3"><b>Return to normal</b><p>Expected: map back to green.</p><span class="pending">Result /10</span></div>
+      </div>
+      <div class="grid2" style="margin-top:20px;align-items:stretch">
+        <div class="card reveal"><h3>Feedback and changes</h3><p style="color:var(--ink-2);margin-top:8px">Feedback from the prototyping forum, user tests and the tutor, and what the team changed.</p><p style="margin-top:12px"><span class="pending">Add feedback → change list</span></p></div>
+        <div class="note reveal d1"><b>Limitation</b><p>The simulator tests the detection and alert logic, not sensor accuracy in real water. Oxygen probes need frequent calibration, and real outfalls bring fouling and floods, so a field pilot is recommended.</p></div>
+      </div>
+    </div>
+  </section>
+</article>

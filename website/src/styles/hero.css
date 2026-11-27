@@ -1,0 +1,29 @@
+/* ---------- home banner ---------- */
+.hero{position:relative;overflow:hidden;background:#040d18;color:#f4f7f2;height:max(660px,calc(100svh - var(--nav-h)));min-height:620px}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(4,13,24,.92) 0%,rgba(4,13,24,.72) 28%,rgba(4,13,24,.1) 50%,rgba(4,13,24,0) 60%)}
+.hero-in{position:absolute;inset:0;z-index:2;display:grid;grid-template-columns:minmax(0,560px) 1fr;align-items:end;gap:24px;padding:clamp(28px,5vh,64px) max(4vw,16px) clamp(28px,6vh,64px);pointer-events:none}
+.hero-in a{pointer-events:auto}
+.brandmark{margin:0;line-height:.9}
+.brandmark .h-city{display:block;font:600 clamp(13px,1.2vw,17px)/1 var(--sans);letter-spacing:.62em;text-transform:uppercase;color:#7cc0e8;margin:0 0 14px .2em}
+.brandmark .h-word{display:block;font:800 clamp(54px,7vw,112px)/.92 var(--sans);letter-spacing:-.04em;color:#fff}
+.brandmark em{font-style:normal;color:var(--leaf)}
+.claim{font:600 clamp(19px,1.7vw,24px)/1.35 var(--sans);color:#fff;margin-top:22px;max-width:28ch;letter-spacing:-.01em}
+.hero .sub{font:clamp(16px,1.2vw,18px)/1.6 var(--serif);color:#b8c8d5;max-width:46ch;margin-top:12px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.facts{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(124,192,232,.22);max-width:560px}
+.facts li{padding:12px 10px 0 0;font:500 13px/1.35 var(--sans);color:#9fb2c2}
+.facts b{display:block;font:800 22px/1.1 var(--sans);color:#fff;letter-spacing:-.02em;margin-bottom:2px}
+/* phones and small tablets: headline first, then a shorter map in its own box (see mapScene.ts) */
+@media (max-width:860px){
+  .hero{height:auto;min-height:0;display:flex;flex-direction:column}
+  .hero::after{display:none}
+  .hero-in{position:static;order:1;grid-template-columns:minmax(0,1fr);padding:26px max(5vw,16px) 6px}
+  .hero canvas{position:static;order:2;height:clamp(230px,36svh,420px)}
+  .brandmark .h-city{margin-bottom:10px}
+  .brandmark .h-word{font-size:clamp(42px,12.5vw,76px)}
+  .claim{font-size:18px;margin-top:14px}
+  .hero .sub,.facts{display:none}
+  .hero .ctas{gap:10px;margin-top:18px}
+  .hero .ctas .btn{flex:1 1 128px;max-width:220px;justify-content:center;text-align:center;padding-inline:12px;font-size:15px}
+}
