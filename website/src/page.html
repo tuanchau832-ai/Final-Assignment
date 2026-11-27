@@ -94,14 +94,14 @@
         <h2>Every discharge, visible within minutes</h2>
         <p>Hanoi’s rivers receive large volumes of untreated wastewater every day. Only about 30% of the city’s domestic wastewater is treated (VnExpress, 2024), and factories and drains can discharge at night or in heavy rain, when nobody is watching. Inspections rely on hand-taken samples and laboratory tests that take days, so polluters are rarely traced and residents downstream are not warned.</p>
         <p>This report proposes Hanoi WaterWatch: small solar-powered sensor stations at high-risk drain outfalls that measure pH, dissolved oxygen, turbidity and temperature every few seconds. When readings stay outside national QCVN limits, the system alerts the environment authority, turns the outfall red on a public map app and warns nearby residents. An inspector then takes a laboratory sample at that exact outfall before any fine is issued.</p>
-        <p>Sensor stations are the proposed pilot design. The comparison also includes resident test kits, manual sampling and AI-assisted IoT. A simulated prototype demonstrates the alert flow. The three-station, three-year pilot has an illustrative subtotal of <span data-hww-pilot-cost>US$2,731.71</span>, using the team’s assumption of 26 routine visits per station per year. The final equipment list and service quotations are pending.</p>
+        <p>Sensor stations are the proposed pilot design. The comparison also includes resident test kits, manual sampling and AI-assisted IoT. A simulated prototype demonstrates the alert flow. Priced items in the reference equipment list for three stations total <span data-hww-pilot-cost>₫41,686,398</span>. The three-year budget still needs final hardware selection and quotes for installation and services.</p>
         <p><span class="pending">Add one sentence on prototype test results after Week 10</span></p>
       </div>
       <dl class="glance reveal d2" style="margin:0">
         <div><dt>Problem</dt><span>Discharges are found days late, and the polluter cannot be traced.</span></div>
         <div><dt>Solution</dt><span>Sensor stations at outfalls, a colour-coded map app and instant alerts.</span></div>
         <div><dt>Who benefits</dt><span>Riverside residents, environment authorities, downstream farmers.</span></div>
-        <div><dt>Pilot scenario</dt><span>Three stations over three operating years. Illustrative subtotal <span data-hww-pilot-cost>US$2,731.71</span>.</span></div>
+        <div><dt>Pilot scenario</dt><span>Three stations over three operating years. Initial listed-price subtotal <span data-hww-pilot-cost>₫41,686,398</span>.</span></div>
         <div><dt>Status</dt><span>Working simulated prototype; user testing in progress.</span></div>
       </dl>
     </div>
@@ -382,8 +382,8 @@
         <div class="head reveal" style="margin-bottom:20px"><p class="kicker">Inside a station</p><h2>Built for a dirty, flooding outfall</h2></div>
         <p class="figcap" style="margin:0 0 12px">Live 3D model: pick a part to fly to it. It follows the sensor simulator in the next section.</p>
         <div class="hot-list" id="hotList">
-          <button data-h="0"><i>1</i><span><b>Solar panel and battery</b>20 W of solar power keeps the station running without mains power.</span></button>
-          <button data-h="1"><i>2</i><span><b>Control box</b>An ESP32 microcontroller with a 4G modem stores readings offline if the network drops.</span></button>
+          <button data-h="0"><i>1</i><span><b>Solar panel and battery</b>The proposed 20 W panel still needs a load and shading assessment. Battery capacity and operating time without sun are pending.</span></button>
+          <button data-h="1"><i>2</i><span><b>Control box</b>The design proposes 4G and offline buffering. The exact board, modem and interfaces are pending.</span></button>
           <button data-h="2"><i>3</i><span><b>Probe cage</b>pH, dissolved-oxygen, turbidity and temperature probes sit in a stainless cage with a wiper to reduce fouling.</span></button>
           <button data-h="3"><i>4</i><span><b>Above the flood line</b>The locked box is bolted to the embankment wall, out of reach of rainy-season floods.</span></button>
           <button data-h="4"><i>5</i><span><b>Outfall ID and QR code</b>Residents scan the plate to see this outfall’s live status.</span></button>
@@ -524,7 +524,7 @@
       </div>
       <div class="grid2" style="margin-top:20px;align-items:stretch">
         <div class="card reveal"><h3>Feedback and changes</h3><p style="color:var(--ink-2);margin-top:8px">Feedback from the prototyping forum, user tests and the tutor, and what the team changed.</p><p style="margin-top:12px"><span class="pending">Add feedback → change list</span></p></div>
-        <div class="note reveal d1"><b>Limitation</b><p>The simulator tests the detection and alert logic, not sensor accuracy in real water. Oxygen probes need frequent calibration, and real outfalls bring fouling and floods, so a field pilot is recommended.</p></div>
+        <div class="note reveal d1"><b>Limitation</b><p>Simulation verifies the alert logic for the supplied inputs. Field acceptance requires reference measurements and model-specific calibration procedures. Fouling and floods also need field testing.</p></div>
       </div>
     </div>
   </section>
@@ -545,7 +545,7 @@
       <div class="road">
         <div class="phase reveal"><span class="bar"></span><span class="when">Before operations</span><h3>Prepare</h3><ul><li>Agree pilot sites and alert steps with the Department of Agriculture and Environment.</li><li>Get access from the drainage company.</li><li>Train inspectors and ward staff.</li></ul></div>
         <div class="phase reveal d1"><span class="bar"></span><span class="when">Year 1</span><h3>Commission</h3><ul><li>Commission three stations at approved high-risk outfalls. The Nhuệ and Tô Lịch are candidate rivers.</li><li>Run a two-week baseline.</li><li>Launch the app with participating wards.</li></ul></div>
-        <div class="phase reveal d2"><span class="bar"></span><span class="when">Years 1–3</span><h3>Operate and evaluate</h3><ul><li>Compare investigated alerts with laboratory samples where available.</li><li>Measure detection time, false alarms and app use.</li><li>Review outcomes at the end of the pilot.</li></ul></div>
+        <div class="phase reveal d2"><span class="bar"></span><span class="when">Years 1–3</span><h3>Operate and evaluate</h3><ul><li>Schedule field testing in months 6, 12, 18, 24, 30 and 36 of operation.</li><li>Measure detection time, false alarms and app use.</li><li>Review wear and corrosion during the month-36 trip and replace parts as needed.</li></ul></div>
         <div class="phase reveal d3"><span class="bar"></span><span class="when">After year 3</span><h3>Decide whether to scale</h3><ul><li>Use pilot results to assess expansion to industrial clusters.</li><li>Review the scope of a public data portal.</li><li>Confirm the operator and funding before expansion.</li></ul></div>
       </div>
     </div>
@@ -555,26 +555,25 @@
     <div class="wrap">
       <div class="head reveal"><p class="kicker">Ownership and operation</p><h2>Proposed roles and maintenance</h2></div>
       <div class="owners">
-        <div class="card lift reveal"><b>Department of Agriculture and Environment</b><p>Owns the stations and data, receives alerts and sends inspectors.</p></div>
-        <div class="card lift reveal d1"><b>Our team</b><p>Builds, installs and maintains stations under a service contract, and runs the platform.</p></div>
+        <div class="card lift reveal"><b>Department of Agriculture and Environment</b><p>Proposed owner of the stations and data and point of contact for inspections.</p></div>
+        <div class="card lift reveal d1"><b>System operator</b><p>Confirm the operator, backup, spares and payment responsibilities before deployment. The plan requires repairs within 48 hours of incident receipt. Staffing and service agreements are pending.</p></div>
         <div class="card lift reveal d2"><b>Accredited laboratories</b><p>Test the confirmation samples that support any fine.</p></div>
         <div class="card lift reveal"><b>Ward People’s Committees</b><p>Share alerts locally and collect residents’ feedback.</p></div>
         <div class="card lift reveal d1"><b>Residents</b><p>Report pollution with photos and help watch the sites.</p></div>
-        <div class="card lift reveal d2"><b>Maintenance routine</b><p>Plan 26 cleaning and inspection visits per station per year, every 14 days. Combine the 12 monthly calibrations with site visits where feasible. Quote post-flood and extra visits separately.</p></div>
+        <div class="card lift reveal d2"><b>Six-month field testing</b><p>Each planned shared trip covers all three stations and includes cleaning, a calibration check and a test alert. Additional checks between trips depend on suspected drift, fouling, incidents or model-specific instructions. The drift rule and acceptance limits are pending.</p></div>
       </div>
     </div>
   </section>
 
   <section class="band" id="implementation-cost">
     <div class="wrap">
-      <div class="head reveal"><p class="kicker">Cost analysis</p><h2>Illustrative cost per station</h2><p class="lede">Equipment and materials subtotal <strong id="equipmentSubtotal">US$428.07</strong>. Including assumed installation, the subtotal is <strong id="installedSubtotal">US$468.07</strong>. The calculator uses provisional team inputs, including 26 routine visits at an assumed US$2.50 per visit. Supplier quotations, final equipment and site costs are pending.</p></div>
+      <div class="head reveal"><p class="kicker">Cost analysis</p><h2>Initial equipment and service quantities</h2><p class="lede">The ESP32 and M.2 reference configuration uses listed prices recorded 19–25 November. USD items were converted at the historical basis of ₫25,940 per US dollar. Hardware selection, installation costs and supplier quotes are pending.</p></div>
       <div class="grid2" style="align-items:start">
         <div class="reveal">
-          <h3 style="margin-bottom:12px">Build, per station</h3>
+          <h3 style="margin-bottom:12px">Priced reference items per station</h3>
           <div class="bom" id="bomBuild"></div>
-          <h3 style="margin:28px 0 12px">Run, per station per year</h3>
-          <div class="bom" id="bomRun"></div>
-          <p class="cap"><b>End of life:</b> the team previously assumed disposal after about five years at US$10 per station. This unverified allowance is excluded from the scenario calculator; obtain a collection quotation and confirm component lifetimes.</p>
+          <h3 style="margin:28px 0 12px">Quotes required</h3>
+          <p>Confirm the power system, modem carrier and antenna, housing and site works, commissioning, testing trips, SIM and hosting, training, lab work, SMS, additional repairs and disposal. The month-36 wear review is included in the last scheduled trip. Quote parts and any extra labour separately.</p>
         </div>
         <div style="display:grid;gap:20px">
           <div class="calc reveal d1" id="calc">
@@ -582,15 +581,22 @@
             <input type="range" id="nSt" min="1" max="100" step="1" value="3">
             <label for="nYr">Operating years per station <output id="yOut">3</output></label>
             <input type="range" id="nYr" min="1" max="5" step="1" value="3">
-            <div class="out"><div><small>Provisional scenario subtotal</small><b id="cUsd">$2,731.71</b></div><div><small>Illustrative VND conversion</small><b id="cVnd">₫71 m</b></div></div>
-            <p class="scenario-note">Illustrative rate: ₫26,000 per US dollar. The subtotal excludes unpriced lab services, SMS, software development, training, electrical protection, additional replacements and post-flood visits.</p>
+            <div class="out">
+              <div><small>Initial listed-price subtotal</small><b id="cVnd">₫41,686,398</b></div>
+              <div><small>Optional pH kits, priced separately</small><b id="cSpare">₫5,050,518</b></div>
+              <div><small>Station checks</small><b id="cVisits">18</b></div>
+              <div><small>Shared testing trips</small><b id="cTrips">6</b></div>
+            </div>
+            <p class="scenario-note">Shared trips are planned for the three-station pilot, pending route and quote confirmation. One trip covers three station checks. Initial equipment and optional spares are counted once.</p>
+            <p class="scenario-note" id="cServices">108 SIM-months and 36 hosting months, assuming one shared hosting package. Quotes required.</p>
+            <p class="scenario-note"><strong>Full scenario budget pending:</strong> installation, testing trips, other services and unpriced items still need quotes.</p>
           </div>
-          <p class="cap">The earlier 10-station, one-year scenario came to US$6,105.70 under the old 24-visit assumption. See the <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/8ea9e9078c82241fbca170672b844cafcba429f9/website/content/cost-scenarios-2026-11-25.csv">scenario calculations</a> and <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/8ea9e9078c82241fbca170672b844cafcba429f9/website/content/cost-evidence/README.md">supplier-listing evidence</a>.</p>
+          <p class="cap">See the <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/2a3fb2be9f00442dd784af2428c982e966cc9d3d/website/content/cost-rollup-3stations-3years-2026-11-26.md">cost rollup</a>, <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/2a3fb2be9f00442dd784af2428c982e966cc9d3d/website/content/cost-evidence/README.md">supplier-listing evidence</a> and <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/2a3fb2be9f00442dd784af2428c982e966cc9d3d/website/content/maintenance-acceptance-template-2026-11-27.md">draft acceptance and incident checklist</a>.</p>
           <h3>Potential funding sources</h3>
           <div class="fund">
             <div class="card reveal"><b>City environment budget</b><p>Monitoring sits within the Department’s existing role.</p></div>
             <div class="card reveal d1"><b>Polluter pays</b><p>Fines and wastewater fees from confirmed violations.</p></div>
-            <div class="card reveal d2"><b>Industrial clusters</b><p>Pay for early warning when their own treatment fails.</p></div>
+            <div class="card reveal d2"><b>Industrial clusters</b><p>Potential contributors to an early-warning service.</p></div>
             <div class="card reveal d3"><b>Development grants</b><p>International water programmes fund pilots of this kind.</p></div>
           </div>
         </div>
@@ -625,7 +631,7 @@
     <div class="wrap">
       <div class="head reveal"><p class="kicker">Risks and community reaction</p><h2>What could go wrong, and the response</h2></div>
       <div class="risks">
-        <div class="card risk reveal"><div class="lv"><span class="h">Likely</span><span class="m">Medium impact</span></div><b>Probe fouling and drift</b><p>Wiper brush, fortnightly cleaning, readings flagged when they drift.</p></div>
+        <div class="card risk reveal"><div class="lv"><span class="h">Likely</span><span class="m">Medium impact</span></div><b>Probe fouling and drift</b><p>Check against references during scheduled testing and investigate suspected drift or fouling between trips. A validated software rule and numerical trigger are pending.</p></div>
         <div class="card risk reveal d1"><div class="lv"><span class="m">Possible</span><span class="h">High impact</span></div><b>Alert fatigue</b><p>Three-reading rule and site baselines keep false alarms rare.</p></div>
         <div class="card risk reveal d2"><div class="lv"><span class="m">Possible</span><span class="m">Medium impact</span></div><b>Theft or flooding</b><p>Locked cage above the flood line; low-value parts; ward watch.</p></div>
         <div class="card risk reveal"><div class="lv"><span class="m">Possible</span><span class="h">High impact</span></div><b>Factory pushback</b><p>Lab confirmation before fines; clusters can use alerts to fix their own treatment.</p></div>

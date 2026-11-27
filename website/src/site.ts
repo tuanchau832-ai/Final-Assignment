@@ -37,22 +37,18 @@ const STAKE = [
   { n: 'Researchers and NGOs', c: '#c8f169', i: 2, need: 'Open, quality-labelled data on long-term trends.', more: 'Can study pollution patterns and hold agencies to account.' },
   { n: 'Our team (IT developers)', c: '#f2a541', i: 3, need: 'A system that is maintainable, and a service contract to run it.', more: 'Builds, installs and maintains stations and the platform.' }
 ];
+// Listed-price amounts per station from the 19–25 November evidence register.
+// This ESP32 + M.2 configuration is a reference BOM, pending hardware selection.
+const PH_KIT = { n: 'Industrial pH probe kit', s: 'SEN0169-V2 · price-002', p: 1683506 };
 const BUILD = [
-  { n: 'ESP32 board with 4G modem and solar charging', s: 'LILYGO (2026)', p: 49.78 },
-  { n: 'Industrial pH probe kit', s: 'DFRobot (2026)', p: 64.90 },
-  { n: 'Dissolved-oxygen probe kit', s: 'DFRobot (2026)', p: 169.00 },
-  { n: 'Turbidity sensor', s: 'DFRobot (2026)', p: 9.90 },
-  { n: 'Waterproof temperature sensor', s: 'DFRobot (2026)', p: 7.50 },
-  { n: '20 W solar panel with charge controller', s: 'eBay (2026)', p: 46.99 },
-  { n: 'Enclosure, battery, steel cage, wiper, cables', s: 'Team estimate', p: 80, est: 1 },
-  { n: 'Installation labour', s: 'Team estimate', p: 40, est: 1, installation: true }
-];
-const RUN = [
-  { n: 'Replacement pH electrode', s: 'DFRobot (2026)', p: 49.50 },
-  { n: 'Cleaning and inspection, 26 visits a year', s: 'Internal assumption: US$2.50 per visit', p: 26 * 2.50, est: 1 },
-  { n: '4G data plan', s: 'Team estimate', p: 18, est: 1 },
-  { n: 'Calibration solutions', s: 'Team estimate', p: 10, est: 1 },
-  { n: 'Cloud hosting share', s: 'Team estimate', p: 5, est: 1 }
+  { n: 'ESP32 board', s: 'HS2250V · price-001', p: 195000 },
+  PH_KIT,
+  { n: 'Dissolved-oxygen probe kit', s: 'SEN0680 · price-003', p: 4428000 },
+  { n: 'Turbidity sensor', s: 'SEN0710 · price-004', p: 5940260 },
+  { n: 'Waterproof temperature sensor', s: 'DS18B20 HS2432V · price-005', p: 35000 },
+  { n: 'TTL–RS485 module', s: 'HS2455V · price-006', p: 35000 },
+  { n: 'SIM7600G-H-M.2 modem', s: 'HS2164V · price-007', p: 1566000 },
+  { n: 'Cable glands', s: '4 × ₫3,175 · PG13.5 · fit pending · price-009', p: 4 * 3175 }
 ];
 const LIFE = [
   { k: 'Materials', imp: 'Electronics need copper, plastics and lithium for the battery.', who: 'Component suppliers', act: 'Choose RoHS-compliant parts, a stainless cage and a recyclable enclosure.' },
@@ -60,7 +56,7 @@ const LIFE = [
   { k: 'Transport', imp: 'Short trips by van; each station weighs only a few kilograms.', who: 'Our team', act: 'Group installations by district to cut trips.' },
   { k: 'Installation', imp: 'Work on embankment walls beside traffic and water.', who: 'Drainage company, ward committees, residents', act: 'Agree access, follow safety rules and tell residents before work starts.' },
   { k: 'Use', imp: 'Solar powered, but needs cleaning visits and calibration chemicals.', who: 'Inspectors, residents, factories', act: 'Collect used calibration fluid and plan visits by route.' },
-  { k: 'End of life', imp: 'Boards and lithium batteries become e-waste after about five years.', who: 'Certified recycler, the Department', act: 'Take back every unit, recycle boards and batteries, reuse cages.' }
+  { k: 'End of life', imp: 'Retired boards and lithium batteries require appropriate e-waste handling.', who: 'Certified recycler, the Department', act: 'Review wear and corrosion in month 36, replace as needed and arrange collection at replacement or closure.' }
 ];
 const TEAM = [
   { n: 'Nguyễn Gia Ngân', f: 'Industrial wastewater', b: 'Researched how industrial wastewater affects water quality in Hanoi, from COD and BOD₅ in the Tô Lịch to metals in river sediments.' },
@@ -115,25 +111,28 @@ pick.addEventListener('click', e => { const b = e.target.closest('button'); if (
 showScores(0);
 
 /* bill of materials and calculator */
-const bomHtml = (list, max) => list.map(x => `
-  <div class="it ${x.est ? 'est' : ''}"><div><b>${esc(x.n)}</b><small>${esc(x.s)}</small></div><div class="bar"><i data-w="${(x.p / max * 100).toFixed(1)}"></i></div><span class="p">$${fmt(x.p, 2)}</span></div>`).join('');
-const buildSum = BUILD.reduce((a, x) => a + x.p, 0), runSum = RUN.reduce((a, x) => a + x.p, 0);
+const buildSum = BUILD.reduce((sum, item) => sum + item.p, 0);
+const maxListedPrice = Math.max(...BUILD.map(item => item.p));
+const dong = value => '₫' + fmt(value);
+const priceRows = BUILD.map(x => `
+  <div class="it"><div><b>${esc(x.n)}</b><small>${esc(x.s)}</small></div><div class="bar"><i data-w="${(x.p / maxListedPrice * 100).toFixed(1)}"></i></div><span class="p">${dong(x.p)}</span></div>`).join('');
 const stationInput = $('#nSt');
 const yearInput = $('#nYr');
-const scenarioSubtotal = (stations, years) => stations * (buildSum + runSum * years);
-const pilotSubtotal = scenarioSubtotal(Number(stationInput.defaultValue), Number(yearInput.defaultValue));
-$$('[data-hww-pilot-cost]').forEach(el => { el.textContent = 'US$' + fmt(pilotSubtotal, 2); });
-$('#equipmentSubtotal').textContent = 'US$' + fmt(BUILD.filter(item => !item.installation).reduce((sum, item) => sum + item.p, 0), 2);
-$('#installedSubtotal').textContent = 'US$' + fmt(buildSum, 2);
-$('#bomBuild').innerHTML = bomHtml(BUILD, 169) + `<div class="tot"><span>Scenario build and installation subtotal</span><span>$${fmt(buildSum, 2)}</span></div>`;
-$('#bomRun').innerHTML = bomHtml(RUN, 169) + `<div class="tot"><span>Scenario annual operating subtotal</span><span>$${fmt(runSum, 2)}</span></div>`;
-const VND = 26000;
+const pilotStations = Number(stationInput.defaultValue);
+$$('[data-hww-pilot-cost]').forEach(el => { el.textContent = dong(pilotStations * buildSum); });
+$('#bomBuild').innerHTML = priceRows + `<div class="tot"><span>Listed-price subtotal per station</span><span>${dong(buildSum)}</span></div>`;
 const calc = () => {
-  const n = Number(stationInput.value), y = Number(yearInput.value);
-  const usd = scenarioSubtotal(n, y), vnd = usd * VND;
-  $('#nOut').textContent = n; $('#yOut').textContent = y;
-  $('#cUsd').textContent = '$' + fmt(usd, 2);
-  $('#cVnd').textContent = vnd >= 1e9 ? '₫' + fmt(vnd / 1e9, 2) + ' bn' : '₫' + fmt(Math.round(vnd / 1e6)) + ' m';
+  const stations = Number(stationInput.value);
+  const years = Number(yearInput.value);
+  const months = 12 * years;
+  const rounds = 2 * years;
+  $('#nOut').textContent = stations;
+  $('#yOut').textContent = years;
+  $('#cVnd').textContent = dong(stations * buildSum);
+  $('#cSpare').textContent = dong(stations * PH_KIT.p);
+  $('#cVisits').textContent = fmt(rounds * stations);
+  $('#cTrips').textContent = stations === pilotStations ? fmt(rounds) : 'Route TBD';
+  $('#cServices').textContent = `${fmt(stations * months)} SIM-months and ${fmt(months)} hosting months, assuming one shared hosting package. Quotes required.`;
 };
 stationInput.addEventListener('input', calc); yearInput.addEventListener('input', calc); calc();
 
