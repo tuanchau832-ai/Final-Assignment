@@ -1,0 +1,438 @@
+{
+  "date": "2026-11-28",
+  "phase": "after",
+  "snapshot": "687557b1",
+  "scope": "Local browser; mobile emulation, not physical phone or hosted deployment",
+  "cases": [
+    {
+      "width": 320,
+      "documentWidth": 320,
+      "costs": [
+        {
+          "key": "first",
+          "value": "₫13,895,466",
+          "elementWidth": 242,
+          "textScrollWidth": 242,
+          "cardWidth": 288,
+          "overflow": false
+        },
+        {
+          "key": "rest",
+          "value": "₫27,790,932",
+          "elementWidth": 242,
+          "textScrollWidth": 242,
+          "cardWidth": 288,
+          "overflow": false
+        },
+        {
+          "key": "spare",
+          "value": "₫1,683,506",
+          "elementWidth": 242,
+          "textScrollWidth": 242,
+          "cardWidth": 288,
+          "overflow": false
+        },
+        {
+          "key": "total",
+          "value": "₫43,369,904",
+          "elementWidth": 242,
+          "textScrollWidth": 242,
+          "cardWidth": 288,
+          "overflow": false
+        }
+      ],
+      "headings": [
+        "Prove one station, then add two",
+        "Who runs it and keeps it working",
+        "What is priced, and what still needs a quote",
+        "What could go wrong, and the response",
+        "A water sensor should not become water pollution",
+        "What a working station changes",
+        "What should happen next"
+      ],
+      "approximateWordCount": 2749,
+      "calculator": false,
+      "runtimeErrors": [],
+      "pass": true
+    },
+    {
+      "width": 390,
+      "documentWidth": 390,
+      "costs": [
+        {
+          "key": "first",
+          "value": "₫13,895,466",
+          "elementWidth": 305,
+          "textScrollWidth": 305,
+          "cardWidth": 351,
+          "overflow": false
+        },
+        {
+          "key": "rest",
+          "value": "₫27,790,932",
+          "elementWidth": 305,
+          "textScrollWidth": 305,
+          "cardWidth": 351,
+          "overflow": false
+        },
+        {
+          "key": "spare",
+          "value": "₫1,683,506",
+          "elementWidth": 305,
+          "textScrollWidth": 305,
+          "cardWidth": 351,
+          "overflow": false
+        },
+        {
+          "key": "total",
+          "value": "₫43,369,904",
+          "elementWidth": 305,
+          "textScrollWidth": 305,
+          "cardWidth": 351,
+          "overflow": false
+        }
+      ],
+      "headings": [
+        "Prove one station, then add two",
+        "Who runs it and keeps it working",
+        "What is priced, and what still needs a quote",
+        "What could go wrong, and the response",
+        "A water sensor should not become water pollution",
+        "What a working station changes",
+        "What should happen next"
+      ],
+      "approximateWordCount": 2749,
+      "calculator": false,
+      "runtimeErrors": [],
+      "pass": true,
+      "referencesSearchVisible": 5,
+      "referenceWidth": 390
+    },
+    {
+      "width": 768,
+      "documentWidth": 768,
+      "costs": [
+        {
+          "key": "first",
+          "value": "₫13,895,466",
+          "elementWidth": 292.609375,
+          "textScrollWidth": 293,
+          "cardWidth": 338.609375,
+          "overflow": false
+        },
+        {
+          "key": "rest",
+          "value": "₫27,790,932",
+          "elementWidth": 292.609375,
+          "textScrollWidth": 293,
+          "cardWidth": 338.609375,
+          "overflow": false
+        },
+        {
+          "key": "spare",
+          "value": "₫1,683,506",
+          "elementWidth": 292.609375,
+          "textScrollWidth": 293,
+          "cardWidth": 338.609375,
+          "overflow": false
+        },
+        {
+          "key": "total",
+          "value": "₫43,369,904",
+          "elementWidth": 292.609375,
+          "textScrollWidth": 293,
+          "cardWidth": 338.609375,
+          "overflow": false
+        }
+      ],
+      "headings": [
+        "Prove one station, then add two",
+        "Who runs it and keeps it working",
+        "What is priced, and what still needs a quote",
+        "What could go wrong, and the response",
+        "A water sensor should not become water pollution",
+        "What a working station changes",
+        "What should happen next"
+      ],
+      "approximateWordCount": 2749,
+      "calculator": false,
+      "runtimeErrors": [],
+      "pass": true
+    },
+    {
+      "width": 980,
+      "documentWidth": 980,
+      "costs": [
+        {
+          "key": "first",
+          "value": "₫13,895,466",
+          "elementWidth": 388,
+          "textScrollWidth": 388,
+          "cardWidth": 434,
+          "overflow": false
+        },
+        {
+          "key": "rest",
+          "value": "₫27,790,932",
+          "elementWidth": 388,
+          "textScrollWidth": 388,
+          "cardWidth": 434,
+          "overflow": false
+        },
+        {
+          "key": "spare",
+          "value": "₫1,683,506",
+          "elementWidth": 388,
+          "textScrollWidth": 388,
+          "cardWidth": 434,
+          "overflow": false
+        },
+        {
+          "key": "total",
+          "value": "₫43,369,904",
+          "elementWidth": 388,
+          "textScrollWidth": 388,
+          "cardWidth": 434,
+          "overflow": false
+        }
+      ],
+      "headings": [
+        "Prove one station, then add two",
+        "Who runs it and keeps it working",
+        "What is priced, and what still needs a quote",
+        "What could go wrong, and the response",
+        "A water sensor should not become water pollution",
+        "What a working station changes",
+        "What should happen next"
+      ],
+      "approximateWordCount": 2749,
+      "calculator": false,
+      "runtimeErrors": [],
+      "pass": true
+    },
+    {
+      "width": 1024,
+      "documentWidth": 1024,
+      "costs": [
+        {
+          "key": "first",
+          "value": "₫13,895,466",
+          "elementWidth": 173.90625,
+          "textScrollWidth": 174,
+          "cardWidth": 219.90625,
+          "overflow": false
+        },
+        {
+          "key": "rest",
+          "value": "₫27,790,932",
+          "elementWidth": 173.90625,
+          "textScrollWidth": 174,
+          "cardWidth": 219.90625,
+          "overflow": false
+        },
+        {
+          "key": "spare",
+          "value": "₫1,683,506",
+          "elementWidth": 173.90625,
+          "textScrollWidth": 174,
+          "cardWidth": 219.90625,
+          "overflow": false
+        },
+        {
+          "key": "total",
+          "value": "₫43,369,904",
+          "elementWidth": 173.90625,
+          "textScrollWidth": 174,
+          "cardWidth": 219.90625,
+          "overflow": false
+        }
+      ],
+      "headings": [
+        "Prove one station, then add two",
+        "Who runs it and keeps it working",
+        "What is priced, and what still needs a quote",
+        "What could go wrong, and the response",
+        "A water sensor should not become water pollution",
+        "What a working station changes",
+        "What should happen next"
+      ],
+      "approximateWordCount": 2749,
+      "calculator": false,
+      "runtimeErrors": [],
+      "pass": true
+    },
+    {
+      "width": 1280,
+      "documentWidth": 1280,
+      "costs": [
+        {
+          "key": "first",
+          "value": "₫13,895,466",
+          "elementWidth": 231.5,
+          "textScrollWidth": 232,
+          "cardWidth": 277.5,
+          "overflow": false
+        },
+        {
+          "key": "rest",
+          "value": "₫27,790,932",
+          "elementWidth": 231.5,
+          "textScrollWidth": 232,
+          "cardWidth": 277.5,
+          "overflow": false
+        },
+        {
+          "key": "spare",
+          "value": "₫1,683,506",
+          "elementWidth": 231.5,
+          "textScrollWidth": 232,
+          "cardWidth": 277.5,
+          "overflow": false
+        },
+        {
+          "key": "total",
+          "value": "₫43,369,904",
+          "elementWidth": 231.5,
+          "textScrollWidth": 232,
+          "cardWidth": 277.5,
+          "overflow": false
+        }
+      ],
+      "headings": [
+        "Prove one station, then add two",
+        "Who runs it and keeps it working",
+        "What is priced, and what still needs a quote",
+        "What could go wrong, and the response",
+        "A water sensor should not become water pollution",
+        "What a working station changes",
+        "What should happen next"
+      ],
+      "approximateWordCount": 2749,
+      "calculator": false,
+      "runtimeErrors": [],
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "documentWidth": 1440,
+      "costs": [
+        {
+          "key": "first",
+          "value": "₫13,895,466",
+          "elementWidth": 253.5,
+          "textScrollWidth": 254,
+          "cardWidth": 299.5,
+          "overflow": false
+        },
+        {
+          "key": "rest",
+          "value": "₫27,790,932",
+          "elementWidth": 253.5,
+          "textScrollWidth": 254,
+          "cardWidth": 299.5,
+          "overflow": false
+        },
+        {
+          "key": "spare",
+          "value": "₫1,683,506",
+          "elementWidth": 253.5,
+          "textScrollWidth": 254,
+          "cardWidth": 299.5,
+          "overflow": false
+        },
+        {
+          "key": "total",
+          "value": "₫43,369,904",
+          "elementWidth": 253.5,
+          "textScrollWidth": 254,
+          "cardWidth": 299.5,
+          "overflow": false
+        }
+      ],
+      "headings": [
+        "Prove one station, then add two",
+        "Who runs it and keeps it working",
+        "What is priced, and what still needs a quote",
+        "What could go wrong, and the response",
+        "A water sensor should not become water pollution",
+        "What a working station changes",
+        "What should happen next"
+      ],
+      "approximateWordCount": 2749,
+      "calculator": false,
+      "runtimeErrors": [],
+      "pass": true,
+      "referencesSearchVisible": 5,
+      "referenceWidth": 1440
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "after-cost-cards-320.png",
+      "sha256": "ea8bcce137cce68b4072b688baf9a39718e1672f48d538152cecb2b19e452b41"
+    },
+    {
+      "file": "after-cost-cards-390.png",
+      "sha256": "84f2552e55aea47edb4d4ab661cd391c875f78cb64f29d038f27b359268b0fe3"
+    },
+    {
+      "file": "after-cost-cards-1024.png",
+      "sha256": "a528c582dae37ccce63a446ea3860233141ad1cdd99625c74558588adc2f9419"
+    },
+    {
+      "file": "after-cost-cards-1440.png",
+      "sha256": "7a6e71b78ab70f5b49c16c4cf6e39f944f6f3fa8a314049784c53691f4b74fa7"
+    },
+    {
+      "file": "assigned-cost-320.png",
+      "sha256": "e8b4472f9eafa8d38a5dc8a176fd2eb4f9739dfc968d39f22f40a5e247d07832"
+    },
+    {
+      "file": "assigned-cost-390.png",
+      "sha256": "32c31ba6ffabc2d12c2c856a144cf4587708f2d3dccfed0b010bc72ed0370228"
+    },
+    {
+      "file": "assigned-cost-1440.png",
+      "sha256": "4df1f108f8702a14bfccb48fd4f7414545d6e3f2c07a6ca57092d2621151fa64"
+    }
+  ],
+  "browser": "158.0.8127.38",
+  "assignedBranch": [
+    {
+      "width": 320,
+      "implementationWidth": 320,
+      "costWidth": 320,
+      "contains96": true,
+      "table": {
+        "client": 288,
+        "scroll": 1200,
+        "right": 912
+      },
+      "pass": true
+    },
+    {
+      "width": 390,
+      "implementationWidth": 390,
+      "costWidth": 390,
+      "contains96": true,
+      "table": {
+        "client": 358,
+        "scroll": 1200,
+        "right": 842
+      },
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "implementationWidth": 1440,
+      "costWidth": 1440,
+      "contains96": true,
+      "table": {
+        "client": 922,
+        "scroll": 1200,
+        "right": 278
+      },
+      "pass": true
+    }
+  ]
+}

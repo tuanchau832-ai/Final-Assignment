@@ -1,5 +1,7 @@
 # Bảng chi phí mỗi trạm → 3 trạm → 3 năm
 
+> **Cập nhật 28/11:** kỳ dự toán dùng 36 tháng chung từ trạm đầu. Các bảng tiền mua ban đầu vẫn đúng; cột dịch vụ 108 SIM-tháng/18 kiểm bên dưới là **so sánh cùng bắt đầu**. Với ví dụ 0/6/6 dùng [bảng khối lượng hiện hành](service-rfq-quantities-2026-11-28.csv): 96 SIM-tháng, 36 hosting, 16 kiểm/6 đợt. Xem [plan mới](ba-nguyen-next-steps-2026-11-28.md) và [worksheet](pilot-service-basis-2026-11-28.json). Chưa có quote mới hoặc tổng ngân sách đủ.
+
 Lập ngày 26/11/2026, cập nhật sau phản hồi Tuấn ngày 27/11. Đơn vị: VND, trừ giá gốc USD ghi riêng. [CSV chi tiết mở bằng Excel](cost-rollup-3stations-3years-2026-11-26.csv) hiện gồm **30 dòng**, thêm cột hai đợt mua và scope máy tham chiếu/TDS có điều kiện.
 
 **Phương án hiện tại:** [mua 1 trạm trước rồi 2 trạm sau](staged-procurement-2026-11-27.csv), khi trạm đầu đạt và báo giá được duyệt. Dự phòng pH tùy chọn đổi từ ba bộ sang **một bộ dùng chung 1.683.506 VND**, tính riêng một lần; chưa xác nhận storage/48 giờ. [Review/plan mới](tuan-response-plan-2026-11-27.md) ghi các phần đã đủ và còn thiếu. Subtotal mua ban đầu không đổi; không có giá lắp/vận hành mới.

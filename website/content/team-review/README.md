@@ -1,5 +1,7 @@
 # Bản vá summary và chi phí cho website cuối
 
+> **Cập nhật 28/11:** final mới dùng cấu trúc tách trang và thẻ chi phí tĩnh. Patch summary/calculator dưới đây chỉ cho source lịch sử. Xem [review mới](tuan-closeout-review-2026-11-28.md) và [patch hẹp cho 687557b1](tuan-closeout-followup-2026-11-28.patch).
+
 > **Scope mới nhất 27/11:** Đạt đã trả lời D5; [plan/ghi nhận](../dat-response-plan-2026-11-27.md) và rollup hiện dùng sáu chuyến chung ba trạm trong ba năm, gồm vệ sinh/kiểm tra hiệu chuẩn và review tháng 36. Không port các lịch/số 24/26 lượt dưới đây như scope hiện tại. Threshold, model, operator và báo giá chưa đầy đủ.
 
 > **Cập nhật 26/11:** Đọc [bảng đối chiếu mới dành cho Đạt/Tuấn](../final-website-vs-ba-nguyen-2026-11-26.md) trước khi dùng patch. Scope làm việc là 3 trạm/3 năm; testing 6 tháng/lần và review mòn/ăn mòn năm 3. Các số 10/1, 24/26 lượt và hướng dẫn lịch bên dưới là lịch sử của patch ngày 25/11. Patch không tự giải quyết BOM/báo giá, scope hoặc lịch mới; source cuối đã đổi snapshot nên phải review/port từng thay đổi phù hợp.

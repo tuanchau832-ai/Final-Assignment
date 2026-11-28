@@ -1,16 +1,18 @@
 # Mẫu yêu cầu báo giá — Hanoi Water Watch
 
+> **Basis cập nhật 28/11:** kỳ dự án **36 tháng chung từ commissioning trạm đầu** theo [proposal Tuấn 687557b1](https://github.com/tuanchau832-ai/Final-Assignment/blob/687557b1f2b50ed5ab416713706bd4221b883c2d/website/content/first-station-pilot.md). Ngày 0/6/6 là ví dụ, chưa là lịch lắp: **96 SIM-tháng, 36 hosting, 16 lượt kiểm trong 6 đợt**. Xem [khối lượng RFQ](service-rfq-quantities-2026-11-28.csv) và [plan hiện hành](ba-nguyen-next-steps-2026-11-28.md). Mốc 108 SIM-tháng/18 kiểm dưới đây chỉ áp dụng so sánh cùng bắt đầu; không dùng làm số mặc định cho mua lệch đợt.
+
 Ngày gửi: [dd/mm/yyyy]  
 Người liên hệ: Bá Nguyên, nhóm Hanoi Water Watch  
 Mục đích: khảo sát chi phí cho phương án 3 trạm giám sát chất lượng nước trong 3 năm tại Hà Nội theo phản hồi Akai; địa điểm và cấu hình cụ thể vẫn cần nhóm xác nhận. Đây chưa phải đơn đặt hàng.
 
 **Yêu cầu sau phản hồi Tuấn 27/11:** xin hai báo giá cùng scope: A dùng ESP32 HS2250V + SIM7600G-H-M.2 HS2164V, B dùng LILYGO đúng SKU/revision nhà cung cấp đề xuất. Giữ cùng SEN0169-V2, SEN0680, SEN0710, DS18B20 tham chiếu và site cho cả hai; báo riêng module/giao tiếp/phụ kiện khác nhau. Đợt 1 giao/lắp **một trạm** để nghiệm thu; đợt 2 **hai trạm** chỉ thực hiện sau nghiệm thu và duyệt giá lại. Bảng giá 19–25/11 chỉ là điểm đối chiếu, không là quote hiện tại. Ngày vận hành/site chưa chốt nên chưa coi 108 SIM-tháng/36 hosting hoặc sáu chuyến chung là lượng thực tế không đổi.
 
-Cập nhật scope dịch vụ 27/11: theo [phản hồi Đạt](https://github.com/tuanchau832-ai/Final-Assignment/pull/3#issuecomment-7202126238), xin giá theo **6 chuyến chung cho cả 3 trạm trong 3 năm**, tương ứng **18 lượt kiểm tra trạm**. Không nhân giá một chuyến chung thêm ba lần. [Lịch tương đối](maintenance-schedule-2026-11-27.csv) và [checklist chuẩn bị](maintenance-acceptance-template-2026-11-27.md) chưa chứa kết quả field/ngưỡng nghiệm thu đã duyệt.
+Cập nhật scope dịch vụ 28/11: giữ chu kỳ kiểm sáu tháng theo tuổi mỗi trạm mà [Đạt xác nhận](https://github.com/tuanchau832-ai/Final-Assignment/pull/3#issuecomment-7202126238), rồi tính theo ngày commissioning. Ví dụ 0/6/6 có đợt tháng 6 kiểm một trạm, các đợt tháng 12/18/24/30/36 kiểm ba trạm: **6 đợt, 16 lượt kiểm**. Xin xác nhận tuyến và giá theo scope từng đợt; không nhân giá một chuyến thêm ba lần. [Lịch 18 lượt cũ](maintenance-schedule-2026-11-27.csv) chỉ là so sánh cùng bắt đầu; [checklist](maintenance-acceptance-template-2026-11-27.md) chưa chứa kết quả field/ngưỡng đã duyệt.
 
 Kính gửi [tên nhà cung cấp],
 
-Nhóm cần báo giá bằng VND cho những hạng mục phù hợp **cấu hình được gửi kèm**. Vui lòng nêu rõ mã hàng, số lượng, đơn giá, tổng tiền, VAT, phí vận chuyển tới Hà Nội, thời gian giao hàng, bảo hành, thời hạn hiệu lực của báo giá và các điều kiện kỹ thuật hoặc lắp đặt đi kèm. Trước khi gửi, người phụ trách điền `[số trạm]`, `[địa điểm/site]`, `[SKU/variant]`, `[sơ đồ nguồn]` và chọn **một** trong hai phương án modem dưới đây; các ô chưa có dữ liệu thì ghi `TBD` và chỉ xin tư vấn cấu hình, chưa xin báo giá chốt.
+Nhóm cần hai báo giá A/B **tách biệt** bằng VND theo cấu hình gửi kèm, chưa chọn bên thắng trước khi so giá. Ghi model/revision, số lượng, đơn giá, tổng, VAT, giao Hà Nội, thời hạn, lead time và bảo hành. Điền `[địa điểm/site]`, `[ngày commissioning]`, `[SKU/variant]`, `[sơ đồ nguồn]`; phần thiếu ghi `TBD` và hỏi giá thiết bị hoặc đơn giá dịch vụ sơ bộ, chưa coi là quote giao/lắp chốt. Không cộng A và B thành một BOM.
 
 ## Nhóm A — Hộp và chống nước
 
@@ -36,9 +38,9 @@ Vui lòng ghi rõ công suất tấm pin, dung lượng battery, cấu hình t�
 3. Nguồn cấp/bộ chuyển đổi đáp ứng yêu cầu điện áp và dòng đỉnh của modem.
 4. Dịch vụ kiểm tra tích hợp với ESP32, nếu có.
 
-**Phương án B — LILYGO để so cùng scope; SKU/revision/package chờ xác nhận kỹ thuật:**
+**Phương án B — LILYGO T-SIM7600G-H R2, CH9102 (ESP32), theo proposal để so cùng scope; package/tính phù hợp chờ xác nhận:**
 
-1. Board LILYGO đúng variant/revision `[SKU]`, số lượng `[số trạm]`; nêu rõ module 4G, SIM/GPS antennas, cáp nguồn và bộ sạc solar có sẵn trong gói hay phải mua riêng.
+1. Board LILYGO T-SIM7600G-H R2 CH9102, số lượng giao đợt 1 là một và đợt 2 là hai nếu được duyệt. Xác nhận SKU, ảnh PCB/revision và packing list; module 4G, SIM/GPS antennas, cáp nguồn, sạc và header thực có. Không tự dùng giá mặc định của biến thể khác trên cùng trang sản phẩm.
 2. Nguồn/battery/panel/controller/converter tương thích board, gồm giới hạn điện áp, dòng đỉnh 4G và phụ kiện bảo vệ.
 3. Dịch vụ kiểm tra giao tiếp với từng cảm biến đã chọn, gồm RS485/analog/1-Wire, nếu có.
 
@@ -48,19 +50,19 @@ Không báo cộng đồng thời board tích hợp và module M.2 riêng vào c
 
 1. Cáp ngoài trời, đầu nối, giá/rack cảm biến và phụ kiện gá lắp.
 2. Lắp đặt, commissioning, hiệu chuẩn ban đầu và nghiệm thu.
-3. Testing **6 tháng/lần**, tháng 6/12/18/24/30/36: xin giá **một chuyến kiểm cả ba trạm**, hai chuyến/năm, sáu chuyến/ba năm. Mỗi chuyến gồm ba lượt kiểm trạm, vệ sinh, kiểm tra hiệu chuẩn, thử cảnh báo, cảm biến, 4G/thời gian, nguồn/pin và hộp/cáp. Xin nhà cung cấp xác nhận tính khả thi tuyến sau khi có site, nêu giá trọn scope và bảng cấu phần công/đi lại/dung dịch chuẩn/vật tư/thu gom đã bao gồm. Không cộng bảng cấu phần lần nữa vào tổng gói.
-4. Đạt đã loại 24/26 lượt vệ sinh và 12 hiệu chuẩn/năm khỏi basis mới. Giữa hai lần testing chỉ xin giá phát sinh khi có drift/số đo bất thường/nghi bám bẩn hoặc sự cố. Tần suất hiệu chuẩn thêm nếu model yêu cầu vẫn cần datasheet và scope riêng; không cộng lại phần đã nằm trong chuyến testing.
-5. Review mòn/ăn mòn năm 3 **gộp trong chuyến testing tháng 36** cho cả ba trạm. Không báo thêm chuyến hoặc phí review đã bao gồm. Báo riêng đơn giá từng phụ tùng/công thay ngoài scope, tiêu chí thay theo manufacturer, hiệu chuẩn lại và thu gom. Chưa có danh sách linh kiện bắt buộc thay, và lỗi sớm vẫn xử lý trước năm 3.
+3. Testing **6 tháng/lần theo tuổi trạm**. Ví dụ 0/6/6 và đóng kỳ tháng 36: 16 lượt kiểm trong 6 đợt (1 + 3 + 3 + 3 + 3 + 3). Gói gồm vệ sinh thường lệ, kiểm hiệu chuẩn, cảnh báo thử, cảm biến, 4G/thời gian, nguồn/pin, hộp/cáp. Nêu công/đi lại/chuẩn/vật tư/thu gom đã gồm; không cộng bảng cấu phần lần nữa. Commissioning ST-02/03 nếu diễn ra cùng đợt tháng 6 là hai việc ban đầu, không tự coi là hai lượt testing sáu tháng.
+4. Lịch cleaning 24/26 và các mức tiền cũ không dùng nữa. Lịch hiệu chuẩn theo model hiện xin giá **pH hằng tháng, độ đục trong 90 ngày**, kể cả không có drift. Cleaning do fouling/drift, sau lũ hoặc sửa chữa là scope phát sinh riêng. Không hiểu câu “chỉ phát sinh khi drift” là bỏ hiệu chuẩn định kỳ theo model.
+5. Review mòn/ăn mòn **gộp chuyến đóng kỳ tháng 36** cho ba trạm, không thêm chuyến/phí review đã gồm. Trong ví dụ mua lệch, chỉ ST-01 đủ 36 tháng tuổi; ST-02/03 mới 30 tháng, cần ghi “project-close review” cho hai trạm này. Phụ tùng/công thay ngoài scope xin đơn giá riêng; không có danh sách bắt buộc thay hết và lỗi sớm xử lý sớm.
 6. Phản ứng sau lũ/sự cố: kế hoạch yêu cầu **khắc phục trong 48 giờ từ khi nhóm vận hành tiếp nhận lỗi**. Xin nêu nhân lực/phụ tùng dự phòng, khả năng đáp ứng và phí trực/công/di chuyển/vật tư DO-pH từng sự cố, phần thuộc bảo hành hoặc thu thêm. Đây là yêu cầu xin giá, chưa là SLA/nguồn lực được ký xác nhận; quyền tiếp cận và payer allocation còn phải chốt.
 
-7. Hiệu chuẩn theo model ngoài testing: nguồn SEN0710 khuyến nghị mỗi 90 ngày, tài liệu pH nêu mức lý tưởng hằng tháng. Xin rà procedure/site, vật tư chuẩn, scope công và các lượt cần thêm ngoài sáu chuyến cơ sở; ghi việc nào gộp được để tránh tính hai lần. Không dùng đơn giá cleaning/12 calibrations của bảng cũ làm quote mới.
+7. Hiệu chuẩn: commissioning ba trạm tính riêng. Ví dụ 0/6/6 có **96 việc pH** ngoài ban đầu: 16 có thể gộp testing nếu gói thực hiện đầy đủ, còn **80 việc ngoài testing**; đây không phải 80 chuyến. Lịch ngày minh họa cho **32 việc độ đục**, không có việc trùng đúng ngày testing trong ví dụ độc lập đó. Có thể gộp sớm đúng hạn, nhưng phải tính lại deadline từ lần đã làm. **Không quy đổi 90 ngày thành ba tháng lịch.** Xin đơn giá công/chuẩn, thể tích chuẩn, travel và phần đã gồm trong gói; không tự trừ toàn bộ 16 chỉ vì có chữ “calibration check”. Ghi phần thực sự đã bao gồm và không tính hai lần.
 8. Trước nghiệm thu trạm đầu: xin giá thuê/mượn thiết bị tham chiếu hoặc dịch vụ đối chiếu DO/độ đục quanh ngưỡng. Nêu độ không chắc chắn, chuẩn, số điểm/đợt, công/travel và báo cáo. Không giả định đã có thiết bị mượn miễn phí. Các mục tiêu 3 NTU/0,30 mg/L do Tuấn đề xuất còn cần Đạt/Akai duyệt trước thử.
 
 ## Nhóm E — Dự phòng và điều kiện hai đợt mua
 
 1. Xin phương án **một bộ pH dùng chung**, model tương thích, bảo quản/shelf life, nơi lưu và thời gian đưa đến từng site; lead time mua bù sau khi sử dụng. Giá kit lịch sử 1.683.506 VND chưa chứng minh spare probe price hoặc khả năng đáp ứng 48 giờ.
 2. Với SEN0710, xin xác nhận có áp dụng giá tier 3+ cho hợp đồng giao **1 rồi 2 sau nghiệm thu** không; điều kiện đặt cọc, giữ giá/hoàn hủy và hiệu lực. Chưa tự áp tier 222 USD vào subtotal.
-3. Nếu nhóm chọn Team rule cần TDS, báo riêng SKU/giao tiếp/chuẩn/tổng bổ sung vào **cả A và B**. Nếu không cần thì ghi loại trừ có căn cứ; không coi BOM bốn cảm biến tự đủ cho rule TDS.
+3. Proposal hiện dùng **Report rule cho trạm đầu và hoãn mua TDS**; hai quote chính giữ SEN0169-V2, SEN0680, SEN0710 và DS18B20. Nếu nhóm muốn xét Team rule sau này, báo TDS thành tùy chọn riêng cho **cả A và B**, không cộng vào subtotal trạm đầu hoặc coi thiết kế đã được kỹ thuật duyệt.
 4. Cho giá/điều kiện thay DS18B20 bằng temperature channel sẵn trong probe nếu phù hợp; chỉ là phương án so sánh cần kỹ thuật duyệt, không tự bỏ đầu đo trong đơn giá hiện tại.
 
 ## Phụ lục hỏi giá phụ kiện — nguồn nghiên cứu ngày 27/11

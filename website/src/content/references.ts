@@ -125,11 +125,11 @@ export const references: readonly Reference[] = [
     author: 'Chau, H. T. [tuanchau832-ai]',
     citationAuthor: 'Chau',
     year: '2026',
-    date: '2026, November 27',
+    date: '2026, November 28',
     title: 'Hồ sơ triển khai trạm đầu tiên của Hanoi WaterWatch',
-    description: '[Project planning document, version 7208280]',
+    description: '[Project planning document, version 687557b1]',
     siteName: 'GitHub',
-    url: 'https://github.com/tuanchau832-ai/Final-Assignment/blob/7208280f9e2c2064ddbab716604d871988b1016d/website/content/first-station-pilot.md',
+    url: 'https://github.com/tuanchau832-ai/Final-Assignment/blob/687557b1f2b50ed5ab416713706bd4221b883c2d/website/content/first-station-pilot.md',
   },
 ].sort((first, second) => first.author.localeCompare(second.author, 'en')
   || Number(!first.year.startsWith('n.d.')) - Number(!second.year.startsWith('n.d.'))

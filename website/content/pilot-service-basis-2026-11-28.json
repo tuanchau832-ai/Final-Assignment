@@ -1,0 +1,193 @@
+{
+  "reviewedAt": "2026-11-28",
+  "sourceCommit": "687557b1f2b50ed5ab416713706bd4221b883c2d",
+  "horizonStatus": "Tuan adopted common 36-month costing horizon; team and actual commissioning dates pending",
+  "selectedIllustration": {
+    "starts": [
+      0,
+      6,
+      6
+    ],
+    "endMonth": 36,
+    "stations": [
+      {
+        "id": "ST-01",
+        "start": 0,
+        "operatingMonths": 36,
+        "checks": [
+          6,
+          12,
+          18,
+          24,
+          30,
+          36
+        ],
+        "age36ReviewMonth": 36
+      },
+      {
+        "id": "ST-02",
+        "start": 6,
+        "operatingMonths": 30,
+        "checks": [
+          12,
+          18,
+          24,
+          30,
+          36
+        ],
+        "age36ReviewMonth": null
+      },
+      {
+        "id": "ST-03",
+        "start": 6,
+        "operatingMonths": 30,
+        "checks": [
+          12,
+          18,
+          24,
+          30,
+          36
+        ],
+        "age36ReviewMonth": null
+      }
+    ],
+    "years": [
+      {
+        "year": 1,
+        "simMonths": 24,
+        "sharedHostingMonths": 12,
+        "stationChecks": 4,
+        "testingRounds": 2
+      },
+      {
+        "year": 2,
+        "simMonths": 36,
+        "sharedHostingMonths": 12,
+        "stationChecks": 6,
+        "testingRounds": 2
+      },
+      {
+        "year": 3,
+        "simMonths": 36,
+        "sharedHostingMonths": 12,
+        "stationChecks": 6,
+        "testingRounds": 2
+      }
+    ],
+    "simMonths": 96,
+    "sharedHostingMonths": 36,
+    "stationChecks": 16,
+    "testingRounds": 6,
+    "rounds": [
+      6,
+      12,
+      18,
+      24,
+      30,
+      36
+    ],
+    "age36Reviews": 1,
+    "projectCloseReviews": 3
+  },
+  "simultaneousComparison": {
+    "starts": [
+      0,
+      0,
+      0
+    ],
+    "endMonth": 36,
+    "stations": [
+      {
+        "id": "ST-01",
+        "start": 0,
+        "operatingMonths": 36,
+        "checks": [
+          6,
+          12,
+          18,
+          24,
+          30,
+          36
+        ],
+        "age36ReviewMonth": 36
+      },
+      {
+        "id": "ST-02",
+        "start": 0,
+        "operatingMonths": 36,
+        "checks": [
+          6,
+          12,
+          18,
+          24,
+          30,
+          36
+        ],
+        "age36ReviewMonth": 36
+      },
+      {
+        "id": "ST-03",
+        "start": 0,
+        "operatingMonths": 36,
+        "checks": [
+          6,
+          12,
+          18,
+          24,
+          30,
+          36
+        ],
+        "age36ReviewMonth": 36
+      }
+    ],
+    "years": [
+      {
+        "year": 1,
+        "simMonths": 36,
+        "sharedHostingMonths": 12,
+        "stationChecks": 6,
+        "testingRounds": 2
+      },
+      {
+        "year": 2,
+        "simMonths": 36,
+        "sharedHostingMonths": 12,
+        "stationChecks": 6,
+        "testingRounds": 2
+      },
+      {
+        "year": 3,
+        "simMonths": 36,
+        "sharedHostingMonths": 12,
+        "stationChecks": 6,
+        "testingRounds": 2
+      }
+    ],
+    "simMonths": 108,
+    "sharedHostingMonths": 36,
+    "stationChecks": 18,
+    "testingRounds": 6,
+    "rounds": [
+      6,
+      12,
+      18,
+      24,
+      30,
+      36
+    ],
+    "age36Reviews": 3,
+    "projectCloseReviews": 3
+  },
+  "calendarExample": {
+    "origin": "2027-01-01",
+    "actualDatesConfirmed": false,
+    "policy": "Independent monthly / exact-90-day example; early bundling changes later dates and counts. Task counts are not trips. End-date services are included for RFQ and require closeout-scope agreement.",
+    "phTasks": 96,
+    "phSameDateTestingTasks": 16,
+    "phOutsideTestingTasks": 80,
+    "turbidityTasks": 32,
+    "turbiditySameDateTestingTasks": 0,
+    "turbidityOutsideTestingTasks": 32,
+    "initialPackages": 3
+  }
+}

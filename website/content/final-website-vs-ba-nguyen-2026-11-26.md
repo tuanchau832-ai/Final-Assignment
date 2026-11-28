@@ -1,5 +1,7 @@
 # Đạt/Tuấn đối chiếu: final-website và phần Bá Nguyên — 26/11/2026
 
+> **Lịch sử — cập nhật 28/11:** bảng dưới đối chiếu final cũ a85be4e. final-website hiện đã đổi sang ee0502ca; Tuấn có proposal 687557b1. Dùng [review mới](team-review/tuan-closeout-review-2026-11-28.md) và [chỉ mục hiện hành](ba-nguyen-current-handoff.md), không diễn giải các FIX cũ là trạng thái chưa sửa của giao diện mới.
+
 > **Sau phản hồi Tuấn 27/11:** [Review proposal 7208280 và plan mới](tuan-response-plan-2026-11-27.md) đã xác nhận các sửa scope/giá/calculator trên `docs/tuan-d7-maintenance`, chưa trên final-website a85be4e. Bảng dưới giữ đối chiếu snapshot final-website cũ. Case hiện tại dùng một pH reserve chung (1.683.506 VND), không phải ba bộ; không lấy subtotal 46.736.916 bên dưới làm case hiện tại. Xem rollup và CSV đã cập nhật.
 
 > **Cập nhật 27/11 sau Đạt trả lời D5:** Đọc [bảng ghi nhận/plan hiện tại](dat-response-plan-2026-11-27.md). Testing đã gộp vệ sinh/kiểm tra hiệu chuẩn; review năm 3 gộp tháng 36. Xin giá **6 chuyến chung cả 3 trạm**, không nhân giá chuyến lên 18. FIX-04/FIX-05/FIX-10 bên dưới được cập nhật theo phản hồi này; source web được đối chiếu vẫn là snapshot a85be4e và chưa được agent sửa. D2/D3/D4, threshold, tên operator, quote và cam kết payer vẫn thiếu.

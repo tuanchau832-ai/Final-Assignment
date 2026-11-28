@@ -1,0 +1,24 @@
+[
+  {
+    "viewport": 390,
+    "menu_to_implementation": true,
+    "subnav_to_cost": true,
+    "resources_to_references": true,
+    "mobile_menu_closed": true,
+    "plan_reference_search": true,
+    "plan_url": "https://github.com/tuanchau832-ai/Final-Assignment/blob/687557b1f2b50ed5ab416713706bd4221b883c2d/website/content/first-station-pilot.md",
+    "screenshot": "after-references-390.png",
+    "sha256": "b5e14d0e090959079b670a7e30a2e9a37d7e5361153d3c74b3fd2fb6becaa5f5"
+  },
+  {
+    "viewport": 1440,
+    "menu_to_implementation": true,
+    "subnav_to_cost": true,
+    "resources_to_references": true,
+    "mobile_menu_closed": true,
+    "plan_reference_search": true,
+    "plan_url": "https://github.com/tuanchau832-ai/Final-Assignment/blob/687557b1f2b50ed5ab416713706bd4221b883c2d/website/content/first-station-pilot.md",
+    "screenshot": "after-references-1440.png",
+    "sha256": "75ebe8eeaa2686dc8a5792c85d9cf129e8a807e210ab622b1a6b858c6c05b655"
+  }
+]

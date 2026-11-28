@@ -1,0 +1,16 @@
+{
+  "base_commit": "687557b1f2b50ed5ab416713706bd4221b883c2d",
+  "files": [
+    {
+      "path": "website/src/content/pages/implementation.html",
+      "before_sha256": "c3e0e4e63938d0ce7d5e657b6f03a11d0d88b5dcdb20510a8a4a8f4ed7571691",
+      "after_sha256": "21c6474a84a5cca8aa9b51c80bc62a59b72946f94b1baf1e6642cf11c5ef4eb8"
+    },
+    {
+      "path": "website/src/content/pages/references.html",
+      "before_sha256": "49e0e28579e44f5c32986f799891c752ce673360e618252a4fd25195ec222a58",
+      "after_sha256": "f5d76d4383a26f3efd6a4fb59f316e234039e07b6377870bb3807cedf61fe3c6"
+    }
+  ],
+  "scope": "Two-file proposal, applied only to disposable browser-review copy, no teammate branch changed"
+}
