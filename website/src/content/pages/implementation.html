@@ -4,7 +4,7 @@
   <header class="phead"><canvas class="stream" aria-hidden="true"></canvas><div class="wrap">
     <p class="crumbs"><a href="#home">Home</a> / Implementation</p>
     <h1>Implementation</h1>
-    <p class="lede">Three stations over three years: prove one first, then add two. Roles and budget stay proposals until quotes and agreements are in place.</p>
+    <p class="lede">Up to three stations in a 36-month pilot, starting when the first station enters service. Add two stations after the first passes acceptance.</p>
     <nav class="subnav" aria-label="On this page"><a href="#implementation-plan">1 · Rollout plan</a><a href="#implementation-owners">2 · Operation</a><a href="#implementation-cost">3 · Cost analysis</a><a href="#implementation-risks">4 · Risks and community reaction</a><a href="#implementation-lifecycle">5 · Life cycle</a><a href="#implementation-journey">6 · Journey map</a><a href="#implementation-recommendations">7 · Recommendations</a></nav>
   </div></header>
 
@@ -19,7 +19,7 @@
       </div>
       <div class="gate reveal">
         <p><b>Gate before buying stations 2 and 3</b><span>Pass levels are agreed before testing starts.</span></p>
-        <ul><li>Readings match a reference instrument</li><li>No data lost after a 4G drop</li><li>Power lasts as planned</li><li>A test alert reaches a named person</li><li>Revised quote approved</li></ul>
+        <ul><li>Reference readings meet the agreed tolerances</li><li>4G recovery and delivery meet the test targets</li><li>Measured power supports the planned autonomy</li><li>An internal test alert reaches the operator</li><li>Site access, staffing and revised quotes approved</li></ul>
       </div>
     </div>
   </section>
@@ -29,19 +29,19 @@
       <div class="head reveal"><p class="kicker">2 · Operation</p><h2>Who runs it and keeps it working</h2><p class="lede">Proposed roles. Each one still needs a written agreement.</p></div>
       <div class="owners four">
         <div class="card lift reveal"><b>Department of Agriculture and Environment</b><p>Owns the stations and data, receives alerts and sends inspectors.</p></div>
-        <div class="card lift reveal d1"><b>System operator</b><p>Runs the platform and repairs stations. A main operator and a backup are still to be named.</p></div>
+        <div class="card lift reveal d1"><b>System operator</b><p>Runs the platform and repairs stations. Confirm a primary operator and a backup with site access before expanding.</p></div>
         <div class="card lift reveal d2"><b>Accredited laboratory</b><p>Tests the confirmation sample that supports any fine.</p></div>
         <div class="card lift reveal d3"><b>Wards and residents</b><p>Share alerts locally, report pollution with photos and help watch the sites.</p></div>
       </div>
       <div class="sched reveal">
-        <h3>Three-year service schedule</h3>
-        <ol aria-label="Shared testing trips by month"><li><b>6</b><span>month</span></li><li><b>12</b><span>month</span></li><li><b>18</b><span>month</span></li><li><b>24</b><span>month</span></li><li><b>30</b><span>month</span></li><li class="end"><b>36</b><span>+ wear review</span></li></ol>
+        <h3>Three-year service baseline</h3>
+        <ol aria-label="Testing rounds by month if stations start together"><li><b>6</b><span>month</span></li><li><b>12</b><span>month</span></li><li><b>18</b><span>month</span></li><li><b>24</b><span>month</span></li><li><b>30</b><span>month</span></li><li class="end"><b>36</b><span>+ wear review</span></li></ol>
         <div class="facts3">
-          <div><span class="num">6</span><p>shared trips, each covering all three stations: cleaning, calibration check and a test alert.</p></div>
-          <div><span class="num">18</span><p>station checks in total. Drift, fouling or faults trigger extra visits.</p></div>
+          <div><span class="num">6</span><p>shared testing rounds if the stations start together and share one route. Each includes cleaning, a calibration check and a test alert.</p></div>
+          <div><span class="num">18</span><p>baseline station checks. Recalculate from the date each station begins operating.</p></div>
           <div><span class="num">48 h</span><p>repair target from the time a fault is received. Not yet a signed service agreement.</p></div>
         </div>
-        <p class="cap">Dates count from commissioning. Makers advise calibrating more often than this, every 90 days for turbidity (DFRobot, n.d.-c) and ideally monthly for pH (DFRobot, 2026), so that extra work must also be scheduled and quoted.</p>
+        <p class="cap">Budget monthly pH calibration and turbidity recalibration every 90 days. Combine this work with testing where the dates align and quote the remaining time and supplies separately. Include a wear review in the final shared trip.</p>
       </div>
     </div>
   </section>
@@ -64,11 +64,12 @@
           <h3 style="margin-bottom:12px">Still to be quoted</h3>
           <div class="quotes">
             <div><b>To build</b><ul><li>Solar panel, battery and controller</li><li>4G modem carrier board and antenna</li><li>Enclosure, cables, mounting and protective cage</li><li>Installation, first calibration and training</li><li>Reference instruments for acceptance tests</li></ul></div>
-            <div><b>To run for three years</b><ul><li>Six shared testing trips, plus extra calibration</li><li>SIM data: up to 108 SIM-months</li><li>Shared hosting: 36 months</li></ul></div>
+            <div><b>To run for three years</b><ul><li>Six baseline testing rounds, plus calibration outside those rounds</li><li>SIM data: up to 108 SIM-months if all stations start together</li><li>Shared hosting: 36 months from the first station</li></ul></div>
             <div><b>When needed</b><ul><li>Repairs, oxygen-probe film and spare parts</li><li>Laboratory samples and SMS alerts</li><li>Delivery, taxes, permits and disposal</li></ul></div>
           </div>
-          <div class="note" style="margin-top:14px"><b>Full three-year budget: not yet known</b><p>Items without a quote are not counted as zero. A payer for each cost must be agreed before deployment; possible sources are the city environment budget, fines and wastewater fees, industrial clusters and development grants.</p></div>
-          <p class="cap">Evidence: <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/0aa14906/website/content/cost-rollup-3stations-3years-2026-11-26.md">cost rollup</a> and <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/0aa14906/website/content/cost-evidence/README.md">price screenshots</a>.</p>
+          <p class="cap">For example, starts at months 0, 6 and 6 give 96 SIM-months and 16 scheduled station checks within the 36-month pilot. Hosting stays at 36 months. Calculate the final quantities from the actual start dates.</p>
+          <div class="note" style="margin-top:14px"><b>Full three-year budget pending</b><p>Compare complete installed prices for the ESP32/M.2 reference and the LILYGO T-SIM7600G-H R2. Confirm the payer and repair arrangement before ordering.</p></div>
+          <p class="cap">See the <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/22ef8234a135d3e146ca403aee6bd693dd333f31/website/content/cost-rollup-3stations-3years-2026-11-26.md">cost rollup</a>, <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/0aa14906/website/content/cost-evidence/README.md">price evidence</a> and <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/febdf86c816566f82cc4cdf6bf028b5f80de44c7/website/content/first-station-pilot.md">first-station plan and test procedure</a>.</p>
         </div>
       </div>
     </div>
@@ -80,7 +81,7 @@
       <div class="risks">
         <div class="card risk reveal"><div class="lv"><span class="m">Possible</span><span class="h">High impact</span></div><b>Readings near the limit are wrong</b><p>Listed error is about ±50 NTU for turbidity and ±0.6 mg/L for oxygen (DFRobot, n.d.-b, n.d.-c). Test against reference instruments before buying more.</p></div>
         <div class="card risk reveal d1"><div class="lv"><span class="h">Likely</span><span class="m">Medium impact</span></div><b>Probe fouling and drift</b><p>Wiper brush, scheduled cleaning and an extra visit when readings drift.</p></div>
-        <div class="card risk reveal d2"><div class="lv"><span class="m">Possible</span><span class="h">High impact</span></div><b>Alert fatigue</b><p>Three-reading rule and a baseline for each site keep false alarms rare.</p></div>
+        <div class="card risk reveal d2"><div class="lv"><span class="m">Possible</span><span class="h">High impact</span></div><b>Alert fatigue</b><p>Test the three-reading rule against the site baseline. Verify readings near the limit with a reference instrument.</p></div>
         <div class="card risk reveal"><div class="lv"><span class="m">Possible</span><span class="m">Medium impact</span></div><b>Theft or flooding</b><p>Locked cage above the flood line, with ward staff watching the site.</p></div>
         <div class="card risk reveal d1"><div class="lv"><span class="m">Possible</span><span class="h">High impact</span></div><b>Factory pushback</b><p>Laboratory confirmation before any fine; clusters can use alerts to fix their own treatment.</p></div>
         <div class="card risk reveal d2"><div class="lv"><span class="m">Possible</span><span class="m">Medium impact</span></div><b>Digital divide</b><p>SMS and loudspeaker alerts, large text and Vietnamese labels.</p></div>
