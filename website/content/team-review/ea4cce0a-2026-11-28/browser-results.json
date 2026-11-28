@@ -1,0 +1,294 @@
+{
+  "date": "2026-11-28",
+  "source_commit": "ea4cce0ab3e1c520e074b48ae703d3dfe69570fb",
+  "scope": "Local headless Chrome; mobile emulation, not hosted or field test",
+  "cases": [
+    {
+      "viewport": 320,
+      "documentWidth": 320,
+      "amounts": [
+        {
+          "key": "first",
+          "text": "₫13,895,466",
+          "overflow": false
+        },
+        {
+          "key": "rest",
+          "text": "₫27,790,932",
+          "overflow": false
+        },
+        {
+          "key": "spare",
+          "text": "₫1,683,506",
+          "overflow": false
+        },
+        {
+          "key": "total",
+          "text": "₫43,369,904",
+          "overflow": false
+        }
+      ],
+      "wordCount": 2754,
+      "containsCoverageCondition": true,
+      "containsAges": true,
+      "contains32Tasks": true,
+      "serviceLink": true,
+      "runtimeErrors": [],
+      "pass": true
+    },
+    {
+      "viewport": 390,
+      "documentWidth": 390,
+      "amounts": [
+        {
+          "key": "first",
+          "text": "₫13,895,466",
+          "overflow": false
+        },
+        {
+          "key": "rest",
+          "text": "₫27,790,932",
+          "overflow": false
+        },
+        {
+          "key": "spare",
+          "text": "₫1,683,506",
+          "overflow": false
+        },
+        {
+          "key": "total",
+          "text": "₫43,369,904",
+          "overflow": false
+        }
+      ],
+      "wordCount": 2754,
+      "containsCoverageCondition": true,
+      "containsAges": true,
+      "contains32Tasks": true,
+      "serviceLink": true,
+      "runtimeErrors": [],
+      "pass": true,
+      "referencesMenuSearch": true
+    },
+    {
+      "viewport": 768,
+      "documentWidth": 768,
+      "amounts": [
+        {
+          "key": "first",
+          "text": "₫13,895,466",
+          "overflow": false
+        },
+        {
+          "key": "rest",
+          "text": "₫27,790,932",
+          "overflow": false
+        },
+        {
+          "key": "spare",
+          "text": "₫1,683,506",
+          "overflow": false
+        },
+        {
+          "key": "total",
+          "text": "₫43,369,904",
+          "overflow": false
+        }
+      ],
+      "wordCount": 2754,
+      "containsCoverageCondition": true,
+      "containsAges": true,
+      "contains32Tasks": true,
+      "serviceLink": true,
+      "runtimeErrors": [],
+      "pass": true
+    },
+    {
+      "viewport": 980,
+      "documentWidth": 980,
+      "amounts": [
+        {
+          "key": "first",
+          "text": "₫13,895,466",
+          "overflow": false
+        },
+        {
+          "key": "rest",
+          "text": "₫27,790,932",
+          "overflow": false
+        },
+        {
+          "key": "spare",
+          "text": "₫1,683,506",
+          "overflow": false
+        },
+        {
+          "key": "total",
+          "text": "₫43,369,904",
+          "overflow": false
+        }
+      ],
+      "wordCount": 2754,
+      "containsCoverageCondition": true,
+      "containsAges": true,
+      "contains32Tasks": true,
+      "serviceLink": true,
+      "runtimeErrors": [],
+      "pass": true
+    },
+    {
+      "viewport": 1024,
+      "documentWidth": 1024,
+      "amounts": [
+        {
+          "key": "first",
+          "text": "₫13,895,466",
+          "overflow": false
+        },
+        {
+          "key": "rest",
+          "text": "₫27,790,932",
+          "overflow": false
+        },
+        {
+          "key": "spare",
+          "text": "₫1,683,506",
+          "overflow": false
+        },
+        {
+          "key": "total",
+          "text": "₫43,369,904",
+          "overflow": false
+        }
+      ],
+      "wordCount": 2754,
+      "containsCoverageCondition": true,
+      "containsAges": true,
+      "contains32Tasks": true,
+      "serviceLink": true,
+      "runtimeErrors": [],
+      "pass": true
+    },
+    {
+      "viewport": 1280,
+      "documentWidth": 1280,
+      "amounts": [
+        {
+          "key": "first",
+          "text": "₫13,895,466",
+          "overflow": false
+        },
+        {
+          "key": "rest",
+          "text": "₫27,790,932",
+          "overflow": false
+        },
+        {
+          "key": "spare",
+          "text": "₫1,683,506",
+          "overflow": false
+        },
+        {
+          "key": "total",
+          "text": "₫43,369,904",
+          "overflow": false
+        }
+      ],
+      "wordCount": 2754,
+      "containsCoverageCondition": true,
+      "containsAges": true,
+      "contains32Tasks": true,
+      "serviceLink": true,
+      "runtimeErrors": [],
+      "pass": true
+    },
+    {
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "amounts": [
+        {
+          "key": "first",
+          "text": "₫13,895,466",
+          "overflow": false
+        },
+        {
+          "key": "rest",
+          "text": "₫27,790,932",
+          "overflow": false
+        },
+        {
+          "key": "spare",
+          "text": "₫1,683,506",
+          "overflow": false
+        },
+        {
+          "key": "total",
+          "text": "₫43,369,904",
+          "overflow": false
+        }
+      ],
+      "wordCount": 2754,
+      "containsCoverageCondition": true,
+      "containsAges": true,
+      "contains32Tasks": true,
+      "serviceLink": true,
+      "runtimeErrors": [],
+      "pass": true,
+      "referencesMenuSearch": true
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "tuan-cost-390.png",
+      "sha256": "84f2552e55aea47edb4d4ab661cd391c875f78cb64f29d038f27b359268b0fe3"
+    },
+    {
+      "file": "tuan-cost-1440.png",
+      "sha256": "601d7e1abf836e4745a782e4325babf31ea9bb6f3e3345254c655c61066c9d61"
+    },
+    {
+      "file": "ba-nguyen-cost-390.png",
+      "sha256": "565c308bb4c0d4941cff65094e9807535265653c681bf93e836582508286c6d4"
+    },
+    {
+      "file": "ba-nguyen-cost-1440.png",
+      "sha256": "31efb3c0e5f737f58d2f81fa9b164a394e5944281b331c1fd8841ac3aeccdd5a"
+    }
+  ],
+  "browser": "158.0.8127.38",
+  "assignedBranch": [
+    {
+      "width": 320,
+      "documentWidth": 320,
+      "hasCoverageRange": true,
+      "scroll": {
+        "client": 288,
+        "total": 1200,
+        "right": 912
+      },
+      "pass": true
+    },
+    {
+      "width": 390,
+      "documentWidth": 390,
+      "hasCoverageRange": true,
+      "scroll": {
+        "client": 358,
+        "total": 1200,
+        "right": 842
+      },
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "documentWidth": 1440,
+      "hasCoverageRange": true,
+      "scroll": {
+        "client": 922,
+        "total": 1200,
+        "right": 278
+      },
+      "pass": true
+    }
+  ]
+}

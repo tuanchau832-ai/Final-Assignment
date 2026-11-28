@@ -1,5 +1,10 @@
 # Phản hồi Đạt và kế hoạch thực hiện của Bá Nguyên — 27/11/2026
 
+> **Thay bằng bản tự rà sau ea4cce0a:** đọc [plan hiện hành](ba-nguyen-self-review-plan-2026-11-28.md) và [tự trả lời các câu hỏi](ba-nguyen-self-answers-2026-11-28.md). Những mẫu tin gộp Đạt/Akai, yêu cầu Akai nhận vai nghiệm thu hoặc gán operator/signatory cho đồng đội trong lịch sử bên dưới không tiếp tục sử dụng. Tuấn đã xử lý PORT/CAL/EDIT; không hỏi làm lại. BOM đã xác định là mục 2.3 của Expanded MD; xem [đối chiếu mới](akai-bom-reconciliation-2026-11-28.md), không còn chờ file BOMZ.
+
+<details>
+<summary>Lịch sử trước điều chỉnh phân công — không dùng để giao việc mới</summary>
+
 > Có [review/plan sau phản hồi Tuấn](tuan-response-plan-2026-11-27.md) mới hơn: source proposal 7208280 đã được kiểm, procurement 1 + 2 và reserve một kit chung là case làm việc hiện tại. Các số 28 dòng/ba reserve và bảng đầu mối “Đạt + Tuấn” bên dưới là snapshot trước phản hồi Tuấn, không thay phân công gốc README. Các role mới của Tuấn vẫn cần người nhận; không gán quyền duyệt field/payer cho Tuấn chỉ vì làm editing. Sáu chuyến testing là baseline, chưa gồm hết hiệu chuẩn model.
 
 ## Tổng quan và nguồn
@@ -51,3 +56,5 @@ Không hỏi lại Đạt xem testing có phải sáu tháng/lần hay review c�
 - Các giá niêm yết và subtotal mua ban đầu vẫn theo hồ sơ 19–25/11: **13.895.466 VND/trạm**, **41.686.398 VND/3 trạm**; dự phòng pH tùy chọn **5.050.518 VND/3 trạm**. Chưa có quote mới hoặc tổng lifecycle đầy đủ.
 - Đã kiểm: 28 dòng rollup, mọi phép nhân số lượng/tiền đã có giá, basis 6 chuyến/18 kiểm trạm, ba review nằm trong tháng 36, giá/tỷ giá/ngày nguồn cũ không đổi, giá dịch vụ còn trống, link Markdown, cấu trúc CSV và bản lưu phản hồi. `check:links` đạt 12 routes; TypeScript/Vite build đạt trên nhánh Bá Nguyên. Đây chưa là build/QA sau port của source final-website.
 - Các phần có thể tự thực hiện trong lượt này đã xong. Việc còn lại cần SKU/site/threshold/operator/quote hoặc thỏa thuận của nhóm như bảng phụ thuộc; chưa có dữ liệu để khóa tổng ngân sách. Source final-website vẫn ở a85be4e khi bắt đầu lượt rà này; chưa được agent thay đổi.
+
+</details>

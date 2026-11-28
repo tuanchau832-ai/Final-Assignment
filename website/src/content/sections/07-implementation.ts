@@ -1,5 +1,6 @@
 import type { ReportSection } from '../types';
 import { references } from '../references';
+import { selectedCostingSummary as selected } from '../current-cost-comparison';
 
 const plan = references.find(item => item.id === 'tuan-first-station-plan')!;
 
@@ -12,7 +13,7 @@ export default {
       id: "rollout",
       title: "Pilot and rollout",
       pending: "Define the proposed site selection, permissions, installation, commissioning, milestones, dependencies, and acceptance checks. Identify future milestones as planned.",
-      paragraphs: [{ text: 'Cost coordination follows the first-station proposal: survey and obtain matching installed quotations, test one station with a two-week baseline, and order the next two only after documented acceptance, site permission and refreshed price approval. The costing horizon ends 36 months after the first commissioning. Starts at 0/6/6 are an illustration, not booked installation dates. Technical milestones and signatories remain for the implementation team to approve.', citations: [plan] }],
+      paragraphs: [{ text: 'Cost coordination follows the first-station proposal: survey and obtain matching installed quotations, test one station with a two-week baseline, and order the next two only after documented acceptance, site permission and refreshed price approval. The costing horizon ends 36 months after the first commissioning. Starts at 0/6/6 are an illustration, not booked installation dates. Technical milestones and signatories remain for the implementation team to approve.', citations: [plan] }, { text: `The Q190 core equipment basis is ${selected.unitVnd.toLocaleString('en-US')} VND per station and ${selected.threeStationsPlusReserveVnd.toLocaleString('en-US')} VND for three stations plus one optional shared pH kit. This excludes the separate reference additions and complete installed/running costs; see Cost Analysis for the priced scenario and remaining scope.` }],
       table: {
         id: 'rollout-cost-basis',
         caption: 'Cost basis for illustrative starts at months 0/6/6; common close at month 36',

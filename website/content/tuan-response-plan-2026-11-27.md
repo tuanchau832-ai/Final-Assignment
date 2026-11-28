@@ -1,5 +1,10 @@
 # Phản hồi Tuấn: kiểm tra, kế hoạch và việc thực hiện — 27/11/2026
 
+> **Thay bằng bản tự rà sau ea4cce0a:** đọc [plan hiện hành](ba-nguyen-self-review-plan-2026-11-28.md) và [tự trả lời các câu hỏi](ba-nguyen-self-answers-2026-11-28.md). Những mẫu tin gộp Đạt/Akai, yêu cầu Akai nhận vai nghiệm thu hoặc gán operator/signatory cho đồng đội trong lịch sử bên dưới không tiếp tục sử dụng. Tuấn đã xử lý PORT/CAL/EDIT; không hỏi làm lại. BOM đã xác định là mục 2.3 của Expanded MD; xem [đối chiếu mới](akai-bom-reconciliation-2026-11-28.md), không còn chờ file BOMZ.
+
+<details>
+<summary>Lịch sử trước điều chỉnh phân công — không dùng để giao việc mới</summary>
+
 > **Audit độc lập bổ sung:** [chỉ mục hiện hành](ba-nguyen-current-handoff.md), [APA phần chi phí](cost-apa-audit-2026-11-27.md), [browser QA có ảnh](team-review/browser-qa-2026-11-27.md) và [giá phụ kiện ứng viên](accessory-candidates-2026-11-27.md). Kết quả browser mới thay giới hạn chỉ kiểm DOM ở báo cáo trước; chưa phải điện thoại thật hoặc deployed final-website.
 
 ## Trạng thái GitHub và thông tin đã đủ
@@ -64,3 +69,5 @@ Ngày 27/11 đã kiểm nguồn hãng: [SEN0710](https://www.dfrobot.com/product
 Các phần tự làm không phụ thuộc quote/đo đã được thực hiện. Kiểm 30 dòng rollup, split 1 + 2, reserve chung 1 kit, giá/tỷ giá/ngày lịch sử không đổi, ba ví dụ commissioning, 24 evidence records, CSV/link Markdown và source snapshot: đạt. `check:links` đạt 12 routes; TypeScript/Vite build nhánh Bá Nguyên đạt. Kiểm riêng proposal Tuấn được ghi ở báo cáo QA, không coi build của nhánh cá nhân thay cho bản proposal.
 
 Chưa có ngân sách đầy đủ hoặc chấp thuận mua sắm. Không áp dụng 222 USD/chiếc cho SEN0710 vào subtotal chỉ vì trang có giá 3+: mua 1 rồi 2 phải xin xác nhận điều kiện giá theo hai đợt trước. Không tự gửi RFQ tới nhà cung cấp hoặc sửa/merge nhánh Tuấn, final-website hay main.
+
+</details>

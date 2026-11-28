@@ -1,0 +1,321 @@
+{
+  "date": "2026-11-28",
+  "scope": "Headless Chrome viewport emulation; assigned source and isolated integrated snapshots. Not physical-phone, hosted-site or field acceptance.",
+  "cases": [
+    {
+      "source": "assigned",
+      "width": 320,
+      "tables": [
+        {
+          "id": "cost-schedule",
+          "columns": 10,
+          "dimensions": {
+            "client": 288,
+            "scroll": 1200,
+            "left": 912,
+            "rightReached": true
+          },
+          "pass": true
+        },
+        {
+          "id": "controller-comparison",
+          "columns": 6,
+          "dimensions": {
+            "client": 288,
+            "scroll": 1200,
+            "left": 912,
+            "rightReached": true
+          },
+          "pass": true
+        },
+        {
+          "id": "reference-additions-table",
+          "columns": 5,
+          "dimensions": {
+            "client": 288,
+            "scroll": 1200,
+            "left": 912,
+            "rightReached": true
+          },
+          "pass": true
+        }
+      ],
+      "runtimeErrors": [],
+      "pass": true
+    },
+    {
+      "source": "assigned",
+      "width": 390,
+      "tables": [
+        {
+          "id": "cost-schedule",
+          "columns": 10,
+          "dimensions": {
+            "client": 358,
+            "scroll": 1200,
+            "left": 842,
+            "rightReached": true
+          },
+          "pass": true
+        },
+        {
+          "id": "controller-comparison",
+          "columns": 6,
+          "dimensions": {
+            "client": 358,
+            "scroll": 1200,
+            "left": 842,
+            "rightReached": true
+          },
+          "pass": true
+        },
+        {
+          "id": "reference-additions-table",
+          "columns": 5,
+          "dimensions": {
+            "client": 358,
+            "scroll": 1200,
+            "left": 842,
+            "rightReached": true
+          },
+          "pass": true
+        }
+      ],
+      "runtimeErrors": [],
+      "pass": true
+    },
+    {
+      "source": "assigned",
+      "width": 768,
+      "tables": [
+        {
+          "id": "cost-schedule",
+          "columns": 10,
+          "dimensions": {
+            "client": 466,
+            "scroll": 1200,
+            "left": 734,
+            "rightReached": true
+          },
+          "pass": true
+        },
+        {
+          "id": "controller-comparison",
+          "columns": 6,
+          "dimensions": {
+            "client": 466,
+            "scroll": 1200,
+            "left": 734,
+            "rightReached": true
+          },
+          "pass": true
+        },
+        {
+          "id": "reference-additions-table",
+          "columns": 5,
+          "dimensions": {
+            "client": 466,
+            "scroll": 1200,
+            "left": 734,
+            "rightReached": true
+          },
+          "pass": true
+        }
+      ],
+      "runtimeErrors": [],
+      "pass": true
+    },
+    {
+      "source": "assigned",
+      "width": 1024,
+      "tables": [
+        {
+          "id": "cost-schedule",
+          "columns": 10,
+          "dimensions": {
+            "client": 707,
+            "scroll": 1200,
+            "left": 493,
+            "rightReached": true
+          },
+          "pass": true
+        },
+        {
+          "id": "controller-comparison",
+          "columns": 6,
+          "dimensions": {
+            "client": 707,
+            "scroll": 1200,
+            "left": 493,
+            "rightReached": true
+          },
+          "pass": true
+        },
+        {
+          "id": "reference-additions-table",
+          "columns": 5,
+          "dimensions": {
+            "client": 707,
+            "scroll": 1200,
+            "left": 493,
+            "rightReached": true
+          },
+          "pass": true
+        }
+      ],
+      "runtimeErrors": [],
+      "pass": true
+    },
+    {
+      "source": "assigned",
+      "width": 1440,
+      "tables": [
+        {
+          "id": "cost-schedule",
+          "columns": 10,
+          "dimensions": {
+            "client": 922,
+            "scroll": 1200,
+            "left": 278,
+            "rightReached": true
+          },
+          "pass": true
+        },
+        {
+          "id": "controller-comparison",
+          "columns": 6,
+          "dimensions": {
+            "client": 922,
+            "scroll": 1200,
+            "left": 278,
+            "rightReached": true
+          },
+          "pass": true
+        },
+        {
+          "id": "reference-additions-table",
+          "columns": 5,
+          "dimensions": {
+            "client": 922,
+            "scroll": 1200,
+            "left": 278,
+            "rightReached": true
+          },
+          "pass": true
+        }
+      ],
+      "runtimeErrors": [],
+      "pass": true
+    },
+    {
+      "source": "tuan-integrated",
+      "width": 320,
+      "coreCardsAndBomCalculation": "PASS",
+      "rolloutScope": "PASS",
+      "additionTable": "PASS",
+      "homeFigures": "PASS",
+      "references": "PASS",
+      "runtimeErrors": [],
+      "pass": true
+    },
+    {
+      "source": "tuan-integrated",
+      "width": 390,
+      "coreCardsAndBomCalculation": "PASS",
+      "rolloutScope": "PASS",
+      "additionTable": "PASS",
+      "homeFigures": "PASS",
+      "references": "PASS",
+      "runtimeErrors": [],
+      "pass": true
+    },
+    {
+      "source": "tuan-integrated",
+      "width": 1024,
+      "coreCardsAndBomCalculation": "PASS",
+      "rolloutScope": "PASS",
+      "additionTable": "PASS",
+      "homeFigures": "PASS",
+      "references": "PASS",
+      "runtimeErrors": [],
+      "pass": true
+    },
+    {
+      "source": "tuan-integrated",
+      "width": 1440,
+      "coreCardsAndBomCalculation": "PASS",
+      "rolloutScope": "PASS",
+      "additionTable": "PASS",
+      "homeFigures": "PASS",
+      "references": "PASS",
+      "runtimeErrors": [],
+      "pass": true
+    },
+    {
+      "source": "final-integrated",
+      "width": 390,
+      "coreCardsAndBomCalculation": "PASS",
+      "rolloutScope": "PASS",
+      "additionTable": "PASS",
+      "homeFigures": "PASS",
+      "references": "PASS",
+      "runtimeErrors": [],
+      "pass": true
+    },
+    {
+      "source": "final-integrated",
+      "width": 1440,
+      "coreCardsAndBomCalculation": "PASS",
+      "rolloutScope": "PASS",
+      "additionTable": "PASS",
+      "homeFigures": "PASS",
+      "references": "PASS",
+      "runtimeErrors": [],
+      "pass": true
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "assigned-additions-390.png",
+      "sha256": "0f9a2ded43a4a87582af7cbed7054d85967c20c6c6644ba7f5b8ead38f9abc2e"
+    },
+    {
+      "file": "assigned-additions-1440.png",
+      "sha256": "3a0cf3d38731ca508376c518671eb0f276fbd1e1d5ff5ff302587158c4335867"
+    },
+    {
+      "file": "tuan-integrated-core-390.png",
+      "sha256": "51ba4527dc0bb83da8d3f55ef04b779597aa6f87b2e916da203933f4317ebffe"
+    },
+    {
+      "file": "tuan-integrated-additions-390.png",
+      "sha256": "85a894e5c8b1bcfee70e48f59ab736d69cb610e1b663037a9515075efce3b7bc"
+    },
+    {
+      "file": "tuan-integrated-core-1440.png",
+      "sha256": "5cbe52996b591bef45dae5d22873c85c3ce2b7a9a01bc50cd35a709809ed0f21"
+    },
+    {
+      "file": "tuan-integrated-additions-1440.png",
+      "sha256": "f6ee42d7af5850ae971c42cfbba5e796202291efb6ece53159dffbe633412781"
+    },
+    {
+      "file": "final-integrated-core-390.png",
+      "sha256": "51ba4527dc0bb83da8d3f55ef04b779597aa6f87b2e916da203933f4317ebffe"
+    },
+    {
+      "file": "final-integrated-additions-390.png",
+      "sha256": "85a894e5c8b1bcfee70e48f59ab736d69cb610e1b663037a9515075efce3b7bc"
+    },
+    {
+      "file": "final-integrated-core-1440.png",
+      "sha256": "5cbe52996b591bef45dae5d22873c85c3ce2b7a9a01bc50cd35a709809ed0f21"
+    },
+    {
+      "file": "final-integrated-additions-1440.png",
+      "sha256": "f6ee42d7af5850ae971c42cfbba5e796202291efb6ece53159dffbe633412781"
+    }
+  ],
+  "browser": "158.0.8127.38",
+  "assignedProseWords": null
+}

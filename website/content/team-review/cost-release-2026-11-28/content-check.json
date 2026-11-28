@@ -1,0 +1,52 @@
+{
+  "proseWords": 420,
+  "citationIds": [
+    "hww-blueprint",
+    "tuan-first-station-plan",
+    "vietcombank-rate",
+    "lilygo-controller",
+    "hshop-do",
+    "dfrobot-ph",
+    "dfrobot-turbidity",
+    "hshop-temperature",
+    "hshop-rs485",
+    "vinadenki-enclosure",
+    "daihoaphu-gland",
+    "waveshare-full-modem-kit",
+    "dfrobot-ph-electrode",
+    "dfrobot-do-specifications",
+    "dat-maintenance-response",
+    "dfrobot-ph-calibration",
+    "hshop-esp32",
+    "hshop-sim7600",
+    "viettel-iot-plan",
+    "render-hosting-price",
+    "giva-panel",
+    "solar-controller",
+    "vac-battery",
+    "e360-buck",
+    "haidang-enclosure",
+    "phongvu-card",
+    "dongbac-ph4",
+    "dongbac-ph7",
+    "mlab-storage"
+  ],
+  "allDefined": true,
+  "tables": [
+    {
+      "id": "cost-schedule",
+      "columns": 10,
+      "rows": 30
+    },
+    {
+      "id": "controller-comparison",
+      "columns": 6,
+      "rows": 4
+    },
+    {
+      "id": "reference-additions-table",
+      "columns": 5,
+      "rows": 12
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { costBasis, calibrationExample, addMonths } from '../scripts/pilot-service-basis.mjs';
+import { costBasis, calibrationExample, addMonths, phQuoteCoverage } from '../scripts/pilot-service-basis.mjs';
 
 const staged = costBasis();
 assert.deepEqual([staged.simMonths, staged.sharedHostingMonths, staged.stationChecks, staged.testingRounds], [96, 36, 16, 6]);
@@ -30,4 +30,14 @@ for (const station of ['ST-01', 'ST-02', 'ST-03']) {
 assert.equal(cal.events.find(e => e.station === 'ST-01' && e.task === 'turbidity_calibration').date, '2027-04-01');
 assert.equal(cal.events.filter(e => e.station === 'ST-01' && e.task === 'turbidity_calibration')[1].date, '2027-06-30');
 assert.equal(cal.actualDatesConfirmed, false);
+assert.equal(phQuoteCoverage().separatelyQuotedFullTasks, null);
+assert.deepEqual(phQuoteCoverage().separatelyQuotedTaskRange, [80, 96]);
+assert.equal(phQuoteCoverage().confirmedIncludedInTesting, null);
+assert.equal(phQuoteCoverage(0).separatelyQuotedFullTasks, 96);
+assert.equal(phQuoteCoverage(8).separatelyQuotedFullTasks, 88);
+assert.equal(phQuoteCoverage(16).separatelyQuotedFullTasks, 80);
+assert.throws(() => phQuoteCoverage(17));
+assert.throws(() => phQuoteCoverage(-1));
+assert.throws(() => phQuoteCoverage(1.5));
 console.log('Pilot service checks passed: staged/simultaneous quantities, year allocation, age/closeout distinction, date validation, leap month and strict 90-day deadlines.');
+console.log('Calibration quotation checks passed: unconfirmed inclusions stay unknown; 0/8/16 included full tasks leave 96/88/80 separately quoted tasks.');

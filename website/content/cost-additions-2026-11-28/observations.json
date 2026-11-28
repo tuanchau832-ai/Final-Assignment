@@ -1,0 +1,303 @@
+{
+  "scope": "Read-only real Chrome page observations; not supplier quotations or field validation",
+  "sources": [
+    {
+      "id": "panel",
+      "url": "https://givasolar.com/san-pham/tam-pin-nang-luong-mat-troi-gv-mono-100w/",
+      "final_url": "https://givasolar.com/san-pham/tam-pin-nang-luong-mat-troi-gv-mono-100w/",
+      "checked_date": "2026-11-28",
+      "http_status": 200,
+      "title": "Tấm pin năng lượng mặt trời Mono GVA-100W – GIVASOLAR",
+      "screenshot": "panel.png",
+      "sha256": "a6edf4a010c3fba6065c1eaf34bb909ff0616678fcaafd480c1231fb9bc05264",
+      "body_length": 4911,
+      "variants": [],
+      "observed_lines": [
+        "850,000₫",
+        "Được ứng dụng với nhiều mục đích khác nhau: Công suất cao nhưng kích thước nhỏ gọn, bảng điều khiển 100 watt này được yêu thích cho RV, thuyền, đi cắm trại và các ứng dụng tương tự, cung cấp năng lượng sạch và hiệu quả t",
+        "Copyright 2026 © Designed by GivaTeam"
+      ]
+    },
+    {
+      "id": "controller",
+      "url": "https://mayniemphat.vn/san-pham/san-pham-nang-luong-mat-troi/bo-dieu-khien-sac-nang-luong-mat-troi/bo-dieu-khien-sac-nang-luong-mat-troi-mppt-10a-co-mang-hinh-lcd.html",
+      "final_url": "https://mayniemphat.vn/san-pham/san-pham-nang-luong-mat-troi/bo-dieu-khien-sac-nang-luong-mat-troi/bo-dieu-khien-sac-nang-luong-mat-troi-mppt-10a-co-mang-hinh-lcd.html",
+      "checked_date": "2026-11-28",
+      "http_status": 200,
+      "title": "Bộ điều khiển sạc năng lượng mặt trời MPPT 10A có màng hình LCD",
+      "screenshot": "controller.png",
+      "sha256": "67c942cf27c2b0fc09e4ae2fa0dced8c5299f27654328ed0aca755dc287d422e",
+      "body_length": 5650,
+      "variants": [],
+      "observed_lines": [
+        "Mã SP:ST-H1210",
+        "Giá bán:780,000 vnđ Đặt mua",
+        "Bộ điều khiển sạc năng lượng mặt trời MPPT 10A có màng hình LCD : giá 780.000 đồng",
+        "Có thể điều chỉnh vôn sạc: mặt định 14,2v, có thể điều chỉnh lên 14,4v hoặc 14,7v"
+      ]
+    },
+    {
+      "id": "battery",
+      "url": "https://vactechnology.vn/san-pham/ac-quy-agm-vrla-long-12v-40ah-wp40-12ne",
+      "final_url": "https://vactechnology.vn/ac-quy-agm-vrla-long-12v-40ah-wp40-12ne",
+      "checked_date": "2026-11-28",
+      "http_status": 200,
+      "title": "Ắc Quy (AGM VRLA) Long 12V-40Ah (WP40-12NE) » CÔNG TY TNHH TMDV VAC",
+      "screenshot": "battery.png",
+      "sha256": "53a9f5fe3f4706d3d42a5d75acef41a0f3e856d0a31e9717d2f53657270da8cc",
+      "body_length": 6180,
+      "variants": [],
+      "observed_lines": [
+        "Ắc Quy (AGM VRLA) Long 12V-40Ah (WP40-12NE)",
+        "1.588.000₫",
+        "Ắc Quy (AGM VRLA) Long 12V-40Ah (WP40-12NE)",
+        "Cycle (chu kỳ): 14.4V-15.0V",
+        "Ắc Quy (AGM VRLA) Long 12V-6Ah (WP1224w)",
+        "ẮC QUY KÍN KHÍ (VRLA AGM) LONG 12V-110Ah (KPH110-12N)",
+        "Ắc Quy (AGM VRLA) Long 12V-75Ah (KPH75-12U)",
+        "Ắc Quy (AGM VRLA) Long 12V-150Ah (WPL150-12N)",
+        "Ắc Quy (AGM VRLA) Long 12V-9Ah (WP1236w)",
+        "Ắc Quy (AGM VRLA) Long 12V-65Ah (WP65-12N)",
+        "Ắc Quy (AGM VRLA) Long 12V-230Ah (WPL230-12N)",
+        "Ắc Quy (AGM VRLA) Long 12V-200Ah (WPL200-12N)"
+      ]
+    },
+    {
+      "id": "buck",
+      "url": "https://dientu360.com/mach-ha-ap-5v-3a-2-cong-usb",
+      "final_url": "https://dientu360.com/mach-ha-ap-5v-3a-2-cong-usb",
+      "checked_date": "2026-11-28",
+      "http_status": 200,
+      "title": "Mạch Hạ Áp 5V 3A 2 Cổng USB Điện Tử 360(E360)",
+      "screenshot": "buck.png",
+      "sha256": "4667944c874dd6cf76b8dd0137847397cba7146d9c56a69f5565ca2da8b37777",
+      "body_length": 5754,
+      "variants": [],
+      "observed_lines": [
+        "35.000₫",
+        "35.000₫",
+        "335.000₫",
+        "35.000₫",
+        "3.850.000₫ 4.150.000₫"
+      ]
+    },
+    {
+      "id": "card",
+      "url": "https://phongvu.vn/the-nho-micro-sandisk-ultra-32gb-sdsqunr-032g-gn3mn--s200801365",
+      "final_url": "https://phongvu.vn/the-nho-micro-sandisk-ultra-32gb-sdsqunr-032g-gn3mn--s200801365",
+      "checked_date": "2026-11-28",
+      "http_status": 200,
+      "title": "Thẻ nhớ MicroSDHC Sandisk Ultra 32GB SDSQUNR-032G-GN3MN",
+      "screenshot": "card.png",
+      "sha256": "e7803eb8cef9497d4496ed4eae99b7069f7951409493923015745946232eee31",
+      "body_length": 4398,
+      "variants": [],
+      "observed_lines": [
+        "359.000 ₫",
+        "359.000 ₫",
+        "359.000 ₫",
+        "SanDisk SDSQUNR-032G-GN3MN là thẻ microSDHC dung lượng 32GB, sử dụng giao tiếp UHS-I và đạt cấp tốc độ Class 10, U1. Tốc độ đọc tối đa 100MB/s đáp ứng nhu cầu lưu ảnh, nhạc, tài liệu và video Full HD trên thiết bị tương ",
+        "Sau khi định dạng, Sandisk SDSQUNR-032G-GN3MN thường được hệ điều hành hiển thị khoảng 29GB. Mức này thấp hơn 32GB công bố do cách quy đổi dung lượng khác nhau và một phần không gian được dành cho hệ thống tệp.",
+        "Không. SDSQUNR-032G-GN3MN là phiên bản thẻ microSDHC không kèm bộ chuyển đổi sang thẻ SD kích thước đầy đủ. Nếu máy ảnh, laptop hoặc đầu đọc chỉ có khe SD, người dùng cần mua thêm bộ chuyển đổi tương thích.",
+        "Thẻ dùng được với điện thoại Android, máy tính bảng, máy ảnh và thiết bị hỗ trợ microSDHC 32GB. Trước khi lắp, người dùng nên kiểm tra giới hạn dung lượng và chuẩn thẻ trong hướng dẫn của thiết bị, thay vì chỉ dựa vào kí",
+        "Hãng công bố chính sách bảo hành giới hạn 7 năm cho SDSQUNR-032G-GN3MN. Thời gian và cách tiếp nhận bảo hành tại Việt Nam có thể phụ thuộc nhà phân phối hoặc đơn vị bán hàng, vì vậy người mua nên đối chiếu thông tin trên",
+        "Sản phẩm phù hợp với người cần mở rộng 32GB để lưu ảnh, nhạc, tài liệu và video Full HD hằng ngày. Mẫu thẻ này không hướng đến quay 4K tốc độ cao, ghi hình liên tục hoặc nhu cầu cần dung lượng lưu trữ lớn."
+      ]
+    },
+    {
+      "id": "ph4",
+      "url": "https://thietbi.net.vn/dung-dich-hieu-chuan-ph/dung-dich-hieu-chuan-ph-4-01--chai-500ml-hi7004l/",
+      "final_url": "https://thietbi.net.vn/dung-dich-hieu-chuan-ph/dung-dich-hieu-chuan-ph-4-01--chai-500ml-hi7004l/",
+      "checked_date": "2026-11-28",
+      "http_status": 200,
+      "title": "Dung Dịch Hiệu Chuẩn pH 4.01, Chai 500mL HI7004L",
+      "screenshot": "ph4.png",
+      "sha256": "7615ed6ac06bb2172630e46e0fa65dc71b4fcd2358f3424f1891321cc0179ba5",
+      "body_length": 7313,
+      "variants": [],
+      "observed_lines": [
+        "Dung Dịch Hiệu Chuẩn pH 4.01, Chai 500mL HI7004L",
+        "454.000đ",
+        "Mã sản phẩm:HI7004L",
+        "Vui lòng liên hệ với chúng tôi để được tư vấn miễn phí: 0914.400.916",
+        "- COA: Chỉ cần nhập số Lot và Mã chai HI7004L.",
+        "- MSDS: HI7004_MSDS"
+      ]
+    },
+    {
+      "id": "ph7",
+      "url": "https://thietbi.net.vn/dung-dich-hieu-chuan-ph/dung-dich-hieu-chuan-ph-7-01--chai-500ml-hi7007l/",
+      "final_url": "https://thietbi.net.vn/dung-dich-hieu-chuan-ph/dung-dich-hieu-chuan-ph-7-01--chai-500ml-hi7007l/",
+      "checked_date": "2026-11-28",
+      "http_status": 200,
+      "title": "Dung Dịch Hiệu Chuẩn pH 7.01, Chai 500mL HI7007L",
+      "screenshot": "ph7.png",
+      "sha256": "8493427e2a94b428660112010dcd0e346f4a6e98d311fd8765039136b4e124b1",
+      "body_length": 6791,
+      "variants": [],
+      "observed_lines": [
+        "Dung Dịch Hiệu Chuẩn pH 7.01, Chai 500mL HI7007L",
+        "454.000đ",
+        "Mã sản phẩm:HI7007L",
+        "Vui lòng liên hệ với chúng tôi để được tư vấn miễn phí: 0914.400.916",
+        "HI7007L",
+        "Có: HI7007_MSDS"
+      ]
+    },
+    {
+      "id": "ph-category",
+      "url": "https://thietbi.net.vn/dung-dich-hieu-chuan-ph/",
+      "final_url": "https://thietbi.net.vn/dung-dich-hieu-chuan-ph/",
+      "checked_date": "2026-11-28",
+      "http_status": 200,
+      "title": "Dung dịch hiệu chuẩn pH",
+      "screenshot": "ph-category.png",
+      "sha256": "8adb4a4ba4ed9ce70b7d4967dedb003cf29af17dfa6745b7a73ffe88ac5f5857",
+      "body_length": 30041,
+      "variants": [],
+      "observed_lines": [
+        "454.000đ",
+        "454.000đ",
+        "454.000đ",
+        "454.000đ",
+        "DUNG DỊCH HIỆU CHUẨN PH 7.01, CHAI 230ML HI7007M",
+        "DUNG DỊCH HIỆU CHUẨN PH 7.01, CHAI 230ML HI7007M",
+        "DUNG DỊCH HIỆU CHUẨN PH 7.01, CHAI 500ML HI7007L",
+        "454.000đ",
+        "DUNG DỊCH HIỆU CHUẨN PH 7.01, CHAI 500ML HI7007L",
+        "454.000đ",
+        "DUNG DỊCH HIỆU CHUẨN PH 7.01, CHAI 1 LÍT HI7007/1L",
+        "DUNG DỊCH HIỆU CHUẨN PH 7.01, CHAI 1 LÍT HI7007/1L",
+        "DUNG DỊCH HIỆU CHUẨN PH 7.01, CHAI 3.75LÍT HI7007/1G",
+        "DUNG DỊCH HIỆU CHUẨN PH 7.01, CHAI 3.75LÍT HI7007/1G",
+        "454.000đ",
+        "454.000đ",
+        "DUNG DỊCH HIỆU CHUẨN PH 4.01, CHAI 230ML HI7004M",
+        "DUNG DỊCH HIỆU CHUẨN PH 4.01, CHAI 230ML HI7004M",
+        "DUNG DỊCH HIỆU CHUẨN PH 4.01, CHAI 500ML HI7004L",
+        "454.000đ",
+        "DUNG DỊCH HIỆU CHUẨN PH 4.01, CHAI 500ML HI7004L",
+        "454.000đ",
+        "DUNG DỊCH HIỆU CHUẨN PH 4.01, CHAI 1 LÍT HI7004/1L",
+        "DUNG DỊCH HIỆU CHUẨN PH 4.01, CHAI 1 LÍT HI7004/1L",
+        "DUNG DỊCH HIỆU CHUẨN PH 4.01, CHAI 3.75LÍT HI7004/1G",
+        "DUNG DỊCH HIỆU CHUẨN PH 4.01, CHAI 3.75LÍT HI7004/1G",
+        "911.000đ",
+        "911.000đ",
+        "911.000đ",
+        "911.000đ",
+        "911.000đ",
+        "911.000đ",
+        "911.000đ",
+        "911.000đ"
+      ]
+    },
+    {
+      "id": "calibration-service",
+      "url": "https://metrotech.vn/hieu-chuan-may-do-ph/",
+      "final_url": "https://metrotech.vn/hieu-chuan-may-do-ph/",
+      "checked_date": "2026-11-28",
+      "http_status": 200,
+      "title": "Dịch Vụ Hiệu Chuẩn Máy Đo pH Nhanh Chóng - Hiệu Quả",
+      "screenshot": "calibration-service.png",
+      "sha256": "43fbe0498fbc00cdbff71a06e572247dc5300bbbd0dfa788959fbdb61d0b986d",
+      "body_length": 11679,
+      "variants": [],
+      "observed_lines": [
+        "Bút đo pH/ Máy đo pH cầm tay/ Máy đo pH để bàn\tToàn bộ máy\tVệ sinh\t200k – 800k",
+        "Máy khách hàng mua ở cửa hàng khác\tMáy mới/Máy đã và đang sử dụng\tHiệu chuẩn tại METROTECH\t100k – 200k"
+      ]
+    },
+    {
+      "id": "solar-cable",
+      "url": "https://dailycadivi.com/bang-gia-cap-dien-nang-luong-mat-troi-cadivi/",
+      "final_url": "https://dailycadivi.com/bang-gia-cap-dien-nang-luong-mat-troi-cadivi/",
+      "checked_date": "2026-11-28",
+      "http_status": 404,
+      "title": "Page Not Found - Cadivi ALEN",
+      "screenshot": "solar-cable.png",
+      "sha256": "5c12a017dad1948cf9967b7ea4de68cf2240069a22f3a2b1c7aaf32b7d430eca",
+      "body_length": 1092,
+      "variants": [],
+      "observed_lines": [],
+      "classification": "rejected_404_no_verified_price"
+    },
+    {
+      "id": "ph-method",
+      "url": "https://wiki.dfrobot.com/sen0169-v2/docs/24420",
+      "final_url": "https://wiki.dfrobot.com/sen0169-v2/docs/24420",
+      "checked_date": "2026-11-28",
+      "http_status": 200,
+      "title": "pH Calibration and Measurement Code for Arduino | DFRobot Wiki",
+      "screenshot": "ph-method.png",
+      "sha256": "db3e21d2e73daabcbfd2768e8b7c7ba7f70ffea93b43d1ab67469eda0890ea90",
+      "body_length": 11464,
+      "variants": [],
+      "observed_lines": [
+        "The probes are passivated by the presence of contamination-sensitive bulbs in the solution under testing conditions or by plugging the liquid boundary. The phenomenon is that the theoretical slope (PTS) is reduced, the r"
+      ]
+    },
+    {
+      "id": "enclosure",
+      "url": "https://haidanga.vn/san-pham/vo-tu-dien-bang-nhua-abs-kin-nuoc/",
+      "final_url": "https://haidanga.vn/san-pham/vo-tu-dien-bang-nhua-abs-kin-nuoc/",
+      "checked_date": "2026-11-28",
+      "http_status": 200,
+      "title": "Vỏ Tủ Điện Bằng Nhựa ABS Kín Nước Chống Nước IP65 Giá Tốt",
+      "screenshot": "enclosure.png",
+      "sha256": "57b2780a84772422754f22bb7fd1735264741cdc584635c58d8ac95618c0f30f",
+      "body_length": 10022,
+      "variants": [
+        {
+          "attributes": {
+            "attribute_pa_quy-cach": "w200h300d160"
+          },
+          "display_price": 450000,
+          "variation_id": 19429,
+          "is_in_stock": true
+        },
+        {
+          "attributes": {
+            "attribute_pa_quy-cach": "w300h400d200"
+          },
+          "display_price": 700000,
+          "variation_id": 19430,
+          "is_in_stock": true
+        },
+        {
+          "attributes": {
+            "attribute_pa_quy-cach": "w410h610d220"
+          },
+          "display_price": 1950000,
+          "variation_id": 19431,
+          "is_in_stock": true
+        }
+      ],
+      "observed_lines": [
+        "Giá đã bao gồm thuế VAT 10 %",
+        "Quy cách: W300H400D200",
+        "W300H400D200",
+        "Hải Đăng chuyên sản xuất và phân phối các loại vỏ tủ điện bằng nhựa ABS kín nước với đa dạng kích thước, phù hợp cho cả môi trường trong nhà và ngoài trời. Sản phẩm có thiết kế chắc chắn, thẩm mỹ cao, dễ lắp đặt và đảm b",
+        "Vỏ tủ điện bằng nhựa ABS kín nước dùng trong nhà hoặc ngoài trời kích thước W300 H400 D200MM",
+        "Vỏ tủ điện bằng nhựa ABS kín nước dùng trong nhà hoặc ngoài trời kích thước W410 H610 D220MM",
+        "Hải Đăng cung cấp nhiều kích thước phổ biến đáp ứng đa dạng nhu cầu sử dụng:",
+        "Ngoài các kích thước tiêu chuẩn, Hải Đăng còn nhận gia công theo yêu cầu riêng của khách hàng.",
+        "Đội ngũ kỹ thuật hỗ trợ lựa chọn kích thước và cấu hình phù hợp với từng ứng dụng thực tế.",
+        "Hải Đăng chuyên cung cấp các dòng Vỏ tủ điện bằng nhựa ABS kín nước chất lượng cao với đa dạng mẫu mã và kích thước. Sản phẩm đáp ứng tốt nhu cầu sử dụng trong môi trường khắc nghiệt, đảm bảo độ an toàn và độ bền vượt tr"
+      ]
+    },
+    {
+      "id": "storage",
+      "url": "https://mlab.vn/3655744-dung-dich-chuan-kcl-3m-bao-ve-dien-cuc-dau-do-ph-orp.html",
+      "final_url": "https://mlab.vn/3655744-dung-dich-chuan-kcl-3m-bao-ve-dien-cuc-dau-do-ph-orp.html",
+      "checked_date": "2026-11-28",
+      "http_status": 200,
+      "title": "Dung dịch chuẩn KCL 3M bảo vệ điện cực đầu đo pH, ORP",
+      "screenshot": "storage.png",
+      "sha256": "ae4b133989356f4622e00df66bb9df5ee0b91b24eedd4a03fd96e1f7ca316159",
+      "body_length": 3808,
+      "variants": [],
+      "observed_lines": []
+    }
+  ]
+}

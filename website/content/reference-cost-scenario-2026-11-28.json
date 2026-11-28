@@ -1,0 +1,336 @@
+{
+  "date": "2026-11-28",
+  "classification": "analyst_selected_reference_scenario_not_order_or_validated_engineering",
+  "core": {
+    "id": "B",
+    "label": "Integrated LILYGO Q190 4 MB",
+    "authority": "User requested comparison of cost, feasibility, pros and cons and delegated the best supported costing choice on 2026-11-28.",
+    "decision": "Choose Q190 for proposed costing, not purchase, proven lowest lifecycle cost or field acceptance.",
+    "rationale": "Factory integrated controller/modem and listed antenna package reduce custom carrier integration. Both listed currency portions are below the full HAT alternative. OPEX advantage is unproven.",
+    "items": [
+      {
+        "id": "current-ph",
+        "sku": "SEN0169-V2",
+        "quantity": 1,
+        "currency": "USD",
+        "unitCents": 6490,
+        "subtotalCents": 6490,
+        "sourceUrl": "https://www.dfrobot.com/product-2069.html",
+        "checkedDate": "2026-11-28",
+        "budgetUnitVnd": 1683506,
+        "conversionStatus": "budget_conversion_at_historical_rate_not_a_current_FX_quote"
+      },
+      {
+        "id": "current-do",
+        "sku": "SEN0680",
+        "quantity": 1,
+        "currency": "VND",
+        "unitCents": 442800000,
+        "subtotalCents": 442800000,
+        "sourceUrl": "https://hshop.vn/cam-bien-oxy-hoa-tan-dfrobot-rs485-fluorescence-dissolved-oxygen-sensor-freshwater",
+        "checkedDate": "2026-11-28",
+        "budgetUnitVnd": 4428000,
+        "conversionStatus": "native_VND_listing"
+      },
+      {
+        "id": "current-turbidity",
+        "sku": "SEN0710",
+        "quantity": 1,
+        "currency": "USD",
+        "unitCents": 22900,
+        "subtotalCents": 22900,
+        "sourceUrl": "https://www.dfrobot.com/product-3104.html",
+        "checkedDate": "2026-11-28",
+        "budgetUnitVnd": 5940260,
+        "conversionStatus": "budget_conversion_at_historical_rate_not_a_current_FX_quote"
+      },
+      {
+        "id": "current-temperature",
+        "sku": "HS2432V",
+        "quantity": 1,
+        "currency": "VND",
+        "unitCents": 3500000,
+        "subtotalCents": 3500000,
+        "sourceUrl": "https://hshop.vn/cam-bien-nhiet-do-chong-nuoc-ds18b20-waterproof-temperature-sensor",
+        "checkedDate": "2026-11-28",
+        "budgetUnitVnd": 35000,
+        "conversionStatus": "native_VND_listing"
+      },
+      {
+        "id": "current-rs485",
+        "sku": "HS2455V",
+        "quantity": 1,
+        "currency": "VND",
+        "unitCents": 3500000,
+        "subtotalCents": 3500000,
+        "sourceUrl": "https://hshop.vn/bo-mach-chuyen-doi-tin-hieu-ttl-sang-rs485-v1",
+        "checkedDate": "2026-11-28",
+        "budgetUnitVnd": 35000,
+        "conversionStatus": "native_VND_listing"
+      },
+      {
+        "id": "current-gland",
+        "sku": "Upun PG13.5",
+        "quantity": 4,
+        "currency": "VND",
+        "unitCents": 317500,
+        "subtotalCents": 1270000,
+        "sourceUrl": "https://daihoaphu.vn/cable-gland-upun-pg135",
+        "checkedDate": "2026-11-28",
+        "budgetUnitVnd": 3175,
+        "conversionStatus": "native_VND_listing"
+      },
+      {
+        "id": "lilygo-Q190",
+        "sku": "Q190",
+        "quantity": 1,
+        "currency": "USD",
+        "unitCents": 6934,
+        "subtotalCents": 6934,
+        "sourceUrl": "https://lilygo.cc/en-us/products/t-sim7600?variant=42358717972661",
+        "checkedDate": "2026-11-28",
+        "budgetUnitVnd": 1798680,
+        "conversionStatus": "budget_conversion_at_historical_rate_not_a_current_FX_quote"
+      }
+    ],
+    "unitVnd": 13933146,
+    "nextTwoVnd": 27866292,
+    "threeStationVnd": 41799438,
+    "sharedKitVnd": 1683506,
+    "firstStationPlusReserveVnd": 15616652,
+    "threeStationsPlusReserveVnd": 43482944,
+    "budgetVndPerUsd": 25940,
+    "rateBasisDate": "2026-11-19",
+    "rounding": "Convert each USD unit price at 25940, round each unit to the nearest VND, then multiply quantities. Not a current FX quote.",
+    "totalInstalledCapex": null,
+    "totalThreeYearLifecycleCost": null,
+    "excluded": [
+      "sensor interfaces, ADC/pin allocation and integration validation",
+      "offline buffer media, retention sizing and integration",
+      "selected enclosure and assembled waterproofing",
+      "complete compatible power system",
+      "site cables, mounts, cage and any wiper",
+      "delivery, international taxes and payment/FX fees",
+      "installation, commissioning and initial calibration",
+      "training",
+      "full calibration supplies/labour/travel",
+      "six testing route packages",
+      "DO consumables and condition-based replacements",
+      "fault and flood response",
+      "software/support, messaging and laboratory verification",
+      "end-of-life collection"
+    ]
+  },
+  "prices": [
+    {
+      "id": "panel",
+      "item": "GIVASOLAR GVA-100W panel",
+      "unitVnd": 850000,
+      "scope": "station",
+      "vat": "Unstated",
+      "limits": "Panel only; excludes battery, charger, supports, cables and protection; nameplate is not site yield.",
+      "url": "https://givasolar.com/san-pham/tam-pin-nang-luong-mat-troi-gv-mono-100w/",
+      "evidence": "panel.png",
+      "sha256": "a6edf4a010c3fba6065c1eaf34bb909ff0616678fcaafd480c1231fb9bc05264",
+      "checkedDate": "2026-11-28"
+    },
+    {
+      "id": "controller",
+      "item": "ST-H1210 10A solar controller",
+      "unitVnd": 780000,
+      "scope": "station",
+      "vat": "Unstated",
+      "limits": "Seller describes MPPT; independent performance not validated. Default 14.2V differs from AGM cycle range; settings and temperature compensation require validation.",
+      "url": "https://mayniemphat.vn/san-pham/san-pham-nang-luong-mat-troi/bo-dieu-khien-sac-nang-luong-mat-troi/bo-dieu-khien-sac-nang-luong-mat-troi-mppt-10a-co-mang-hinh-lcd.html",
+      "evidence": "controller.png",
+      "sha256": "67c942cf27c2b0fc09e4ae2fa0dced8c5299f27654328ed0aca755dc287d422e",
+      "checkedDate": "2026-11-28"
+    },
+    {
+      "id": "battery",
+      "item": "LONG WP40-12NE 12V 40Ah AGM",
+      "unitVnd": 1588000,
+      "scope": "station",
+      "vat": "Unstated",
+      "limits": "One battery only; weather-protected ventilated housing, terminals, cable, delivery and life under field cycling excluded. Listing has conflicting warranty statements.",
+      "url": "https://vactechnology.vn/san-pham/ac-quy-agm-vrla-long-12v-40ah-wp40-12ne",
+      "evidence": "battery.png",
+      "sha256": "53a9f5fe3f4706d3d42a5d75acef41a0f3e856d0a31e9717d2f53657270da8cc",
+      "checkedDate": "2026-11-28"
+    },
+    {
+      "id": "buck",
+      "item": "E360 PVN1777 6-36V to 5V/3A USB buck",
+      "unitVnd": 35000,
+      "scope": "station",
+      "vat": "Unstated",
+      "limits": "Converter only; peak/ripple/thermal behaviour and cable must be bench-tested. External regulated 5V proposal, not 12V connected to the LILYGO cell charger.",
+      "url": "https://dientu360.com/mach-ha-ap-5v-3a-2-cong-usb",
+      "evidence": "buck.png",
+      "sha256": "4667944c874dd6cf76b8dd0137847397cba7146d9c56a69f5565ca2da8b37777",
+      "checkedDate": "2026-11-28"
+    },
+    {
+      "id": "enclosure",
+      "item": "Hai Dang W300H400D200 ABS enclosure, variation 19430",
+      "unitVnd": 700000,
+      "scope": "station",
+      "vat": "Seller states included VAT 10%",
+      "limits": "Electronics enclosure reference only; not a sealed battery box or proof that all parts fit. Penetrations, backplate, fittings, mounting and assembled ingress protection unpriced.",
+      "url": "https://haidanga.vn/san-pham/vo-tu-dien-bang-nhua-abs-kin-nuoc/",
+      "evidence": "enclosure.png",
+      "sha256": "57b2780a84772422754f22bb7fd1735264741cdc584635c58d8ac95618c0f30f",
+      "checkedDate": "2026-11-28"
+    },
+    {
+      "id": "card",
+      "item": "SanDisk Ultra microSDHC 32GB SDSQUNR-032G-GN3MN",
+      "unitVnd": 359000,
+      "scope": "station",
+      "vat": "Unstated",
+      "limits": "Consumer card, not an endurance certification; firmware, filesystem, retention, wear and safe recovery on power loss untested. No SD-size adapter required by this price basis.",
+      "url": "https://phongvu.vn/the-nho-micro-sandisk-ultra-32gb-sdsqunr-032g-gn3mn--s200801365",
+      "evidence": "card.png",
+      "sha256": "e7803eb8cef9497d4496ed4eae99b7069f7951409493923015745946232eee31",
+      "checkedDate": "2026-11-28"
+    },
+    {
+      "id": "ph4",
+      "item": "Hanna HI7004L pH4.01 500mL",
+      "unitVnd": 454000,
+      "scope": "shared-starter",
+      "vat": "Unstated",
+      "limits": "One shared starter bottle; not three-year consumption. Match lot/temperature values to the DFRobot 4.0 nominal calibration procedure before use.",
+      "url": "https://thietbi.net.vn/dung-dich-hieu-chuan-ph/dung-dich-hieu-chuan-ph-4-01--chai-500ml-hi7004l/",
+      "evidence": "ph4.png",
+      "sha256": "7615ed6ac06bb2172630e46e0fa65dc71b4fcd2358f3424f1891321cc0179ba5",
+      "checkedDate": "2026-11-28"
+    },
+    {
+      "id": "ph7",
+      "item": "Hanna HI7007L pH7.01 500mL",
+      "unitVnd": 454000,
+      "scope": "shared-starter",
+      "vat": "Unstated",
+      "limits": "One shared starter bottle; expiry/open-life, sufficient immersion volume and repeat procedures may require more. Do not reuse contaminated aliquots.",
+      "url": "https://thietbi.net.vn/dung-dich-hieu-chuan-ph/dung-dich-hieu-chuan-ph-7-01--chai-500ml-hi7007l/",
+      "evidence": "ph7.png",
+      "sha256": "8493427e2a94b428660112010dcd0e346f4a6e98d311fd8765039136b4e124b1",
+      "checkedDate": "2026-11-28"
+    },
+    {
+      "id": "storage",
+      "item": "MLAB Dung_dich_KCL_3M 18mL bottle",
+      "unitVnd": 140000,
+      "scope": "shared-starter",
+      "vat": "Unstated",
+      "limits": "Starter only; seller suggests 6mL per cap refill. Not a three-year allowance or proof of enough storage liquid for every probe. Rinse/cleaning supplies remain separate.",
+      "url": "https://mlab.vn/3655744-dung-dich-chuan-kcl-3m-bao-ve-dien-cuc-dau-do-ph-orp.html",
+      "evidence": "storage.png",
+      "sha256": "ae4b133989356f4622e00df66bb9df5ee0b91b24eedd4a03fd96e1f7ca316159",
+      "checkedDate": "2026-11-28"
+    }
+  ],
+  "perStationAdditionsVnd": 4312000,
+  "oneStationWithAdditionsVnd": 18245146,
+  "threeStationAdditionsVnd": 12936000,
+  "sharedStarterVnd": 1048000,
+  "hardwareAndStarterVnd": 57466944,
+  "sim": {
+    "plan": "Viettel Connect8",
+    "classification": "selected_only_for_low_bandwidth_cost_scenario",
+    "cycles": 99,
+    "unitVnd": 8000,
+    "listedTotalVnd": 792000,
+    "eligibilityAndCoverageValidated": false
+  },
+  "hosting": {
+    "classification": "selected_only_for_shared_compute_cost_scenario",
+    "months": 36,
+    "computeUsdPerMonth": 13,
+    "totalComputeUsd": 468,
+    "computeBudgetVnd": 12139920,
+    "storageAndCapacityValidated": false
+  },
+  "priced36MonthScenarioVnd": 70398864,
+  "completeInstalledCapex": null,
+  "completeLifecycleCost": null,
+  "powerSensitivity": {
+    "assumptionsNotMeasurements": true,
+    "panelW": 100,
+    "batteryV": 12,
+    "batteryAh": 40,
+    "usableDepthFraction": 0.5,
+    "deliveryEfficiency": 0.85,
+    "solarDerating": 0.7,
+    "cases": [
+      {
+        "loadW": 2,
+        "demandWhPerDay": 48,
+        "nominalAutonomyHours": 102,
+        "harvestWhAt2PeakSunHours": 140,
+        "harvestWhAt4PeakSunHours": 280
+      },
+      {
+        "loadW": 4,
+        "demandWhPerDay": 96,
+        "nominalAutonomyHours": 51,
+        "harvestWhAt2PeakSunHours": 140,
+        "harvestWhAt4PeakSunHours": 280
+      },
+      {
+        "loadW": 8,
+        "demandWhPerDay": 192,
+        "nominalAutonomyHours": 25.5,
+        "harvestWhAt2PeakSunHours": 140,
+        "harvestWhAt4PeakSunHours": 280
+      }
+    ]
+  },
+  "bufferSensitivity": {
+    "assumptionsNotMeasurements": true,
+    "bytesPerRecord": 1024,
+    "secondsPerRecord": 2,
+    "days": 7,
+    "rawBytes": 309657600,
+    "withFourfoldOverheadBytes": 1238630400
+  },
+  "phSupplySensitivity": {
+    "assumptionsNotMeasurements": true,
+    "tasksExcludingCommissioning": 96,
+    "initialTasks": 3,
+    "mlPerBufferPerTask": 20,
+    "totalMlPerBuffer": 1980,
+    "bottlesPerBufferIgnoringExpiry": 4,
+    "twoBufferVolumeOnlyVnd": 3632000,
+    "note": "Volume-only illustration, not a three-year procurement plan: lot expiry, open-bottle lifetime, actual vessel immersion and repeat calibration can increase quantities. Starter bottles already counted; do not add the full volume illustration on top."
+  },
+  "calibrationBenchmark": {
+    "source": "https://metrotech.vn/hieu-chuan-may-do-ph/",
+    "lowVnd": 100000,
+    "highVnd": 200000,
+    "analystMidpointVnd": 150000,
+    "lowScenarioVnd": 8000000,
+    "highScenarioVnd": 19200000,
+    "midpoint80TasksVnd": 12000000,
+    "midpoint96TasksVnd": 14400000,
+    "includedInTotals": false,
+    "note": "Public indicative shop price for other-store handheld/bench/pen meters; not a quote for installed SEN0169-V2, on-site work, accredited certification, travel or already included supplies. Do not combine with self-calibration materials as if both were mandatory."
+  },
+  "unresolved": [
+    "site cables and lengths; panel and probe supports; protective cage/wiper if used",
+    "battery weather protection and ventilation; installed seals and penetrations",
+    "electrical protection, earthing and surge/lightning design",
+    "analogue/RS485/1-Wire integration, firmware and power-loss-safe buffer validation",
+    "delivery, unlisted VAT/import/transaction costs",
+    "installation, commissioning, training, testing and field travel",
+    "remaining calibration standards, cleaning/rinse consumables and DO replacement parts",
+    "database storage, usage, MQTT if separate, support, SMS and laboratory services",
+    "condition-based replacements, incidents and end-of-life collection"
+  ],
+  "limits": [
+    "No assumed free labour, free travel, free hosting storage or confirmed funding.",
+    "Listings held constant for comparison; later procurement prices and component lifetime are not guaranteed.",
+    "One optional shared pH kit once; CAPEX is not multiplied by three operating years."
+  ]
+}

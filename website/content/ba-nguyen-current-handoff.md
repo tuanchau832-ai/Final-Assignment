@@ -1,62 +1,70 @@
 # Bá Nguyên — bắt đầu đọc tại đây
 
-Cập nhật 28/11/2026, giờ Việt Nam. Đọc [plan và việc đã làm 28/11](ba-nguyen-next-steps-2026-11-28.md), [review source mới](team-review/tuan-closeout-review-2026-11-28.md) và [khối lượng RFQ](service-rfq-quantities-2026-11-28.csv). Bá Nguyên đã cho phép commit/push gói này lên nhánh được giao và thông báo trên [PR #3](https://github.com/tuanchau832-ai/Final-Assignment/pull/3); việc tích hợp/deploy website cuối vẫn tách riêng.
+> **GÓI BÀN GIAO MỚI NHẤT:** [Số liệu, phụ kiện và patch bốn file](publication-handoff-2026-11-28.md). Phần mô tả “local/chưa publish” phía dưới ghi trạng thái lượt rà trước; dùng gói phát hành này cho bàn giao hiện tại. Không còn chờ câu trả lời mới của Akai/Đạt để hoàn thiện bản đề xuất.
 
-## Số liệu và cách hiểu đang dùng
 
-| Nội dung | Cơ sở hiện tại | Trạng thái |
+**Lựa chọn mới sau người dùng giao quyền so sánh/chọn:** dùng **B — LILYGO Q190** làm cơ sở dự toán chính. [So sánh chi phí/OPEX/khả thi/ưu nhược và quyết định](controller-decision-2026-11-28.md). Thiết bị **13.933.146 VND/trạm**, hai trạm sau **27.866.292**, ba trạm + một reserve **43.482.944 VND partial**. Dùng giả định 25.940 VND/USD từ 19/11, làm tròn từng đơn giá. Chưa là đơn mua/field acceptance; **43.369.904 là case A cũ**, không còn số chính.
+
+**Kết quả mới nhất:** [bản hoàn thiện sau tự tra nguồn](ba-nguyen-completion-2026-11-28.md), [bảng so cấu hình và scope còn thiếu](current-cost-comparison-2026-11-28.csv), [APA bổ sung](cost-apa-audit-2026-11-28.md). Đã kiểm 15 listing ngày 28/11; thêm giá ứng viên FIT0348, SIM 30 ngày và hosting. Không còn việc chờ Akai/Đạt để viết xong phân tích; quote, field evidence và cam kết thật vẫn chưa có.
+
+Cập nhật sau phản hồi Tuấn `ea4cce0a`, 28/11/2026. **Đọc [tự trả lời từng câu hỏi](ba-nguyen-self-answers-2026-11-28.md) và [plan tự xử lý hiện hành](ba-nguyen-self-review-plan-2026-11-28.md).** Gói đã publish trước là 54d29cc2; các sửa lượt tự rà này local, chưa commit/push/đăng comment.
+
+**Đã làm rõ tài liệu:** người dùng xác nhận Akai nói BOM trong file Expanded MD đã gửi, không có file riêng tên BOMZ. Đã đọc lại và [đối chiếu 13 dòng BOM/OPEX](akai-bom-reconciliation-2026-11-28.md); không còn chờ tìm tài liệu. BOM Akai mô tả LILYGO tích hợp và bốn kênh; SKU/package/giá còn phải phân biệt với bảng tham chiếu có nguồn.
+
+## Cơ sở đang dùng để hoàn thiện phần chi phí
+
+| Nội dung | Kết luận hiện tại | Giới hạn |
 | --- | --- | --- |
-| Quy mô | Tối đa 3 trạm trong **một kỳ 36 tháng chung từ trạm đầu**, mua 1 rồi xem xét 2 sau nghiệm thu/duyệt giá | Tuấn đã chọn basis dự toán ở 687557b1; ngày thực tế, BOM và duyệt triển khai còn chờ |
-| Thiết bị có giá | 13.895.466 VND/trạm; đợt 1 là 13.895.466; đợt 2 là 27.790.932; cộng 41.686.398 | Giá lịch sử 19–25/11; chưa đủ CAPEX |
-| pH dự phòng | Một kit chung tùy chọn 1.683.506 VND, một lần | Không nhân trạm/năm; storage/48 giờ chưa xác nhận |
-| Thiết bị + reserve chung | **43.369.904 VND** | Partial subtotal, chưa là ngân sách giao/lắp/vận hành đủ |
-| SIM / hosting | Ví dụ 0/6/6: **96 SIM-tháng, 36 hosting-tháng chung** | 108 SIM-tháng là so sánh cùng bắt đầu; ngày 0/6/6 chưa được đặt |
-| Testing | Ví dụ 0/6/6: **6 đợt, 16 lượt kiểm trạm** | Đợt tháng 6 kiểm một trạm; các đợt 12/18/24/30/36 kiểm ba trạm; route/giá còn chờ |
-| Đóng kỳ | Ba project-close reviews gộp lượt cuối | Chỉ ST-01 tuổi 36 tháng; ST-02/03 tuổi 30 trong ví dụ. Thay theo tình trạng, lỗi sớm xử lý sớm |
-| Hiệu chuẩn | pH hằng tháng, SEN0710 trong 90 ngày, ngoài commissioning | Ví dụ 96 việc pH, trong đó 16 có thể gộp testing, 80 ngoài testing; lịch ngày minh họa có 32 việc độ đục trước gộp sớm. Không phải số chuyến |
-| Rule / TDS | Proposal trạm đầu dùng Report rule, hoãn TDS, giữ DS18B20 | Kỹ thuật/nhóm còn duyệt; không phải field acceptance |
-| Tỷ giá trong subtotal | 25.940 VND/USD, basis lịch sử 19/11 | Không phải tỷ giá mua USD hiện tại; không đổi giá chỉ vì ngày review mới |
-| Phụ kiện mới | 14 dòng ứng viên trong hồ sơ 27/11 | Chưa tự chọn hoặc cộng vào BOM |
+| Phạm vi | Tối đa ba trạm trong kỳ chung 36 tháng; mua thử 1 rồi xét 2 sau nghiệm thu/duyệt quote | Basis đề xuất, không là ngày/đơn mua thật |
+| Thiết bị B chọn để dự toán | 13.933.146 VND trạm đầu, 27.866.292 hai trạm sau; cộng 41.799.438 | Giá kiểm 28/11, quy đổi bằng giả định lịch sử 25.940; chưa là quote giao/lắp hoặc chứng minh exact BOM Akai |
+| pH reserve chung | Một kit tùy chọn 1.683.506 VND một lần | Không nhân theo trạm/năm; chưa có kho/người trực/cam kết 48 giờ |
+| Subtotal B + một reserve | **43.482.944 VND** | Không là ngân sách giao/lắp/vận hành đầy đủ; case A 43.369.904 chỉ để so |
+| Ví dụ 0/6/6 | 96 SIM-tháng, 36 shared hosting, 16 kiểm/6 đợt | Ngày minh họa. 108/18 là so sánh cùng bắt đầu |
+| Đóng kỳ | Rà ba trạm tuổi 36/30/30 trong ví dụ | Chỉ ST-01 đạt age36; không tự thay hết hoặc thêm chuyến trùng |
+| Calibration | 96 việc pH: 16 trùng lịch testing, 80 ngoài lịch | Full calibration **báo riêng 80–96 việc**, tùy inclusions thật. Không tự trừ 16 “calibration checks” |
+| SEN0710 | 32 việc trong lịch 90 ngày minh họa trước gộp sớm | Tính lại hạn sau service sớm; số việc không bằng số chuyến |
+| Rule / DS18B20 / TDS | Proposal trạm đầu Report rule, giữ DS18B20, hoãn TDS; code mô phỏng khớp ý nghĩa này | BOM Akai có bốn kênh và không liệt kê TDS, nhưng không ghi exact DS18B20 hoặc SKU đầu đo |
+| LILYGO R2 mới tra | Q190 4 MB 69,34 USD được chọn để lập dự toán; Q387 16 MB 94,32 USD là phương án tăng flash | Không chọn Q387 khi chưa có yêu cầu/benchmark; không phê duyệt mua. Default 65,31 USD là E-H Q210 |
+| Phụ tùng pH mới tìm | FIT0348 đầu dò rời 49,50 USD | Giá đã kiểm; tương thích với exact SEN0169-V2/revision và số thay chưa chốt, không đổi reserve một kit |
+| Native-currency comparison | A / B / A-kit cùng cảm biến; bảng 4a trên website, chọn B để dự toán | Không phê duyệt mua, không trộn hai tiền tệ hoặc cộng trùng modem; chưa chứng minh OPEX/TCO B thấp nhất |
+| SIM/hosting ứng viên | Viettel 8.000 VND/30 ngày; Render compute 13 USD/system-month | Ví dụ ngày cần 99 chu kỳ SIM, không phải 96 chu kỳ; compute chưa gồm storage/usage/broker/support |
+| Source Tuấn | PORT/CAL/EDIT đã có trong `feature/tuan-pilot-closeout@ea4cce0a` | Tự kiểm source/browser; không hỏi làm lại. final-website vẫn ee0502ca |
 
 ## File dùng để làm tiếp
 
-| Cần xem | File |
+| Nội dung | File |
 | --- | --- |
-| Plan, kết quả đã làm, chờ đúng người và tin nhắn soạn sẵn | [Plan 28/11](ba-nguyen-next-steps-2026-11-28.md) |
-| Review diff / giao diện mới | [Review/QA 687557b1](team-review/tuan-closeout-review-2026-11-28.md), [patch đúng kiến trúc mới](team-review/tuan-closeout-followup-2026-11-28.patch) |
-| Bảng giá từng trạm / ba trạm | [Rollup giá lịch sử](cost-rollup-3stations-3years-2026-11-26.md), [CSV 30 dòng: số lượng dịch vụ cùng bắt đầu](cost-rollup-3stations-3years-2026-11-26.csv) |
-| Mua 1 + 2 / một reserve chung | [Staged procurement](staged-procurement-2026-11-27.csv) |
-| Khối lượng theo kỳ chung, không dùng nhầm baseline | [RFQ quantities](service-rfq-quantities-2026-11-28.csv), [worksheet tính lại](pilot-service-basis-2026-11-28.json) |
-| Testing theo offset / hiệu chuẩn theo ngày minh họa | [16 lượt kiểm](maintenance-common36-2026-11-28.csv), [lịch calibration](calibration-calendar-example-2026-11-28.csv) |
-| Checklist / mẫu xin giá | [Checklist](maintenance-acceptance-template-2026-11-27.md), [RFQ A/B](supplier-quote-request-template.md) |
-| Gói chuẩn bị gửi nhà cung cấp | [Nội dung thư và file đính kèm](supplier-rfq-package-2026-11-28.md), [CSV để điền/so giá A/B](supplier-quote-comparison-2026-11-28.csv); bên nhận chưa được cung cấp |
-| APA phần chi phí | [Audit 27/11](cost-apa-audit-2026-11-27.md); reference kế hoạch trên website đã trỏ 687557b1 ngày 28/11 |
-| Phụ kiện/ảnh nguồn | [Bảng đọc nhanh](accessory-candidates-2026-11-27.md), [CSV](accessory-candidates-2026-11-27.csv), [ảnh và hash](cost-evidence/accessories-2026-11-27/README.md) |
+| Quyết định và procurement chính B | [So sánh/quyết định](controller-decision-2026-11-28.md), [CSV B theo đợt](selected-procurement-2026-11-28.csv) |
+| Gói port số B sang source tích hợp | [Bảng trước/sau và giới hạn](team-review/q190-integration-handoff-2026-11-28.md), [patch ba file](team-review/q190-cost-update-for-tuan-2026-11-28.patch); chưa áp nhánh Tuấn/final/main |
+| Bản hoàn thiện hiện hành | [Report](ba-nguyen-completion-2026-11-28.md), [CSV so cấu hình](current-cost-comparison-2026-11-28.csv), [model](current-cost-comparison-2026-11-28.json) |
+| Nguồn/ảnh giá mới và kiểm cuối | [15 listing](cost-research-2026-11-28/price-verification.csv), [ảnh dịch vụ](cost-research-2026-11-28/service-screenshots.json), [browser QA](team-review/completion-2026-11-28/browser-results.json) |
+| BOM Akai đã xác định / đối chiếu | [Report](akai-bom-reconciliation-2026-11-28.md), [CSV](akai-bom-reconciliation-2026-11-28.csv), [nguồn nguyên văn](team-review/akai-design-cost-comparison-source-2026-11-28.md) |
+| Tự trả lời từng AKAI/DAT và D1–D8 cũ | [Report chi tiết có nguồn](ba-nguyen-self-answers-2026-11-28.md) |
+| Thứ tự công việc / ranh giới phân công | [Plan hiện hành](ba-nguyen-self-review-plan-2026-11-28.md) |
+| Kiểm source mới / ảnh / giới hạn | [Review ea4cce0a](team-review/tuan-ea4cce0a-check-2026-11-28.md) |
+| Listing variants mới và source checks | [CSV](self-research-2026-11-28/listing-candidates.csv), [quan sát nguồn/ảnh](self-research-2026-11-28/source-observations.json) |
+| Công thức lượng và inclusions chưa biết | [Worksheet](pilot-service-basis-2026-11-28.json), [service quantities](service-rfq-quantities-2026-11-28.csv) |
+| Testing/calibration minh họa | [16 checks](maintenance-common36-2026-11-28.csv), [lịch ngày](calibration-calendar-example-2026-11-28.csv), [checklist không gán tên](maintenance-acceptance-template-2026-11-27.md) |
+| Giá lịch sử case A / hai đợt mua cũ | [Rollup A](cost-rollup-3stations-3years-2026-11-26.md), [staged procurement A](staged-procurement-2026-11-27.csv); không dùng làm số chính B |
+| Chuẩn bị hỏi giá | [RFQ](supplier-quote-request-template.md), [thư mẫu](supplier-rfq-package-2026-11-28.md), [bảng nhận quote A/B](supplier-quote-comparison-2026-11-28.csv) |
 
-Ngày 01/01/2027 trong lịch hiệu chuẩn chỉ là gốc kiểm phép tính, không phải lịch triển khai. 90 ngày không luôn bằng ba tháng lịch; gộp sớm phải tính lại hạn. Phần đã bao trong quote testing chỉ được trừ khi nhà cung cấp xác nhận thực hiện đầy đủ công/chuẩn đó. Không giả định mượn thiết bị tham chiếu miễn phí.
+## Những yêu cầu không tiếp tục giao cho đồng đội
 
-## Những hướng dẫn đã được thay thế
+- **Akai:** không yêu cầu nhận vai reviewer/nghiệm thu phần cứng; không yêu cầu nghiên cứu lại model đã chuyển đầu mối. Dùng BOM và phần thiết kế trong Expanded MD đã đọc lại.
+- **Đạt:** không mặc định là operator thật hoặc giao đi đo site, tìm nhà bán, ký cam kết thay một đơn vị triển khai. Đọc và sử dụng phần kế hoạch/test đã có.
+- **Tuấn:** ghi nhận phần APA/editing và việc tích hợp đã làm; không yêu cầu tự quyết funding, operator hoặc field acceptance.
+- **Bá Nguyên:** tự tra giá, nguồn, quantities, uncertainty, quote scope và tổng hợp; không chuyển những việc này thành blocker của người khác.
 
-| Nội dung cũ | Cách đọc hiện tại |
+Các lời đề xuất nhận vai trong hồ sơ cũ không trở thành nghĩa vụ. Các tin nhắn trong plan cũ đã được đánh dấu lịch sử; không forward như yêu cầu mới. Comment GitHub hiện có chưa được sửa theo yêu cầu người dùng.
+
+## Chứng cứ chưa có, không được tự điền
+
+| Thiếu gì | Xử lý hiện tại |
 | --- | --- |
-| 24/26 cleaning, 12 calibration và USD 142,50/147,50; tổng USD 6.105,70/6.155,70 | Kịch bản BOM/lịch cũ, không dùng giá này cho lịch mới. Lịch pH tháng hiện có căn cứ hãng/RFQ riêng |
-| Ba reserve pH 5.050.518; subtotal 46.736.916 | Kịch bản dự phòng cũ. **5.050.518 cho ba kit pH lắp ban đầu vẫn đúng**, không nhầm với reserve |
-| 108 SIM-tháng / 18 kiểm là mặc định cho mua lệch đợt | Chỉ đúng cùng bắt đầu; ví dụ 0/6/6 trong kỳ chung là 96/16 |
-| Chờ Tuấn chọn common horizon | Đã có lựa chọn 36 tháng chung cho dự toán; chỉ còn ngày thực tế/duyệt scope |
-| Patch summary 556fb6e hoặc calculator 7208280 | Chỉ cho source cũ. final mới ee0502ca/687557b1 dùng thẻ chi phí tĩnh; patch calculator không áp |
-| Tất cả ba trạm đủ 36 tháng tuổi tại đóng dự án | Không đúng cho 0/6/6; hai trạm mới 30 tháng |
-| Tuấn tự chốt BOM/site/operator/payer | Không phải phân công gốc. Akai thiết kế, Đạt triển khai, Bá Nguyên chi phí; Tuấn references/editing và tích hợp/data do bạn ấy đề xuất |
+| Exact SKU/package trong BOM Akai | Tài liệu đã có; tự tra/đối chiếu phần model và quote, không chờ Akai gửi lại hoặc tự coi model suy đoán đã được chọn |
+| Báo giá giao/lắp/dịch vụ | Bá Nguyên có RFQ và contact công khai tự tra; chưa có giá chính thức, không gọi listing là quote |
+| Site/permission/ngày vận hành/tải/4G | Giữ Proposed/TBD; dùng ví dụ có nhãn cho dự toán. Không tạo số đo/GPS/chữ ký |
+| Operator/backup/kho/signatory/payer/SLA | Vai trò triển khai thật chưa được chỉ định/nhận; không gắn tên người trong lớp |
+| Phương án C AI + IoT so với matrix manual sampling | Ghi lệch nguồn trong report; không tự chấm lại thiết kế hoặc dùng score manual cho AI |
 
-Các file work-plan/decisions/handoff cũ có khối lịch sử thu gọn; đọc chỉ mục này trước. [Comparison 26/11](final-website-vs-ba-nguyen-2026-11-26.md) kiểm snapshot a85be4e, không phải trạng thái final mới ee0502ca. [QA calculator 27/11](team-review/browser-qa-2026-11-27.md) giữ làm bằng chứng lịch sử.
-
-## Việc còn chờ
-
-| Đầu mối | Cần cung cấp |
-| --- | --- |
-| Đạt, phối hợp Akai | Ngày commissioning/site được phép, tuyến, tải/4G đo, lịch ngày calibration, operator chính/dự phòng; không hỏi lại D5 đã trả |
-| Akai / nhóm kỹ thuật | Duyệt Report rule và BOM/interfaces/nguồn, ngưỡng/tiêu chí/người ký nghiệm thu. Những phân vai mới chưa được người nhận xác nhận |
-| Bá Nguyên + đầu mối nhà cung cấp được giao | Quote A/B cùng scope, VAT/freight/lead time/warranty, công/chuẩn/travel và điều kiện giao 1 + 2 |
-| Tuấn | Rà/port patch đúng cấu trúc mới, APA/word count chung, gửi commit/bản xem sau tích hợp; không áp patch calculator cũ |
-| Nhóm/bên có quyền cam kết | Payer, nguồn lực và cam kết 48 giờ, duyệt mua đợt 2 sau nghiệm thu |
-
-Chỉ sửa nhánh **feature/ba-nguyen-cost-analysis**. Website của nhánh cá nhân được sửa trực tiếp; source Tuấn/final/main không bị sửa. Bản sao local đúng 687557b1 dùng để kiểm và chuẩn bị patch. Không có URL deploy được xác nhận; không coi preview local là website đã publish.
+Những thiếu hụt trên giới hạn cam kết triển khai thật; vẫn có thể hoàn thiện báo cáo thiết kế đề xuất và dự toán minh bạch theo template. Chỉ sửa local `feature/ba-nguyen-cost-analysis`; không sửa source nhánh Tuấn/final/main, không gửi tin/email hoặc deploy.

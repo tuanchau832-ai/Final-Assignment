@@ -1,5 +1,8 @@
 # Gói chuẩn bị xin hai báo giá A/B — Bá Nguyên, 28/11/2026
 
+> **Cập nhật bàn giao:** Q190 4MB đã được chọn để lập dự toán; A và Q387 chỉ là phương án so sánh. Xem [gói hiện hành](publication-handoff-2026-11-28.md) và [giá phụ kiện tham chiếu](reference-cost-scenario-2026-11-28.csv). Ô báo giá nhà cung cấp để trống nghĩa là chưa nhận quotation, không có nghĩa là chưa tìm được giá niêm yết. RFQ dưới đây là bản nháp chưa gửi; khi dùng phải lấy scope hiện hành.
+
+
 Mục đích: nhận giá thiết bị và dịch vụ theo cùng phạm vi cho dự toán coursework Hanoi WaterWatch. Đây là yêu cầu thông tin/báo giá, không là đơn đặt hàng, xác nhận ngân sách hoặc lịch lắp. **Bên nhận và kênh liên hệ thực tế chưa được cung cấp; gói này chưa được gửi tới nhà cung cấp.**
 
 ## File dùng khi gửi
@@ -49,3 +52,12 @@ Bá Nguyên — Hanoi WaterWatch
 | Phê duyệt | Chọn phương án và đặt hàng chỉ sau kỹ thuật/nhóm và người có quyền chi chấp thuận. Tuấn rà/tích hợp website, không tự cam kết chi hoặc field SLA |
 
 Chưa gửi RFQ cho bất kỳ bên nhận nào trong gói này. Chưa có báo giá mới để thay tổng 43.369.904 VND của thiết bị lịch sử + reserve tùy chọn; con số đó vẫn là partial subtotal.
+
+## Contact c?ng khai B? Nguy?n t? tra ? ch?a li?n h?
+
+| Nh? b?n | K?nh c?ng khai | Ngu?n v? gi?i h?n |
+| --- | --- | --- |
+| Hshop | contact.hshopvn@gmail.com; Zalo OA tr?n trang | [Li?n h? ch?nh th?c](https://hshop.vn/lien-he); ??u m?i thi?t b?, ch?a ch?ng minh nh?n l?p/d?ch v? H? N?i |
+| LILYGO | orders@lilygo.cc; business info@lilygo.cc | [Trang s?n ph?m ch?nh th?c](https://lilygo.cc/en-us/products/t-sim7600); c?n quote ??ng variant, freight/import v? packing list |
+
+??y l? ph?n tra ngu?n c?a B? Nguy?n, kh?ng ch? ??t t?m nh? b?n. Ch?a g?i th?, ??t h?ng ho?c nh?n b?o gi?; ch?a ch?n nh? th?u hi?n tr??ng. Listing m?i l?u ri?ng ? [CSV ?ng vi?n](self-research-2026-11-28/listing-candidates.csv), kh?ng ?i?n nh? quote ?? k?.

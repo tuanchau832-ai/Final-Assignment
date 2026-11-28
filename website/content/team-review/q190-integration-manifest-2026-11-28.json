@@ -1,0 +1,24 @@
+{
+  "base_commit": "ea4cce0ab3e1c520e074b48ae703d3dfe69570fb",
+  "status": "local_patch_only_not_applied_to_teammate_branch",
+  "files": [
+    {
+      "path": "website/src/content/data.ts",
+      "before_sha256": "6b9a517d7bdc844f79dec0f0306fe5f73af902a6f557d7ff8cd2b373349c3a48",
+      "candidate_sha256": "a320e1123acfc80ab2e9483786696403c41a60e3edc2dec11d754af5d24951b2"
+    },
+    {
+      "path": "website/src/content/pages/implementation.html",
+      "before_sha256": "ae1ff269c070e0789d6a2dfb47a46d7cf47132371a699ea145051a3cfeb84e34",
+      "candidate_sha256": "60e7e7d34ce3d70db240daadb89cfe4c7a00ffe77e013d29bf71cb950b0355f7"
+    },
+    {
+      "path": "website/src/content/pages/references.html",
+      "before_sha256": "28c7a9f6862819cf16bc414fd67aa5575b507f9395d3dcd66a98613a65f642eb",
+      "candidate_sha256": "d95b447f7cae065cfad47feea489df34530e245d768cab106df09731094df0d0"
+    }
+  ],
+  "patch_sha256": "1b25d320efd5b83e9f996e38806357614197bde3ed10ba6c062178ec8b98978f",
+  "historical_local_patch_sha256": "5ea99bd11c863ae41d5e0537d6d7825ee450cf94e086287d5d1d4c370193fc21",
+  "artifact_note": "Superseded patch normalized to LF for publication; candidate hashes retain original local CRLF results. Use cost-release-2026-11-28 for current integration."
+}

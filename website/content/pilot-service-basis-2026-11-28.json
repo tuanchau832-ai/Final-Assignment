@@ -1,6 +1,6 @@
 {
   "reviewedAt": "2026-11-28",
-  "sourceCommit": "687557b1f2b50ed5ab416713706bd4221b883c2d",
+  "sourceCommit": "ea4cce0ab3e1c520e074b48ae703d3dfe69570fb",
   "horizonStatus": "Tuan adopted common 36-month costing horizon; team and actual commissioning dates pending",
   "selectedIllustration": {
     "starts": [
@@ -189,5 +189,17 @@
     "turbiditySameDateTestingTasks": 0,
     "turbidityOutsideTestingTasks": 32,
     "initialPackages": 3
+  },
+  "phQuotationCoverage": {
+    "totalTasks": 96,
+    "overlappingTestingTasks": 16,
+    "physicallyOutsideTestingTasks": 80,
+    "confirmedIncludedInTesting": null,
+    "separatelyQuotedFullTasks": null,
+    "separatelyQuotedTaskRange": [
+      80,
+      96
+    ],
+    "status": "quote_inclusions_unconfirmed"
   }
 }

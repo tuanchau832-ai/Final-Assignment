@@ -1,5 +1,7 @@
 # Rà APA phần Cost Analysis — 27/11/2026
 
+> **Lịch sử:** đã có [audit bổ sung 28/11](cost-apa-audit-2026-11-28.md). Suffix DFRobot, số entry và số từ dưới đây mô tả bản ngày 27/11, không dùng thay số hiện hành.
+
 Phạm vi: `08-cost-analysis.ts`, các References được phần này dùng và cách renderer hiển thị chúng. Đã đọc trực tiếp file UTS người dùng cung cấp: `C:\Users\admin\Downloads\Documents\APA Interactive Guide_2.pdf`, 154 trang. Số trang dưới đây là số trang PDF, trùng số in tại các mục được dùng. Không coi báo cáo này là duyệt APA toàn bộ bài của nhóm.
 
 ## Quy tắc áp dụng từ tài liệu UTS

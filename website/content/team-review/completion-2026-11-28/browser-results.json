@@ -1,0 +1,251 @@
+{
+  "checked_date": "2026-11-28",
+  "scope": "Local assigned branch, headless Chrome mobile emulation; not a phone, hosted deployment or field test",
+  "cases": [
+    {
+      "width": 320,
+      "tables": [
+        {
+          "id": "cost-schedule",
+          "columns": 10,
+          "horizontalScroll": {
+            "client": 288,
+            "scroll": 1200,
+            "left": 912,
+            "rightReached": true
+          },
+          "pass": true
+        },
+        {
+          "id": "controller-comparison",
+          "columns": 6,
+          "horizontalScroll": {
+            "client": 288,
+            "scroll": 1200,
+            "left": 912,
+            "rightReached": true
+          },
+          "pass": true
+        }
+      ],
+      "citation_navigation": "five new references pass",
+      "runtime_errors": [],
+      "pass": true
+    },
+    {
+      "width": 390,
+      "tables": [
+        {
+          "id": "cost-schedule",
+          "columns": 10,
+          "horizontalScroll": {
+            "client": 358,
+            "scroll": 1200,
+            "left": 842,
+            "rightReached": true
+          },
+          "pass": true
+        },
+        {
+          "id": "controller-comparison",
+          "columns": 6,
+          "horizontalScroll": {
+            "client": 358,
+            "scroll": 1200,
+            "left": 842,
+            "rightReached": true
+          },
+          "pass": true
+        }
+      ],
+      "large_text_200_percent": "pass",
+      "citation_navigation": "five new references pass",
+      "runtime_errors": [],
+      "pass": true
+    },
+    {
+      "width": 768,
+      "tables": [
+        {
+          "id": "cost-schedule",
+          "columns": 10,
+          "horizontalScroll": {
+            "client": 466,
+            "scroll": 1200,
+            "left": 734,
+            "rightReached": true
+          },
+          "pass": true
+        },
+        {
+          "id": "controller-comparison",
+          "columns": 6,
+          "horizontalScroll": {
+            "client": 466,
+            "scroll": 1200,
+            "left": 734,
+            "rightReached": true
+          },
+          "pass": true
+        }
+      ],
+      "citation_navigation": "five new references pass",
+      "runtime_errors": [],
+      "pass": true
+    },
+    {
+      "width": 1024,
+      "tables": [
+        {
+          "id": "cost-schedule",
+          "columns": 10,
+          "horizontalScroll": {
+            "client": 707,
+            "scroll": 1200,
+            "left": 493,
+            "rightReached": true
+          },
+          "pass": true
+        },
+        {
+          "id": "controller-comparison",
+          "columns": 6,
+          "horizontalScroll": {
+            "client": 707,
+            "scroll": 1200,
+            "left": 493,
+            "rightReached": true
+          },
+          "pass": true
+        }
+      ],
+      "citation_navigation": "five new references pass",
+      "runtime_errors": [],
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "tables": [
+        {
+          "id": "cost-schedule",
+          "columns": 10,
+          "horizontalScroll": {
+            "client": 922,
+            "scroll": 1200,
+            "left": 278,
+            "rightReached": true
+          },
+          "pass": true
+        },
+        {
+          "id": "controller-comparison",
+          "columns": 6,
+          "horizontalScroll": {
+            "client": 922,
+            "scroll": 1200,
+            "left": 278,
+            "rightReached": true
+          },
+          "pass": true
+        }
+      ],
+      "large_text_200_percent": "pass",
+      "citation_navigation": "five new references pass",
+      "runtime_errors": [],
+      "pass": true
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "cost-schedule-390-left.png",
+      "sha256": "0144d01645c411cd2426f16474d2969872968eb2dd0d3e117fb99f1e3cb12c18"
+    },
+    {
+      "file": "cost-schedule-390-right.png",
+      "sha256": "452b04b18a1dfde7e97c8a5ff463794c0fc9d1bc082708786ed340ec52067ca2"
+    },
+    {
+      "file": "controller-comparison-390-left.png",
+      "sha256": "7d416cae980bc84d2d73b31cbc54b03d7f26e88c817cccd432fb4eefa72cfc79"
+    },
+    {
+      "file": "controller-comparison-390-right.png",
+      "sha256": "538c591654b8272835e5f8d914f20889996231437e64ab442394d4e5b24df666"
+    },
+    {
+      "file": "cost-schedule-1440-left.png",
+      "sha256": "bdb57a30cc14da057c0b34ce21f7b14a9a8cb32986fead5f407987ca794efe06"
+    },
+    {
+      "file": "controller-comparison-1440-left.png",
+      "sha256": "1ab13e2a81a9aa546dda14bccc999fa4bb9eb90fb623e8c6a9e0d86c0ef2ab7e"
+    },
+    {
+      "file": "tuan-q190-cost-390.png",
+      "sha256": "c7375757c4fa56b736bbb4c9967422650ccc762afb97f4bd693a761b3148d2bd"
+    },
+    {
+      "file": "tuan-q190-cost-1440.png",
+      "sha256": "3b68e485957fc591524fb5a4d18f9963276ca249cae9011e11d4dc55c5bbeb53"
+    }
+  ],
+  "browser": "158.0.8127.38",
+  "tuan_patch_candidate_cases": [
+    {
+      "width": 320,
+      "cards": [
+        "₫13,933,146",
+        "₫27,866,292",
+        "₫1,683,506",
+        "₫43,482,944"
+      ],
+      "bom_lines": 7,
+      "no_page_overflow": true,
+      "three_new_references": "pass",
+      "runtime_errors": [],
+      "pass": true
+    },
+    {
+      "width": 390,
+      "cards": [
+        "₫13,933,146",
+        "₫27,866,292",
+        "₫1,683,506",
+        "₫43,482,944"
+      ],
+      "bom_lines": 7,
+      "no_page_overflow": true,
+      "three_new_references": "pass",
+      "runtime_errors": [],
+      "pass": true
+    },
+    {
+      "width": 1024,
+      "cards": [
+        "₫13,933,146",
+        "₫27,866,292",
+        "₫1,683,506",
+        "₫43,482,944"
+      ],
+      "bom_lines": 7,
+      "no_page_overflow": true,
+      "three_new_references": "pass",
+      "runtime_errors": [],
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "cards": [
+        "₫13,933,146",
+        "₫27,866,292",
+        "₫1,683,506",
+        "₫43,482,944"
+      ],
+      "bom_lines": 7,
+      "no_page_overflow": true,
+      "three_new_references": "pass",
+      "runtime_errors": [],
+      "pass": true
+    }
+  ]
+}

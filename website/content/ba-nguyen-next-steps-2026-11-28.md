@@ -1,5 +1,13 @@
 # Bá Nguyên — công việc sau phản hồi Tuấn ngày 28/11
 
+> **GÓI BÀN GIAO MỚI NHẤT:** [Số liệu, phụ kiện và patch bốn file](publication-handoff-2026-11-28.md). Phần mô tả “local/chưa publish” phía dưới ghi trạng thái lượt rà trước; dùng gói phát hành này cho bàn giao hiện tại. Không còn chờ câu trả lời mới của Akai/Đạt để hoàn thiện bản đề xuất.
+
+
+> **Thay bằng bản tự rà sau ea4cce0a:** đọc [plan hiện hành](ba-nguyen-self-review-plan-2026-11-28.md) và [tự trả lời các câu hỏi](ba-nguyen-self-answers-2026-11-28.md). Những mẫu tin gộp Đạt/Akai, yêu cầu Akai nhận vai nghiệm thu hoặc gán operator/signatory cho đồng đội trong lịch sử bên dưới không tiếp tục sử dụng. Tuấn đã xử lý PORT/CAL/EDIT; không hỏi làm lại. BOM đã xác định là mục 2.3 của Expanded MD; xem [đối chiếu mới](akai-bom-reconciliation-2026-11-28.md), không còn chờ file BOMZ.
+
+<details>
+<summary>Lịch sử trước điều chỉnh phân công — không dùng để giao việc mới</summary>
+
 Đọc cùng [bản bàn giao hiện hành](ba-nguyen-current-handoff.md). Phản hồi mới: [Tuấn trên PR #3](https://github.com/tuanchau832-ai/Final-Assignment/pull/3#issuecomment-7232184967), [bản lưu](team-review/tuan-response-2026-11-28.json). Đã rà toàn bộ 18 mục trong timeline PR; có một comment mới sau gói 0aa14906, chưa có phản hồi mới của Đạt/Akai trong timeline này. Source giao diện mới là `final-website@ee0502ca`; Tuấn bổ sung bốn file tại `feature/tuan-pilot-closeout@687557b1`. Commit đó chưa nằm trong final-website.
 
 ## Kết luận đủ điều kiện làm tiếp
@@ -49,3 +57,5 @@ Tháng 6 chỉ ST-01 đến hạn testing; nếu cùng ngày commissioning ST-02
 ## Cách sửa website
 
 Source được sửa trong lượt này là website trên nhánh được giao. Bản final mới dùng `src/content/pages/implementation.html`, `src/content/data.ts` và các stylesheet tách nhỏ, khác kiến trúc nhánh Bá Nguyên. Bản sao local đúng 687557b1 dùng để kiểm và tạo patch; không chuyển nhánh hoặc áp lên source đồng đội. Chỉnh DOM trong DevTools không lưu được vào website cho mọi người. Bản online chỉ nhận thay đổi sau khi source được tích hợp và triển khai từ đúng nhánh hosting. Người dùng yêu cầu dựa source đã pull; không có URL deploy được cung cấp hoặc xác nhận trong lượt này.
+
+</details>

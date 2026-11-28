@@ -4,6 +4,21 @@ import { fileURLToPath } from 'node:url';
 
 const dayMs = 86_400_000;
 
+// A calibration check does not establish that a full calibration was included in a quote.
+// null means no contractual evidence, rather than zero-priced or zero work.
+export function phQuoteCoverage(confirmedIncluded = null) {
+  const totalTasks = 96, overlappingTestingTasks = 16;
+  if (confirmedIncluded !== null && (!Number.isInteger(confirmedIncluded)
+      || confirmedIncluded < 0 || confirmedIncluded > overlappingTestingTasks)) {
+    throw new Error('Confirmed full calibrations included in testing must be an integer from 0 to 16, or null.');
+  }
+  return { totalTasks, overlappingTestingTasks, physicallyOutsideTestingTasks: 80,
+    confirmedIncludedInTesting: confirmedIncluded,
+    separatelyQuotedFullTasks: confirmedIncluded === null ? null : totalTasks - confirmedIncluded,
+    separatelyQuotedTaskRange: confirmedIncluded === null ? [80, 96] : [totalTasks - confirmedIncluded, totalTasks - confirmedIncluded],
+    status: confirmedIncluded === null ? 'quote_inclusions_unconfirmed' : 'coverage_quantity_only_not_a_supplier_price' };
+}
+
 export function costBasis(starts = [0, 6, 6], endMonth = 36) {
   if (!Number.isInteger(endMonth) || endMonth < 1 || !starts.length
       || starts.some(m => !Number.isInteger(m) || m < 0 || m >= endMonth)) {
@@ -80,9 +95,10 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   mkdirSync(output, { recursive: true });
   const example = calibrationExample();
   const { events, ...calendarSummary } = example;
-  const data = { reviewedAt: '2026-11-28', sourceCommit: '687557b1f2b50ed5ab416713706bd4221b883c2d',
+  const data = { reviewedAt: '2026-11-28', sourceCommit: 'ea4cce0ab3e1c520e074b48ae703d3dfe69570fb',
     horizonStatus: 'Tuan adopted common 36-month costing horizon; team and actual commissioning dates pending',
-    selectedIllustration: costBasis(), simultaneousComparison: costBasis([0, 0, 0]), calendarExample: calendarSummary };
+    selectedIllustration: costBasis(), simultaneousComparison: costBasis([0, 0, 0]), calendarExample: calendarSummary,
+    phQuotationCoverage: phQuoteCoverage() };
   writeFileSync(resolve(output, 'pilot-service-basis-2026-11-28.json'), JSON.stringify(data, null, 2) + '\n');
   const keys = ['station', 'date', 'task', 'scope', 'sameDateTesting', 'status'];
   const csv = v => `"${String(v).replaceAll('"', '""')}"`;

@@ -1,0 +1,14 @@
+{
+  "clarified_by_user_on": "2026-11-28",
+  "original_filename": "HWW_Design_and_Cost_Comparison_Expanded.md",
+  "original_local_path": "C:\\Users\\admin\\Downloads\\HWW_Design_and_Cost_Comparison_Expanded.md",
+  "source_sha256": "5fc5f1c859a121506fb89b6f7152ac7baec69d4447385dc3272322cee9e15c81",
+  "archived_copy": "akai-design-cost-comparison-source-2026-11-28.md",
+  "meaning": "BOM is Bill of Materials, not a separate file named BOMZ",
+  "source_section": "2.3 Station configuration and BOM",
+  "source_kind": "user-identified teammate design and provisional cost document",
+  "not_a_supplier_quote": true,
+  "document_instructions_do_not_assign_new_team_tasks": true,
+  "archived_git_lf_sha256": "5fc5f1c859a121506fb89b6f7152ac7baec69d4447385dc3272322cee9e15c81",
+  "archive_note": "source_sha256 identifies the original attached file. Git canonicalizes the archived Markdown to LF; semantic text is unchanged."
+}

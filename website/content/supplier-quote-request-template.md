@@ -1,5 +1,12 @@
 # Mẫu yêu cầu báo giá — Hanoi Water Watch
 
+> **Cập nhật bàn giao:** Q190 4MB đã được chọn để lập dự toán; A và Q387 chỉ là phương án so sánh. Xem [gói hiện hành](publication-handoff-2026-11-28.md) và [giá phụ kiện tham chiếu](reference-cost-scenario-2026-11-28.csv). Ô báo giá nhà cung cấp để trống nghĩa là chưa nhận quotation, không có nghĩa là chưa tìm được giá niêm yết. RFQ dưới đây là bản nháp chưa gửi; khi dùng phải lấy scope hiện hành.
+
+
+> **Basis chính mới:** [B — LILYGO Q190 đã được chọn để lập dự toán](controller-decision-2026-11-28.md), không là đơn mua. Xin quote B đúng variant và cùng sensor scope; A/A-kit vẫn là đối chiếu, không cộng các controller với nhau. [Lượng mua B theo đợt](selected-procurement-2026-11-28.csv) thay các số procurement A ở hồ sơ cũ. Vẫn cần quote thực và kiểm tương thích/nguồn/site trước mua.
+
+> **Nghiên cứu mới 28/11:** đã có [listing/model và so cấu hình](ba-nguyen-completion-2026-11-28.md). FIT0348 49,50 USD là đầu dò ứng viên, không mặc định tương thích hoặc thay reserve. Connect8 tính theo 30 ngày (99 chu kỳ trong ví dụ ngày), không nhân đơn giá 30 ngày với 96 tháng lịch. Render 13 USD/system-month chỉ là phần compute; quote hosting phải gồm storage/usage/broker/support. Các nguồn này không thay supplier quotation hoặc chứng minh site/operator/payer đã cam kết. Đây là mẫu chưa gửi.
+
 > **Basis cập nhật 28/11:** kỳ dự án **36 tháng chung từ commissioning trạm đầu** theo [proposal Tuấn 687557b1](https://github.com/tuanchau832-ai/Final-Assignment/blob/687557b1f2b50ed5ab416713706bd4221b883c2d/website/content/first-station-pilot.md). Ngày 0/6/6 là ví dụ, chưa là lịch lắp: **96 SIM-tháng, 36 hosting, 16 lượt kiểm trong 6 đợt**. Xem [khối lượng RFQ](service-rfq-quantities-2026-11-28.csv) và [plan hiện hành](ba-nguyen-next-steps-2026-11-28.md). Mốc 108 SIM-tháng/18 kiểm dưới đây chỉ áp dụng so sánh cùng bắt đầu; không dùng làm số mặc định cho mua lệch đợt.
 
 Ngày gửi: [dd/mm/yyyy]  
@@ -27,11 +34,11 @@ Nhóm cần hai báo giá A/B **tách biệt** bằng VND theo cấu hình gửi
 3. Charge controller, DC converter, cầu chì/CB, chống quá áp và dây nguồn.
 4. Giá đỡ, dây và phụ kiện lắp đặt.
 
-Vui lòng ghi rõ công suất tấm pin, dung lượng battery, cấu hình tải giả định và các thành phần đã bao gồm. Nhóm sẽ cung cấp công suất tải và thông tin che bóng sau khảo sát địa điểm.
+Vui lòng ghi rõ công suất tấm pin, dung lượng battery, cấu hình tải giả định và các thành phần đã bao gồm. Công suất tải và che bóng chưa có số đo; cần được xác nhận trước khi báo nguồn/lắp trọn gói, không tự gán thành viên học phần đi khảo sát.
 
 ## Nhóm C — Kết nối di động
 
-**Phương án A — cấu hình tham chiếu ESP32 riêng + SIM7600G-H-M.2, Akai rà thiết kế và Đạt kiểm field:**
+**Phương án A — cấu hình tham chiếu ESP32 riêng + SIM7600G-H-M.2; chưa gán người kiểm field:**
 
 1. Carrier tương thích SIM7600G-H-M.2, chuẩn M.2 B-key.
 2. Anten LTE phù hợp đầu IPEX-4, dây anten và đầu nối.
@@ -40,7 +47,7 @@ Vui lòng ghi rõ công suất tấm pin, dung lượng battery, cấu hình t�
 
 **Phương án B — LILYGO T-SIM7600G-H R2, CH9102 (ESP32), theo proposal để so cùng scope; package/tính phù hợp chờ xác nhận:**
 
-1. Board LILYGO T-SIM7600G-H R2 CH9102, số lượng giao đợt 1 là một và đợt 2 là hai nếu được duyệt. Xác nhận SKU, ảnh PCB/revision và packing list; module 4G, SIM/GPS antennas, cáp nguồn, sạc và header thực có. Không tự dùng giá mặc định của biến thể khác trên cùng trang sản phẩm.
+1. Board LILYGO T-SIM7600G-H R2 CH9102; xác nhận rõ Q190 4 MB hay Q387 16 MB (hoặc SKU đề xuất khác), không tự chọn chỉ từ chữ R2. Số lượng giao đợt 1 là một và đợt 2 là hai nếu được duyệt. Xác nhận SKU, ảnh PCB/revision và packing list; module 4G, SIM/GPS antennas, cáp nguồn, sạc và header thực có. Không tự dùng giá mặc định của biến thể khác trên cùng trang sản phẩm.
 2. Nguồn/battery/panel/controller/converter tương thích board, gồm giới hạn điện áp, dòng đỉnh 4G và phụ kiện bảo vệ.
 3. Dịch vụ kiểm tra giao tiếp với từng cảm biến đã chọn, gồm RS485/analog/1-Wire, nếu có.
 
@@ -55,8 +62,8 @@ Không báo cộng đồng thời board tích hợp và module M.2 riêng vào c
 5. Review mòn/ăn mòn **gộp chuyến đóng kỳ tháng 36** cho ba trạm, không thêm chuyến/phí review đã gồm. Trong ví dụ mua lệch, chỉ ST-01 đủ 36 tháng tuổi; ST-02/03 mới 30 tháng, cần ghi “project-close review” cho hai trạm này. Phụ tùng/công thay ngoài scope xin đơn giá riêng; không có danh sách bắt buộc thay hết và lỗi sớm xử lý sớm.
 6. Phản ứng sau lũ/sự cố: kế hoạch yêu cầu **khắc phục trong 48 giờ từ khi nhóm vận hành tiếp nhận lỗi**. Xin nêu nhân lực/phụ tùng dự phòng, khả năng đáp ứng và phí trực/công/di chuyển/vật tư DO-pH từng sự cố, phần thuộc bảo hành hoặc thu thêm. Đây là yêu cầu xin giá, chưa là SLA/nguồn lực được ký xác nhận; quyền tiếp cận và payer allocation còn phải chốt.
 
-7. Hiệu chuẩn: commissioning ba trạm tính riêng. Ví dụ 0/6/6 có **96 việc pH** ngoài ban đầu: 16 có thể gộp testing nếu gói thực hiện đầy đủ, còn **80 việc ngoài testing**; đây không phải 80 chuyến. Lịch ngày minh họa cho **32 việc độ đục**, không có việc trùng đúng ngày testing trong ví dụ độc lập đó. Có thể gộp sớm đúng hạn, nhưng phải tính lại deadline từ lần đã làm. **Không quy đổi 90 ngày thành ba tháng lịch.** Xin đơn giá công/chuẩn, thể tích chuẩn, travel và phần đã gồm trong gói; không tự trừ toàn bộ 16 chỉ vì có chữ “calibration check”. Ghi phần thực sự đã bao gồm và không tính hai lần.
-8. Trước nghiệm thu trạm đầu: xin giá thuê/mượn thiết bị tham chiếu hoặc dịch vụ đối chiếu DO/độ đục quanh ngưỡng. Nêu độ không chắc chắn, chuẩn, số điểm/đợt, công/travel và báo cáo. Không giả định đã có thiết bị mượn miễn phí. Các mục tiêu 3 NTU/0,30 mg/L do Tuấn đề xuất còn cần Đạt/Akai duyệt trước thử.
+7. Hiệu chuẩn: commissioning ba trạm tính riêng. Ví dụ 0/6/6 có **96 việc pH** ngoài ban đầu: 16 có thể gộp testing nếu gói thực hiện đầy đủ, còn **80 việc ngoài lịch testing**; số full calibration phải quote riêng là **80–96**, tùy số việc đầy đủ được xác nhận đã nằm trong gói. Đây không phải số chuyến. Lịch ngày minh họa cho **32 việc độ đục**, không có việc trùng đúng ngày testing trong ví dụ độc lập đó. Có thể gộp sớm đúng hạn, nhưng phải tính lại deadline từ lần đã làm. **Không quy đổi 90 ngày thành ba tháng lịch.** Xin đơn giá công/chuẩn, thể tích chuẩn, travel và phần đã gồm trong gói; không tự trừ toàn bộ 16 chỉ vì có chữ “calibration check”. Ghi phần thực sự đã bao gồm và không tính hai lần.
+8. Trước nghiệm thu trạm đầu: xin giá thuê/mượn thiết bị tham chiếu hoặc dịch vụ đối chiếu DO/độ đục quanh ngưỡng. Nêu độ không chắc chắn, chuẩn, số điểm/đợt, công/travel và báo cáo. Không giả định đã có thiết bị mượn miễn phí. Các mục tiêu 3 NTU/0,30 mg/L do Tuấn đề xuất chưa có reviewer được chỉ định/nhận và chưa là ngưỡng bảo đảm từ hãng.
 
 ## Nhóm E — Dự phòng và điều kiện hai đợt mua
 
