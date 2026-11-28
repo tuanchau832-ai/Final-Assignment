@@ -535,7 +535,7 @@
   <header class="phead"><canvas class="stream" aria-hidden="true"></canvas><div class="wrap">
     <p class="crumbs"><a href="#home">Home</a> / Implementation</p>
     <h1>Implementation</h1>
-    <p class="lede">Three stations operating for three years before any decision to expand. Proposed ownership, installation sites and service arrangements still need confirmation.</p>
+    <p class="lede">Up to three stations in a 36-month pilot starting when the first station enters service. Add two stations after the first passes acceptance. Installation sites and service arrangements remain provisional.</p>
     <nav class="subnav" aria-label="On this page"><a href="#implementation-plan">Rollout plan</a><a href="#implementation-owners">Ownership</a><a href="#implementation-cost">Cost analysis</a></nav>
   </div></header>
 
@@ -560,7 +560,7 @@
         <div class="card lift reveal d2"><b>Accredited laboratories</b><p>Test the confirmation samples that support any fine.</p></div>
         <div class="card lift reveal"><b>Ward People’s Committees</b><p>Share alerts locally and collect residents’ feedback.</p></div>
         <div class="card lift reveal d1"><b>Residents</b><p>Report pollution with photos and help watch the sites.</p></div>
-        <div class="card lift reveal d2"><b>Six-month field testing</b><p>Each planned shared trip covers all three stations and includes cleaning, a calibration check and a test alert. Additional checks between trips depend on suspected drift, fouling, incidents or model-specific instructions. The drift rule and acceptance limits are pending.</p></div>
+        <div class="card lift reveal d2"><b>Testing and calibration</b><p>Budget six shared testing rounds with cleaning, a calibration check and a test alert. Allow separate time and supplies for monthly pH calibration and turbidity recalibration every 90 days. Combine work where the model schedule allows.</p></div>
       </div>
     </div>
   </section>
@@ -573,27 +573,28 @@
           <h3 style="margin-bottom:12px">Priced reference items per station</h3>
           <div class="bom" id="bomBuild"></div>
           <h3 style="margin:28px 0 12px">Quotes required</h3>
-          <p>Confirm the power system, modem carrier and antenna, housing and site works, commissioning, testing trips, SIM and hosting, training, lab work, SMS, additional repairs and disposal. The month-36 wear review is included in the last scheduled trip. Quote parts and any extra labour separately.</p>
+          <p>Confirm the power system, modem carrier and antenna, housing and site works, commissioning, testing trips, model-specific calibration, SIM and hosting, training, lab work, SMS, additional repairs and disposal. Include the pilot closeout wear review in the final scheduled trip. Quote any parts and extra labour separately.</p>
         </div>
         <div style="display:grid;gap:20px">
           <div class="calc reveal d1" id="calc">
             <label for="nSt">Stations in the scenario <output id="nOut">3</output></label>
             <input type="range" id="nSt" min="1" max="100" step="1" value="3">
-            <label for="nYr">Operating years per station <output id="yOut">3</output></label>
+            <label for="nYr">Project years <output id="yOut">3</output></label>
             <input type="range" id="nYr" min="1" max="5" step="1" value="3">
             <div class="out">
               <div><small>First station equipment</small><b id="cFirstStation">₫13,895,466</b></div>
               <div><small>Remaining station equipment after acceptance</small><b id="cRemainingStations">₫27,790,932</b></div>
               <div><small>Initial listed-price subtotal</small><b id="cVnd">₫41,686,398</b></div>
               <div><small>One optional shared pH kit</small><b id="cSpare">₫1,683,506</b></div>
-              <div><small>Station checks</small><b id="cVisits">18</b></div>
-              <div><small>Shared testing trips</small><b id="cTrips">6</b></div>
+              <div><small>Baseline station checks</small><b id="cVisits">18</b></div>
+              <div><small>Baseline shared testing trips</small><b id="cTrips">6</b></div>
             </div>
-            <p class="scenario-note">The shared pH kit is separate from the equipment subtotal. Check compatibility, storage and the 48-hour repair requirement. One shared testing trip covers three station checks, pending route confirmation.</p>
-            <p class="scenario-note" id="cServices">Planning quantities: 108 SIM-months with one SIM per station and 36 months of shared hosting. Recalculate from commissioning dates. Quotes required.</p>
-            <p class="scenario-note"><strong>Full scenario budget pending:</strong> installation, testing trips, other services and unpriced items still need quotes.</p>
+            <p class="scenario-note">The shared pH kit is separate from the equipment subtotal. Check compatibility, storage and the 48-hour repair requirement. Baseline station checks and trips assume all stations start together and the route can be shared.</p>
+            <p class="scenario-note" id="cServices">Simultaneous-start baseline: 108 SIM-months and 36 months of shared hosting. Later starts reduce SIM-months and may change the field schedule.</p>
+            <p class="scenario-note">In an illustrative three-station pilot starting at months 0, 6 and 6, a common finish at month 36 gives 96 SIM-months, 36 hosting months and 16 scheduled station checks in six rounds. Giving each station 36 months would require 42 hosting months and seven rounds.</p>
+            <p class="scenario-note"><strong>Full scenario budget pending.</strong> Obtain quotes for installation, testing, calibration outside the testing trips and other unpriced items.</p>
           </div>
-          <p class="cap">See the <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/2a3fb2be9f00442dd784af2428c982e966cc9d3d/website/content/cost-rollup-3stations-3years-2026-11-26.md">cost rollup</a>, <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/2a3fb2be9f00442dd784af2428c982e966cc9d3d/website/content/cost-evidence/README.md">supplier-listing evidence</a> and <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/2a3fb2be9f00442dd784af2428c982e966cc9d3d/website/content/maintenance-acceptance-template-2026-11-27.md">draft acceptance and incident checklist</a>.</p>
+          <p class="cap">See the <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/22ef8234a135d3e146ca403aee6bd693dd333f31/website/content/cost-rollup-3stations-3years-2026-11-26.md">cost rollup</a>, <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/2a3fb2be9f00442dd784af2428c982e966cc9d3d/website/content/cost-evidence/README.md">supplier-listing evidence</a> and <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/docs/tuan-d7-maintenance/website/content/first-station-pilot.md">first-station pilot plan</a>.</p>
           <h3>Potential funding sources</h3>
           <div class="fund">
             <div class="card reveal"><b>City environment budget</b><p>Monitoring sits within the Department’s existing role.</p></div>
@@ -733,7 +734,7 @@
       <details><summary>Appendix C · Survey and interviews</summary><div class="in"><p>Survey questions, anonymised raw responses and interview notes. Participants were told the purpose and no names or phone numbers were collected.</p><p><span class="pending">Link raw data</span></p></div></details>
       <details id="appendices-prototype-tests" open><summary>Appendix D · Prototype test data</summary><div class="in">
         <p><strong>Embedded simulator, 27 November 2026.</strong> Run <code>node tests/check-embedded-simulator.mjs</code> from the website directory. The test runs the embedded HTML’s JavaScript in Node.js and checks the station messages sent to the parent page.</p>
-        <p><strong>Report rule.</strong> A turbidity reading of 57 NTU is within the simulated station limit. At 57.1 NTU the sample breaches the rule. High TDS and temperature are recorded and do not trigger this mode. <strong>Team rule.</strong> The limit is 75 NTU when DO is at least 4.20 mg/L and TDS is at most 400 ppm, and 50 NTU otherwise. This mode checks TDS and temperature as well.</p>
+        <p><strong>Report rule.</strong> Use this rule for internal pilot alerts. The simulator uses a baseline of 38 NTU, so 57 NTU is within its limit and 57.1 NTU breaches it. Establish a baseline at the pilot site before using the rule with field readings. TDS is outside the first-station scope. <strong>Team rule.</strong> This simulator comparison uses 75 NTU when DO is at least 4.20 mg/L and TDS is at most 400 ppm, and 50 NTU otherwise. It also checks TDS and temperature.</p>
         <p>All 13 scenarios passed, including the three-reading count and the return to zero on a passing reading. The test also checked that entering 251 NTU clamps the value to 250 NTU. These results cover simulated alert logic. Model-specific accuracy, calibration, drift, physical 4G and incident response need a separate field test. Record those results in the <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/2a3fb2be9f00442dd784af2428c982e966cc9d3d/website/content/maintenance-acceptance-template-2026-11-27.md">draft acceptance checklist</a>.</p>
         <p>The reference turbidity and dissolved oxygen probes have published full-scale errors equivalent to ±50 NTU and ±0.6 mg/L respectively. Those errors are larger than the differences between the corresponding simulated thresholds. Compare both sensors with reference instruments near the thresholds before relying on them for field alerts. <a href="https://www.dfrobot.com/product-3104.html">Turbidity specifications</a> and <a href="https://wiki.dfrobot.com/sen0680">dissolved oxygen specifications</a>.</p>
         <p><span class="pending">Link usability test results, Wokwi evidence and screen recordings</span></p>

@@ -134,7 +134,7 @@ const calc = () => {
   $('#cSpare').textContent = stations <= pilotStations ? dong(PH_KIT.p) : 'Stock TBD';
   $('#cVisits').textContent = fmt(rounds * stations);
   $('#cTrips').textContent = stations === pilotStations ? fmt(rounds) : 'Route TBD';
-  $('#cServices').textContent = `Planning quantities: ${fmt(stations * months)} SIM-months with one SIM per station and ${fmt(months)} months of shared hosting. Recalculate from commissioning dates. Quotes required.`;
+  $('#cServices').textContent = `Simultaneous-start baseline: ${fmt(stations * months)} SIM-months and ${fmt(months)} months of shared hosting. Later starts reduce SIM-months and may change the field schedule.`;
 };
 stationInput.addEventListener('input', calc); yearInput.addEventListener('input', calc); calc();
 
