@@ -1,6 +1,12 @@
 import type { Reference, ReportSection } from './types';
 
 export const references: readonly Reference[] = [
+  {"id":"fdi-labour-benchmark","author":"FDI Care","year":"n.d.","title":"Đơn giá thi công điện nhà xưởng","retrievedDate":"November 28, 2026","url":"https://fdicare.vn/san-pham/don-gia-thi-cong-dien-nha-xuong-fdi-care.html"},
+  {"id":"tiasang-labour-benchmark","author":"Viễn Thông Tia Sáng","year":"n.d.","title":"Báo giá thi công điện nhẹ 2025","retrievedDate":"November 28, 2026","url":"https://vienthongtiasang.vn/bao-gia-thi-cong-dien-nhe-2025/"},
+  {"id":"render-storage-benchmark","author":"Render","year":"n.d.-a","title":"How much does cloud application hosting cost for small businesses","retrievedDate":"November 28, 2026","url":"https://render.com/articles/how-much-does-cloud-application-hosting-cost-for-small-businesses"},
+  {"id":"lalamove-freight-benchmark","author":"Lalamove Vietnam","year":"2024","title":"Dịch vụ xe tải 500kg chở hàng nhanh chóng, báo giá rẻ tại Lalamove","retrievedDate":"November 28, 2026","url":"https://www.lalamove.com/vi-vn/blog/xe-tai-cho-hang-500kg"},
+  {"id":"dfrobot-do-maintenance","author":"DFRobot","year":"n.d.-e","title":"SEN0680 RS485 sensor reference: API, protocol and pinout","retrievedDate":"November 28, 2026","url":"https://wiki.dfrobot.com/sen0680/docs/21672"},
+  {"id":"recycling-scope-benchmark","author":"Việt Nam Tái Chế","year":"n.d.","title":"Việt Nam Tái Chế","retrievedDate":"November 28, 2026","url":"https://vietnamrecycles.com/"},
   {"id": "giva-panel", "author": "GIVASOLAR", "year": "n.d.", "title": "Tấm pin năng lượng mặt trời Mono GVA-100W", "retrievedDate": "November 28, 2026", "url": "https://givasolar.com/san-pham/tam-pin-nang-luong-mat-troi-gv-mono-100w/"},
   {"id": "solar-controller", "author": "mayniemphat.vn", "year": "n.d.", "title": "Bộ điều khiển sạc năng lượng mặt trời MPPT 10A có màng hình LCD", "retrievedDate": "November 28, 2026", "url": "https://mayniemphat.vn/san-pham/san-pham-nang-luong-mat-troi/bo-dieu-khien-sac-nang-luong-mat-troi/bo-dieu-khien-sac-nang-luong-mat-troi-mppt-10a-co-mang-hinh-lcd.html"},
   {"id": "vac-battery", "author": "VAC Technology", "year": "n.d.", "title": "Ắc quy (AGM VRLA) Long 12V-40Ah (WP40-12NE)", "retrievedDate": "November 28, 2026", "url": "https://vactechnology.vn/san-pham/ac-quy-agm-vrla-long-12v-40ah-wp40-12ne"},
@@ -71,7 +77,7 @@ export const references: readonly Reference[] = [
   {
     id: 'render-hosting-price',
     author: 'Render',
-    year: 'n.d.',
+    year: 'n.d.-b',
     title: 'Pricing',
     retrievedDate: 'November 28, 2026',
     url: 'https://render.com/pricing',

@@ -1,0 +1,26 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { buildPlanningBudget } from '../scripts/planning-budget.mjs';
+const read=name=>JSON.parse(readFileSync(new URL('../content/'+name,import.meta.url),'utf8'));
+const core=read('current-cost-comparison-2026-11-28.json').selectedCostingBasis,ref=read('reference-cost-scenario-2026-11-28.json');
+const m=buildPlanningBudget(core,ref);
+assert.equal(m.lines.length,new Set(m.lines.map(l=>l.id)).size);
+assert.equal(m.phTasks,96);assert.equal(m.twoMonthlyCalibrationTasks,48);
+assert.equal(m.servicePlan.filter(x=>x.fullTesting).length,16);
+assert.equal(m.plannedMonthlyRoutes,36);assert.equal(m.testingRoundsAlreadyWithinMonthlyRoutes,6);
+assert.equal(m.lines.find(l=>l.id==='field-labour').quantity,72);
+assert.ok(!m.lines.some(l=>l.id==='additional-testing-travel'||l.id==='extra-calibration-labour'));
+assert.equal(m.lines.find(l=>l.id==='ph-buffer-refill').quantity+1,12);
+assert.equal(m.lines.find(l=>l.id==='kcl-refill').quantity+1,24);
+assert.equal(m.lines.find(l=>l.id==='sim').quantity,99);
+assert.equal(m.lines.find(l=>l.id==='hosting-compute').quantity,36);
+assert.equal(m.lines.find(l=>l.id==='initial-spare').quantity,1);
+assert.equal(m.phase1CapexVnd+m.phase2CapexVnd,m.categories[0].baseVnd);
+assert.equal(m.years.reduce((n,y)=>n+y.budgetVnd,0),m.basePlanningBudgetVnd);
+assert.equal(m.allocations.reduce((n,s)=>n+s.allocatedBudgetVnd,0),m.basePlanningBudgetVnd);
+for(const l of m.lines){assert.equal(l.baseVnd,Math.round(l.quantity*l.unitBaseVnd));assert.equal(l.yearsVnd.reduce((a,b)=>a+b,0),l.baseVnd);}
+assert.equal(m.actualProjectCost,null);assert.equal(m.actualFundingCommitments,false);assert.equal(m.fieldPerformanceVerified,false);
+assert.ok(m.lowScenarioVnd<m.basePlanningBudgetVnd&&m.basePlanningBudgetVnd<m.highScenarioVnd);
+const expensive=buildPlanningBudget(core,ref,{labour:700000});assert.ok(expensive.basePlanningBudgetVnd>m.basePlanningBudgetVnd);
+assert.throws(()=>buildPlanningBudget(core,ref,{reserveRate:-.1}));
+console.log('Planning-budget checks pass: no double-counted field/calibration work, stocks, phased allocation, year totals, reserve, sensitivity and disclosure.');

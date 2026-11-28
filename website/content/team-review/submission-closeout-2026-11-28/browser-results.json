@@ -1,0 +1,189 @@
+{
+  "date": "2026-11-28",
+  "scope": "Actual headless Chrome; viewport/touch emulation, not physical phone, hosted deployment or field acceptance.",
+  "cases": [
+    {
+      "source": "assigned",
+      "width": 320,
+      "budget": "PASS",
+      "tableScroll": "PASS",
+      "wholePageFit": "PASS",
+      "menu": "PASS",
+      "references": "PASS",
+      "rollout": "separate assigned section",
+      "WordDownload": "PASS",
+      "runtimeErrors": []
+    },
+    {
+      "source": "assigned",
+      "width": 390,
+      "budget": "PASS",
+      "tableScroll": "PASS",
+      "wholePageFit": "PASS",
+      "menu": "PASS",
+      "references": "PASS",
+      "rollout": "separate assigned section",
+      "WordDownload": "PASS",
+      "runtimeErrors": []
+    },
+    {
+      "source": "assigned",
+      "width": 768,
+      "budget": "PASS",
+      "tableScroll": "PASS",
+      "wholePageFit": "PASS",
+      "menu": "not mobile",
+      "references": "PASS",
+      "rollout": "separate assigned section",
+      "WordDownload": "PASS",
+      "runtimeErrors": []
+    },
+    {
+      "source": "assigned",
+      "width": 1024,
+      "budget": "PASS",
+      "tableScroll": "PASS",
+      "wholePageFit": "PASS",
+      "menu": "not mobile",
+      "references": "PASS",
+      "rollout": "separate assigned section",
+      "WordDownload": "PASS",
+      "runtimeErrors": []
+    },
+    {
+      "source": "assigned",
+      "width": 1440,
+      "budget": "PASS",
+      "tableScroll": "PASS",
+      "wholePageFit": "PASS",
+      "menu": "not mobile",
+      "references": "PASS",
+      "rollout": "separate assigned section",
+      "WordDownload": "PASS",
+      "runtimeErrors": []
+    },
+    {
+      "source": "shared-candidate",
+      "width": 320,
+      "budget": "PASS",
+      "tableScroll": "PASS",
+      "wholePageFit": "PASS",
+      "menu": "PASS",
+      "references": "PASS",
+      "rollout": "PASS",
+      "WordDownload": "PASS",
+      "runtimeErrors": []
+    },
+    {
+      "source": "shared-candidate",
+      "width": 390,
+      "budget": "PASS",
+      "tableScroll": "PASS",
+      "wholePageFit": "PASS",
+      "menu": "PASS",
+      "references": "PASS",
+      "rollout": "PASS",
+      "WordDownload": "PASS",
+      "runtimeErrors": []
+    },
+    {
+      "source": "shared-candidate",
+      "width": 768,
+      "budget": "PASS",
+      "tableScroll": "PASS",
+      "wholePageFit": "PASS",
+      "menu": "not mobile",
+      "references": "PASS",
+      "rollout": "PASS",
+      "WordDownload": "PASS",
+      "runtimeErrors": []
+    },
+    {
+      "source": "shared-candidate",
+      "width": 1024,
+      "budget": "PASS",
+      "tableScroll": "PASS",
+      "wholePageFit": "PASS",
+      "menu": "not mobile",
+      "references": "PASS",
+      "rollout": "PASS",
+      "WordDownload": "PASS",
+      "runtimeErrors": []
+    },
+    {
+      "source": "shared-candidate",
+      "width": 1440,
+      "budget": "PASS",
+      "tableScroll": "PASS",
+      "wholePageFit": "PASS",
+      "menu": "not mobile",
+      "references": "PASS",
+      "rollout": "PASS",
+      "WordDownload": "PASS",
+      "runtimeErrors": []
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "assigned-budget-390.png",
+      "sha256": "eb4292b28a98c6e74b7055ed0a35c0b6dc7d424a45955b28df82260423099f27"
+    },
+    {
+      "file": "assigned-budget-1440.png",
+      "sha256": "8ab02877b146767f35b5e4ba9c62ab2a9303431ae7e680ee0c61765b5fbda44b"
+    },
+    {
+      "file": "shared-candidate-budget-390.png",
+      "sha256": "f356a0e2b2b03683e1581ed2742ad7b7f7c4de5a0ca4b0d5abae5e542ff32b6c"
+    },
+    {
+      "file": "shared-candidate-ledger-390.png",
+      "sha256": "8cb2ec3a76ad0a9fb8f2cc02bcecb22d2bb4b6bafea481071de5688b97c9922a"
+    },
+    {
+      "file": "shared-candidate-budget-1440.png",
+      "sha256": "53a8c6f3058c57bcbf37cc1179db30d35a570731f9acdf5ab83f29af9d6c5ea2"
+    },
+    {
+      "file": "shared-candidate-ledger-1440.png",
+      "sha256": "fa2a1876f4c72ca1b5a5d1686b2cf4f98724f059719c38af252a32b22d6fff45"
+    }
+  ],
+  "browser": "158.0.8127.38",
+  "wordCount": {
+    "method": "Whitespace words in rendered report articles plus the team page conservatively, with explicit separators after blocks, table cells and inline labels. Include tables, captions and simulation text; exclude navigation, References and Appendices. The single displayed life-cycle stage is replaced below by all six stages.",
+    "pages": [
+      {
+        "id": "p-home",
+        "words": 506,
+        "allWordsIncludingNavigation": 506
+      },
+      {
+        "id": "p-design",
+        "words": 585,
+        "allWordsIncludingNavigation": 592
+      },
+      {
+        "id": "p-solution",
+        "words": 923,
+        "allWordsIncludingNavigation": 932
+      },
+      {
+        "id": "p-implementation",
+        "words": 1204,
+        "allWordsIncludingNavigation": 1266
+      },
+      {
+        "id": "p-team",
+        "words": 306,
+        "allWordsIncludingNavigation": 311
+      }
+    ],
+    "staticTotal": 3524,
+    "websiteCounter": 3666,
+    "costSectionWords": 430,
+    "allLifecycleStagesWords": 154,
+    "total": 3678,
+    "within4000": true
+  }
+}

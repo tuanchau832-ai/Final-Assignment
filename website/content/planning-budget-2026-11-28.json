@@ -1,0 +1,2181 @@
+{
+  "date": "2026-11-28",
+  "status": "analyst_estimated_budget_for_defined_scope_not_supplier_quote_or_spending_approval",
+  "sourceAuthority": "User explicitly authorised reasonable internal estimates without third-party confirmation on2026-11-28.",
+  "currency": "VND",
+  "fxAssumption": 25940,
+  "fxHistoricalDate": "2026-11-19",
+  "annualEscalation": 0,
+  "escalationNote": "Constant2026budget prices; no forecast or price guarantee. Uncertainty and FX are covered only by the stated scenario/reserve.",
+  "basis": {
+    "starts": [
+      0,
+      6,
+      6
+    ],
+    "endMonth": 36,
+    "stations": [
+      {
+        "id": "ST-01",
+        "start": 0,
+        "operatingMonths": 36,
+        "checks": [
+          6,
+          12,
+          18,
+          24,
+          30,
+          36
+        ],
+        "age36ReviewMonth": 36
+      },
+      {
+        "id": "ST-02",
+        "start": 6,
+        "operatingMonths": 30,
+        "checks": [
+          12,
+          18,
+          24,
+          30,
+          36
+        ],
+        "age36ReviewMonth": null
+      },
+      {
+        "id": "ST-03",
+        "start": 6,
+        "operatingMonths": 30,
+        "checks": [
+          12,
+          18,
+          24,
+          30,
+          36
+        ],
+        "age36ReviewMonth": null
+      }
+    ],
+    "years": [
+      {
+        "year": 1,
+        "simMonths": 24,
+        "sharedHostingMonths": 12,
+        "stationChecks": 4,
+        "testingRounds": 2
+      },
+      {
+        "year": 2,
+        "simMonths": 36,
+        "sharedHostingMonths": 12,
+        "stationChecks": 6,
+        "testingRounds": 2
+      },
+      {
+        "year": 3,
+        "simMonths": 36,
+        "sharedHostingMonths": 12,
+        "stationChecks": 6,
+        "testingRounds": 2
+      }
+    ],
+    "simMonths": 96,
+    "sharedHostingMonths": 36,
+    "stationChecks": 16,
+    "testingRounds": 6,
+    "rounds": [
+      6,
+      12,
+      18,
+      24,
+      30,
+      36
+    ],
+    "age36Reviews": 1,
+    "projectCloseReviews": 3
+  },
+  "lines": [
+    {
+      "id": "core",
+      "label": "Q190 core equipment",
+      "category": "CAPEX",
+      "quantity": 3,
+      "unitLowVnd": 13933146,
+      "unitBaseVnd": 13933146,
+      "unitHighVnd": 13933146,
+      "lowVnd": 41799438,
+      "baseVnd": 41799438,
+      "highVnd": 41799438,
+      "classification": "listed_price_with_assumed_quantity",
+      "basis": "Same four sensors, RS485 and provisional four glands; native listings converted at historical budget rate.",
+      "sourceIds": [
+        "lilygo-controller",
+        "hshop-do",
+        "dfrobot-ph",
+        "dfrobot-turbidity"
+      ],
+      "yearQuantities": [
+        3,
+        0,
+        0
+      ],
+      "yearsVnd": [
+        41799438,
+        0,
+        0
+      ],
+      "phase1Quantity": 1,
+      "phase1Vnd": 13933146
+    },
+    {
+      "id": "extensions",
+      "label": "Reference power, electronics enclosure and microSD",
+      "category": "CAPEX",
+      "quantity": 3,
+      "unitLowVnd": 4312000,
+      "unitBaseVnd": 4312000,
+      "unitHighVnd": 4312000,
+      "lowVnd": 12936000,
+      "baseVnd": 12936000,
+      "highVnd": 12936000,
+      "classification": "listed_price_with_assumed_quantity",
+      "basis": "Six listed components; not a complete tested solar installation.",
+      "sourceIds": [
+        "giva-panel",
+        "solar-controller",
+        "vac-battery",
+        "e360-buck",
+        "haidang-enclosure",
+        "phongvu-card"
+      ],
+      "yearQuantities": [
+        3,
+        0,
+        0
+      ],
+      "yearsVnd": [
+        12936000,
+        0,
+        0
+      ],
+      "phase1Quantity": 1,
+      "phase1Vnd": 4312000
+    },
+    {
+      "id": "initial-spare",
+      "label": "One optional shared pH kit, included in this scenario",
+      "category": "CAPEX",
+      "quantity": 1,
+      "unitLowVnd": 1683506,
+      "unitBaseVnd": 1683506,
+      "unitHighVnd": 1683506,
+      "lowVnd": 1683506,
+      "baseVnd": 1683506,
+      "highVnd": 1683506,
+      "classification": "listed_price_with_assumed_quantity",
+      "basis": "One physical shared kit at a time; not three initial spares.",
+      "sourceIds": [
+        "dfrobot-ph"
+      ],
+      "yearQuantities": [
+        1,
+        0,
+        0
+      ],
+      "yearsVnd": [
+        1683506,
+        0,
+        0
+      ],
+      "phase1Quantity": 1,
+      "phase1Vnd": 1683506
+    },
+    {
+      "id": "starter",
+      "label": "Initial shared buffer and KCl stock",
+      "category": "CAPEX",
+      "quantity": 1,
+      "unitLowVnd": 1048000,
+      "unitBaseVnd": 1048000,
+      "unitHighVnd": 1048000,
+      "lowVnd": 1048000,
+      "baseVnd": 1048000,
+      "highVnd": 1048000,
+      "classification": "listed_price_with_assumed_quantity",
+      "basis": "Two 500mL buffer bottles and one 18mL KCl bottle. Replenishment below excludes these starter bottles.",
+      "sourceIds": [
+        "dongbac-ph4",
+        "dongbac-ph7",
+        "mlab-storage"
+      ],
+      "yearQuantities": [
+        1,
+        0,
+        0
+      ],
+      "yearsVnd": [
+        1048000,
+        0,
+        0
+      ],
+      "phase1Quantity": 1,
+      "phase1Vnd": 1048000
+    },
+    {
+      "id": "mounts",
+      "label": "Panel/probe brackets and protective cage",
+      "category": "CAPEX",
+      "quantity": 3,
+      "unitLowVnd": 1200000,
+      "unitBaseVnd": 2000000,
+      "unitHighVnd": 3000000,
+      "lowVnd": 3600000,
+      "baseVnd": 6000000,
+      "highVnd": 9000000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "Per-site fabricated support allowance; no supplier quote or structural acceptance.",
+      "sourceIds": [],
+      "yearQuantities": [
+        3,
+        0,
+        0
+      ],
+      "yearsVnd": [
+        6000000,
+        0,
+        0
+      ],
+      "phase1Quantity": 1,
+      "phase1Vnd": 2000000
+    },
+    {
+      "id": "battery-case",
+      "label": "Ventilated weather protection for AGM battery",
+      "category": "CAPEX",
+      "quantity": 3,
+      "unitLowVnd": 350000,
+      "unitBaseVnd": 600000,
+      "unitHighVnd": 1000000,
+      "lowVnd": 1050000,
+      "baseVnd": 1800000,
+      "highVnd": 3000000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "Separate from the listed electronics enclosure; mounting/fit/ventilation still engineering assumptions.",
+      "sourceIds": [],
+      "yearQuantities": [
+        3,
+        0,
+        0
+      ],
+      "yearsVnd": [
+        1800000,
+        0,
+        0
+      ],
+      "phase1Quantity": 1,
+      "phase1Vnd": 600000
+    },
+    {
+      "id": "cables",
+      "label": "Outdoor wire, conduit and connectors",
+      "category": "CAPEX",
+      "quantity": 3,
+      "unitLowVnd": 300000,
+      "unitBaseVnd": 500000,
+      "unitHighVnd": 900000,
+      "lowVnd": 900000,
+      "baseVnd": 1500000,
+      "highVnd": 2700000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "Allow 10m/site at 30000 VND/m plus 200000 fittings in base; lengths are assumptions, not surveyed measurements.",
+      "sourceIds": [],
+      "yearQuantities": [
+        3,
+        0,
+        0
+      ],
+      "yearsVnd": [
+        1500000,
+        0,
+        0
+      ],
+      "phase1Quantity": 1,
+      "phase1Vnd": 500000
+    },
+    {
+      "id": "dc-protection",
+      "label": "DC fuses, isolation and terminals",
+      "category": "CAPEX",
+      "quantity": 3,
+      "unitLowVnd": 250000,
+      "unitBaseVnd": 400000,
+      "unitHighVnd": 800000,
+      "lowVnd": 750000,
+      "baseVnd": 1200000,
+      "highVnd": 2400000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "Per-site parts allowance, not a validated protection design.",
+      "sourceIds": [],
+      "yearQuantities": [
+        3,
+        0,
+        0
+      ],
+      "yearsVnd": [
+        1200000,
+        0,
+        0
+      ],
+      "phase1Quantity": 1,
+      "phase1Vnd": 400000
+    },
+    {
+      "id": "surge",
+      "label": "Earthing and surge-protection materials",
+      "category": "CAPEX",
+      "quantity": 3,
+      "unitLowVnd": 300000,
+      "unitBaseVnd": 500000,
+      "unitHighVnd": 1000000,
+      "lowVnd": 900000,
+      "baseVnd": 1500000,
+      "highVnd": 3000000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "Cost allowance; soil/lightning/site requirements may alter scope.",
+      "sourceIds": [],
+      "yearQuantities": [
+        3,
+        0,
+        0
+      ],
+      "yearsVnd": [
+        1500000,
+        0,
+        0
+      ],
+      "phase1Quantity": 1,
+      "phase1Vnd": 500000
+    },
+    {
+      "id": "interfaces",
+      "label": "Additional analog/interface and small integration parts",
+      "category": "CAPEX",
+      "quantity": 3,
+      "unitLowVnd": 80000,
+      "unitBaseVnd": 150000,
+      "unitHighVnd": 300000,
+      "lowVnd": 240000,
+      "baseVnd": 450000,
+      "highVnd": 900000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "Excludes the already priced RS485 converter; not an assertion that a particular ADC is required.",
+      "sourceIds": [],
+      "yearQuantities": [
+        3,
+        0,
+        0
+      ],
+      "yearsVnd": [
+        450000,
+        0,
+        0
+      ],
+      "phase1Quantity": 1,
+      "phase1Vnd": 150000
+    },
+    {
+      "id": "integration",
+      "label": "Bench integration, firmware and offline-buffer work",
+      "category": "CAPEX",
+      "quantity": 6,
+      "unitLowVnd": 450000,
+      "unitBaseVnd": 600000,
+      "unitHighVnd": 800000,
+      "lowVnd": 2700000,
+      "baseVnd": 3600000,
+      "highVnd": 4800000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "Six 8-hour person-days; not completed engineering work or field validation.",
+      "sourceIds": [
+        "fdi-labour-benchmark",
+        "tiasang-labour-benchmark"
+      ],
+      "yearQuantities": [
+        6,
+        0,
+        0
+      ],
+      "yearsVnd": [
+        3600000,
+        0,
+        0
+      ],
+      "phase1Quantity": 6,
+      "phase1Vnd": 3600000
+    },
+    {
+      "id": "installation",
+      "label": "Site assembly and initial commissioning labour",
+      "category": "CAPEX",
+      "quantity": 6,
+      "unitLowVnd": 450000,
+      "unitBaseVnd": 600000,
+      "unitHighVnd": 800000,
+      "lowVnd": 2700000,
+      "baseVnd": 3600000,
+      "highVnd": 4800000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "Two person-days/site, including initial calibration labour; materials and reference services separately itemised.",
+      "sourceIds": [
+        "fdi-labour-benchmark",
+        "tiasang-labour-benchmark"
+      ],
+      "yearQuantities": [
+        6,
+        0,
+        0
+      ],
+      "yearsVnd": [
+        3600000,
+        0,
+        0
+      ],
+      "phase1Quantity": 2,
+      "phase1Vnd": 1200000
+    },
+    {
+      "id": "survey",
+      "label": "Planning, survey and deployment preparation labour",
+      "category": "CAPEX",
+      "quantity": 2,
+      "unitLowVnd": 450000,
+      "unitBaseVnd": 600000,
+      "unitHighVnd": 800000,
+      "lowVnd": 900000,
+      "baseVnd": 1200000,
+      "highVnd": 1600000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "Two person-days/project; no survey results are claimed.",
+      "sourceIds": [
+        "fdi-labour-benchmark"
+      ],
+      "yearQuantities": [
+        2,
+        0,
+        0
+      ],
+      "yearsVnd": [
+        1200000,
+        0,
+        0
+      ],
+      "phase1Quantity": 2,
+      "phase1Vnd": 1200000
+    },
+    {
+      "id": "training",
+      "label": "Operator training and handover labour",
+      "category": "CAPEX",
+      "quantity": 2,
+      "unitLowVnd": 450000,
+      "unitBaseVnd": 600000,
+      "unitHighVnd": 800000,
+      "lowVnd": 900000,
+      "baseVnd": 1200000,
+      "highVnd": 1600000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "Two person-days/project; recipients remain proposed.",
+      "sourceIds": [
+        "tiasang-labour-benchmark"
+      ],
+      "yearQuantities": [
+        2,
+        0,
+        0
+      ],
+      "yearsVnd": [
+        1200000,
+        0,
+        0
+      ],
+      "phase1Quantity": 2,
+      "phase1Vnd": 1200000
+    },
+    {
+      "id": "acceptance",
+      "label": "Reference instruments / independent acceptance service",
+      "category": "CAPEX",
+      "quantity": 3,
+      "unitLowVnd": 750000,
+      "unitBaseVnd": 1500000,
+      "unitHighVnd": 3000000,
+      "lowVnd": 2250000,
+      "baseVnd": 4500000,
+      "highVnd": 9000000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "Allowance/site for hire or verification; not arranged free equipment or a certified laboratory quotation.",
+      "sourceIds": [],
+      "yearQuantities": [
+        3,
+        0,
+        0
+      ],
+      "yearsVnd": [
+        4500000,
+        0,
+        0
+      ],
+      "phase1Quantity": 1,
+      "phase1Vnd": 1500000
+    },
+    {
+      "id": "international-delivery",
+      "label": "International shipment allowance",
+      "category": "CAPEX",
+      "quantity": 2,
+      "unitLowVnd": 600000,
+      "unitBaseVnd": 1000000,
+      "unitHighVnd": 1500000,
+      "lowVnd": 1200000,
+      "baseVnd": 2000000,
+      "highVnd": 3000000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "Two phased supply orders; destination, battery restrictions and carton weights unconfirmed.",
+      "sourceIds": [],
+      "yearQuantities": [
+        2,
+        0,
+        0
+      ],
+      "yearsVnd": [
+        2000000,
+        0,
+        0
+      ],
+      "phase1Quantity": 1,
+      "phase1Vnd": 1000000
+    },
+    {
+      "id": "local-delivery",
+      "label": "Domestic equipment delivery allowance",
+      "category": "CAPEX",
+      "quantity": 3,
+      "unitLowVnd": 110000,
+      "unitBaseVnd": 200000,
+      "unitHighVnd": 400000,
+      "lowVnd": 330000,
+      "baseVnd": 600000,
+      "highVnd": 1200000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "Cargo delivery/site; the public 110000 Hanoi minimum is a benchmark, not a complete quoted route. Not crew transport.",
+      "sourceIds": [
+        "lalamove-freight-benchmark"
+      ],
+      "yearQuantities": [
+        3,
+        0,
+        0
+      ],
+      "yearsVnd": [
+        600000,
+        0,
+        0
+      ],
+      "phase1Quantity": 1,
+      "phase1Vnd": 200000
+    },
+    {
+      "id": "initial-travel",
+      "label": "Additional commissioning mobilisation",
+      "category": "CAPEX",
+      "quantity": 2,
+      "unitLowVnd": 200000,
+      "unitBaseVnd": 300000,
+      "unitHighVnd": 500000,
+      "lowVnd": 400000,
+      "baseVnd": 600000,
+      "highVnd": 1000000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "Two extra mobilisation routes outside the 36 routine rounds; no repeated charge for the same journey.",
+      "sourceIds": [],
+      "yearQuantities": [
+        2,
+        0,
+        0
+      ],
+      "yearsVnd": [
+        600000,
+        0,
+        0
+      ],
+      "phase1Quantity": 1,
+      "phase1Vnd": 300000
+    },
+    {
+      "id": "landed-reserve",
+      "label": "Unspecified supply tax/import/payment allowance",
+      "category": "CAPEX",
+      "quantity": 1,
+      "unitLowVnd": 2221742,
+      "unitBaseVnd": 4443484,
+      "unitHighVnd": 8886969,
+      "lowVnd": 2221742,
+      "baseVnd": 4443484,
+      "highVnd": 8886969,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "5/10/20% analyst reserve on 44434844 VND of unclear-tax goods and assumed delivery. Not statutory VAT or duty; no second VAT on explicitly VAT-included goods.",
+      "sourceIds": [],
+      "yearQuantities": [
+        1,
+        0,
+        0
+      ],
+      "yearsVnd": [
+        4443484,
+        0,
+        0
+      ],
+      "phase1Quantity": 0,
+      "phase1Vnd": 1696595
+    },
+    {
+      "id": "field-labour",
+      "label": "Monthly on-site calibration/cleaning/testing crew",
+      "category": "OPEX",
+      "quantity": 72,
+      "unitLowVnd": 450000,
+      "unitBaseVnd": 600000,
+      "unitHighVnd": 800000,
+      "lowVnd": 32400000,
+      "baseVnd": 43200000,
+      "highVnd": 57600000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "36 grouped route-days x 2 technicians, 8h each. Includes all 96 monthly pH tasks, monthly DO cleaning, two-monthly DO/turbidity calibration and 16 six-month checks; no second calibration labour fee.",
+      "sourceIds": [
+        "fdi-labour-benchmark",
+        "tiasang-labour-benchmark"
+      ],
+      "yearQuantities": [
+        24,
+        24,
+        24
+      ],
+      "yearsVnd": [
+        14400000,
+        14400000,
+        14400000
+      ],
+      "phase1Quantity": 0,
+      "phase1Vnd": 0
+    },
+    {
+      "id": "field-travel",
+      "label": "Routine field-route transport",
+      "category": "OPEX",
+      "quantity": 36,
+      "unitLowVnd": 200000,
+      "unitBaseVnd": 300000,
+      "unitHighVnd": 500000,
+      "lowVnd": 7200000,
+      "baseVnd": 10800000,
+      "highVnd": 18000000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "12 routes/year across active stations; 6 testing rounds are included, not 6 extra trips. 300000/route is analyst allowance, not cargo fare. ",
+      "sourceIds": [],
+      "yearQuantities": [
+        12,
+        12,
+        12
+      ],
+      "yearsVnd": [
+        3600000,
+        3600000,
+        3600000
+      ],
+      "phase1Quantity": 0,
+      "phase1Vnd": 0
+    },
+    {
+      "id": "monitoring",
+      "label": "Daily remote review and alert triage",
+      "category": "OPEX",
+      "quantity": 274,
+      "unitLowVnd": 56250,
+      "unitBaseVnd": 75000,
+      "unitHighVnd": 100000,
+      "lowVnd": 15412500,
+      "baseVnd": 20550000,
+      "highVnd": 27400000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "15 minutes/day, 365/366/365 civil days; 600000/8=75000 per hour in base. No 24/7 staffed response/SLA is implied.",
+      "sourceIds": [
+        "tiasang-labour-benchmark"
+      ],
+      "yearQuantities": [
+        91.25,
+        91.5,
+        91.25
+      ],
+      "yearsVnd": [
+        6843750,
+        6862500,
+        6843750
+      ],
+      "phase1Quantity": 0,
+      "phase1Vnd": 0
+    },
+    {
+      "id": "software-support",
+      "label": "Software upkeep, backups and release checks",
+      "category": "OPEX",
+      "quantity": 144,
+      "unitLowVnd": 56250,
+      "unitBaseVnd": 75000,
+      "unitHighVnd": 100000,
+      "lowVnd": 8100000,
+      "baseVnd": 10800000,
+      "highVnd": 14400000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "Four person-hours/shared system-month, separate from daily triage and on-site work.",
+      "sourceIds": [],
+      "yearQuantities": [
+        48,
+        48,
+        48
+      ],
+      "yearsVnd": [
+        3600000,
+        3600000,
+        3600000
+      ],
+      "phase1Quantity": 0,
+      "phase1Vnd": 0
+    },
+    {
+      "id": "sim",
+      "label": "Connect8 30-day service cycles",
+      "category": "OPEX",
+      "quantity": 99,
+      "unitLowVnd": 8000,
+      "unitBaseVnd": 8000,
+      "unitHighVnd": 8000,
+      "lowVnd": 792000,
+      "baseVnd": 792000,
+      "highVnd": 792000,
+      "classification": "listed_price_with_assumed_quantity",
+      "basis": "Dated 2027-01-01 / 2027-07-01 illustration, 37+31+31 prepaid cycles; eligibility unverified.",
+      "sourceIds": [
+        "viettel-iot-plan"
+      ],
+      "yearQuantities": [
+        27,
+        36,
+        36
+      ],
+      "yearsVnd": [
+        216000,
+        288000,
+        288000
+      ],
+      "phase1Quantity": 0,
+      "phase1Vnd": 0
+    },
+    {
+      "id": "activation",
+      "label": "SIM setup and activation allowance",
+      "category": "OPEX",
+      "quantity": 3,
+      "unitLowVnd": 30000,
+      "unitBaseVnd": 50000,
+      "unitHighVnd": 100000,
+      "lowVnd": 90000,
+      "baseVnd": 150000,
+      "highVnd": 300000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "Analyst allowance, not a published activation fee.",
+      "sourceIds": [],
+      "yearQuantities": [
+        3,
+        0,
+        0
+      ],
+      "yearsVnd": [
+        150000,
+        0,
+        0
+      ],
+      "phase1Quantity": 0,
+      "phase1Vnd": 0
+    },
+    {
+      "id": "hosting-compute",
+      "label": "Shared web and Postgres compute",
+      "category": "OPEX",
+      "quantity": 36,
+      "unitLowVnd": 337220,
+      "unitBaseVnd": 337220,
+      "unitHighVnd": 337220,
+      "lowVnd": 12139920,
+      "baseVnd": 12139920,
+      "highVnd": 12139920,
+      "classification": "listed_price_with_assumed_quantity",
+      "basis": "7+6 USD/shared month; no multiplication by three stations.",
+      "sourceIds": [
+        "render-hosting-price"
+      ],
+      "yearQuantities": [
+        12,
+        12,
+        12
+      ],
+      "yearsVnd": [
+        4046640,
+        4046640,
+        4046640
+      ],
+      "phase1Quantity": 0,
+      "phase1Vnd": 0
+    },
+    {
+      "id": "db-storage",
+      "label": "Assumed 20GB Postgres storage",
+      "category": "OPEX",
+      "quantity": 36,
+      "unitLowVnd": 155640,
+      "unitBaseVnd": 155640,
+      "unitHighVnd": 155640,
+      "lowVnd": 5603040,
+      "baseVnd": 5603040,
+      "highVnd": 5603040,
+      "classification": "listed_price_with_assumed_quantity",
+      "basis": "20GB x USD0.30/GB-month. Capacity is assumed; 30-day raw-data retention plus aggregates, no full raw three-year archive guarantee.",
+      "sourceIds": [
+        "render-storage-benchmark"
+      ],
+      "yearQuantities": [
+        12,
+        12,
+        12
+      ],
+      "yearsVnd": [
+        1867680,
+        1867680,
+        1867680
+      ],
+      "phase1Quantity": 0,
+      "phase1Vnd": 0
+    },
+    {
+      "id": "cloud-extras",
+      "label": "Cloud traffic, exports and service-fee allowance",
+      "category": "OPEX",
+      "quantity": 36,
+      "unitLowVnd": 77820,
+      "unitBaseVnd": 155640,
+      "unitHighVnd": 311280,
+      "lowVnd": 2801520,
+      "baseVnd": 5603040,
+      "highVnd": 11206080,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "USD6/shared month internal reserve beyond compute/storage; not a Render bundle, workspace contract or paid MQTT quote.",
+      "sourceIds": [],
+      "yearQuantities": [
+        12,
+        12,
+        12
+      ],
+      "yearsVnd": [
+        1867680,
+        1867680,
+        1867680
+      ],
+      "phase1Quantity": 0,
+      "phase1Vnd": 0
+    },
+    {
+      "id": "ph-buffer-refill",
+      "label": "Quarterly fresh shared pH buffer pairs after starter",
+      "category": "OPEX",
+      "quantity": 11,
+      "unitLowVnd": 908000,
+      "unitBaseVnd": 908000,
+      "unitHighVnd": 908000,
+      "lowVnd": 9988000,
+      "baseVnd": 9988000,
+      "highVnd": 9988000,
+      "classification": "listed_price_with_assumed_quantity",
+      "basis": "12 quarterly pairs total less one initial pair; 4.01/7.01 labelled values need procedure/temperature validation. Manufacturer expiry overrides the assumed quarterly refresh.",
+      "sourceIds": [
+        "dongbac-ph4",
+        "dongbac-ph7"
+      ],
+      "yearQuantities": [
+        3,
+        4,
+        4
+      ],
+      "yearsVnd": [
+        2724000,
+        3632000,
+        3632000
+      ],
+      "phase1Quantity": 0,
+      "phase1Vnd": 0
+    },
+    {
+      "id": "kcl-refill",
+      "label": "Quarterly KCl stock after starter",
+      "category": "OPEX",
+      "quantity": 23,
+      "unitLowVnd": 140000,
+      "unitBaseVnd": 140000,
+      "unitHighVnd": 140000,
+      "lowVnd": 3220000,
+      "baseVnd": 3220000,
+      "highVnd": 3220000,
+      "classification": "listed_price_with_assumed_quantity",
+      "basis": "Two 18mL bottles/quarter x12 quarters less one starter bottle. Budget quantity, not measured consumption.",
+      "sourceIds": [
+        "mlab-storage"
+      ],
+      "yearQuantities": [
+        7,
+        8,
+        8
+      ],
+      "yearsVnd": [
+        980000,
+        1120000,
+        1120000
+      ],
+      "phase1Quantity": 0,
+      "phase1Vnd": 0
+    },
+    {
+      "id": "rinse-clean",
+      "label": "Rinse water, cleaning supplies and waste containers",
+      "category": "OPEX",
+      "quantity": 36,
+      "unitLowVnd": 30000,
+      "unitBaseVnd": 50000,
+      "unitHighVnd": 100000,
+      "lowVnd": 1080000,
+      "baseVnd": 1800000,
+      "highVnd": 3600000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "One shared batch/route; keep contaminated standards separate from clean stocks.",
+      "sourceIds": [],
+      "yearQuantities": [
+        12,
+        12,
+        12
+      ],
+      "yearsVnd": [
+        600000,
+        600000,
+        600000
+      ],
+      "phase1Quantity": 0,
+      "phase1Vnd": 0
+    },
+    {
+      "id": "turbidity-standards",
+      "label": "Turbidity calibration standard allowance",
+      "category": "OPEX",
+      "quantity": 48,
+      "unitLowVnd": 30000,
+      "unitBaseVnd": 50000,
+      "unitHighVnd": 100000,
+      "lowVnd": 1440000,
+      "baseVnd": 2400000,
+      "highVnd": 4800000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "Two-monthly early calibration on monthly visits: 18+15+15 tasks, not 48 trips. This replaces the independent strict-90-day example only within this planning scenario.",
+      "sourceIds": [],
+      "yearQuantities": [
+        12,
+        18,
+        18
+      ],
+      "yearsVnd": [
+        600000,
+        900000,
+        900000
+      ],
+      "phase1Quantity": 0,
+      "phase1Vnd": 0
+    },
+    {
+      "id": "do-standards",
+      "label": "DO calibration reference/standard allowance",
+      "category": "OPEX",
+      "quantity": 48,
+      "unitLowVnd": 30000,
+      "unitBaseVnd": 50000,
+      "unitHighVnd": 100000,
+      "lowVnd": 1440000,
+      "baseVnd": 2400000,
+      "highVnd": 4800000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "Two-monthly early calibration includes the manufacturer three-month recommendation; method/material suitability unverified. Labour is in monthly crew.",
+      "sourceIds": [
+        "dfrobot-do-maintenance"
+      ],
+      "yearQuantities": [
+        12,
+        18,
+        18
+      ],
+      "yearsVnd": [
+        600000,
+        900000,
+        900000
+      ],
+      "phase1Quantity": 0,
+      "phase1Vnd": 0
+    },
+    {
+      "id": "field-ppe",
+      "label": "Field consumables and PPE",
+      "category": "OPEX",
+      "quantity": 36,
+      "unitLowVnd": 20000,
+      "unitBaseVnd": 30000,
+      "unitHighVnd": 60000,
+      "lowVnd": 720000,
+      "baseVnd": 1080000,
+      "highVnd": 2160000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "Small per-route consumables allowance; no hazardous-space entry or boat work included.",
+      "sourceIds": [],
+      "yearQuantities": [
+        12,
+        12,
+        12
+      ],
+      "yearsVnd": [
+        360000,
+        360000,
+        360000
+      ],
+      "phase1Quantity": 0,
+      "phase1Vnd": 0
+    },
+    {
+      "id": "incidents",
+      "label": "Unscheduled response labour and travel pool",
+      "category": "OPEX",
+      "quantity": 6,
+      "unitLowVnd": 1100000,
+      "unitBaseVnd": 1500000,
+      "unitHighVnd": 2100000,
+      "lowVnd": 6600000,
+      "baseVnd": 9000000,
+      "highVnd": 12600000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "Two extra events/year; per event two technician-days plus one extra trip. Parts below are separate reserves. No restoration-time guarantee.",
+      "sourceIds": [],
+      "yearQuantities": [
+        2,
+        2,
+        2
+      ],
+      "yearsVnd": [
+        3000000,
+        3000000,
+        3000000
+      ],
+      "phase1Quantity": 0,
+      "phase1Vnd": 0
+    },
+    {
+      "id": "independent-checks",
+      "label": "Independent verification / laboratory screening pool",
+      "category": "OPEX",
+      "quantity": 6,
+      "unitLowVnd": 300000,
+      "unitBaseVnd": 500000,
+      "unitHighVnd": 1000000,
+      "lowVnd": 1800000,
+      "baseVnd": 3000000,
+      "highVnd": 6000000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "Two events/year; analyst allowance, not an accredited enforcement sample quotation.",
+      "sourceIds": [],
+      "yearQuantities": [
+        2,
+        2,
+        2
+      ],
+      "yearsVnd": [
+        1000000,
+        1000000,
+        1000000
+      ],
+      "phase1Quantity": 0,
+      "phase1Vnd": 0
+    },
+    {
+      "id": "sms",
+      "label": "Messaging allowance",
+      "category": "OPEX",
+      "quantity": 36,
+      "unitLowVnd": 10000,
+      "unitBaseVnd": 30000,
+      "unitHighVnd": 60000,
+      "lowVnd": 360000,
+      "baseVnd": 1080000,
+      "highVnd": 2160000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "Internal monthly allowance; no assumed free public SMS from the SIM plan.",
+      "sourceIds": [],
+      "yearQuantities": [
+        12,
+        12,
+        12
+      ],
+      "yearsVnd": [
+        360000,
+        360000,
+        360000
+      ],
+      "phase1Quantity": 0,
+      "phase1Vnd": 0
+    },
+    {
+      "id": "do-renewal",
+      "label": "DO cap renewal fallback reserve",
+      "category": "Lifecycle",
+      "quantity": 6,
+      "unitLowVnd": 4428000,
+      "unitBaseVnd": 4428000,
+      "unitHighVnd": 4428000,
+      "lowVnd": 26568000,
+      "baseVnd": 26568000,
+      "highVnd": 26568000,
+      "classification": "listed_price_with_assumed_quantity",
+      "basis": "Annual film renewal before project end: months12/24 for ST01,18/30 for ST02/03. With no exact optical-cap price, reserve a full SEN0680 per event, not an invented cap price. This is a conservative funding reserve, not a replacement instruction.",
+      "sourceIds": [
+        "hshop-do",
+        "dfrobot-do-maintenance"
+      ],
+      "yearQuantities": [
+        1,
+        3,
+        2
+      ],
+      "yearsVnd": [
+        4428000,
+        13284000,
+        8856000
+      ],
+      "phase1Quantity": 0,
+      "phase1Vnd": 0
+    },
+    {
+      "id": "ph-renewal",
+      "label": "pH stock replenishment reserve",
+      "category": "Lifecycle",
+      "quantity": 6,
+      "unitLowVnd": 1683506,
+      "unitBaseVnd": 1683506,
+      "unitHighVnd": 1683506,
+      "lowVnd": 10101036,
+      "baseVnd": 10101036,
+      "highVnd": 10101036,
+      "classification": "listed_price_with_assumed_quantity",
+      "basis": "Annual planning replenishment allowance, not manufacturer replacement deadline; preserves one initial shared spare. Condition may require more or less.",
+      "sourceIds": [
+        "dfrobot-ph"
+      ],
+      "yearQuantities": [
+        1,
+        3,
+        2
+      ],
+      "yearsVnd": [
+        1683506,
+        5050518,
+        3367012
+      ],
+      "phase1Quantity": 0,
+      "phase1Vnd": 0
+    },
+    {
+      "id": "battery-renewal",
+      "label": "One shared AGM replacement allowance",
+      "category": "Lifecycle",
+      "quantity": 1,
+      "unitLowVnd": 1588000,
+      "unitBaseVnd": 1588000,
+      "unitHighVnd": 1588000,
+      "lowVnd": 1588000,
+      "baseVnd": 1588000,
+      "highVnd": 1588000,
+      "classification": "listed_price_with_assumed_quantity",
+      "basis": "Condition-based pool; not automatic replacement of every battery at month36.",
+      "sourceIds": [
+        "vac-battery"
+      ],
+      "yearQuantities": [
+        0,
+        0,
+        1
+      ],
+      "yearsVnd": [
+        0,
+        0,
+        1588000
+      ],
+      "phase1Quantity": 0,
+      "phase1Vnd": 0
+    },
+    {
+      "id": "board-renewal",
+      "label": "One shared Q190 repair-parts allowance",
+      "category": "Lifecycle",
+      "quantity": 1,
+      "unitLowVnd": 1798680,
+      "unitBaseVnd": 1798680,
+      "unitHighVnd": 1798680,
+      "lowVnd": 1798680,
+      "baseVnd": 1798680,
+      "highVnd": 1798680,
+      "classification": "listed_price_with_assumed_quantity",
+      "basis": "Condition-based parts pool; labour/travel are in the incident row.",
+      "sourceIds": [
+        "lilygo-controller"
+      ],
+      "yearQuantities": [
+        0,
+        1,
+        0
+      ],
+      "yearsVnd": [
+        0,
+        1798680,
+        0
+      ],
+      "phase1Quantity": 0,
+      "phase1Vnd": 0
+    },
+    {
+      "id": "turbidity-renewal",
+      "label": "One shared SEN0710 damage allowance",
+      "category": "Lifecycle",
+      "quantity": 1,
+      "unitLowVnd": 5940260,
+      "unitBaseVnd": 5940260,
+      "unitHighVnd": 5940260,
+      "lowVnd": 5940260,
+      "baseVnd": 5940260,
+      "highVnd": 5940260,
+      "classification": "listed_price_with_assumed_quantity",
+      "basis": "Condition-based reserve, not a claim the probe fails during the project.",
+      "sourceIds": [
+        "dfrobot-turbidity"
+      ],
+      "yearQuantities": [
+        0,
+        0,
+        1
+      ],
+      "yearsVnd": [
+        0,
+        0,
+        5940260
+      ],
+      "phase1Quantity": 0,
+      "phase1Vnd": 0
+    },
+    {
+      "id": "disposal",
+      "label": "End-of-project collection and disposal allowance",
+      "category": "Lifecycle",
+      "quantity": 3,
+      "unitLowVnd": 300000,
+      "unitBaseVnd": 500000,
+      "unitHighVnd": 1000000,
+      "lowVnd": 900000,
+      "baseVnd": 1500000,
+      "highVnd": 3000000,
+      "classification": "analyst_planning_allowance_not_quote",
+      "basis": "Per station covering battery/electronics/probe/chemical handling; final-round crew travel already counted. No free programme eligibility is assumed.",
+      "sourceIds": [
+        "recycling-scope-benchmark"
+      ],
+      "yearQuantities": [
+        0,
+        0,
+        3
+      ],
+      "yearsVnd": [
+        0,
+        0,
+        1500000
+      ],
+      "phase1Quantity": 0,
+      "phase1Vnd": 0
+    }
+  ],
+  "categories": [
+    {
+      "category": "CAPEX",
+      "lowVnd": 78508686,
+      "baseVnd": 91660428,
+      "highVnd": 114353913
+    },
+    {
+      "category": "OPEX",
+      "lowVnd": 111186980,
+      "baseVnd": 143606000,
+      "highVnd": 196769040
+    },
+    {
+      "category": "Lifecycle",
+      "lowVnd": 46895976,
+      "baseVnd": 47495976,
+      "highVnd": 48995976
+    }
+  ],
+  "baseBeforeContingencyVnd": 282762404,
+  "contingencyRate": 0.2,
+  "contingencyVnd": 56552481,
+  "basePlanningBudgetVnd": 339314885,
+  "lowScenarioVnd": 260250806,
+  "highScenarioVnd": 468154608,
+  "lowScenarioContingencyRate": 0.1,
+  "highScenarioContingencyRate": 0.3,
+  "years": [
+    {
+      "year": 1,
+      "beforeContingencyVnd": 144587684,
+      "contingencyVnd": 28917537,
+      "budgetVnd": 173505221
+    },
+    {
+      "year": 2,
+      "beforeContingencyVnd": 68537698,
+      "contingencyVnd": 13707540,
+      "budgetVnd": 82245238
+    },
+    {
+      "year": 3,
+      "beforeContingencyVnd": 69637022,
+      "contingencyVnd": 13927404,
+      "budgetVnd": 83564426
+    }
+  ],
+  "phase1CapexVnd": 37023247,
+  "phase2CapexVnd": 54637181,
+  "firstStationCoreVnd": 13933146,
+  "threeCorePlusSharedKitVnd": 43482944,
+  "allocations": [
+    {
+      "station": "ST-01",
+      "operatingMonths": 36,
+      "allocatedBudgetVnd": 120285262
+    },
+    {
+      "station": "ST-02",
+      "operatingMonths": 30,
+      "allocatedBudgetVnd": 109514812
+    },
+    {
+      "station": "ST-03",
+      "operatingMonths": 30,
+      "allocatedBudgetVnd": 109514811
+    }
+  ],
+  "allocationRule": "CAPEX and lifecycle reserves divided equally; OPEX allocated by36/30/30 station-months. Bookkeeping allocation only, not per-site contractor pricing.",
+  "servicePlan": [
+    {
+      "station": "ST-01",
+      "month": 1,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-01",
+      "month": 2,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-01",
+      "month": 3,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-01",
+      "month": 4,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-01",
+      "month": 5,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-01",
+      "month": 6,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": true,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-01",
+      "month": 7,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-01",
+      "month": 8,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-01",
+      "month": 9,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-01",
+      "month": 10,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-01",
+      "month": 11,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-01",
+      "month": 12,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": true,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-01",
+      "month": 13,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-01",
+      "month": 14,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-01",
+      "month": 15,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-01",
+      "month": 16,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-01",
+      "month": 17,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-01",
+      "month": 18,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": true,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-01",
+      "month": 19,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-01",
+      "month": 20,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-01",
+      "month": 21,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-01",
+      "month": 22,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-01",
+      "month": 23,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-01",
+      "month": 24,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": true,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-01",
+      "month": 25,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-01",
+      "month": 26,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-01",
+      "month": 27,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-01",
+      "month": 28,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-01",
+      "month": 29,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-01",
+      "month": 30,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": true,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-01",
+      "month": 31,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-01",
+      "month": 32,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-01",
+      "month": 33,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-01",
+      "month": 34,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-01",
+      "month": 35,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-01",
+      "month": 36,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": true,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-02",
+      "month": 7,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-02",
+      "month": 8,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-02",
+      "month": 9,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-02",
+      "month": 10,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-02",
+      "month": 11,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-02",
+      "month": 12,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": true,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-02",
+      "month": 13,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-02",
+      "month": 14,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-02",
+      "month": 15,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-02",
+      "month": 16,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-02",
+      "month": 17,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-02",
+      "month": 18,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": true,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-02",
+      "month": 19,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-02",
+      "month": 20,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-02",
+      "month": 21,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-02",
+      "month": 22,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-02",
+      "month": 23,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-02",
+      "month": 24,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": true,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-02",
+      "month": 25,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-02",
+      "month": 26,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-02",
+      "month": 27,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-02",
+      "month": 28,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-02",
+      "month": 29,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-02",
+      "month": 30,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": true,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-02",
+      "month": 31,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-02",
+      "month": 32,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-02",
+      "month": 33,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-02",
+      "month": 34,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-02",
+      "month": 35,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-02",
+      "month": 36,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": true,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-03",
+      "month": 7,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-03",
+      "month": 8,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-03",
+      "month": 9,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-03",
+      "month": 10,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-03",
+      "month": 11,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-03",
+      "month": 12,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": true,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-03",
+      "month": 13,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-03",
+      "month": 14,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-03",
+      "month": 15,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-03",
+      "month": 16,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-03",
+      "month": 17,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-03",
+      "month": 18,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": true,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-03",
+      "month": 19,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-03",
+      "month": 20,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-03",
+      "month": 21,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-03",
+      "month": 22,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-03",
+      "month": 23,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-03",
+      "month": 24,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": true,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-03",
+      "month": 25,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-03",
+      "month": 26,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-03",
+      "month": 27,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-03",
+      "month": 28,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-03",
+      "month": 29,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-03",
+      "month": 30,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": true,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-03",
+      "month": 31,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-03",
+      "month": 32,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-03",
+      "month": 33,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-03",
+      "month": 34,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": true
+    },
+    {
+      "station": "ST-03",
+      "month": 35,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": false,
+      "earlyDoAndTurbidityCalibration": false
+    },
+    {
+      "station": "ST-03",
+      "month": 36,
+      "ph": true,
+      "doCleaning": true,
+      "fullTesting": true,
+      "earlyDoAndTurbidityCalibration": true
+    }
+  ],
+  "plannedMonthlyRoutes": 36,
+  "testingRoundsAlreadyWithinMonthlyRoutes": 6,
+  "phTasks": 96,
+  "twoMonthlyCalibrationTasks": 48,
+  "actualProjectCost": null,
+  "actualFundingCommitments": false,
+  "fieldPerformanceVerified": false,
+  "scopeExclusions": [
+    "land acquisition, civil river works, confined-space/diving/boat access",
+    "regulatory enforcement investigation and fines",
+    "permanent24/7staffed contractual SLA or large enterprise hosting",
+    "a motorised wiper or flood-proof civil structure; planning uses monthly manual cleaning",
+    "raw-data retention beyond the stated assumed cloud envelope"
+  ],
+  "disclosures": [
+    "All allowance values are analyst choices, not vendor averages or quotations.",
+    "A complete modelled scope is not a complete verified installation. Low/high scenarios are not probability or confidence bounds.",
+    "No student or named teammate is assigned as an operator, payer or field signatory.",
+    "No free labour, free cloud capacity, free replacement caps or confirmed grants are assumed."
+  ]
+}

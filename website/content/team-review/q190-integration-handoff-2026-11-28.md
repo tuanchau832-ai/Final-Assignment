@@ -1,5 +1,8 @@
 # Cập nhật chi phí Q190 cho bản tích hợp — gói local 28/11/2026
 
+> **SUPERSEDED:** Dùng [gói submission closeout](submission-closeout-2026-11-28/README.md) cho số hiện hành và patch đã rút gọn. Các patch/số partial phía dưới chỉ lưu lịch sử.
+
+
 > **ĐÃ ĐƯỢC THAY THẾ cho bàn giao mới:** [Gói bốn file](cost-release-2026-11-28/README.md) bổ sung Home, nguồn phụ kiện và hai patch theo base. Giữ gói ba file dưới đây làm lịch sử; không áp thêm sau patch mới.
 
 

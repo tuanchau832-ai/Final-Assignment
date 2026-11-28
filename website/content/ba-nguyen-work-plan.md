@@ -1,5 +1,8 @@
 # Kế hoạch phần việc Bá Nguyên — Cost Analysis
 
+> **ĐÃ CÓ GÓI THAY THẾ — 28/11:** [Chi phí rút gọn, ngân sách kế hoạch 339.314.885 VND, lịch 36 chuyến và hồ sơ Word/AI](team-review/submission-closeout-2026-11-28/README.md). Những số partial, lịch và yêu cầu chờ trong tài liệu dưới đây là lịch sử khi khác gói mới; không chuyển tiếp như câu hỏi mới.
+
+
 > **BẢN HIỆN HÀNH: [Bá Nguyên — bắt đầu đọc tại đây](ba-nguyen-current-handoff.md).** Các hướng dẫn phía dưới được lưu theo thời điểm, không phải danh sách việc/câu hỏi hiện tại. Đặc biệt: 24/26 lượt và ba kit pH reserve đã bị thay thế; không áp lại giá hoặc gửi câu hỏi cũ.
 
 <!-- BA-NGUYEN-HISTORY-BOUNDARY -->

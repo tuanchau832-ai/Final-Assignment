@@ -1,0 +1,27 @@
+{
+  "scope": "Published final-website snapshot; additional text zoom/default-scroll checks, not physical phone.",
+  "cases": [
+    {
+      "width": 390,
+      "htmlFontSize200PercentPageFit": "PASS",
+      "tableStillScrollable": "PASS",
+      "defaultScrollScreenshot": "published-final-budget-default-390.png"
+    },
+    {
+      "width": 1440,
+      "htmlFontSize200PercentPageFit": "PASS",
+      "tableStillScrollable": "PASS",
+      "defaultScrollScreenshot": "published-final-budget-default-1440.png"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "published-final-budget-default-390.png",
+      "sha256": "ca7a2c133a23387a3fd3510054e86989d8231907ddbfc450ce623615817a22f2"
+    },
+    {
+      "file": "published-final-budget-default-1440.png",
+      "sha256": "53a8c6f3058c57bcbf37cc1179db30d35a570731f9acdf5ab83f29af9d6c5ea2"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "files_sha256": {
+    "ba-nguyen-cost-appendix-2026-11-28.html": "ec7b54f264fdc19c33b39454953159c85b141ee13207a5a6b3452518cd79fc5e",
+    "ba-nguyen-cost-submission-2026-11-28.docx": "5f6fda4c47529fe8162f6de649ce3eec83d972225c9befd90754cae20e91513f",
+    "ba-nguyen-ai-log-2026-11-28.html": "66688f950c2221910109f952944a81074773f58a3d225ad101c3dac8026f3de5"
+  },
+  "hosted_url_supplied": false,
+  "cost_section_only_docx": true,
+  "ai_log": {
+    "session_id": "01a1f338-f391-7683-99ad-dc09d50c64b1",
+    "exported_date": "2026-11-28",
+    "messages": 126,
+    "user_messages": 68,
+    "assistant_final_messages": 58,
+    "first_timestamp": "2026-11-19T09:53:16.355Z",
+    "last_timestamp": "2026-11-28T12:21:32.411Z",
+    "scope": "Actual saved text messages; original inline images, interface screenshots, hidden reasoning/tool payloads and unrelated IDE context excluded. Local user paths and internal memory citations redacted. Current-turn final response does not yet exist; current output artifacts are the budget/report/Word files."
+  }
+}

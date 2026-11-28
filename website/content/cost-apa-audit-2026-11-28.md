@@ -1,5 +1,8 @@
 # APA phần Cost Analysis — bổ sung sau nghiên cứu BOM, 28/11/2026
 
+> **ĐÃ CÓ GÓI THAY THẾ — 28/11:** [Chi phí rút gọn, ngân sách kế hoạch 339.314.885 VND, lịch 36 chuyến và hồ sơ Word/AI](team-review/submission-closeout-2026-11-28/README.md). Những số partial, lịch và yêu cầu chờ trong tài liệu dưới đây là lịch sử khi khác gói mới; không chuyển tiếp như câu hỏi mới.
+
+
 > **Cập nhật sau bàn giao phụ kiện:** Cost Analysis hiện có **420 từ đoạn văn**, ba bảng và **29 citation ID** khớp References. Thêm chín nguồn có retrieval 28/11; Đông Bắc n.d.-a/b theo title 4.01/7.01. Kết quả 335 từ/20 ID phía dưới là lần rà trước, không còn là số hiện hành. [Kiểm nội dung](team-review/cost-release-2026-11-28/content-check.json), [browser mới](team-review/cost-release-2026-11-28/browser-results.json). Không suy ra word count toàn bài.
 
 

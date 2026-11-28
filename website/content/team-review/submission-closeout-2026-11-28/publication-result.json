@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-28",
+  "authorization": "User explicitly approved updating final-website with this reviewed integration package; main excluded.",
+  "final_before": "ee0502ca3c487f20a4a564ec8863f9a58697006a",
+  "final_after": "e18f8b44f79dc136b017b6e3d5e4eace8477b8de",
+  "files": [
+    "website/src/content/data.ts",
+    "website/src/content/planning-budget.ts",
+    "website/src/content/pages/home.html",
+    "website/src/content/pages/implementation.html",
+    "website/src/content/pages/appendices.html",
+    "website/src/content/pages/references.html",
+    "website/src/scripts/site.ts",
+    "website/public/documents/ba-nguyen-ai-log-2026-11-28.html",
+    "website/public/documents/ba-nguyen-cost-appendix-2026-11-28.html",
+    "website/public/documents/ba-nguyen-cost-submission-2026-11-28.docx",
+    "website/public/documents/hanoi-waterwatch-group-compilation-draft-2026-11-28.docx"
+  ],
+  "main_before": "8886aa2e6ab38d99283c5f14a83b08b6f70360ef",
+  "tuan_before": "ea4cce0ab3e1c520e074b48ae703d3dfe69570fb",
+  "selected_local_branch": "feature/ba-nguyen-cost-analysis",
+  "status": "published_and_remote_verified",
+  "main_after": "8886aa2e6ab38d99283c5f14a83b08b6f70360ef",
+  "tuan_after": "ea4cce0ab3e1c520e074b48ae703d3dfe69570fb",
+  "remote_source_hashes": "PASS"
+}

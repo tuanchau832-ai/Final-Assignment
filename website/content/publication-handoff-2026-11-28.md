@@ -1,5 +1,8 @@
 # Bá Nguyên — gói bàn giao chi phí hiện hành, 28/11/2026
 
+> **ĐÃ CÓ GÓI THAY THẾ — 28/11:** [Chi phí rút gọn, ngân sách kế hoạch 339.314.885 VND, lịch 36 chuyến và hồ sơ Word/AI](team-review/submission-closeout-2026-11-28/README.md). Những số partial, lịch và yêu cầu chờ trong tài liệu dưới đây là lịch sử khi khác gói mới; không chuyển tiếp như câu hỏi mới.
+
+
 Người dùng đã yêu cầu bàn giao, đưa gói cập nhật lên branch Bá Nguyên và tự tìm/chọn số tham chiếu thay vì chờ Akai/Đạt. Gói này chỉ dành cho **feature/ba-nguyen-cost-analysis**; không thay main, final-website hoặc nhánh Tuấn, không merge/deploy hay đặt hàng. Không phát sinh câu hỏi mới giao cho đồng đội.
 
 ## Đọc và dùng đúng số

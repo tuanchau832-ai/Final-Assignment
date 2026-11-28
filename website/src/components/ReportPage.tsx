@@ -26,7 +26,9 @@ export function ReportPage({ index }: { index: number }) {
           <h2 id={id} tabIndex={-1}>{title}</h2>
           {paragraphs?.map(({ text, citations }) => (
             <p key={text}>
-              {text}{citations && <> <Citation references={citations} /></>}
+              {citations && (section.label === 'Cost analysis' || id.startsWith('cost-'))
+                ? <>{text.replace(/\.$/, '')} <Citation references={citations} />.</>
+                : <>{text}{citations && <> <Citation references={citations} /></>}</>}
             </p>
           ))}
           {pending && <Pending>{pending}</Pending>}

@@ -1,0 +1,113 @@
+{
+  "date": "2026-11-28",
+  "coreVnd": 13933146,
+  "coreThreePlusKitVnd": 43482944,
+  "modelledBudgetVnd": 339314885,
+  "scope": "Cost-only integration plus disclosed own AI contribution; no target branch changed by preparing this package",
+  "targets": [
+    {
+      "base_commit": "ea4cce0ab3e1c520e074b48ae703d3dfe69570fb",
+      "patch": "tuan-ea4cce0a-submission.patch",
+      "patch_sha256": "178ed6fb9096ac6ff65bfa5cc1d7950b836f9b8ca04cda140cf621e00cbeb164",
+      "files": [
+        {
+          "path": "website/src/content/data.ts",
+          "before_sha256": "9c6d5e910c71515f69d4b2f3e6c8483d6234255dd66c02911d9e244d4d5831c5",
+          "after_sha256": "b7daa09df5692bdc2da35c3eb4152497c3145c5737b253bd752ae12f6d2003b8"
+        },
+        {
+          "path": "website/src/content/planning-budget.ts",
+          "before_sha256": null,
+          "after_sha256": "c2287abe85b8373ab3f32fd304131a66e52f901592ee7ba0b0261abfd349f6cd"
+        },
+        {
+          "path": "website/src/content/pages/home.html",
+          "before_sha256": "9b6a3eb079b8896f4caed3c2ea41547d959f6cfef17c438dac66a734f7ed4628",
+          "after_sha256": "02e43950b7aa59d3a29470061834ced027c95a2e0e40f574d1de84bb6b79ec1e"
+        },
+        {
+          "path": "website/src/content/pages/implementation.html",
+          "before_sha256": "589e22e42c5303d916869a878ebff63ad2a040b3c4a74897769bb557dda9d986",
+          "after_sha256": "a079bd65021aebf67c65c3585b4b0f0468beddaca311870373e303206a20a269"
+        },
+        {
+          "path": "website/src/content/pages/appendices.html",
+          "before_sha256": "a276d2bea2f2f80d9eac809bce5c3df319c87a393bd0f762c90d4a4fc4c08467",
+          "after_sha256": "5d033ede94b9af300646f5edc1cb8b307ec4a15d6cc069cf0eaffd04af9cc0ac"
+        },
+        {
+          "path": "website/src/content/pages/references.html",
+          "before_sha256": "f5d76d4383a26f3efd6a4fb59f316e234039e07b6377870bb3807cedf61fe3c6",
+          "after_sha256": "f0810c8c801425c99bc8c69b7719587ccbe95fc739e11d76247f3af7d4cadf17"
+        },
+        {
+          "path": "website/src/scripts/site.ts",
+          "before_sha256": "ee826b9968c7bd585330cb19233386609e7b72fa52dfb91e846c2176456c5e6b",
+          "after_sha256": "2f7e3371de779eb356667afa24b61ef68639486c10cd8bf0141b1a6b22f12826"
+        }
+      ],
+      "dry_apply_and_hashes": "PASS"
+    },
+    {
+      "base_commit": "ee0502ca3c487f20a4a564ec8863f9a58697006a",
+      "patch": "final-ee0502ca-submission.patch",
+      "patch_sha256": "b905b27a40253bde099679f564b7799d4408bd72ea324b363520f41c050636cb",
+      "files": [
+        {
+          "path": "website/src/content/data.ts",
+          "before_sha256": "9c6d5e910c71515f69d4b2f3e6c8483d6234255dd66c02911d9e244d4d5831c5",
+          "after_sha256": "b7daa09df5692bdc2da35c3eb4152497c3145c5737b253bd752ae12f6d2003b8"
+        },
+        {
+          "path": "website/src/content/planning-budget.ts",
+          "before_sha256": null,
+          "after_sha256": "c2287abe85b8373ab3f32fd304131a66e52f901592ee7ba0b0261abfd349f6cd"
+        },
+        {
+          "path": "website/src/content/pages/home.html",
+          "before_sha256": "ab1539fcc8c5e5cabf41e4cf8342cdec413281c3978ad05f5a6ee705fae035a8",
+          "after_sha256": "02e43950b7aa59d3a29470061834ced027c95a2e0e40f574d1de84bb6b79ec1e"
+        },
+        {
+          "path": "website/src/content/pages/implementation.html",
+          "before_sha256": "68d0824f0bea37d75d5285f92f8bef2b496d4b6053f337b4c1c6fe42c1e6c6ed",
+          "after_sha256": "a079bd65021aebf67c65c3585b4b0f0468beddaca311870373e303206a20a269"
+        },
+        {
+          "path": "website/src/content/pages/appendices.html",
+          "before_sha256": "a276d2bea2f2f80d9eac809bce5c3df319c87a393bd0f762c90d4a4fc4c08467",
+          "after_sha256": "5d033ede94b9af300646f5edc1cb8b307ec4a15d6cc069cf0eaffd04af9cc0ac"
+        },
+        {
+          "path": "website/src/content/pages/references.html",
+          "before_sha256": "49e0e28579e44f5c32986f799891c752ce673360e618252a4fd25195ec222a58",
+          "after_sha256": "f0810c8c801425c99bc8c69b7719587ccbe95fc739e11d76247f3af7d4cadf17"
+        },
+        {
+          "path": "website/src/scripts/site.ts",
+          "before_sha256": "ee826b9968c7bd585330cb19233386609e7b72fa52dfb91e846c2176456c5e6b",
+          "after_sha256": "2f7e3371de779eb356667afa24b61ef68639486c10cd8bf0141b1a6b22f12826"
+        }
+      ],
+      "dry_apply_and_hashes": "PASS"
+    }
+  ],
+  "assets": [
+    {
+      "path": "website/public/documents/ba-nguyen-ai-log-2026-11-28.html",
+      "sha256": "66688f950c2221910109f952944a81074773f58a3d225ad101c3dac8026f3de5"
+    },
+    {
+      "path": "website/public/documents/ba-nguyen-cost-appendix-2026-11-28.html",
+      "sha256": "ec7b54f264fdc19c33b39454953159c85b141ee13207a5a6b3452518cd79fc5e"
+    },
+    {
+      "path": "website/public/documents/ba-nguyen-cost-submission-2026-11-28.docx",
+      "sha256": "5f6fda4c47529fe8162f6de649ce3eec83d972225c9befd90754cae20e91513f"
+    },
+    {
+      "path": "website/public/documents/hanoi-waterwatch-group-compilation-draft-2026-11-28.docx",
+      "sha256": "07f6002ae9ba610856871936ff7a85291e1b49e8c0076c364f206043ba022bfb"
+    }
+  ]
+}
