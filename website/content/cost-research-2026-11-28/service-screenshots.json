@@ -1,0 +1,37 @@
+[
+  {
+    "file": "render-web-compute.png",
+    "url": "https://render.com/pricing",
+    "visible_target": "0.5C-512MB",
+    "checked_date": "2026-11-28",
+    "sha256": "2e58f78a65753574ecce4abe92014b391c5864af953a51370bb8d0007c7b6f76"
+  },
+  {
+    "file": "render-postgres-compute.png",
+    "url": "https://render.com/pricing",
+    "visible_target": "0.1C-256MB",
+    "checked_date": "2026-11-28",
+    "sha256": "5a46dd4a7baec2c11b153d426f5106f86091a7404de17e87c40c8314697e3713"
+  },
+  {
+    "file": "viettel-connect8.png",
+    "url": "https://iot.viettel.vn/",
+    "visible_target": "Connect8",
+    "checked_date": "2026-11-28",
+    "sha256": "9493345b930855e8e94a7107e9776d08c8c0762184dcdbe937f07b14f1ffa0d1"
+  },
+  {
+    "file": "lilygo-package.png",
+    "url": "https://lilygo.cc/en-us/products/t-sim7600?variant=42358717972661",
+    "visible_target": "What's In The Box",
+    "checked_date": "2026-11-28",
+    "sha256": "8d1d03adafa7b0e7ab0bcd80b3b1bc1a0fe383b7b91250d853f0632693716a66"
+  },
+  {
+    "file": "waveshare-package.png",
+    "url": "https://www.waveshare.com/sim7600g-h-m2-4g-hat.htm",
+    "visible_target": "SKU:21707",
+    "checked_date": "2026-11-28",
+    "sha256": "2f854fe0c321a99f1500cafab7d53bd7aade532ec87ad7f88c66afc5a45a4d7b"
+  }
+]

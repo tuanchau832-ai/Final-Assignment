@@ -1,8 +1,15 @@
 export interface Reference {
   id: string;
   author: string;
+  citationAuthor?: string;
   year: string;
-  entry: string;
+  entry?: string;
+  date?: string;
+  title?: string;
+  description?: string;
+  siteName?: string;
+  italicTitle?: boolean;
+  retrievedDate?: string;
   url?: string;
 }
 
@@ -11,6 +18,8 @@ export interface TableData {
   caption: string;
   columns: readonly string[];
   rows: readonly (readonly string[])[];
+  wide?: boolean;
+  scrollHint?: string;
   pending?: string;
 }
 

@@ -1,0 +1,10 @@
+component,selected_model,supply_voltage_v,average_current_a,active_hours_per_day,peak_current_a,energy_wh_per_day,source_or_measurement,owner,status,nominal_power_w,energy_basis,source_checked_date
+Controller plus 4G board,TBD,TBD,TBD,TBD,TBD,TBD,Measure at actual selected board and upload interval,Akai,pending,TBD,not_measured,
+pH channel,TBD,TBD,TBD,TBD,TBD,TBD,Datasheet plus measured duty cycle,Akai,pending,TBD,not_measured,
+DO channel,SEN0680 reference candidate,10-30 per specification,TBD,24 assumed continuous,TBD,4.8 nominal if continuous,https://wiki.dfrobot.com/sen0680,Akai design + Dat field measurement,datasheet_nominal_not_field_measured,0.2,0.2 W * 24 h; whole-system measurement still TBD,2026-11-27
+Turbidity channel,SEN0710 reference candidate,10-30 per specification,TBD,24 assumed continuous,TBD,4.8 nominal if continuous,https://www.dfrobot.com/product-3104.html,Akai design + Dat field measurement,datasheet_nominal_not_field_measured,0.2,0.2 W * 24 h; whole-system measurement still TBD,2026-11-27
+Temperature channel,TBD,TBD,TBD,TBD,TBD,TBD,Datasheet plus measured duty cycle,Akai,pending,TBD,not_measured,
+Wiper and indicators,TBD,TBD,TBD,TBD,TBD,TBD,Confirm whether installed and daily actuation,Akai,pending,TBD,not_measured,
+Power conversion losses,TBD,TBD,TBD,TBD,TBD,TBD,Select compatible panel controller battery and converter,Akai,pending,TBD,not_measured,
+Site solar resource,TBD,TBD,TBD,TBD,TBD,TBD,Survey shading orientation and rainy season assumption,Dat,pending,TBD,not_measured,
+Required battery autonomy days,TBD,TBD,TBD,TBD,TBD,TBD,Team design decision,Akai and Dat,pending,TBD,not_measured,

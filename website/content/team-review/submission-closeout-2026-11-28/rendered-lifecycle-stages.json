@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Materials",
+    "values": [
+      "Electronics and batteries consume metals and plastics; the reference power budget uses an AGM lead-acid battery.",
+      "Component suppliers",
+      "Choose RoHS-compliant parts, a stainless cage and a recyclable enclosure."
+    ]
+  },
+  {
+    "title": "Assembly",
+    "values": [
+      "Assembly uses energy and creates offcuts and packaging.",
+      "Our team, local workshops",
+      "Assemble in Hanoi to cut shipping and support local jobs."
+    ]
+  },
+  {
+    "title": "Transport",
+    "values": [
+      "Short trips by van; each station weighs only a few kilograms.",
+      "Our team",
+      "Group installations by district to cut trips."
+    ]
+  },
+  {
+    "title": "Installation",
+    "values": [
+      "Work on embankment walls beside traffic and water.",
+      "Drainage company, ward committees, residents",
+      "Agree access, follow safety rules and tell residents before work starts."
+    ]
+  },
+  {
+    "title": "Use",
+    "values": [
+      "Solar powered, but needs service trips and calibration chemicals.",
+      "Inspectors, residents, factories",
+      "Collect used calibration fluid and plan visits by route."
+    ]
+  },
+  {
+    "title": "End of life",
+    "values": [
+      "Retired boards become e-waste; AGM batteries need suitable lead-acid collection.",
+      "Certified recycler, the Department",
+      "Review wear in month 36, replace parts only as needed, recycle boards and batteries and reuse cages."
+    ]
+  }
+]

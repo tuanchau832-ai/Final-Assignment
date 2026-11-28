@@ -1,0 +1,1212 @@
+{
+  "section": {
+    "title": "Cost analysis",
+    "label": "Cost analysis",
+    "summary": "A staged three-station planning budget combining sourced equipment prices with explicit internal allowances.",
+    "topics": [
+      {
+        "id": "cost-scope",
+        "title": "Basis and scope",
+        "paragraphs": [
+          {
+            "text": "Capital expenditure (CAPEX) covers equipment and setup; operating expenditure (OPEX) covers services while active. Q190 core equipment is 13,933,146 VND per station, or 43,482,944 VND for three stations and one optional shared pH kit. These hardware subtotals exclude the remaining pilot costs. The budget uses a historical 25,940 VND/USD assumption, not a current transaction rate.",
+            "citations": [
+              {
+                "id": "lilygo-controller",
+                "author": "LILYGO",
+                "year": "n.d.",
+                "title": "T-SIM7600E/G/SA-H",
+                "description": "[SIM7600G-H R2 4MB, Q190, China worldwide variant]",
+                "retrievedDate": "November 28, 2026",
+                "url": "https://lilygo.cc/en-us/products/t-sim7600?variant=42358717972661"
+              },
+              {
+                "id": "hshop-do",
+                "author": "Hshop",
+                "year": "n.d.-c",
+                "title": "Cảm biến oxy hòa tan DFRobot RS485 fluorescence dissolved oxygen sensor (freshwater)",
+                "retrievedDate": "November 28, 2026",
+                "url": "https://hshop.vn/cam-bien-oxy-hoa-tan-dfrobot-rs485-fluorescence-dissolved-oxygen-sensor-freshwater"
+              },
+              {
+                "id": "dfrobot-ph",
+                "author": "DFRobot",
+                "year": "n.d.-a",
+                "title": "Gravity: 7/24 industrial analog pH meter kit V2 (Arduino, Raspberry Pi)",
+                "retrievedDate": "November 28, 2026",
+                "url": "https://www.dfrobot.com/product-2069.html"
+              },
+              {
+                "id": "dfrobot-turbidity",
+                "author": "DFRobot",
+                "year": "n.d.-d",
+                "title": "RS485 industrial water quality turbidity sensor (0–1000 NTU)",
+                "retrievedDate": "November 28, 2026",
+                "url": "https://www.dfrobot.com/product-3104.html"
+              },
+              {
+                "id": "vietcombank-rate",
+                "author": "NDH",
+                "year": "n.d.",
+                "title": "Tỷ giá USD hôm nay",
+                "description": "[Live exchange-rate table with recent historical rates]",
+                "retrievedDate": "November 27, 2026",
+                "url": "https://ndh.vn/ty-gia/usd/"
+              }
+            ]
+          },
+          {
+            "text": "The 36-month project starts one station before two more at illustrative month six. The 100W/40Ah power configuration and unquoted items are planning assumptions. Listed prices, market benchmarks and internal allowances are distinguished in Appendix E; simulated results do not establish field performance."
+          }
+        ]
+      },
+      {
+        "id": "lifecycle-cost",
+        "title": "Three-year budget",
+        "paragraphs": [
+          {
+            "text": "Table 4 estimates 339,314,885 VND including 20% contingency. Its low–high scenarios reflect different allowances, not guaranteed prices. Labour uses 600,000 VND per person-day, informed by published electrical-work benchmarks. Future prices are held constant for comparison.",
+            "citations": [
+              {
+                "id": "fdi-labour-benchmark",
+                "author": "FDI Care",
+                "year": "n.d.",
+                "title": "Đơn giá thi công điện nhà xưởng",
+                "retrievedDate": "November 28, 2026",
+                "url": "https://fdicare.vn/san-pham/don-gia-thi-cong-dien-nha-xuong-fdi-care.html"
+              },
+              {
+                "id": "tiasang-labour-benchmark",
+                "author": "Viễn Thông Tia Sáng",
+                "year": "n.d.",
+                "title": "Báo giá thi công điện nhẹ 2025",
+                "retrievedDate": "November 28, 2026",
+                "url": "https://vienthongtiasang.vn/bao-gia-thi-cong-dien-nhe-2025/"
+              }
+            ]
+          },
+          {
+            "text": "Thirty-six monthly field rounds include pH calibration, DO cleaning and the six testing rounds; 16 station checks are not extra journeys. Early DO/turbidity calibration every two months stays within 90 days. Shared hosting is counted once. Renewal, incidents, delivery, supply-tax uncertainty and disposal have separate allowances; full-probe DO reserves cover unavailable cap pricing.",
+            "citations": [
+              {
+                "id": "dfrobot-ph-calibration",
+                "author": "DFRobot",
+                "year": "2026",
+                "date": "2026, June 24",
+                "title": "Example code for Arduino-pH calibration and measurement",
+                "retrievedDate": "November 27, 2026",
+                "url": "https://wiki.dfrobot.com/sen0169-v2/docs/24420"
+              },
+              {
+                "id": "dfrobot-do-maintenance",
+                "author": "DFRobot",
+                "year": "n.d.-e",
+                "title": "SEN0680 RS485 sensor reference: API, protocol and pinout",
+                "retrievedDate": "November 28, 2026",
+                "url": "https://wiki.dfrobot.com/sen0680/docs/21672"
+              },
+              {
+                "id": "dfrobot-turbidity",
+                "author": "DFRobot",
+                "year": "n.d.-d",
+                "title": "RS485 industrial water quality turbidity sensor (0–1000 NTU)",
+                "retrievedDate": "November 28, 2026",
+                "url": "https://www.dfrobot.com/product-3104.html"
+              },
+              {
+                "id": "render-hosting-price",
+                "author": "Render",
+                "year": "n.d.-b",
+                "title": "Pricing",
+                "retrievedDate": "November 28, 2026",
+                "url": "https://render.com/pricing"
+              }
+            ]
+          }
+        ],
+        "table": {
+          "id": "cost-schedule",
+          "caption": "Table 4. Modelled pilot budget (VND); estimates, not supplier quotations",
+          "columns": [
+            "Category",
+            "Three-year VND",
+            "Scope"
+          ],
+          "rows": [
+            [
+              "CAPEX",
+              "91,660,428",
+              "Equipment, setup and supply reserve"
+            ],
+            [
+              "OPEX",
+              "143,606,000",
+              "Staff, field routes, services and consumables"
+            ],
+            [
+              "Lifecycle",
+              "47,495,976",
+              "Parts reserves and collection"
+            ],
+            [
+              "Subtotal",
+              "282,762,404",
+              "Before general contingency"
+            ],
+            [
+              "Contingency (20%)",
+              "56,552,481",
+              "Analyst reserve"
+            ],
+            [
+              "Three-year planning budget",
+              "339,314,885",
+              "Estimate; not a quotation"
+            ],
+            [
+              "Low–high scenario",
+              "260,250,806–468,154,608",
+              "Alternative assumptions; not a price ceiling"
+            ]
+          ],
+          "wide": true,
+          "scrollHint": "Scroll horizontally to view the budget and scope."
+        }
+      },
+      {
+        "id": "funding",
+        "title": "Affordability and payment proposal",
+        "paragraphs": [
+          {
+            "text": "A proposed municipal or institutional pilot fund would cover setup. Operations and renewal average about 5.31 million VND per project-month before contingency. This proposal charges households no monitoring fee and assumes no grant, income or unpaid labour. These are proposed funding roles, not commitments; income evidence does not establish affordability. If recurring funding is insufficient, retain one pilot and defer expansion."
+          },
+          {
+            "text": "Ordering the next two stations requires acceptance and an updated budget. Field power, coverage and repair capacity remain untested; the 48-hour response target is not a contracted service. Contingency does not guarantee performance or unlimited incident coverage."
+          }
+        ]
+      },
+      {
+        "id": "reference-additions",
+        "title": "Supporting records",
+        "documents": [
+          {
+            "title": "Appendix E: itemised budget, sources and assumptions",
+            "url": "/pages/appendices#cost-budget-detail"
+          },
+          {
+            "title": "Download cost section and appendices (Word)",
+            "url": "/documents/ba-nguyen-cost-submission-2026-11-28.docx"
+          }
+        ]
+      }
+    ]
+  },
+  "references": [
+    {
+      "id": "tuan-first-station-plan",
+      "author": "Chau, H. T. [tuanchau832-ai]",
+      "citationAuthor": "Chau",
+      "year": "2026",
+      "date": "2026, November 28",
+      "title": "Hồ sơ triển khai trạm đầu tiên của Hanoi WaterWatch",
+      "description": "[Project planning document, version 687557b1]",
+      "siteName": "GitHub",
+      "url": "https://github.com/tuanchau832-ai/Final-Assignment/blob/687557b1f2b50ed5ab416713706bd4221b883c2d/website/content/first-station-pilot.md"
+    },
+    {
+      "id": "daihoaphu-gland",
+      "author": "Đại Hòa Phú",
+      "year": "n.d.",
+      "title": "Cable gland Upun PG13.5",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://daihoaphu.vn/cable-gland-upun-pg135"
+    },
+    {
+      "id": "dfrobot-ph",
+      "author": "DFRobot",
+      "year": "n.d.-a",
+      "title": "Gravity: 7/24 industrial analog pH meter kit V2 (Arduino, Raspberry Pi)",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://www.dfrobot.com/product-2069.html"
+    },
+    {
+      "id": "dfrobot-ph-electrode",
+      "author": "DFRobot",
+      "year": "n.d.-b",
+      "title": "Industrial pH electrode - armor casing",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://www.dfrobot.com/product-1074.html"
+    },
+    {
+      "id": "dfrobot-do-specifications",
+      "author": "DFRobot",
+      "year": "n.d.-c",
+      "title": "RS485 fluorescence dissolved oxygen sensor (freshwater)",
+      "retrievedDate": "November 27, 2026",
+      "url": "https://wiki.dfrobot.com/sen0680"
+    },
+    {
+      "id": "dfrobot-turbidity",
+      "author": "DFRobot",
+      "year": "n.d.-d",
+      "title": "RS485 industrial water quality turbidity sensor (0–1000 NTU)",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://www.dfrobot.com/product-3104.html"
+    },
+    {
+      "id": "dfrobot-do-maintenance",
+      "author": "DFRobot",
+      "year": "n.d.-e",
+      "title": "SEN0680 RS485 sensor reference: API, protocol and pinout",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://wiki.dfrobot.com/sen0680/docs/21672"
+    },
+    {
+      "id": "dfrobot-ph-calibration",
+      "author": "DFRobot",
+      "year": "2026",
+      "date": "2026, June 24",
+      "title": "Example code for Arduino-pH calibration and measurement",
+      "retrievedDate": "November 27, 2026",
+      "url": "https://wiki.dfrobot.com/sen0169-v2/docs/24420"
+    },
+    {
+      "id": "e360-buck",
+      "author": "Điện Tử 360",
+      "year": "n.d.",
+      "title": "Mạch hạ áp 5V 3A 2 cổng USB",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://dientu360.com/mach-ha-ap-5v-3a-2-cong-usb"
+    },
+    {
+      "id": "dongbac-ph4",
+      "author": "Đông Bắc",
+      "year": "n.d.-a",
+      "title": "Dung dịch hiệu chuẩn pH 4.01, chai 500mL HI7004L",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://thietbi.net.vn/dung-dich-hieu-chuan-ph/dung-dich-hieu-chuan-ph-4-01--chai-500ml-hi7004l/"
+    },
+    {
+      "id": "dongbac-ph7",
+      "author": "Đông Bắc",
+      "year": "n.d.-b",
+      "title": "Dung dịch hiệu chuẩn pH 7.01, chai 500mL HI7007L",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://thietbi.net.vn/dung-dich-hieu-chuan-ph/dung-dich-hieu-chuan-ph-7-01--chai-500ml-hi7007l/"
+    },
+    {
+      "id": "fdi-labour-benchmark",
+      "author": "FDI Care",
+      "year": "n.d.",
+      "title": "Đơn giá thi công điện nhà xưởng",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://fdicare.vn/san-pham/don-gia-thi-cong-dien-nha-xuong-fdi-care.html"
+    },
+    {
+      "id": "giva-panel",
+      "author": "GIVASOLAR",
+      "year": "n.d.",
+      "title": "Tấm pin năng lượng mặt trời Mono GVA-100W",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://givasolar.com/san-pham/tam-pin-nang-luong-mat-troi-gv-mono-100w/"
+    },
+    {
+      "id": "haidang-enclosure",
+      "author": "Hải Đăng",
+      "year": "n.d.",
+      "title": "Vỏ tủ điện bằng nhựa ABS kín nước dùng trong nhà hoặc ngoài trời",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://haidanga.vn/san-pham/vo-tu-dien-bang-nhua-abs-kin-nuoc/"
+    },
+    {
+      "id": "hww-blueprint",
+      "author": "Hanoi WaterWatch Team",
+      "year": "2026",
+      "title": "Hanoi WaterWatch",
+      "description": "[Project README; simulated prototype]",
+      "siteName": "GitHub",
+      "url": "https://github.com/tuanchau832-ai/Final-Assignment/blob/22ef8234a135d3e146ca403aee6bd693dd333f31/HanoiWaterWatch/README.md"
+    },
+    {
+      "id": "hshop-rs485",
+      "author": "Hshop",
+      "year": "n.d.-a",
+      "title": "Bo mạch chuyển đổi tín hiệu TTL sang RS485 V1",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://hshop.vn/bo-mach-chuyen-doi-tin-hieu-ttl-sang-rs485-v1"
+    },
+    {
+      "id": "hshop-temperature",
+      "author": "Hshop",
+      "year": "n.d.-b",
+      "title": "Cảm biến nhiệt độ chống nước DS18B20 waterproof temperature sensor",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://hshop.vn/cam-bien-nhiet-do-chong-nuoc-ds18b20-waterproof-temperature-sensor"
+    },
+    {
+      "id": "hshop-do",
+      "author": "Hshop",
+      "year": "n.d.-c",
+      "title": "Cảm biến oxy hòa tan DFRobot RS485 fluorescence dissolved oxygen sensor (freshwater)",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://hshop.vn/cam-bien-oxy-hoa-tan-dfrobot-rs485-fluorescence-dissolved-oxygen-sensor-freshwater"
+    },
+    {
+      "id": "hshop-esp32",
+      "author": "Hshop",
+      "year": "n.d.-d",
+      "title": "Mạch phát triển Vietduino ESP32 (Arduino Compatible)",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://hshop.vn/mach-phat-trien-vietduino-esp32"
+    },
+    {
+      "id": "hshop-sim7600",
+      "author": "Hshop",
+      "year": "n.d.-e",
+      "title": "SIM7600G-H-M.2 SIMCom original 4G LTE Cat-4 module",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://hshop.vn/mach-sim7600g-h-m-2-simcom-original-4g-lte-cat-4-module-global-coverage-gnss-m-2-connector"
+    },
+    {
+      "id": "lalamove-freight-benchmark",
+      "author": "Lalamove Vietnam",
+      "year": "2024",
+      "title": "Dịch vụ xe tải 500kg chở hàng nhanh chóng, báo giá rẻ tại Lalamove",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://www.lalamove.com/vi-vn/blog/xe-tai-cho-hang-500kg"
+    },
+    {
+      "id": "lilygo-controller",
+      "author": "LILYGO",
+      "year": "n.d.",
+      "title": "T-SIM7600E/G/SA-H",
+      "description": "[SIM7600G-H R2 4MB, Q190, China worldwide variant]",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://lilygo.cc/en-us/products/t-sim7600?variant=42358717972661"
+    },
+    {
+      "id": "solar-controller",
+      "author": "mayniemphat.vn",
+      "year": "n.d.",
+      "title": "Bộ điều khiển sạc năng lượng mặt trời MPPT 10A có màng hình LCD",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://mayniemphat.vn/san-pham/san-pham-nang-luong-mat-troi/bo-dieu-khien-sac-nang-luong-mat-troi/bo-dieu-khien-sac-nang-luong-mat-troi-mppt-10a-co-mang-hinh-lcd.html"
+    },
+    {
+      "id": "mlab-storage",
+      "author": "MLAB",
+      "year": "n.d.",
+      "title": "Dung dịch chuẩn KCL 3M bảo vệ điện cực đầu đo pH, ORP",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://mlab.vn/3655744-dung-dich-chuan-kcl-3m-bao-ve-dien-cuc-dau-do-ph-orp.html"
+    },
+    {
+      "id": "vietcombank-rate",
+      "author": "NDH",
+      "year": "n.d.",
+      "title": "Tỷ giá USD hôm nay",
+      "description": "[Live exchange-rate table with recent historical rates]",
+      "retrievedDate": "November 27, 2026",
+      "url": "https://ndh.vn/ty-gia/usd/"
+    },
+    {
+      "id": "dat-maintenance-response",
+      "author": "Nguyễn, T. Đ. [terrydatnguyen]",
+      "citationAuthor": "Nguyễn",
+      "year": "2026",
+      "date": "2026, November 26",
+      "title": "@terrydatnguyen D5 — xác nhận lịch kiểm tra 6 tháng và rà linh kiện ở năm thứ ba Mình nhận",
+      "description": "[Comment on the pull request “Draft: Cost analysis evidence and team confirmation”]",
+      "siteName": "GitHub",
+      "italicTitle": false,
+      "url": "https://github.com/tuanchau832-ai/Final-Assignment/pull/3#issuecomment-7202126238"
+    },
+    {
+      "id": "phongvu-card",
+      "author": "Phong Vũ",
+      "year": "n.d.",
+      "title": "Thẻ nhớ MicroSDHC Sandisk Ultra 32GB SDSQUNR-032G-GN3MN",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://phongvu.vn/the-nho-micro-sandisk-ultra-32gb-sdsqunr-032g-gn3mn--s200801365"
+    },
+    {
+      "id": "render-storage-benchmark",
+      "author": "Render",
+      "year": "n.d.-a",
+      "title": "How much does cloud application hosting cost for small businesses",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://render.com/articles/how-much-does-cloud-application-hosting-cost-for-small-businesses"
+    },
+    {
+      "id": "render-hosting-price",
+      "author": "Render",
+      "year": "n.d.-b",
+      "title": "Pricing",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://render.com/pricing"
+    },
+    {
+      "id": "vac-battery",
+      "author": "VAC Technology",
+      "year": "n.d.",
+      "title": "Ắc quy (AGM VRLA) Long 12V-40Ah (WP40-12NE)",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://vactechnology.vn/san-pham/ac-quy-agm-vrla-long-12v-40ah-wp40-12ne"
+    },
+    {
+      "id": "tiasang-labour-benchmark",
+      "author": "Viễn Thông Tia Sáng",
+      "year": "n.d.",
+      "title": "Báo giá thi công điện nhẹ 2025",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://vienthongtiasang.vn/bao-gia-thi-cong-dien-nhe-2025/"
+    },
+    {
+      "id": "recycling-scope-benchmark",
+      "author": "Việt Nam Tái Chế",
+      "year": "n.d.",
+      "title": "Việt Nam Tái Chế",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://vietnamrecycles.com/"
+    },
+    {
+      "id": "viettel-iot-plan",
+      "author": "Viettel",
+      "year": "n.d.",
+      "title": "Viettel IoT cloud",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://iot.viettel.vn/"
+    },
+    {
+      "id": "vinadenki-enclosure",
+      "author": "Vinadenki",
+      "year": "n.d.",
+      "title": "Tủ điện nhựa Viger",
+      "retrievedDate": "November 19, 2026",
+      "url": "https://vinadenki.vn/tu-dien-nhua-vo-hop-dau-noi-cap"
+    },
+    {
+      "id": "waveshare-full-modem-kit",
+      "author": "Waveshare",
+      "year": "n.d.",
+      "title": "SIM7600G-H M.2 4G HAT for Raspberry Pi, LTE CAT4 high speed, 4G/3G/2G, GNSS, global band",
+      "description": "[SKU 21707; complete modem kit]",
+      "retrievedDate": "November 28, 2026",
+      "url": "https://www.waveshare.com/sim7600g-h-m2-4g-hat.htm"
+    }
+  ],
+  "appendices": [
+    {
+      "id": "cost-budget-detail",
+      "title": "Appendix E — cost ledger and assumptions",
+      "paragraphs": [
+        {
+          "text": "This cost-only appendix separates listings from analyst allowances, not supplier quotations or field results. The independent 32-task strict-90-day illustration is historical; this model uses 48 early two-monthly DO/turbidity tasks within 36 monthly field routes. Six testing rounds and 16 station checks are included in those visits. Hardware renewal figures are funding reserves, not failure predictions.",
+          "citations": [
+            {
+              "id": "dfrobot-turbidity",
+              "author": "DFRobot",
+              "year": "n.d.-d",
+              "title": "RS485 industrial water quality turbidity sensor (0–1000 NTU)",
+              "retrievedDate": "November 28, 2026",
+              "url": "https://www.dfrobot.com/product-3104.html"
+            },
+            {
+              "id": "dfrobot-do-maintenance",
+              "author": "DFRobot",
+              "year": "n.d.-e",
+              "title": "SEN0680 RS485 sensor reference: API, protocol and pinout",
+              "retrievedDate": "November 28, 2026",
+              "url": "https://wiki.dfrobot.com/sen0680/docs/21672"
+            },
+            {
+              "id": "dfrobot-ph-calibration",
+              "author": "DFRobot",
+              "year": "2026",
+              "date": "2026, June 24",
+              "title": "Example code for Arduino-pH calibration and measurement",
+              "retrievedDate": "November 27, 2026",
+              "url": "https://wiki.dfrobot.com/sen0169-v2/docs/24420"
+            },
+            {
+              "id": "fdi-labour-benchmark",
+              "author": "FDI Care",
+              "year": "n.d.",
+              "title": "Đơn giá thi công điện nhà xưởng",
+              "retrievedDate": "November 28, 2026",
+              "url": "https://fdicare.vn/san-pham/don-gia-thi-cong-dien-nha-xuong-fdi-care.html"
+            },
+            {
+              "id": "lalamove-freight-benchmark",
+              "author": "Lalamove Vietnam",
+              "year": "2024",
+              "title": "Dịch vụ xe tải 500kg chở hàng nhanh chóng, báo giá rẻ tại Lalamove",
+              "retrievedDate": "November 28, 2026",
+              "url": "https://www.lalamove.com/vi-vn/blog/xe-tai-cho-hang-500kg"
+            },
+            {
+              "id": "render-storage-benchmark",
+              "author": "Render",
+              "year": "n.d.-a",
+              "title": "How much does cloud application hosting cost for small businesses",
+              "retrievedDate": "November 28, 2026",
+              "url": "https://render.com/articles/how-much-does-cloud-application-hosting-cost-for-small-businesses"
+            },
+            {
+              "id": "tiasang-labour-benchmark",
+              "author": "Viễn Thông Tia Sáng",
+              "year": "n.d.",
+              "title": "Báo giá thi công điện nhẹ 2025",
+              "retrievedDate": "November 28, 2026",
+              "url": "https://vienthongtiasang.vn/bao-gia-thi-cong-dien-nhe-2025/"
+            },
+            {
+              "id": "recycling-scope-benchmark",
+              "author": "Việt Nam Tái Chế",
+              "year": "n.d.",
+              "title": "Việt Nam Tái Chế",
+              "retrievedDate": "November 28, 2026",
+              "url": "https://vietnamrecycles.com/"
+            }
+          ]
+        }
+      ],
+      "table": {
+        "id": "cost-budget-ledger",
+        "caption": "Appendix E1. Base planning-budget ledger; unit prices and allowances in VND",
+        "columns": [
+          "Item",
+          "Evidence class",
+          "Quantity",
+          "Unit VND",
+          "Amount VND",
+          "Assumptions and scope"
+        ],
+        "rows": [
+          [
+            "Q190 core equipment",
+            "Listing x assumed quantity",
+            "3",
+            "13,933,146",
+            "41,799,438",
+            "Same four sensors, RS485 and provisional four glands; native listings converted at historical budget rate."
+          ],
+          [
+            "Reference power, electronics enclosure and microSD",
+            "Listing x assumed quantity",
+            "3",
+            "4,312,000",
+            "12,936,000",
+            "Six listed components; not a complete tested solar installation."
+          ],
+          [
+            "One optional shared pH kit, included in this scenario",
+            "Listing x assumed quantity",
+            "1",
+            "1,683,506",
+            "1,683,506",
+            "One physical shared kit at a time; not three initial spares."
+          ],
+          [
+            "Initial shared buffer and KCl stock",
+            "Listing x assumed quantity",
+            "1",
+            "1,048,000",
+            "1,048,000",
+            "Two 500mL buffer bottles and one 18mL KCl bottle. Replenishment below excludes these starter bottles."
+          ],
+          [
+            "Panel/probe brackets and protective cage",
+            "Internal allowance",
+            "3",
+            "2,000,000",
+            "6,000,000",
+            "Per-site fabricated support allowance; no supplier quote or structural acceptance."
+          ],
+          [
+            "Ventilated weather protection for AGM battery",
+            "Internal allowance",
+            "3",
+            "600,000",
+            "1,800,000",
+            "Separate from the listed electronics enclosure; mounting/fit/ventilation still engineering assumptions."
+          ],
+          [
+            "Outdoor wire, conduit and connectors",
+            "Internal allowance",
+            "3",
+            "500,000",
+            "1,500,000",
+            "Allow 10m/site at 30000 VND/m plus 200000 fittings in base; lengths are assumptions, not surveyed measurements."
+          ],
+          [
+            "DC fuses, isolation and terminals",
+            "Internal allowance",
+            "3",
+            "400,000",
+            "1,200,000",
+            "Per-site parts allowance, not a validated protection design."
+          ],
+          [
+            "Earthing and surge-protection materials",
+            "Internal allowance",
+            "3",
+            "500,000",
+            "1,500,000",
+            "Cost allowance; soil/lightning/site requirements may alter scope."
+          ],
+          [
+            "Additional analog/interface and small integration parts",
+            "Internal allowance",
+            "3",
+            "150,000",
+            "450,000",
+            "Excludes the already priced RS485 converter; not an assertion that a particular ADC is required."
+          ],
+          [
+            "Bench integration, firmware and offline-buffer work",
+            "Internal allowance",
+            "6",
+            "600,000",
+            "3,600,000",
+            "Six 8-hour person-days; not completed engineering work or field validation."
+          ],
+          [
+            "Site assembly and initial commissioning labour",
+            "Internal allowance",
+            "6",
+            "600,000",
+            "3,600,000",
+            "Two person-days/site, including initial calibration labour; materials and reference services separately itemised."
+          ],
+          [
+            "Planning, survey and deployment preparation labour",
+            "Internal allowance",
+            "2",
+            "600,000",
+            "1,200,000",
+            "Two person-days/project; no survey results are claimed."
+          ],
+          [
+            "Operator training and handover labour",
+            "Internal allowance",
+            "2",
+            "600,000",
+            "1,200,000",
+            "Two person-days/project; recipients remain proposed."
+          ],
+          [
+            "Reference instruments / independent acceptance service",
+            "Internal allowance",
+            "3",
+            "1,500,000",
+            "4,500,000",
+            "Allowance/site for hire or verification; not arranged free equipment or a certified laboratory quotation."
+          ],
+          [
+            "International shipment allowance",
+            "Internal allowance",
+            "2",
+            "1,000,000",
+            "2,000,000",
+            "Two phased supply orders; destination, battery restrictions and carton weights unconfirmed."
+          ],
+          [
+            "Domestic equipment delivery allowance",
+            "Internal allowance",
+            "3",
+            "200,000",
+            "600,000",
+            "Cargo delivery/site; the public 110000 Hanoi minimum is a benchmark, not a complete quoted route. Not crew transport."
+          ],
+          [
+            "Additional commissioning mobilisation",
+            "Internal allowance",
+            "2",
+            "300,000",
+            "600,000",
+            "Two extra mobilisation routes outside the 36 routine rounds; no repeated charge for the same journey."
+          ],
+          [
+            "Unspecified supply tax/import/payment allowance",
+            "Internal allowance",
+            "1",
+            "4,443,484",
+            "4,443,484",
+            "5/10/20% analyst reserve on 44434844 VND of unclear-tax goods and assumed delivery. Not statutory VAT or duty; no second VAT on explicitly VAT-included goods."
+          ],
+          [
+            "Monthly on-site calibration/cleaning/testing crew",
+            "Internal allowance",
+            "72",
+            "600,000",
+            "43,200,000",
+            "36 grouped route-days x 2 technicians, 8h each. Includes all 96 monthly pH tasks, monthly DO cleaning, two-monthly DO/turbidity calibration and 16 six-month checks; no second calibration labour fee."
+          ],
+          [
+            "Routine field-route transport",
+            "Internal allowance",
+            "36",
+            "300,000",
+            "10,800,000",
+            "12 routes/year across active stations; 6 testing rounds are included, not 6 extra trips. 300000/route is analyst allowance, not cargo fare. "
+          ],
+          [
+            "Daily remote review and alert triage",
+            "Internal allowance",
+            "274",
+            "75,000",
+            "20,550,000",
+            "15 minutes/day, 365/366/365 civil days; 600000/8=75000 per hour in base. No 24/7 staffed response/SLA is implied."
+          ],
+          [
+            "Software upkeep, backups and release checks",
+            "Internal allowance",
+            "144",
+            "75,000",
+            "10,800,000",
+            "Four person-hours/shared system-month, separate from daily triage and on-site work."
+          ],
+          [
+            "Connect8 30-day service cycles",
+            "Listing x assumed quantity",
+            "99",
+            "8,000",
+            "792,000",
+            "Dated 2027-01-01 / 2027-07-01 illustration, 37+31+31 prepaid cycles; eligibility unverified."
+          ],
+          [
+            "SIM setup and activation allowance",
+            "Internal allowance",
+            "3",
+            "50,000",
+            "150,000",
+            "Analyst allowance, not a published activation fee."
+          ],
+          [
+            "Shared web and Postgres compute",
+            "Listing x assumed quantity",
+            "36",
+            "337,220",
+            "12,139,920",
+            "7+6 USD/shared month; no multiplication by three stations."
+          ],
+          [
+            "Assumed 20GB Postgres storage",
+            "Listing x assumed quantity",
+            "36",
+            "155,640",
+            "5,603,040",
+            "20GB x USD0.30/GB-month. Capacity is assumed; 30-day raw-data retention plus aggregates, no full raw three-year archive guarantee."
+          ],
+          [
+            "Cloud traffic, exports and service-fee allowance",
+            "Internal allowance",
+            "36",
+            "155,640",
+            "5,603,040",
+            "USD6/shared month internal reserve beyond compute/storage; not a Render bundle, workspace contract or paid MQTT quote."
+          ],
+          [
+            "Quarterly fresh shared pH buffer pairs after starter",
+            "Listing x assumed quantity",
+            "11",
+            "908,000",
+            "9,988,000",
+            "12 quarterly pairs total less one initial pair; 4.01/7.01 labelled values need procedure/temperature validation. Manufacturer expiry overrides the assumed quarterly refresh."
+          ],
+          [
+            "Quarterly KCl stock after starter",
+            "Listing x assumed quantity",
+            "23",
+            "140,000",
+            "3,220,000",
+            "Two 18mL bottles/quarter x12 quarters less one starter bottle. Budget quantity, not measured consumption."
+          ],
+          [
+            "Rinse water, cleaning supplies and waste containers",
+            "Internal allowance",
+            "36",
+            "50,000",
+            "1,800,000",
+            "One shared batch/route; keep contaminated standards separate from clean stocks."
+          ],
+          [
+            "Turbidity calibration standard allowance",
+            "Internal allowance",
+            "48",
+            "50,000",
+            "2,400,000",
+            "Two-monthly early calibration on monthly visits: 18+15+15 tasks, not 48 trips. This replaces the independent strict-90-day example only within this planning scenario."
+          ],
+          [
+            "DO calibration reference/standard allowance",
+            "Internal allowance",
+            "48",
+            "50,000",
+            "2,400,000",
+            "Two-monthly early calibration includes the manufacturer three-month recommendation; method/material suitability unverified. Labour is in monthly crew."
+          ],
+          [
+            "Field consumables and PPE",
+            "Internal allowance",
+            "36",
+            "30,000",
+            "1,080,000",
+            "Small per-route consumables allowance; no hazardous-space entry or boat work included."
+          ],
+          [
+            "Unscheduled response labour and travel pool",
+            "Internal allowance",
+            "6",
+            "1,500,000",
+            "9,000,000",
+            "Two extra events/year; per event two technician-days plus one extra trip. Parts below are separate reserves. No restoration-time guarantee."
+          ],
+          [
+            "Independent verification / laboratory screening pool",
+            "Internal allowance",
+            "6",
+            "500,000",
+            "3,000,000",
+            "Two events/year; analyst allowance, not an accredited enforcement sample quotation."
+          ],
+          [
+            "Messaging allowance",
+            "Internal allowance",
+            "36",
+            "30,000",
+            "1,080,000",
+            "Internal monthly allowance; no assumed free public SMS from the SIM plan."
+          ],
+          [
+            "DO cap renewal fallback reserve",
+            "Listing x assumed quantity",
+            "6",
+            "4,428,000",
+            "26,568,000",
+            "Annual film renewal before project end: months12/24 for ST01,18/30 for ST02/03. With no exact optical-cap price, reserve a full SEN0680 per event, not an invented cap price. This is a conservative funding reserve, not a replacement instruction."
+          ],
+          [
+            "pH stock replenishment reserve",
+            "Listing x assumed quantity",
+            "6",
+            "1,683,506",
+            "10,101,036",
+            "Annual planning replenishment allowance, not manufacturer replacement deadline; preserves one initial shared spare. Condition may require more or less."
+          ],
+          [
+            "One shared AGM replacement allowance",
+            "Listing x assumed quantity",
+            "1",
+            "1,588,000",
+            "1,588,000",
+            "Condition-based pool; not automatic replacement of every battery at month36."
+          ],
+          [
+            "One shared Q190 repair-parts allowance",
+            "Listing x assumed quantity",
+            "1",
+            "1,798,680",
+            "1,798,680",
+            "Condition-based parts pool; labour/travel are in the incident row."
+          ],
+          [
+            "One shared SEN0710 damage allowance",
+            "Listing x assumed quantity",
+            "1",
+            "5,940,260",
+            "5,940,260",
+            "Condition-based reserve, not a claim the probe fails during the project."
+          ],
+          [
+            "End-of-project collection and disposal allowance",
+            "Internal allowance",
+            "3",
+            "500,000",
+            "1,500,000",
+            "Per station covering battery/electronics/probe/chemical handling; final-round crew travel already counted. No free programme eligibility is assumed."
+          ]
+        ],
+        "wide": true,
+        "scrollHint": "Scroll horizontally for quantities, evidence class and exclusions."
+      },
+      "documents": [
+        {
+          "title": "Budget workbook and funding proposal",
+          "url": "/documents/ba-nguyen-cost-appendix-2026-11-28.html"
+        },
+        {
+          "title": "Cost section and appendices (Word)",
+          "url": "/documents/ba-nguyen-cost-submission-2026-11-28.docx"
+        },
+        {
+          "title": "Group Word compilation draft — URL and team evidence still required",
+          "url": "/documents/hanoi-waterwatch-group-compilation-draft-2026-11-28.docx"
+        }
+      ]
+    },
+    {
+      "id": "cost-configuration-comparison",
+      "title": "Appendix E2 — controller comparison",
+      "table": {
+        "id": "controller-comparison",
+        "caption": "Historical native-currency controller comparison; same reference sensors, Q190 chosen for costing",
+        "columns": [
+          "Configuration",
+          "One-station VND portion",
+          "One-station USD portion",
+          "Three-station VND portion",
+          "Three-station USD portion",
+          "Limits"
+        ],
+        "rows": [
+          [
+            "Separate ESP32 + M.2 module",
+            "6,271,700",
+            "293.90",
+            "18,815,100",
+            "881.70",
+            "Incomplete; Carrier and antennas remain unpriced; do not add the full HAT while retaining the module."
+          ],
+          [
+            "Integrated LILYGO Q190 4 MB (costing choice)",
+            "4,510,700",
+            "363.24",
+            "13,532,100",
+            "1,089.72",
+            "Incomplete; Replaces both separate board and modem; listed SIM/GPS antennas do not establish outdoor sealing, diversity or field acceptance."
+          ],
+          [
+            "ESP32 + complete Waveshare 21707 kit",
+            "4,705,700",
+            "407.89",
+            "14,117,100",
+            "1,223.67",
+            "Incomplete; The kit replaces the module and carrier/antenna package; ESP32 UART and power integration still require validation."
+          ],
+          [
+            "One optional shared pH kit",
+            "0",
+            "64.90 once",
+            "0",
+            "64.90 once",
+            "Excluded above; shared once, not per station or per year."
+          ]
+        ],
+        "wide": true
+      }
+    },
+    {
+      "id": "cost-reference-components",
+      "title": "Appendix E3 — listed reference additions",
+      "paragraphs": [
+        {
+          "text": "The last two partial totals below belong to the earlier listing-only scenario. They reconcile prices and are not additional amounts to add to the newer planning budget. The 25,940 VND/USD rate remains a historical assumption.",
+          "citations": [
+            {
+              "id": "e360-buck",
+              "author": "Điện Tử 360",
+              "year": "n.d.",
+              "title": "Mạch hạ áp 5V 3A 2 cổng USB",
+              "retrievedDate": "November 28, 2026",
+              "url": "https://dientu360.com/mach-ha-ap-5v-3a-2-cong-usb"
+            },
+            {
+              "id": "dongbac-ph4",
+              "author": "Đông Bắc",
+              "year": "n.d.-a",
+              "title": "Dung dịch hiệu chuẩn pH 4.01, chai 500mL HI7004L",
+              "retrievedDate": "November 28, 2026",
+              "url": "https://thietbi.net.vn/dung-dich-hieu-chuan-ph/dung-dich-hieu-chuan-ph-4-01--chai-500ml-hi7004l/"
+            },
+            {
+              "id": "dongbac-ph7",
+              "author": "Đông Bắc",
+              "year": "n.d.-b",
+              "title": "Dung dịch hiệu chuẩn pH 7.01, chai 500mL HI7007L",
+              "retrievedDate": "November 28, 2026",
+              "url": "https://thietbi.net.vn/dung-dich-hieu-chuan-ph/dung-dich-hieu-chuan-ph-7-01--chai-500ml-hi7007l/"
+            },
+            {
+              "id": "giva-panel",
+              "author": "GIVASOLAR",
+              "year": "n.d.",
+              "title": "Tấm pin năng lượng mặt trời Mono GVA-100W",
+              "retrievedDate": "November 28, 2026",
+              "url": "https://givasolar.com/san-pham/tam-pin-nang-luong-mat-troi-gv-mono-100w/"
+            },
+            {
+              "id": "haidang-enclosure",
+              "author": "Hải Đăng",
+              "year": "n.d.",
+              "title": "Vỏ tủ điện bằng nhựa ABS kín nước dùng trong nhà hoặc ngoài trời",
+              "retrievedDate": "November 28, 2026",
+              "url": "https://haidanga.vn/san-pham/vo-tu-dien-bang-nhua-abs-kin-nuoc/"
+            },
+            {
+              "id": "solar-controller",
+              "author": "mayniemphat.vn",
+              "year": "n.d.",
+              "title": "Bộ điều khiển sạc năng lượng mặt trời MPPT 10A có màng hình LCD",
+              "retrievedDate": "November 28, 2026",
+              "url": "https://mayniemphat.vn/san-pham/san-pham-nang-luong-mat-troi/bo-dieu-khien-sac-nang-luong-mat-troi/bo-dieu-khien-sac-nang-luong-mat-troi-mppt-10a-co-mang-hinh-lcd.html"
+            },
+            {
+              "id": "mlab-storage",
+              "author": "MLAB",
+              "year": "n.d.",
+              "title": "Dung dịch chuẩn KCL 3M bảo vệ điện cực đầu đo pH, ORP",
+              "retrievedDate": "November 28, 2026",
+              "url": "https://mlab.vn/3655744-dung-dich-chuan-kcl-3m-bao-ve-dien-cuc-dau-do-ph-orp.html"
+            },
+            {
+              "id": "phongvu-card",
+              "author": "Phong Vũ",
+              "year": "n.d.",
+              "title": "Thẻ nhớ MicroSDHC Sandisk Ultra 32GB SDSQUNR-032G-GN3MN",
+              "retrievedDate": "November 28, 2026",
+              "url": "https://phongvu.vn/the-nho-micro-sandisk-ultra-32gb-sdsqunr-032g-gn3mn--s200801365"
+            },
+            {
+              "id": "vac-battery",
+              "author": "VAC Technology",
+              "year": "n.d.",
+              "title": "Ắc quy (AGM VRLA) Long 12V-40Ah (WP40-12NE)",
+              "retrievedDate": "November 28, 2026",
+              "url": "https://vactechnology.vn/san-pham/ac-quy-agm-vrla-long-12v-40ah-wp40-12ne"
+            }
+          ]
+        }
+      ],
+      "table": {
+        "id": "reference-additions-table",
+        "caption": "Earlier reference component scenario; not a validated kit or quotation",
+        "columns": [
+          "Component",
+          "Quantity basis",
+          "Unit VND",
+          "Project VND",
+          "Limits"
+        ],
+        "rows": [
+          [
+            "GIVASOLAR GVA-100W panel",
+            "1 per station",
+            "850,000",
+            "2,550,000",
+            "Panel only; excludes battery, charger, supports, cables and protection; nameplate is not site yield."
+          ],
+          [
+            "ST-H1210 10A solar controller",
+            "1 per station",
+            "780,000",
+            "2,340,000",
+            "Seller describes MPPT; independent performance not validated. Default 14.2V differs from AGM cycle range; settings and temperature compensation require validation."
+          ],
+          [
+            "LONG WP40-12NE 12V 40Ah AGM",
+            "1 per station",
+            "1,588,000",
+            "4,764,000",
+            "One battery only; weather-protected ventilated housing, terminals, cable, delivery and life under field cycling excluded. Listing has conflicting warranty statements."
+          ],
+          [
+            "E360 PVN1777 6-36V to 5V/3A USB buck",
+            "1 per station",
+            "35,000",
+            "105,000",
+            "Converter only; peak/ripple/thermal behaviour and cable must be bench-tested. External regulated 5V proposal, not 12V connected to the LILYGO cell charger."
+          ],
+          [
+            "Hai Dang W300H400D200 ABS enclosure, variation 19430",
+            "1 per station",
+            "700,000",
+            "2,100,000",
+            "Electronics enclosure reference only; not a sealed battery box or proof that all parts fit. Penetrations, backplate, fittings, mounting and assembled ingress protection unpriced."
+          ],
+          [
+            "SanDisk Ultra microSDHC 32GB SDSQUNR-032G-GN3MN",
+            "1 per station",
+            "359,000",
+            "1,077,000",
+            "Consumer card, not an endurance certification; firmware, filesystem, retention, wear and safe recovery on power loss untested. No SD-size adapter required by this price basis."
+          ],
+          [
+            "Hanna HI7004L pH4.01 500mL",
+            "1 shared starter",
+            "454,000",
+            "454,000",
+            "One shared starter bottle; not three-year consumption. Match lot/temperature values to the DFRobot 4.0 nominal calibration procedure before use."
+          ],
+          [
+            "Hanna HI7007L pH7.01 500mL",
+            "1 shared starter",
+            "454,000",
+            "454,000",
+            "One shared starter bottle; expiry/open-life, sufficient immersion volume and repeat procedures may require more. Do not reuse contaminated aliquots."
+          ],
+          [
+            "MLAB Dung_dich_KCL_3M 18mL bottle",
+            "1 shared starter",
+            "140,000",
+            "140,000",
+            "Starter only; seller suggests 6mL per cap refill. Not a three-year allowance or proof of enough storage liquid for every probe. Rinse/cleaning supplies remain separate."
+          ],
+          [
+            "Reference additions, excluding shared starters",
+            "3 station sets",
+            "4,312,000",
+            "12,936,000",
+            "Separate from the original Q190 equipment subtotal."
+          ],
+          [
+            "Core equipment + optional reserve + reference additions + shared starters",
+            "Project, once",
+            "—",
+            "57,466,944",
+            "Partial listed scenario; installed CAPEX remains unknown."
+          ],
+          [
+            "Same scenario + Connect8 billing example + Render compute only",
+            "Common 36-month illustration",
+            "—",
+            "70,398,864",
+            "Partial priced components, not full lifecycle cost; service and tax exclusions remain."
+          ]
+        ],
+        "wide": true
+      }
+    }
+  ],
+  "counts": {
+    "prose": 283,
+    "tables": 62,
+    "headings": 26,
+    "total": 371
+  },
+  "citationIds": [
+    "lilygo-controller",
+    "hshop-do",
+    "dfrobot-ph",
+    "dfrobot-turbidity",
+    "vietcombank-rate",
+    "fdi-labour-benchmark",
+    "tiasang-labour-benchmark",
+    "dfrobot-ph-calibration",
+    "dfrobot-do-maintenance",
+    "render-hosting-price",
+    "lalamove-freight-benchmark",
+    "render-storage-benchmark",
+    "recycling-scope-benchmark",
+    "e360-buck",
+    "dongbac-ph4",
+    "dongbac-ph7",
+    "giva-panel",
+    "haidang-enclosure",
+    "solar-controller",
+    "mlab-storage",
+    "phongvu-card",
+    "vac-battery"
+  ]
+}

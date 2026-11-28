@@ -1,5 +1,8 @@
 # CITP Task 3 project introduction and design report
 
+> **Bá Nguyên — cost review package, 28 November 2026:** [Current figures, new source evidence and integration patches](website/content/publication-handoff-2026-11-28.md). This branch carries the handoff; main/final-website and the hosted site are not automatically updated.
+
+
 This React, TypeScript and Vite site is the draft introduction and report for Hanoi Water Watch. It is a static, client-side application and can be built and hosted independently from the [HanoiWaterWatch application](../HanoiWaterWatch/README.md).
 
 ## Run locally

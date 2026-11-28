@@ -1,0 +1,193 @@
+--- a/website/src/content/data.ts
++++ b/website/src/content/data.ts
+@@ -13,15 +13,14 @@
+   { k: 'B · Test kits and app', s: [2, 2, 2, 4, 5, 4], r: ['Only when a volunteer tests', 'Tests river water, not outfalls', 'Kit accuracy and training vary', 'Residents take part directly', 'Kits are simple', 'Kits are cheap'] },
+   { k: 'C · Manual sampling', s: [1, 3, 5, 2, 4, 2], r: ['Days between visits, plus lab time', 'Samples one outfall, if it is the right one', 'Laboratory accuracy', 'Results rarely reach residents', 'No equipment left on site', 'Staff time grows with every site'] }
+ ];
+-/* Listed price per station in VND, recorded 19-25 November 2026 (USD items at 25,940). A reference
+-   design for asking quotes, not a final parts list. The pH kit is also the optional shared spare. */
++/* Q190 chosen for proposed costing on 28 November 2026; USD units use the explicit
++   historical 25,940 VND/USD assumption, rounded per unit. Not a purchase or installed budget. The pH kit is also the optional shared spare. */
+ export const PH_KIT = { n: 'Industrial pH probe kit', s: 'SEN0169-V2 · US$64.90 · DFRobot (n.d.-a)', p: 1683506 };
+ export const BUILD = [
+   { n: 'Turbidity sensor', s: 'SEN0710 · US$229 · DFRobot (n.d.-c)', p: 5940260 },
+   { n: 'Dissolved-oxygen sensor', s: 'SEN0680 · Hshop (n.d.-c)', p: 4428000 },
+   PH_KIT,
+-  { n: '4G modem', s: 'SIM7600G-H-M.2 · Hshop (n.d.-e)', p: 1566000 },
+-  { n: 'ESP32 board', s: 'Vietduino HS2250V · Hshop (n.d.-d)', p: 195000 },
++  { n: 'Integrated ESP32/4G board', s: 'LILYGO Q190 R2 4MB · US$69.34 · LILYGO (n.d.)', p: 1798680 },
+   { n: 'Temperature sensor', s: 'DS18B20, waterproof · Hshop (n.d.-b)', p: 35000 },
+   { n: 'RS485 converter', s: 'TTL to RS485 · Hshop (n.d.-a)', p: 35000 },
+   { n: 'Four cable glands', s: 'PG13.5, fit to be checked · Đại Hòa Phú (n.d.)', p: 4 * 3175 }
+--- a/website/src/content/pages/home.html
++++ b/website/src/content/pages/home.html
+@@ -21,7 +21,7 @@
+         <div><dt>Problem</dt><span>Discharges are found days late, and the polluter cannot be traced.</span></div>
+         <div><dt>Solution</dt><span>Sensor stations at outfalls, a colour-coded map app and instant alerts.</span></div>
+         <div><dt>Who benefits</dt><span>Riverside residents, environment authorities, downstream farmers.</span></div>
+-        <div><dt>Pilot cost</dt><span>About ₫41.7 million in listed equipment for three stations; installation and running costs to be quoted.</span></div>
++        <div><dt>Pilot cost</dt><span>₫41,799,438 in Q190 core equipment for three stations, or ₫43,482,944 with one optional shared pH kit. Reference additions and installed/running costs are separate.</span></div>
+         <div><dt>Status</dt><span>Working simulated prototype; user testing in progress.</span></div>
+       </dl>
+     </div>
+@@ -33,7 +33,7 @@
+       <div class="grid4 stats">
+         <div class="stat reveal"><span class="tag" style="color:var(--teal)">Treatment</span><span class="num" data-count-to="30" data-suffix="%">30%</span><p class="what">of Hanoi’s daily domestic wastewater, about one million m³, is treated.</p><span class="cite">VnExpress (2024)</span></div>
+         <div class="stat reveal d1"><span class="tag" style="color:var(--amber)">Economy</span><span class="num" data-count-to="3.5" data-dec="1" data-suffix="%">3.5%</span><p class="what">of Vietnam’s GDP could be lost each year by 2035 through water pollution.</p><span class="cite">Viet Nam News (2019), citing the World Bank</span></div>
+-        <div class="stat reveal d2"><span class="tag" style="color:var(--coral)">Budget</span><span class="num" data-count-to="75115" data-prefix="₫" data-suffix=" bn">₫75,115 bn</span><p class="what">approved in 2026 to restore one river, the Nhuệ.</p><span class="cite">Đại biểu Nhân dân (2026)</span></div>
++        <div class="stat reveal d2"><span class="tag" style="color:var(--coral)">Budget</span><span class="num" data-count-to="75115" data-prefix="₫" data-suffix=" bn">₫75,115 bn</span><p class="what">approved in 2026 to restore one river, the Nhuệ.</p><span class="cite">Văn Anh (2026)</span></div>
+         <div class="stat reveal d3"><span class="tag" style="color:var(--lime)">Downstream</span><span class="num">10–15</span><p class="what">waves of Hanoi wastewater reach Hà Nam each year, killing farmed fish.</p><span class="cite">Báo Pháp Luật (2021)</span></div>
+       </div>
+     </div>
+--- a/website/src/content/pages/implementation.html
++++ b/website/src/content/pages/implementation.html
+@@ -4,7 +4,7 @@
+   <header class="phead"><canvas class="stream" aria-hidden="true"></canvas><div class="wrap">
+     <p class="crumbs"><a href="#home">Home</a> / Implementation</p>
+     <h1>Implementation</h1>
+-    <p class="lede">Three stations over three years: prove one first, then add two. Roles and budget stay proposals until quotes and agreements are in place.</p>
++    <p class="lede">Up to three stations in a 36-month pilot, starting when the first station enters service. Add two stations after the first passes acceptance.</p>
+     <nav class="subnav" aria-label="On this page"><a href="#implementation-plan">1 · Rollout plan</a><a href="#implementation-owners">2 · Operation</a><a href="#implementation-cost">3 · Cost analysis</a><a href="#implementation-risks">4 · Risks and community reaction</a><a href="#implementation-lifecycle">5 · Life cycle</a><a href="#implementation-journey">6 · Journey map</a><a href="#implementation-recommendations">7 · Recommendations</a></nav>
+   </div></header>
+
+@@ -15,11 +15,11 @@
+         <div class="phase reveal"><span class="bar"></span><span class="when">Before launch</span><h3>Survey and quote</h3><ul><li>Survey proposed sites on the Tô Lịch near Cầu Mới, Cầu Dậu and Cầu Thanh Liệt.</li><li>Get matching quotes for a complete installed station.</li><li>Agree site access and alert steps.</li></ul></div>
+         <div class="phase reveal d1"><span class="bar"></span><span class="when">Station 1</span><h3>Install and test</h3><ul><li>Run a two-week baseline.</li><li>Check readings against reference instruments.</li><li>Measure power use and 4G recovery.</li></ul></div>
+         <div class="phase reveal d2"><span class="bar"></span><span class="when">Stations 2 and 3</span><h3>Expand if it passes</h3><ul><li>Order only after the first station is accepted and the new quote approved.</li><li>Reuse the tested design and alert steps.</li></ul></div>
+-        <div class="phase reveal d3"><span class="bar"></span><span class="when">To year 3</span><h3>Operate and decide</h3><ul><li>Measure detection time, false alarms and app use.</li><li>Review wear in month 36.</li><li>Decide on wider rollout from the results.</li></ul></div>
++        <div class="phase reveal d3"><span class="bar"></span><span class="when">To year 3</span><h3>Operate and decide</h3><ul><li>Measure detection time, false alarms and app use.</li><li>Review wear at project close and record each station’s age.</li><li>Decide on wider rollout from the results.</li></ul></div>
+       </div>
+       <div class="gate reveal">
+         <p><b>Gate before buying stations 2 and 3</b><span>Pass levels are agreed before testing starts.</span></p>
+-        <ul><li>Readings match a reference instrument</li><li>No data lost after a 4G drop</li><li>Power lasts as planned</li><li>A test alert reaches a named person</li><li>Revised quote approved</li></ul>
++        <ul><li>Reference readings meet the agreed tolerances</li><li>4G recovery and delivery meet the test targets</li><li>Measured power supports the planned autonomy</li><li>An internal test alert reaches the operator</li><li>Site access, staffing and revised quotes approved</li></ul>
+       </div>
+     </div>
+   </section>
+@@ -29,31 +29,31 @@
+       <div class="head reveal"><p class="kicker">2 · Operation</p><h2>Who runs it and keeps it working</h2><p class="lede">Proposed roles. Each one still needs a written agreement.</p></div>
+       <div class="owners four">
+         <div class="card lift reveal"><b>Department of Agriculture and Environment</b><p>Owns the stations and data, receives alerts and sends inspectors.</p></div>
+-        <div class="card lift reveal d1"><b>System operator</b><p>Runs the platform and repairs stations. A main operator and a backup are still to be named.</p></div>
++        <div class="card lift reveal d1"><b>System operator</b><p>Runs the platform and repairs stations. Confirm a primary operator and a backup with site access before expanding.</p></div>
+         <div class="card lift reveal d2"><b>Accredited laboratory</b><p>Tests the confirmation sample that supports any fine.</p></div>
+         <div class="card lift reveal d3"><b>Wards and residents</b><p>Share alerts locally, report pollution with photos and help watch the sites.</p></div>
+       </div>
+       <div class="sched reveal">
+-        <h3>Three-year service schedule</h3>
+-        <ol aria-label="Shared testing trips by month"><li><b>6</b><span>month</span></li><li><b>12</b><span>month</span></li><li><b>18</b><span>month</span></li><li><b>24</b><span>month</span></li><li><b>30</b><span>month</span></li><li class="end"><b>36</b><span>+ wear review</span></li></ol>
++        <h3>Three-year service baseline</h3>
++        <ol aria-label="Testing rounds by month if stations start together"><li><b>6</b><span>month</span></li><li><b>12</b><span>month</span></li><li><b>18</b><span>month</span></li><li><b>24</b><span>month</span></li><li><b>30</b><span>month</span></li><li class="end"><b>36</b><span>+ wear review</span></li></ol>
+         <div class="facts3">
+-          <div><span class="num">6</span><p>shared trips, each covering all three stations: cleaning, calibration check and a test alert.</p></div>
+-          <div><span class="num">18</span><p>station checks in total. Drift, fouling or faults trigger extra visits.</p></div>
++          <div><span class="num">6</span><p>shared testing rounds if the stations start together and share one route. Each includes cleaning, a calibration check and a test alert.</p></div>
++          <div><span class="num">16</span><p>station checks in the 0/6/6 illustration. The simultaneous-start comparison has 18; recalculate from actual commissioning dates.</p></div>
+           <div><span class="num">48 h</span><p>repair target from the time a fault is received. Not yet a signed service agreement.</p></div>
+         </div>
+-        <p class="cap">Dates count from commissioning. Makers advise calibrating more often than this, every 90 days for turbidity (DFRobot, n.d.-c) and ideally monthly for pH (DFRobot, 2026), so that extra work must also be scheduled and quoted.</p>
++        <p class="cap">Budget monthly pH calibration and turbidity recalibration within 90 days (DFRobot, n.d.-c, 2026). When turbidity is recalibrated early, count the next 90 days from the actual service date. Include wear reviews for all stations in the final round. With starts at 0/6/6, the stations will be 36, 30 and 30 months old at project close.</p>
+       </div>
+     </div>
+   </section>
+
+   <section class="band" id="implementation-cost">
+     <div class="wrap">
+-      <div class="head reveal"><p class="kicker">3 · Cost analysis</p><h2>What is priced, and what still needs a quote</h2><p class="lede">Listed prices recorded 19–25 November 2026 for a reference design, not a final order. US dollar prices are converted at ₫25,940, the rate of 19 November (NDH, n.d.).</p></div>
++      <div class="head reveal"><p class="kicker">3 · Cost analysis</p><h2>What is priced, and what still needs a quote</h2><p class="lede">LILYGO Q190 is chosen for proposed costing, not purchase or field acceptance (LILYGO, n.d.). Prices checked 28 November 2026 use a budget assumption of ₫25,940 per USD from 19 November, rounding each converted unit before multiplying quantities (NDH, n.d.).</p></div>
+       <div class="costsum">
+-        <div class="reveal"><small>Station 1</small><b data-cost="first">₫13,895,466</b><p>Listed equipment, bought first.</p></div>
+-        <div class="reveal d1"><small>Stations 2 and 3</small><b data-cost="rest">₫27,790,932</b><p>Bought only after the gate is passed.</p></div>
++        <div class="reveal"><small>Station 1</small><b data-cost="first">₫13,933,146</b><p>Listed equipment, bought first.</p></div>
++        <div class="reveal d1"><small>Stations 2 and 3</small><b data-cost="rest">₫27,866,292</b><p>Bought only after the gate is passed.</p></div>
+         <div class="reveal d2"><small>One shared spare pH kit</small><b data-cost="spare">₫1,683,506</b><p>Optional, to help meet the repair target.</p></div>
+-        <div class="total reveal d3"><small>Priced so far</small><b data-cost="total">₫43,369,904</b><p>Three stations and the spare. Not the full budget.</p></div>
++        <div class="total reveal d3"><small>Priced so far</small><b data-cost="total">₫43,482,944</b><p>Three stations and the spare. Not the full budget.</p></div>
+       </div>
+       <div class="grid2" style="align-items:start">
+         <div class="reveal">
+@@ -61,18 +61,32 @@
+           <div class="bom" id="bomBuild"></div>
+         </div>
+         <div class="reveal d1">
+-          <h3 style="margin-bottom:12px">Still to be quoted</h3>
++          <h3 style="margin-bottom:12px">Additional components and unpriced services</h3>
+           <div class="quotes">
+-            <div><b>To build</b><ul><li>Solar panel, battery and controller</li><li>4G modem carrier board and antenna</li><li>Enclosure, cables, mounting and protective cage</li><li>Installation, first calibration and training</li><li>Reference instruments for acceptance tests</li></ul></div>
+-            <div><b>To run for three years</b><ul><li>Six shared testing trips, plus extra calibration</li><li>SIM data: up to 108 SIM-months</li><li>Shared hosting: 36 months</li></ul></div>
++            <div><b>To build</b><ul><li>Solar panel, battery and controller</li><li>Outdoor antenna sealing and any required diversity accessories; base SIM/GPS antennas are already in the Q190 package</li><li>Enclosure, cables, mounting and protective cage</li><li>Installation, first calibration and training</li><li>Reference instruments for acceptance tests</li></ul></div>
++            <div><b>To run for three years</b><ul><li>Six baseline testing rounds, plus calibration outside those rounds</li><li>SIM data: 96 calendar SIM-months in the 0/6/6 example; 108 is the simultaneous-start comparison</li><li>Shared hosting: 36 months from the first station</li></ul></div>
+             <div><b>When needed</b><ul><li>Repairs, oxygen-probe film and spare parts</li><li>Laboratory samples and SMS alerts</li><li>Delivery, taxes, permits and disposal</li></ul></div>
+           </div>
+-          <div class="note" style="margin-top:14px"><b>Full three-year budget: not yet known</b><p>Items without a quote are not counted as zero. A payer for each cost must be agreed before deployment; possible sources are the city environment budget, fines and wastewater fees, industrial clusters and development grants.</p></div>
+-          <p class="cap">Evidence: <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/0aa14906/website/content/cost-rollup-3stations-3years-2026-11-26.md">cost rollup</a> and <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/0aa14906/website/content/cost-evidence/README.md">price screenshots</a>.</p>
++          <p class="cap">Starts at months 0, 6 and 6 give 96 SIM-months, 36 shared hosting months and 16 station checks in six rounds (Chau, 2026). In this example, 80 of the 96 monthly pH tasks fall outside testing only if the testing quote covers the full procedure and supplies for all 16 overlapping tasks. The dated schedule has 32 turbidity tasks before any early rescheduling. These quantities count work per station. Quote initial calibration separately and calculate travel from the actual service dates.</p>
++          <p class="cap">The separate planning scenario uses these listing rates without ordering services: Viettel Connect8 lists ₫8,000 per 30 days; the dated 0/6/6 example needs 99 prepaid cycles, not 96 cycles (Viettel, n.d.). Render web plus Postgres compute is US$13 per shared system-month before workspace, storage, usage, broker, support and taxes (Render, n.d.). These are incomplete listing scenarios, not accepted quotations.</p>
++          <div class="note" style="margin-top:14px"><b>Full three-year budget pending</b><p>Q190 reduces separate carrier integration. No OPEX saving over the separate-board alternatives has been demonstrated: sensors and service quantities are held equal. Confirm complete power, interfaces, quotes, payer and repair arrangements before ordering.</p></div>
++          <p class="cap">See the <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/54d29cc29e18778e8d981e6be16303d4b2620355/website/content/cost-rollup-3stations-3years-2026-11-26.md">historical separate-board cost rollup</a>, <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/54d29cc29e18778e8d981e6be16303d4b2620355/website/content/service-rfq-quantities-2026-11-28.csv">service quantities</a>, <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/0aa14906/website/content/cost-evidence/README.md">price evidence</a> and <a href="https://github.com/tuanchau832-ai/Final-Assignment/blob/687557b1f2b50ed5ab416713706bd4221b883c2d/website/content/first-station-pilot.md">first-station plan and test procedure</a>.</p>
+         </div>
+       </div>
+     </div>
+   </section>
++
++<div class="wrap" style="margin-top:24px">
++        <h3>Separate reference additions</h3>
++        <p>These component choices support a planning scenario, not a validated installed kit. The core total of ₫43,482,944 above remains three stations plus one optional shared pH kit.</p>
++        <div id="reference-additions-table" role="region" tabindex="0" aria-label="Reference component prices; scroll horizontally" style="overflow-x:auto;max-width:100%">
++          <table style="width:100%;min-width:800px"><caption>Listed reference additions checked 28 November 2026; assumed quantities</caption><thead><tr><th>Component</th><th>Quantity basis</th><th>Unit VND</th><th>Project VND</th><th>Scope and exclusions</th></tr></thead><tbody><tr><td>GIVASOLAR GVA-100W panel</td><td>1 per station</td><td>₫850,000</td><td>₫2,550,000</td><td>Panel only; excludes battery, charger, supports, cables and protection; nameplate is not site yield.</td></tr><tr><td>ST-H1210 10A solar controller</td><td>1 per station</td><td>₫780,000</td><td>₫2,340,000</td><td>Seller describes MPPT; independent performance not validated. Default 14.2V differs from AGM cycle range; settings and temperature compensation require validation.</td></tr><tr><td>LONG WP40-12NE 12V 40Ah AGM</td><td>1 per station</td><td>₫1,588,000</td><td>₫4,764,000</td><td>One battery only; weather-protected ventilated housing, terminals, cable, delivery and life under field cycling excluded. Listing has conflicting warranty statements.</td></tr><tr><td>E360 PVN1777 6-36V to 5V/3A USB buck</td><td>1 per station</td><td>₫35,000</td><td>₫105,000</td><td>Converter only; peak/ripple/thermal behaviour and cable must be bench-tested. External regulated 5V proposal, not 12V connected to the LILYGO cell charger.</td></tr><tr><td>Hai Dang W300H400D200 ABS enclosure, variation 19430</td><td>1 per station</td><td>₫700,000</td><td>₫2,100,000</td><td>Electronics enclosure reference only; not a sealed battery box or proof that all parts fit. Penetrations, backplate, fittings, mounting and assembled ingress protection unpriced.</td></tr><tr><td>SanDisk Ultra microSDHC 32GB SDSQUNR-032G-GN3MN</td><td>1 per station</td><td>₫359,000</td><td>₫1,077,000</td><td>Consumer card, not an endurance certification; firmware, filesystem, retention, wear and safe recovery on power loss untested. No SD-size adapter required by this price basis.</td></tr><tr><td>Hanna HI7004L pH4.01 500mL</td><td>1 shared starter</td><td>₫454,000</td><td>₫454,000</td><td>One shared starter bottle; not three-year consumption. Match lot/temperature values to the DFRobot 4.0 nominal calibration procedure before use.</td></tr><tr><td>Hanna HI7007L pH7.01 500mL</td><td>1 shared starter</td><td>₫454,000</td><td>₫454,000</td><td>One shared starter bottle; expiry/open-life, sufficient immersion volume and repeat procedures may require more. Do not reuse contaminated aliquots.</td></tr><tr><td>MLAB Dung_dich_KCL_3M 18mL bottle</td><td>1 shared starter</td><td>₫140,000</td><td>₫140,000</td><td>Starter only; seller suggests 6mL per cap refill. Not a three-year allowance or proof of enough storage liquid for every probe. Rinse/cleaning supplies remain separate.</td></tr></tbody></table>
++        </div>
++        <p class="cap">Sources: GIVASOLAR (n.d.), mayniemphat.vn (n.d.), VAC Technology (n.d.), Điện Tử 360 (n.d.), Hải Đăng (n.d.), Phong Vũ (n.d.), Đông Bắc (n.d.-a, n.d.-b), and MLAB (n.d.). Prices are listings, not received quotations; unspecified VAT and freight remain additional.</p>
++        <p><b>Reference hardware and starter fluids: ₫57,466,944.</b> This comprises the ₫43,482,944 core/reserve subtotal, ₫12,936,000 of station additions and ₫1,048,000 of shared starter fluids. It is not total installed CAPEX.</p>
++        <p><b>Priced components of the common 36-month scenario: ₫70,398,864.</b> This adds ₫792,000 for 99 illustrative Connect8 cycles and US$468 for 36 shared compute months, using the historical budget conversion assumption. It remains incomplete: hosting storage/usage, mounts, protection, battery housing, integration, travel, labour, replenishment, repairs and disposal are additional. Do not add these overlapping totals together.</p>
++        <p class="cap">The 100W panel and 12V-40Ah battery are reference sizes. At an assumed average 4W load, 50% usable battery depth and 85% delivery efficiency imply 51 nominal hours; this is an illustration, not measured autonomy. Charger settings, 5V output transients, battery protection and 32GB storage behaviour require validation. A 12V AGM battery is not a cell for the board's onboard charger. Starter buffers are not a three-year calibration allowance.</p>
++      </div>
+
+   <section class="band" id="implementation-risks" style="background:var(--surface-2)">
+     <div class="wrap">
+@@ -80,7 +94,7 @@
+       <div class="risks">
+         <div class="card risk reveal"><div class="lv"><span class="m">Possible</span><span class="h">High impact</span></div><b>Readings near the limit are wrong</b><p>Listed error is about ±50 NTU for turbidity and ±0.6 mg/L for oxygen (DFRobot, n.d.-b, n.d.-c). Test against reference instruments before buying more.</p></div>
+         <div class="card risk reveal d1"><div class="lv"><span class="h">Likely</span><span class="m">Medium impact</span></div><b>Probe fouling and drift</b><p>Wiper brush, scheduled cleaning and an extra visit when readings drift.</p></div>
+-        <div class="card risk reveal d2"><div class="lv"><span class="m">Possible</span><span class="h">High impact</span></div><b>Alert fatigue</b><p>Three-reading rule and a baseline for each site keep false alarms rare.</p></div>
++        <div class="card risk reveal d2"><div class="lv"><span class="m">Possible</span><span class="h">High impact</span></div><b>Alert fatigue</b><p>Test the three-reading rule against the site baseline. Verify readings near the limit with a reference instrument.</p></div>
+         <div class="card risk reveal"><div class="lv"><span class="m">Possible</span><span class="m">Medium impact</span></div><b>Theft or flooding</b><p>Locked cage above the flood line, with ward staff watching the site.</p></div>
+         <div class="card risk reveal d1"><div class="lv"><span class="m">Possible</span><span class="h">High impact</span></div><b>Factory pushback</b><p>Laboratory confirmation before any fine; clusters can use alerts to fix their own treatment.</p></div>
+         <div class="card risk reveal d2"><div class="lv"><span class="m">Possible</span><span class="m">Medium impact</span></div><b>Digital divide</b><p>SMS and loudspeaker alerts, large text and Vietnamese labels.</p></div>
+--- a/website/src/content/pages/references.html
++++ b/website/src/content/pages/references.html
+@@ -10,7 +10,17 @@
+     <div class="wrap refs">
+       <p>Adu-Manu, K. S., Tapparello, C., Heinzelman, W., Katsriku, F. A., &amp; Abdulai, J.-D. (2017). Water quality monitoring using wireless sensor networks: Current trends and future research directions. <i>ACM Transactions on Sensor Networks, 13</i>(1), Article 4. https://doi.org/10.1145/3005719</p>
+       <p>Báo Pháp Luật. (2021). <i>Vì sao Hà Nam mỗi năm hứng chịu hơn 10 đợt nước thải?</i> [Why does Hà Nam receive more than 10 waves of wastewater every year?]. https://baophapluat.vn/vi-sao-ha-nam-moi-nam-hung-chiu-hon-10-dot-nuoc-thai-post386792.html</p>
++      <p>Chau, H. T. [tuanchau832-ai]. (2026, November 28). <i>Hồ sơ triển khai trạm đầu tiên của Hanoi WaterWatch</i> [Project planning document, version 687557b1]. GitHub. https://github.com/tuanchau832-ai/Final-Assignment/blob/687557b1f2b50ed5ab416713706bd4221b883c2d/website/content/first-station-pilot.md</p>
+       <p>Dai Doan Ket. (2024, September 19). <i>Cụm công nghiệp Thanh Oai xả nước thải không đạt chuẩn ra môi trường</i> [Thanh Oai industrial cluster discharges non-standard wastewater into the environment]. https://daidoanket.vn/cum-cong-nghiep-thanh-oai-xa-nuoc-thai-khong-dat-chuan-ra-moi-truong-10290650.html</p>
++      <p>GIVASOLAR. (n.d.). <i>GIVASOLAR GVA-100W panel</i>. Retrieved November 28, 2026, from https://givasolar.com/san-pham/tam-pin-nang-luong-mat-troi-gv-mono-100w/</p>
++      <p>Hải Đăng. (n.d.). <i>Hai Dang W300H400D200 ABS enclosure, variation 19430</i>. Retrieved November 28, 2026, from https://haidanga.vn/san-pham/vo-tu-dien-bang-nhua-abs-kin-nuoc/</p>
++      <p>mayniemphat.vn. (n.d.). <i>ST-H1210 10A solar controller</i>. Retrieved November 28, 2026, from https://mayniemphat.vn/san-pham/san-pham-nang-luong-mat-troi/bo-dieu-khien-sac-nang-luong-mat-troi/bo-dieu-khien-sac-nang-luong-mat-troi-mppt-10a-co-mang-hinh-lcd.html</p>
++      <p>MLAB. (n.d.). <i>MLAB Dung_dich_KCL_3M 18mL bottle</i>. Retrieved November 28, 2026, from https://mlab.vn/3655744-dung-dich-chuan-kcl-3m-bao-ve-dien-cuc-dau-do-ph-orp.html</p>
++      <p>Phong Vũ. (n.d.). <i>SanDisk Ultra microSDHC 32GB SDSQUNR-032G-GN3MN</i>. Retrieved November 28, 2026, from https://phongvu.vn/the-nho-micro-sandisk-ultra-32gb-sdsqunr-032g-gn3mn--s200801365</p>
++      <p>VAC Technology. (n.d.). <i>LONG WP40-12NE 12V 40Ah AGM</i>. Retrieved November 28, 2026, from https://vactechnology.vn/san-pham/ac-quy-agm-vrla-long-12v-40ah-wp40-12ne</p>
++      <p>Điện Tử 360. (n.d.). <i>E360 PVN1777 6-36V to 5V/3A USB buck</i>. Retrieved November 28, 2026, from https://dientu360.com/mach-ha-ap-5v-3a-2-cong-usb</p>
++      <p>Đông Bắc. (n.d.-b). <i>Hanna HI7007L pH7.01 500mL</i>. Retrieved November 28, 2026, from https://thietbi.net.vn/dung-dich-hieu-chuan-ph/dung-dich-hieu-chuan-ph-7-01--chai-500ml-hi7007l/</p>
++      <p>Đông Bắc. (n.d.-a). <i>Hanna HI7004L pH4.01 500mL</i>. Retrieved November 28, 2026, from https://thietbi.net.vn/dung-dich-hieu-chuan-ph/dung-dich-hieu-chuan-ph-4-01--chai-500ml-hi7004l/</p>
+       <p>Đại Hòa Phú. (n.d.). <i>Cable gland Upun PG13.5</i> [Product page]. Retrieved November 19, 2026, from https://daihoaphu.vn/cable-gland-upun-pg135</p>
+       <p>DFRobot. (n.d.-a). <i>Gravity: 7/24 industrial analog pH meter kit V2 (Arduino, Raspberry Pi)</i> [Product page]. Retrieved November 19, 2026, from https://www.dfrobot.com/product-2069.html</p>
+       <p>DFRobot. (n.d.-b). <i>RS485 fluorescence dissolved oxygen sensor (freshwater)</i> [Product wiki]. Retrieved November 27, 2026, from https://wiki.dfrobot.com/sen0680</p>
+@@ -22,6 +32,7 @@
+       <p>Hshop. (n.d.-c). <i>Cảm biến oxy hòa tan DFRobot RS485 fluorescence dissolved oxygen sensor (freshwater)</i> [Product page]. Retrieved November 19, 2026, from https://hshop.vn/cam-bien-oxy-hoa-tan-dfrobot-rs485-fluorescence-dissolved-oxygen-sensor-freshwater</p>
+       <p>Hshop. (n.d.-d). <i>Mạch phát triển Vietduino ESP32 (Arduino compatible)</i> [Product page]. Retrieved November 19, 2026, from https://hshop.vn/mach-phat-trien-vietduino-esp32</p>
+       <p>Hshop. (n.d.-e). <i>SIM7600G-H-M.2 SIMCom original 4G LTE Cat-4 module</i> [Product page]. Retrieved November 19, 2026, from https://hshop.vn/mach-sim7600g-h-m-2-simcom-original-4g-lte-cat-4-module-global-coverage-gnss-m-2-connector</p>
++      <p>LILYGO. (n.d.). <i>T-SIM7600E/G/SA-H</i> [Q190 R2 4MB, China worldwide variant]. Retrieved November 28, 2026, from https://lilygo.cc/en-us/products/t-sim7600?variant=42358717972661</p>
+       <p>Ministry of Natural Resources and Environment. (2023). <i>QCVN 08:2023/BTNMT: National technical regulation on surface water quality</i>. https://sonnmt.langson.gov.vn/upload/105376/20250319/01-btnmt-qc08_1c394.pdf</p>
+       <p>NDH. (n.d.). <i>Tỷ giá USD hôm nay</i> [Exchange-rate table]. Retrieved November 27, 2026, from https://ndh.vn/ty-gia/usd/</p>
+       <p>Nguyen, D. D. (2019). Impacts of waste water from main factories on water quality of Tolich river, Hanoi. <i>E3S Web of Conferences, 91</i>, Article 04001. https://doi.org/10.1051/e3sconf/20199104001</p>
+@@ -29,7 +40,9 @@
+       <p>Nguyet, M. (2025, January 21). <i>Phấn đấu năm 2025, 100% cụm công nghiệp đã đi vào hoạt động có trạm xử lý nước thải đạt tiêu chuẩn</i> [Striving for 100% of operating industrial clusters to have wastewater treatment stations that meet standards by 2025]. Hanoi People’s Committee. https://hanoi.gov.vn/chi-dao-cua-ubnd-thanh-pho-ha-noi/phan-dau-nam-2025-100-cum-cong-nghiep-da-di-vao-hoat-dong-co-tram-xu-ly-nuoc-thai-dat-tieu-chuan-4250121103440784.htm</p>
+       <p>Phung, T. X. B., Le, T. P. Q., Le, N. D., Hoang, T. T. H., Nguyen, T. M. H., Rochelle-Newall, E., Nguyen, T. A. H., Duong, T. T., Pham, T. M. H., &amp; Nguyen, T. D. (2024). Metal contamination, their ecological risk, and relationship with other variables in surface sediments of urban rivers in a big city in Asia: Case study of Hanoi, Vietnam. <i>Environmental Science and Pollution Research, 31</i>, 22362–22379. https://doi.org/10.1007/s11356-024-32549-x</p>
+       <p>Pule, M., Yahya, A., &amp; Chuma, J. (2017). Wireless sensor networks: A survey on monitoring water quality. <i>Journal of Applied Research and Technology, 15</i>(6), 562–570. https://doi.org/10.1016/j.jart.2017.07.004</p>
++      <p>Render. (n.d.). <i>Pricing</i>. Retrieved November 28, 2026, from https://render.com/pricing</p>
+       <p>Văn Anh. (2026, July 16). <i>Hà Nội: Phê duyệt dự án hơn 75.000 tỷ đồng hồi sinh sông Nhuệ</i> [Hanoi approves a project of more than ₫75,000 billion to revive the Nhuệ River]. Đại biểu Nhân dân. https://daibieunhandan.vn/ha-noi-phe-duyet-du-an-hon-75-000-ty-dong-hoi-sinh-song-nhue-10423843.html</p>
++      <p>Viettel. (n.d.). <i>Viettel IoT cloud</i>. Retrieved November 28, 2026, from https://iot.viettel.vn/</p>
+       <p>Viet Nam News. (2019, May 30). <i>Việt Nam looks towards a safe, clean and resilient water system</i>. https://vietnamnews.vn/society/520671/viet-nam-looks-towards-a-safe-clean-and-resilient-water-system.html</p>
+       <p>VnExpress. (2024). <i>Hà Nội đặt mục tiêu xử lý được 70% nước thải sinh hoạt vào 2030</i> [Hanoi aims to treat 70% of domestic wastewater by 2030]. https://vnexpress.net/ha-noi-dat-muc-tieu-xu-ly-duoc-70-nuoc-thai-sinh-hoat-vao-2030-4828276.html</p>
+     </div>

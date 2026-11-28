@@ -5,8 +5,34 @@ export function Pending({ children }: { children: string }) {
   return <p className="pending">[FILL: {children}]</p>;
 }
 
-export function Citation({ reference }: { reference: Reference }) {
-  return <Link to={`/pages/references#${reference.id}`}>({reference.author}, {reference.year})</Link>;
+export function Citation({ reference, references }: { reference?: Reference; references?: readonly Reference[] }) {
+  const cited = references ?? (reference ? [reference] : []);
+  const ordered = [...cited].sort((first, second) =>
+    (first.citationAuthor ?? first.author).localeCompare(second.citationAuthor ?? second.author, 'en')
+    || Number(!first.year.startsWith('n.d.')) - Number(!second.year.startsWith('n.d.'))
+    || first.year.localeCompare(second.year));
+
+  const groups: Reference[][] = [];
+  for (const item of ordered) {
+    const previous = groups.at(-1);
+    if (previous && (previous[0].citationAuthor ?? previous[0].author) === (item.citationAuthor ?? item.author)) {
+      if (!previous.some(({ id }) => id === item.id)) previous.push(item);
+    } else groups.push([item]);
+  }
+
+  return <>(
+    {groups.map((group, index) => (
+      <span key={group[0].id}>
+        {index > 0 && '; '}{group.map((item, itemIndex) => (
+          <span key={item.id}>
+            {itemIndex > 0 && ', '}<Link to={`/pages/references#${item.id}`}>
+              {itemIndex === 0 ? `${item.citationAuthor ?? item.author}, ${item.year}` : item.year}
+            </Link>
+          </span>
+        ))}
+      </span>
+    ))}
+  )</>;
 }
 
 export function Bibliography({ references }: { references: readonly Reference[] }) {
@@ -14,7 +40,17 @@ export function Bibliography({ references }: { references: readonly Reference[] 
     <ul className="bibliography">
       {references.map((reference) => (
         <li key={reference.id} id={reference.id} tabIndex={-1}>
-          {reference.entry}{reference.url && <> <a href={reference.url}>Source</a></>}
+          {reference.title ? (
+            <>
+              {reference.author}. ({reference.date ?? reference.year}). {reference.italicTitle === false
+                ? reference.title : <cite>{reference.title}</cite>}{reference.description && <> {reference.description}</>}.
+              {reference.siteName && reference.siteName !== reference.author && <> {reference.siteName}.</>}
+              {reference.retrievedDate && <> Retrieved {reference.retrievedDate}, from</>}
+              {reference.url && <> <a href={reference.url}>{reference.url}</a></>}
+            </>
+          ) : (
+            <>{reference.entry}{reference.url && <> <a href={reference.url}>{reference.url}</a></>}</>
+          )}
         </li>
       ))}
     </ul>
@@ -31,11 +67,13 @@ export function ReportFigure({ id, caption, image, source, pending }: FigureData
   );
 }
 
-export function ReportTable({ id, caption, columns, rows, pending }: TableData) {
+export function ReportTable({ id, caption, columns, rows, wide, scrollHint, pending }: TableData) {
   return (
     <figure>
       <figcaption id={`${id}-caption`}>{caption}</figcaption>
-      <div id={id} className="table-scroll" role="region" aria-labelledby={`${id}-caption`} tabIndex={0}>
+      {scrollHint && <p className="table-scroll-hint" id={`${id}-hint`}>{scrollHint}</p>}
+      <div id={id} className={wide ? 'table-scroll table-scroll-wide' : 'table-scroll'} role="region"
+        aria-labelledby={`${id}-caption`} aria-describedby={scrollHint ? `${id}-hint` : undefined} tabIndex={0}>
         <table aria-labelledby={`${id}-caption`}>
           <thead><tr>{columns.map((column) => <th key={column} scope="col">{column}</th>)}</tr></thead>
           <tbody>

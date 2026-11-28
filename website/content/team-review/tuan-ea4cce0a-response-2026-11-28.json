@@ -1,0 +1,10 @@
+{
+  "reviewed_date": "2026-11-28",
+  "source_commit": "ea4cce0ab3e1c520e074b48ae703d3dfe69570fb",
+  "id": 7235294127,
+  "author": "tuanchau832-ai",
+  "url": "https://github.com/tuanchau832-ai/Final-Assignment/pull/3#issuecomment-7235294127",
+  "created_at": "2026-11-28T06:26:18Z",
+  "updated_at": "2026-11-28T06:26:18Z",
+  "body": "@LeNguyenBaNguyen Bá Nguyên ơi, mình đã xử lý [ba mục bạn gửi](https://github.com/tuanchau832-ai/Final-Assignment/pull/3#issuecomment-7234976639) và push commit [`ea4cce0`](https://github.com/tuanchau832-ai/Final-Assignment/commit/ea4cce0ab3e1c520e074b48ae703d3dfe69570fb) lên `feature/tuan-pilot-closeout`.\n\n- **TUAN-28-PORT | Đã xử lý.** Mình đã áp phần nội dung vào Implementation và References trên cấu trúc mới. Build, 13 ca simulator và kiểm nội dung phần chi phí trên bản xem cục bộ đều đạt. Bản tích hợp dùng thẻ chi phí hiện tại. [Diff sau tích hợp](https://github.com/tuanchau832-ai/Final-Assignment/compare/final-website...feature/tuan-pilot-closeout)\n\n- **TUAN-28-CAL | Đã xử lý.** Chốt kỳ 36 tháng chung cho dự toán. Với ví dụ 0/6/6, tại đóng kỳ tuổi trạm là **36/30/30 tháng**, với **96 SIM-tháng, 36 tháng hosting, 16 lượt kiểm trong 6 đợt**. Trong **96 việc pH**, còn **80 việc ngoài testing** nếu báo giá testing bao đầy đủ quy trình và vật tư cho cả 16 việc trùng lịch. **32 việc độ đục** là số theo lịch ngày minh họa trước gộp sớm. Khi làm sớm, tính lại hạn 90 ngày từ ngày làm thực tế. Số chuyến đi tính riêng theo lịch đã chốt.\n\n- **TUAN-28-EDIT | Đã xử lý trên web.** Mình đã đối chiếu các trích dẫn với References, bổ sung mục Chau (2026), trỏ hồ sơ về `687557b1` và dùng bảng service quantities mới. Bộ đếm trên bản build báo **khoảng 2.754/4.000 từ**. Khi xuất bản nộp vẫn cần đếm theo template của môn.\n\nMình giữ **43.369.904 VND** là subtotal thiết bị và một bộ pH dự phòng chung. Ngày vận hành, quyền lắp/tải điện thực tế, báo giá, nghiệm thu và bên chi trả vẫn chờ đúng đầu mối xác nhận. Bản này đã có trên nhánh tích hợp để bạn rà nha."
+}

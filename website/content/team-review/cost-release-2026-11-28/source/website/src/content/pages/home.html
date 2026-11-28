@@ -1,0 +1,70 @@
+
+<!-- ================= HOME ================= -->
+<article class="page" id="p-home" data-page="home" data-count>
+  <section class="hero" aria-label="Hanoi WaterWatch">
+    <canvas id="heroCanvas" role="img" aria-label="A 3D map of Hanoi's rivers. Water flows down the Red River, Nhuệ, Tô Lịch and Kim Ngưu between city blocks. Ten WaterWatch stations stand on outfalls; when one detects a discharge it turns red, a plume runs downstream, a resident's phone inside the 1 km alert circle turns red and a signal reaches the Department."></canvas>
+    <div class="hero-in">
+      <div class="htext">
+        <h1 class="brandmark"><span class="h-city">Hanoi</span><span class="h-word">Water<em>Watch</em></span></h1>
+        <p class="claim">A live sensor network on Hanoi’s drain outfalls. Every discharge, seen within minutes.</p>
+        <p class="sub">Low-cost solar stations measure the outflow every two seconds and warn the city and nearby residents the moment untreated wastewater enters the river.</p>
+        <div class="ctas"><a class="btn lime" href="#home-summary">Read the summary</a><a class="btn ghost" href="#solution-demo">Try the live demo</a></div>
+        <ul class="facts"><li><b>3</b>stations in the pilot</li><li><b>2 s</b>between readings</li><li><b>3</b>bad readings to alert</li><li><b>Lab</b>check before a fine</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="home-summary">
+    <div class="wrap hmw">
+      <p class="q reveal"><span class="lead">Our design question</span>How might we <em>detect untreated wastewater discharges into Hanoi’s rivers in real time</em>?</p>
+      <dl class="glance reveal d2" style="margin:0">
+        <div><dt>Problem</dt><span>Discharges are found days late, and the polluter cannot be traced.</span></div>
+        <div><dt>Solution</dt><span>Sensor stations at outfalls, a colour-coded map app and instant alerts.</span></div>
+        <div><dt>Who benefits</dt><span>Riverside residents, environment authorities, downstream farmers.</span></div>
+        <div><dt>Pilot cost</dt><span>₫41,799,438 in Q190 core equipment for three stations, or ₫43,482,944 with one optional shared pH kit. Reference additions and installed/running costs are separate.</span></div>
+        <div><dt>Status</dt><span>Working simulated prototype; user testing in progress.</span></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="band dark" aria-labelledby="whyHd">
+    <div class="wrap">
+      <div class="head reveal"><p class="kicker">Why it matters</p><h2 id="whyHd">The cost of finding out too late</h2></div>
+      <div class="grid4 stats">
+        <div class="stat reveal"><span class="tag" style="color:var(--teal)">Treatment</span><span class="num" data-count-to="30" data-suffix="%">30%</span><p class="what">of Hanoi’s daily domestic wastewater, about one million m³, is treated.</p><span class="cite">VnExpress (2024)</span></div>
+        <div class="stat reveal d1"><span class="tag" style="color:var(--amber)">Economy</span><span class="num" data-count-to="3.5" data-dec="1" data-suffix="%">3.5%</span><p class="what">of Vietnam’s GDP could be lost each year by 2035 through water pollution.</p><span class="cite">Viet Nam News (2019), citing the World Bank</span></div>
+        <div class="stat reveal d2"><span class="tag" style="color:var(--coral)">Budget</span><span class="num" data-count-to="75115" data-prefix="₫" data-suffix=" bn">₫75,115 bn</span><p class="what">approved in 2026 to restore one river, the Nhuệ.</p><span class="cite">Văn Anh (2026)</span></div>
+        <div class="stat reveal d3"><span class="tag" style="color:var(--lime)">Downstream</span><span class="num">10–15</span><p class="what">waves of Hanoi wastewater reach Hà Nam each year, killing farmed fish.</p><span class="cite">Báo Pháp Luật (2021)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="home-background">
+    <div class="wrap split">
+      <div class="prose reveal">
+        <p class="kicker">Background</p>
+        <h2>Rivers as open drains</h2>
+        <p>The Tô Lịch, Kim Ngưu and Nhuệ rivers carry the wastewater of a fast-growing city, from both homes and industry (Nguyen et al., 2018).</p>
+        <p>Factory discharges are linked to high organic pollution in the Tô Lịch (Nguyen, 2019). In 2024, wastewater from the Thanh Oai Industrial Cluster failed national standards and residents reported skin irritation (Dai Doan Ket, 2024).</p>
+      </div>
+      <div class="factrow">
+        <div class="fact reveal d1"><span class="num" style="color:var(--coral-ink)" data-count-to="13" data-suffix=" of 15">13 of 15</span><div class="meter" aria-hidden="true"><i data-w="87" style="background:var(--coral)"></i></div><p>heavily polluted monitoring points lie in the Nhuệ–Đáy basin.</p><span class="cite">Báo Pháp Luật (2021)</span></div>
+        <div class="fact reveal d2"><span class="num" style="color:var(--amber-ink)">Zn, Cr</span><p>Metals in the sediments of four urban rivers pose a considerable ecological risk.</p><span class="cite">Phung et al. (2024)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="home-problem" style="background:var(--surface-2)">
+    <div class="wrap">
+      <div class="head reveal"><p class="kicker">Problem</p><h2>Four causes, four matching harms</h2><p class="lede">Hover or tap a pair to follow the chain.</p></div>
+      <p class="needs reveal" style="margin-bottom:clamp(32px,4vw,52px)">Residents and farmers near Hanoi’s drain outfalls <b>need to know within minutes</b> when untreated wastewater enters the water they use, because discharges happen when nobody is watching and are confirmed only days later.</p>
+      <div class="cc" id="cc">
+        <p class="hd">Cause</p><p class="hd"></p><p class="hd">Consequence</p>
+        <div class="pair" tabindex="0"><div class="cell"><b>Testing is periodic and slow</b><span>Samples are taken from time to time and lab results take days.</span></div><div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 12h15M14 7l5 5-5 5"/></svg></div><div class="cell"><b>Pollution is found too late</b><span>It has already harmed fish, crops and people.</span></div></div>
+        <div class="pair" tabindex="0"><div class="cell"><b>Treatment is missing in clusters</b><span>The city only set a target for every operating cluster to treat wastewater in 2025 (Nguyet, 2025).</span></div><div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 12h15M14 7l5 5-5 5"/></svg></div><div class="cell"><b>Metals build up in rivers</b><span>Zinc and chromium accumulate in sediments (Phung et al., 2024).</span></div></div>
+        <div class="pair" tabindex="0"><div class="cell"><b>Water data is rarely public</b><span>Residents cannot see when nearby water is unsafe.</span></div><div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 12h15M14 7l5 5-5 5"/></svg></div><div class="cell"><b>People use contaminated water</b><span>Residents near Thanh Oai reported skin irritation (Dai Doan Ket, 2024).</span></div></div>
+        <div class="pair" tabindex="0"><div class="cell"><b>Homes and factories share drains</b><span>Mixed flows make polluters hard to identify.</span></div><div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 12h15M14 7l5 5-5 5"/></svg></div><div class="cell"><b>The public pays</b><span>Clean-up costs fall on the city budget and farmers, not polluters.</span></div></div>
+      </div>
+    </div>
+  </section>
+</article>

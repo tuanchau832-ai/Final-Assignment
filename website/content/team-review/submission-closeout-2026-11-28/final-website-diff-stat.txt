@@ -1,0 +1,12 @@
+.../documents/ba-nguyen-ai-log-2026-11-28.html     | 1487 ++++++++++++++++++++
+ .../ba-nguyen-cost-appendix-2026-11-28.html        |    1 +
+ .../ba-nguyen-cost-submission-2026-11-28.docx      |  Bin 0 -> 46935 bytes
+ ...erwatch-group-compilation-draft-2026-11-28.docx |  Bin 0 -> 58263 bytes
+ website/src/content/data.ts                        |   11 +-
+ website/src/content/pages/appendices.html          |    4 +-
+ website/src/content/pages/home.html                |    4 +-
+ website/src/content/pages/implementation.html      |   54 +-
+ website/src/content/pages/references.html          |   21 +-
+ website/src/content/planning-budget.ts             |  395 ++++++
+ website/src/scripts/site.ts                        |   15 +-
+ 11 files changed, 1936 insertions(+), 56 deletions(-)

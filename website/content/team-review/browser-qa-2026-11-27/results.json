@@ -1,0 +1,351 @@
+{
+  "date": "2026-11-27",
+  "timezone": "Asia/Saigon",
+  "scope": "Local Chrome; emulated mobile, not physical phone or deployment",
+  "react_base_commit": "22ef8234a135d3e146ca403aee6bd693dd333f31 plus local APA changes",
+  "tuan_snapshot_commit": "7208280f9e2c2064ddbab716604d871988b1016d",
+  "cases": [
+    {
+      "site": "Ba Nguyen React report",
+      "viewport": [
+        320,
+        812
+      ],
+      "page_width": {
+        "viewport": 320,
+        "document": 320,
+        "body": 320
+      },
+      "menu_opens": true,
+      "menu_navigates_and_closes": true,
+      "table": {
+        "client": 288,
+        "scroll": 1200,
+        "columns": 10,
+        "font": "15px"
+      },
+      "touch_scroll_offset": 209,
+      "table_right_edge": {
+        "left": 912,
+        "lastColumnRight": 304,
+        "regionRight": 304
+      },
+      "citation_navigation": true,
+      "citation_target_focused": true,
+      "reference_width": {
+        "viewport": 320,
+        "document": 320,
+        "body": 320
+      },
+      "hanging_indent": {
+        "padding": "48px",
+        "indent": "-48px"
+      },
+      "runtime_errors": [],
+      "interaction_and_width_pass": true,
+      "visual_issue": null,
+      "overall_pass": true
+    },
+    {
+      "site": "Ba Nguyen React report",
+      "viewport": [
+        390,
+        844
+      ],
+      "page_width": {
+        "viewport": 390,
+        "document": 390,
+        "body": 390
+      },
+      "menu_opens": true,
+      "menu_navigates_and_closes": true,
+      "table": {
+        "client": 358,
+        "scroll": 1200,
+        "columns": 10,
+        "font": "15px"
+      },
+      "touch_scroll_offset": 258,
+      "table_right_edge": {
+        "left": 842,
+        "lastColumnRight": 374,
+        "regionRight": 374
+      },
+      "citation_navigation": true,
+      "citation_target_focused": true,
+      "reference_width": {
+        "viewport": 390,
+        "document": 390,
+        "body": 390
+      },
+      "hanging_indent": {
+        "padding": "48px",
+        "indent": "-48px"
+      },
+      "runtime_errors": [],
+      "interaction_and_width_pass": true,
+      "visual_issue": null,
+      "overall_pass": true
+    },
+    {
+      "site": "Ba Nguyen React report",
+      "viewport": [
+        1440,
+        900
+      ],
+      "page_width": {
+        "viewport": 1440,
+        "document": 1440,
+        "body": 1440
+      },
+      "desktop_menu_visible": true,
+      "table": {
+        "client": 922,
+        "scroll": 1200,
+        "columns": 10,
+        "font": "15px"
+      },
+      "table_right_edge": {
+        "left": 278,
+        "lastColumnRight": 1328.390625,
+        "regionRight": 1328
+      },
+      "citation_navigation": true,
+      "citation_target_focused": true,
+      "reference_width": {
+        "viewport": 1440,
+        "document": 1440,
+        "body": 1440
+      },
+      "hanging_indent": {
+        "padding": "48px",
+        "indent": "-48px"
+      },
+      "runtime_errors": [],
+      "interaction_and_width_pass": true,
+      "visual_issue": null,
+      "overall_pass": true
+    },
+    {
+      "site": "Tuan proposal snapshot",
+      "viewport": [
+        390,
+        844
+      ],
+      "page_width": {
+        "viewport": 390,
+        "document": 390,
+        "body": 390
+      },
+      "calculator_cases": [
+        {
+          "stations": 1,
+          "years": 1,
+          "actual": {
+            "cFirstStation": "₫13,895,466",
+            "cRemainingStations": "No additional stations",
+            "cVnd": "₫13,895,466",
+            "cSpare": "₫1,683,506",
+            "cVisits": "2",
+            "cTrips": "Route TBD",
+            "cServices": "Planning quantities: 12 SIM-months with one SIM per station and 12 months of shared hosting. Recalculate from commissioning dates. Quotes required."
+          },
+          "pass": true
+        },
+        {
+          "stations": 3,
+          "years": 1,
+          "actual": {
+            "cFirstStation": "₫13,895,466",
+            "cRemainingStations": "₫27,790,932",
+            "cVnd": "₫41,686,398",
+            "cSpare": "₫1,683,506",
+            "cVisits": "6",
+            "cTrips": "2",
+            "cServices": "Planning quantities: 36 SIM-months with one SIM per station and 12 months of shared hosting. Recalculate from commissioning dates. Quotes required."
+          },
+          "pass": true
+        },
+        {
+          "stations": 3,
+          "years": 3,
+          "actual": {
+            "cFirstStation": "₫13,895,466",
+            "cRemainingStations": "₫27,790,932",
+            "cVnd": "₫41,686,398",
+            "cSpare": "₫1,683,506",
+            "cVisits": "18",
+            "cTrips": "6",
+            "cServices": "Planning quantities: 108 SIM-months with one SIM per station and 36 months of shared hosting. Recalculate from commissioning dates. Quotes required."
+          },
+          "pass": true
+        },
+        {
+          "stations": 10,
+          "years": 1,
+          "actual": {
+            "cFirstStation": "₫13,895,466",
+            "cRemainingStations": "₫125,059,194",
+            "cVnd": "₫138,954,660",
+            "cSpare": "Stock TBD",
+            "cVisits": "20",
+            "cTrips": "Route TBD",
+            "cServices": "Planning quantities: 120 SIM-months with one SIM per station and 12 months of shared hosting. Recalculate from commissioning dates. Quotes required."
+          },
+          "pass": true
+        }
+      ],
+      "menu_opens": true,
+      "menu_closes": true,
+      "references_navigation": true,
+      "reference_width": {
+        "viewport": 390,
+        "document": 390,
+        "body": 390
+      },
+      "runtime_errors": [],
+      "interaction_and_width_pass": true,
+      "visual_issue": null,
+      "overall_pass": true
+    },
+    {
+      "site": "Tuan proposal snapshot",
+      "viewport": [
+        1440,
+        900
+      ],
+      "page_width": {
+        "viewport": 1440,
+        "document": 1440,
+        "body": 1440
+      },
+      "calculator_cases": [
+        {
+          "stations": 1,
+          "years": 1,
+          "actual": {
+            "cFirstStation": "₫13,895,466",
+            "cRemainingStations": "No additional stations",
+            "cVnd": "₫13,895,466",
+            "cSpare": "₫1,683,506",
+            "cVisits": "2",
+            "cTrips": "Route TBD",
+            "cServices": "Planning quantities: 12 SIM-months with one SIM per station and 12 months of shared hosting. Recalculate from commissioning dates. Quotes required."
+          },
+          "pass": true
+        },
+        {
+          "stations": 3,
+          "years": 1,
+          "actual": {
+            "cFirstStation": "₫13,895,466",
+            "cRemainingStations": "₫27,790,932",
+            "cVnd": "₫41,686,398",
+            "cSpare": "₫1,683,506",
+            "cVisits": "6",
+            "cTrips": "2",
+            "cServices": "Planning quantities: 36 SIM-months with one SIM per station and 12 months of shared hosting. Recalculate from commissioning dates. Quotes required."
+          },
+          "pass": true
+        },
+        {
+          "stations": 3,
+          "years": 3,
+          "actual": {
+            "cFirstStation": "₫13,895,466",
+            "cRemainingStations": "₫27,790,932",
+            "cVnd": "₫41,686,398",
+            "cSpare": "₫1,683,506",
+            "cVisits": "18",
+            "cTrips": "6",
+            "cServices": "Planning quantities: 108 SIM-months with one SIM per station and 36 months of shared hosting. Recalculate from commissioning dates. Quotes required."
+          },
+          "pass": true
+        },
+        {
+          "stations": 10,
+          "years": 1,
+          "actual": {
+            "cFirstStation": "₫13,895,466",
+            "cRemainingStations": "₫125,059,194",
+            "cVnd": "₫138,954,660",
+            "cSpare": "Stock TBD",
+            "cVisits": "20",
+            "cTrips": "Route TBD",
+            "cServices": "Planning quantities: 120 SIM-months with one SIM per station and 12 months of shared hosting. Recalculate from commissioning dates. Quotes required."
+          },
+          "pass": true
+        }
+      ],
+      "references_navigation": true,
+      "reference_width": {
+        "viewport": 1440,
+        "document": 1440,
+        "body": 1440
+      },
+      "runtime_errors": [],
+      "interaction_and_width_pass": true,
+      "visual_issue": "Numeric text wraps at desktop width; see calculator-wrap-results.json and CSS patch",
+      "overall_pass": false
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "react-mobile-overview-390.png",
+      "sha256": "9c6d1a878977fc1f2820da4fc364f3538716c857cf55738eb75b793ba6612d16"
+    },
+    {
+      "file": "react-table-left-390.png",
+      "sha256": "d5f757a246f23f34205e3550dda19cf5201102054fadd92a9a60c970d23f6da6"
+    },
+    {
+      "file": "react-table-right-390.png",
+      "sha256": "ac37a44c32eba50d640d1437fe1c310def0ad4cdd136f033635f0197688663f5"
+    },
+    {
+      "file": "react-references-390.png",
+      "sha256": "9751fd506e65cf90495f9c052e4baaafd698c9bba33fec4b0e42327228b2bd47"
+    },
+    {
+      "file": "react-desktop-overview-1440.png",
+      "sha256": "a532286b5656066b4e56f0fa17a78b80d9c6eee1a2f5a515245ee9e704e62eb0"
+    },
+    {
+      "file": "react-table-left-1440.png",
+      "sha256": "c5b3ba8299f63378f450729255c06c80af2e8b75e77773dfebe836f46a61a339"
+    },
+    {
+      "file": "react-table-right-1440.png",
+      "sha256": "31d6fb04c398c80ed00ea92214e0d20c501f075f20ad21659826f33f1315cde7"
+    },
+    {
+      "file": "react-references-1440.png",
+      "sha256": "59f75248cfc231c2132d7adbc7e1b5811961dea0c0d193e2c32ebc4714865d47"
+    },
+    {
+      "file": "tuan-calculator-390.png",
+      "sha256": "780675fcea1e854b7330746b85861b5222b5563061187d2999a9b0e731a90073"
+    },
+    {
+      "file": "tuan-calculator-baseline-390.png",
+      "sha256": "11d3362b954e2ae46a5ba5c3f93f1d6ff94675b5eec66f45ac965d2ec2e808b1"
+    },
+    {
+      "file": "tuan-references-390.png",
+      "sha256": "5c76734b87595e246520d8a320aca18a9520fa72566cb8c77d729dcd8e37c64a"
+    },
+    {
+      "file": "tuan-calculator-1440.png",
+      "sha256": "61f24ce3933189e059010180b73f5e5d5adc68af961927f2f9a0977b2879a385"
+    },
+    {
+      "file": "tuan-calculator-baseline-1440.png",
+      "sha256": "f55730189cc2c4c0cc48b3f6ecd7087679c2ec9165b5e02345a5ffbfe0aa64ee"
+    },
+    {
+      "file": "tuan-references-1440.png",
+      "sha256": "d8e4a9839e0ed60825cbe797e5a2e91db271feb2bdb35306b1f1fdeab80e051e"
+    }
+  ],
+  "browser": "158.0.8127.38"
+}

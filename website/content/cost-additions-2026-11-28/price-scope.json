@@ -1,0 +1,110 @@
+[
+  {
+    "id": "panel",
+    "item": "GIVASOLAR GVA-100W panel",
+    "unitVnd": 850000,
+    "scope": "station",
+    "vat": "Unstated",
+    "limits": "Panel only; excludes battery, charger, supports, cables and protection; nameplate is not site yield.",
+    "url": "https://givasolar.com/san-pham/tam-pin-nang-luong-mat-troi-gv-mono-100w/",
+    "evidence": "panel.png",
+    "sha256": "a6edf4a010c3fba6065c1eaf34bb909ff0616678fcaafd480c1231fb9bc05264",
+    "checkedDate": "2026-11-28"
+  },
+  {
+    "id": "controller",
+    "item": "ST-H1210 10A solar controller",
+    "unitVnd": 780000,
+    "scope": "station",
+    "vat": "Unstated",
+    "limits": "Seller describes MPPT; independent performance not validated. Default 14.2V differs from AGM cycle range; settings and temperature compensation require validation.",
+    "url": "https://mayniemphat.vn/san-pham/san-pham-nang-luong-mat-troi/bo-dieu-khien-sac-nang-luong-mat-troi/bo-dieu-khien-sac-nang-luong-mat-troi-mppt-10a-co-mang-hinh-lcd.html",
+    "evidence": "controller.png",
+    "sha256": "67c942cf27c2b0fc09e4ae2fa0dced8c5299f27654328ed0aca755dc287d422e",
+    "checkedDate": "2026-11-28"
+  },
+  {
+    "id": "battery",
+    "item": "LONG WP40-12NE 12V 40Ah AGM",
+    "unitVnd": 1588000,
+    "scope": "station",
+    "vat": "Unstated",
+    "limits": "One battery only; weather-protected ventilated housing, terminals, cable, delivery and life under field cycling excluded. Listing has conflicting warranty statements.",
+    "url": "https://vactechnology.vn/san-pham/ac-quy-agm-vrla-long-12v-40ah-wp40-12ne",
+    "evidence": "battery.png",
+    "sha256": "53a9f5fe3f4706d3d42a5d75acef41a0f3e856d0a31e9717d2f53657270da8cc",
+    "checkedDate": "2026-11-28"
+  },
+  {
+    "id": "buck",
+    "item": "E360 PVN1777 6-36V to 5V/3A USB buck",
+    "unitVnd": 35000,
+    "scope": "station",
+    "vat": "Unstated",
+    "limits": "Converter only; peak/ripple/thermal behaviour and cable must be bench-tested. External regulated 5V proposal, not 12V connected to the LILYGO cell charger.",
+    "url": "https://dientu360.com/mach-ha-ap-5v-3a-2-cong-usb",
+    "evidence": "buck.png",
+    "sha256": "4667944c874dd6cf76b8dd0137847397cba7146d9c56a69f5565ca2da8b37777",
+    "checkedDate": "2026-11-28"
+  },
+  {
+    "id": "enclosure",
+    "item": "Hai Dang W300H400D200 ABS enclosure, variation 19430",
+    "unitVnd": 700000,
+    "scope": "station",
+    "vat": "Seller states included VAT 10%",
+    "limits": "Electronics enclosure reference only; not a sealed battery box or proof that all parts fit. Penetrations, backplate, fittings, mounting and assembled ingress protection unpriced.",
+    "url": "https://haidanga.vn/san-pham/vo-tu-dien-bang-nhua-abs-kin-nuoc/",
+    "evidence": "enclosure.png",
+    "sha256": "57b2780a84772422754f22bb7fd1735264741cdc584635c58d8ac95618c0f30f",
+    "checkedDate": "2026-11-28"
+  },
+  {
+    "id": "card",
+    "item": "SanDisk Ultra microSDHC 32GB SDSQUNR-032G-GN3MN",
+    "unitVnd": 359000,
+    "scope": "station",
+    "vat": "Unstated",
+    "limits": "Consumer card, not an endurance certification; firmware, filesystem, retention, wear and safe recovery on power loss untested. No SD-size adapter required by this price basis.",
+    "url": "https://phongvu.vn/the-nho-micro-sandisk-ultra-32gb-sdsqunr-032g-gn3mn--s200801365",
+    "evidence": "card.png",
+    "sha256": "e7803eb8cef9497d4496ed4eae99b7069f7951409493923015745946232eee31",
+    "checkedDate": "2026-11-28"
+  },
+  {
+    "id": "ph4",
+    "item": "Hanna HI7004L pH4.01 500mL",
+    "unitVnd": 454000,
+    "scope": "shared-starter",
+    "vat": "Unstated",
+    "limits": "One shared starter bottle; not three-year consumption. Match lot/temperature values to the DFRobot 4.0 nominal calibration procedure before use.",
+    "url": "https://thietbi.net.vn/dung-dich-hieu-chuan-ph/dung-dich-hieu-chuan-ph-4-01--chai-500ml-hi7004l/",
+    "evidence": "ph4.png",
+    "sha256": "7615ed6ac06bb2172630e46e0fa65dc71b4fcd2358f3424f1891321cc0179ba5",
+    "checkedDate": "2026-11-28"
+  },
+  {
+    "id": "ph7",
+    "item": "Hanna HI7007L pH7.01 500mL",
+    "unitVnd": 454000,
+    "scope": "shared-starter",
+    "vat": "Unstated",
+    "limits": "One shared starter bottle; expiry/open-life, sufficient immersion volume and repeat procedures may require more. Do not reuse contaminated aliquots.",
+    "url": "https://thietbi.net.vn/dung-dich-hieu-chuan-ph/dung-dich-hieu-chuan-ph-7-01--chai-500ml-hi7007l/",
+    "evidence": "ph7.png",
+    "sha256": "8493427e2a94b428660112010dcd0e346f4a6e98d311fd8765039136b4e124b1",
+    "checkedDate": "2026-11-28"
+  },
+  {
+    "id": "storage",
+    "item": "MLAB Dung_dich_KCL_3M 18mL bottle",
+    "unitVnd": 140000,
+    "scope": "shared-starter",
+    "vat": "Unstated",
+    "limits": "Starter only; seller suggests 6mL per cap refill. Not a three-year allowance or proof of enough storage liquid for every probe. Rinse/cleaning supplies remain separate.",
+    "url": "https://mlab.vn/3655744-dung-dich-chuan-kcl-3m-bao-ve-dien-cuc-dau-do-ph-orp.html",
+    "evidence": "storage.png",
+    "sha256": "ae4b133989356f4622e00df66bb9df5ee0b91b24eedd4a03fd96e1f7ca316159",
+    "checkedDate": "2026-11-28"
+  }
+]

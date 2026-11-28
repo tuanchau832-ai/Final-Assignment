@@ -1,0 +1,88 @@
+--- a/website/src/page.html
++++ b/website/src/page.html
+@@ -94,14 +94,14 @@
+         <h2>Every discharge, visible within minutes</h2>
+         <p>Hanoi’s rivers receive large volumes of untreated wastewater every day. Only about 30% of the city’s domestic wastewater is treated (VnExpress, 2024), and factories and drains can discharge at night or in heavy rain, when nobody is watching. Inspections rely on hand-taken samples and laboratory tests that take days, so polluters are rarely traced and residents downstream are not warned.</p>
+         <p>This report proposes Hanoi WaterWatch: small solar-powered sensor stations at high-risk drain outfalls that measure pH, dissolved oxygen, turbidity and temperature every few seconds. When readings stay outside national QCVN limits, the system alerts the environment authority, turns the outfall red on a public map app and warns nearby residents. An inspector then takes a laboratory sample at that exact outfall before any fine is issued.</p>
+-        <p>The team chose this design over resident test kits and more frequent manual sampling because it is the only option that is both real-time and traceable to a single outfall. A simulated prototype, built without hardware, demonstrates the full chain from a polluted reading to a phone alert. A ten-station pilot would cost about US$6,100 in its first year, a tiny fraction of what Hanoi now spends restoring one river.</p>
++        <p>The team chose this design over resident test kits and more frequent manual sampling because it is the only option that is both real-time and traceable to a single outfall. A simulated prototype, built without hardware, demonstrates the full chain from a polluted reading to a phone alert. Under the team’s provisional assumptions, the ten-station, first-year scenario subtotal is <span data-hww-first-year-cost>US$6,105.70</span>. This is not a complete pilot budget: the final hardware, power compatibility, site work and unpriced services still require verification and quotations.</p>
+         <p><span class="pending">Add one sentence on prototype test results after Week 10</span></p>
+       </div>
+       <dl class="glance reveal d2" style="margin:0">
+         <div><dt>Problem</dt><span>Discharges are found days late, and the polluter cannot be traced.</span></div>
+         <div><dt>Solution</dt><span>Sensor stations at outfalls, a colour-coded map app and instant alerts.</span></div>
+         <div><dt>Who benefits</dt><span>Riverside residents, environment authorities, downstream farmers.</span></div>
+-        <div><dt>Pilot cost</dt><span>About US$6,100 for ten stations in year one.</span></div>
++        <div><dt>Provisional scenario</dt><span><span data-hww-first-year-cost>US$6,105.70</span> for ten stations over 12 operating months each; essential costs remain unpriced.</span></div>
+         <div><dt>Status</dt><span>Working simulated prototype; user testing in progress.</span></div>
+       </dl>
+     </div>
+@@ -564,22 +564,22 @@
+ 
+   <section class="band" id="implementation-cost">
+     <div class="wrap">
+-      <div class="head reveal"><p class="kicker">Cost analysis</p><h2>About US$430 to build a station</h2><p class="lede">Hardware prices come from supplier listings; amber bars are team estimates. Costs are shown in US dollars, converted at about ₫26,000 per dollar.</p></div>
++      <div class="head reveal"><p class="kicker">Cost analysis</p><h2>Per-station scenario: equipment <span id="equipmentSubtotal">US$428.07</span>; installed <span id="installedSubtotal">US$468.07</span></h2><p class="lede">These are provisional team scenario inputs, not verified current quotations. Amber bars identify internal estimates. The final BOM and scope remain unresolved. Figures exclude unpriced laboratory confirmation, SMS, software development, training, electrical protection and additional replacements. The illustrative conversion of ₫26,000 per US dollar is not a newly verified exchange rate.</p></div>
+       <div class="grid2" style="align-items:start">
+         <div class="reveal">
+           <h3 style="margin-bottom:12px">Build, per station</h3>
+           <div class="bom" id="bomBuild"></div>
+           <h3 style="margin:28px 0 12px">Run, per station per year</h3>
+           <div class="bom" id="bomRun"></div>
+-          <p class="cap"><b>End of life (after about five years):</b> boards and batteries go to a certified e-waste recycler and cages are reused, about US$10 per station (estimate).</p>
++          <p class="cap"><b>End of life:</b> the team previously assumed disposal after about five years at US$10 per station. This unverified allowance is excluded from the scenario calculator; obtain a collection quotation and confirm component lifetimes.</p>
+         </div>
+         <div style="display:grid;gap:20px">
+           <div class="calc reveal d1" id="calc">
+-            <label for="nSt">Stations in the pilot <output id="nOut">10</output></label>
+-            <input type="range" id="nSt" min="5" max="100" step="5" value="10">
+-            <label for="nYr">Years of operation <output id="yOut">1</output></label>
++            <label for="nSt">Stations in the scenario <output id="nOut">10</output></label>
++            <input type="range" id="nSt" min="1" max="100" step="1" value="10">
++            <label for="nYr">Operating years per station <output id="yOut">1</output></label>
+             <input type="range" id="nYr" min="1" max="5" step="1" value="1">
+-            <div class="out"><div><small>Total cost</small><b id="cUsd">$6,106</b></div><div><small>In Vietnamese dong</small><b id="cVnd">₫159 m</b></div></div>
++            <div class="out"><div><small>Provisional scenario subtotal</small><b id="cUsd">$6,105.70</b></div><div><small>Illustrative VND conversion</small><b id="cVnd">₫159 m</b></div></div>
+             <div class="vs"><div class="track"><i id="cBar"></i></div><p id="cTxt">Share of the ₫75,115 billion Nhuệ restoration budget.</p></div>
+           </div>
+           <div class="fund">
+--- a/website/src/site.ts
++++ b/website/src/site.ts
+@@ -44,7 +44,7 @@
+   { n: 'Waterproof temperature sensor', s: 'DFRobot (2026)', p: 7.50 },
+   { n: '20 W solar panel with charge controller', s: 'eBay (2026)', p: 46.99 },
+   { n: 'Enclosure, battery, steel cage, wiper, cables', s: 'Team estimate', p: 80, est: 1 },
+-  { n: 'Installation labour', s: 'Team estimate', p: 40, est: 1 }
++  { n: 'Installation labour', s: 'Team estimate', p: 40, est: 1, installation: true }
+ ];
+ const RUN = [
+   { n: 'Replacement pH electrode', s: 'DFRobot (2026)', p: 49.50 },
+@@ -111,17 +111,24 @@
+ const bomHtml = (list, max) => list.map(x => `
+   <div class="it ${x.est ? 'est' : ''}"><div><b>${esc(x.n)}</b><small>${esc(x.s)}</small></div><div class="bar"><i data-w="${(x.p / max * 100).toFixed(1)}"></i></div><span class="p">$${fmt(x.p, 2)}</span></div>`).join('');
+ const buildSum = BUILD.reduce((a, x) => a + x.p, 0), runSum = RUN.reduce((a, x) => a + x.p, 0);
+-$('#bomBuild').innerHTML = bomHtml(BUILD, 169) + `<div class="tot"><span>Total to build and install</span><span>$${fmt(buildSum, 2)}</span></div>`;
+-$('#bomRun').innerHTML = bomHtml(RUN, 169) + `<div class="tot"><span>Total per year</span><span>$${fmt(runSum, 2)}</span></div>`;
++// Keep the fixed ten-station summary and the cost heading tied to the same BOM.
++const firstYearTenStations = 10 * (buildSum + runSum);
++document.querySelectorAll('[data-hww-first-year-cost]').forEach(el => {
++  el.textContent = 'US$' + fmt(firstYearTenStations, 2);
++});
++$('#equipmentSubtotal').textContent = 'US$' + fmt(BUILD.filter(item => !item.installation).reduce((sum, item) => sum + item.p, 0), 2);
++$('#installedSubtotal').textContent = 'US$' + fmt(buildSum, 2);
++$('#bomBuild').innerHTML = bomHtml(BUILD, 169) + `<div class="tot"><span>Scenario build and installation subtotal</span><span>$${fmt(buildSum, 2)}</span></div>`;
++$('#bomRun').innerHTML = bomHtml(RUN, 169) + `<div class="tot"><span>Scenario annual operating subtotal</span><span>$${fmt(runSum, 2)}</span></div>`;
+ const VND = 26000, NHUE = 75115e9;
+ const calc = () => {
+   const n = +$('#nSt').value, y = +$('#nYr').value;
+   const usd = n * (buildSum + runSum * y), vnd = usd * VND, share = vnd / NHUE * 100;
+   $('#nOut').textContent = n; $('#yOut').textContent = y;
+-  $('#cUsd').textContent = '$' + fmt(Math.round(usd));
++  $('#cUsd').textContent = '$' + fmt(usd, 2);
+   $('#cVnd').textContent = vnd >= 1e9 ? '₫' + fmt(vnd / 1e9, 2) + ' bn' : '₫' + fmt(Math.round(vnd / 1e6)) + ' m';
+   $('#cBar').style.width = Math.max(share, 0) + '%';
+-  $('#cTxt').textContent = `${share < 0.001 ? share.toFixed(5) : share.toFixed(4)}% of the ₫75,115 billion budget for restoring the Nhuệ River.`;
++  $('#cTxt').textContent = `${share < 0.001 ? share.toFixed(5) : share.toFixed(4)}% of the ₫75,115 billion Nhuệ restoration budget, for context only. This comparison does not establish affordability or committed funding.`;
+ };
+ $('#nSt').addEventListener('input', calc); $('#nYr').addEventListener('input', calc); calc();
+ 

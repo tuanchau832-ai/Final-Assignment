@@ -1,0 +1,71 @@
+{
+  "date": "2026-11-28",
+  "scope": "Four-file handoff; other branches not modified",
+  "line_endings": "Patch/source artifacts LF. Exact-byte dry-apply uses core.autocrlf=false against Git blob contents. Normal Windows checkout may use CRLF.",
+  "coreFigures": {
+    "unitVnd": 13933146,
+    "nextTwoVnd": 27866292,
+    "sharedKitVnd": 1683506,
+    "threePlusKitVnd": 43482944
+  },
+  "referenceHardwarePartialVnd": 57466944,
+  "reference36MonthPartialVnd": 70398864,
+  "targets": [
+    {
+      "base_commit": "ea4cce0ab3e1c520e074b48ae703d3dfe69570fb",
+      "patch": "tuan-ea4cce0a.patch",
+      "sha256": "41d319512cf2f321534620f41ccdc675e600451876515a24fbc6a92ee27dddd9",
+      "files": [
+        {
+          "path": "website/src/content/data.ts",
+          "before_sha256": "9c6d5e910c71515f69d4b2f3e6c8483d6234255dd66c02911d9e244d4d5831c5",
+          "after_sha256": "4ac650002a588b153d3d2d37f099044d3a0a042d2f8220ca45734995c364f016"
+        },
+        {
+          "path": "website/src/content/pages/home.html",
+          "before_sha256": "9b6a3eb079b8896f4caed3c2ea41547d959f6cfef17c438dac66a734f7ed4628",
+          "after_sha256": "37f69d7a06138363de52f12363ba93b3115ad5173120e0bb669d6c63d0dfa661"
+        },
+        {
+          "path": "website/src/content/pages/implementation.html",
+          "before_sha256": "589e22e42c5303d916869a878ebff63ad2a040b3c4a74897769bb557dda9d986",
+          "after_sha256": "7a4a5ae02d0a58b75822347b70cc07ec5efe03aaaf62b1aa26363460028d7f11"
+        },
+        {
+          "path": "website/src/content/pages/references.html",
+          "before_sha256": "f5d76d4383a26f3efd6a4fb59f316e234039e07b6377870bb3807cedf61fe3c6",
+          "after_sha256": "a6606bc9751fb91134717aa7c121d082a3ffb9a2b08fee8a137a828f48c66164"
+        }
+      ],
+      "dry_apply_and_output_hashes": "PASS"
+    },
+    {
+      "base_commit": "ee0502ca3c487f20a4a564ec8863f9a58697006a",
+      "patch": "final-ee0502ca.patch",
+      "sha256": "cd236a5bbbc236284f037557cfdc439b452b8d3cb81eccc58916653239277f4a",
+      "files": [
+        {
+          "path": "website/src/content/data.ts",
+          "before_sha256": "9c6d5e910c71515f69d4b2f3e6c8483d6234255dd66c02911d9e244d4d5831c5",
+          "after_sha256": "4ac650002a588b153d3d2d37f099044d3a0a042d2f8220ca45734995c364f016"
+        },
+        {
+          "path": "website/src/content/pages/home.html",
+          "before_sha256": "ab1539fcc8c5e5cabf41e4cf8342cdec413281c3978ad05f5a6ee705fae035a8",
+          "after_sha256": "37f69d7a06138363de52f12363ba93b3115ad5173120e0bb669d6c63d0dfa661"
+        },
+        {
+          "path": "website/src/content/pages/implementation.html",
+          "before_sha256": "68d0824f0bea37d75d5285f92f8bef2b496d4b6053f337b4c1c6fe42c1e6c6ed",
+          "after_sha256": "7a4a5ae02d0a58b75822347b70cc07ec5efe03aaaf62b1aa26363460028d7f11"
+        },
+        {
+          "path": "website/src/content/pages/references.html",
+          "before_sha256": "49e0e28579e44f5c32986f799891c752ce673360e618252a4fd25195ec222a58",
+          "after_sha256": "a6606bc9751fb91134717aa7c121d082a3ffb9a2b08fee8a137a828f48c66164"
+        }
+      ],
+      "dry_apply_and_output_hashes": "PASS"
+    }
+  ]
+}

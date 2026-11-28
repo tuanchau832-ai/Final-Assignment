@@ -1,0 +1,106 @@
+{
+  "checked_date": "2026-11-28",
+  "price_use": "Candidate listings only; historical price baseline unchanged",
+  "observations": [
+    {
+      "supplier": "LILYGO",
+      "sku": "Q210",
+      "variant_id": "42358717939893",
+      "variant_title": "China [For Worldwide] / SIM7600E-H [Q210]",
+      "listed_price": "65.31",
+      "currency": "USD",
+      "unit": "board package",
+      "available_api": true,
+      "api_url": "https://lilygo.cc/products/t-sim7600.js",
+      "url": "https://lilygo.cc/en-us/products/t-sim7600?variant=42358717939893",
+      "verification": "manufacturer product API",
+      "budget_status": "not_selected_not_added_to_baseline"
+    },
+    {
+      "supplier": "LILYGO",
+      "sku": "Q190",
+      "variant_id": "42358717972661",
+      "variant_title": "China [For Worldwide] / SIM7600G-H R2 4MB [Q190]",
+      "listed_price": "69.34",
+      "currency": "USD",
+      "unit": "board package",
+      "available_api": true,
+      "api_url": "https://lilygo.cc/products/t-sim7600.js",
+      "url": "https://lilygo.cc/en-us/products/t-sim7600?variant=42358717972661",
+      "verification": "exact selected HTML variant, displayed price, Shopify active currency and manufacturer product API",
+      "budget_status": "not_selected_not_added_to_baseline",
+      "selected_variant_verified": true,
+      "displayed_price_verified": true,
+      "browser_currency": "USD",
+      "evidence": {
+        "file": "lilygo-Q190.png",
+        "sha256": "4a8233313f0d13d0a123c6a78239ac577ae27e834cd247b6aa0f58002a0625d3"
+      }
+    },
+    {
+      "supplier": "LILYGO",
+      "sku": "Q387",
+      "variant_id": "42774480224437",
+      "variant_title": "China [For Worldwide] / SIM7600G-H R2 16MB [Q387]",
+      "listed_price": "94.32",
+      "currency": "USD",
+      "unit": "board package",
+      "available_api": true,
+      "api_url": "https://lilygo.cc/products/t-sim7600.js",
+      "url": "https://lilygo.cc/en-us/products/t-sim7600?variant=42774480224437",
+      "verification": "exact selected HTML variant, displayed price, Shopify active currency and manufacturer product API",
+      "budget_status": "not_selected_not_added_to_baseline",
+      "selected_variant_verified": true,
+      "displayed_price_verified": true,
+      "browser_currency": "USD",
+      "evidence": {
+        "file": "lilygo-Q387.png",
+        "sha256": "6cb413d21873fdacb06b3b4c1a8d97feb72e9c4d250768a4ef9636efa3afa628"
+      }
+    },
+    {
+      "supplier": "Hshop",
+      "sku": "HS2250V",
+      "listed_price": "195000",
+      "currency": "VND",
+      "unit": "each",
+      "url": "https://hshop.vn/mach-phat-trien-vietduino-esp32",
+      "verification": "direct primary product page via web reader, exact SKU and VAT-labelled price",
+      "budget_status": "new observation only; original price record date and baseline unchanged"
+    },
+    {
+      "supplier": "Hshop",
+      "sku": "HS2164V",
+      "listed_price": "1566000",
+      "currency": "VND",
+      "unit": "module only",
+      "url": "https://hshop.vn/mach-sim7600g-h-m-2-simcom-original-4g-lte-cat-4-module-global-coverage-gnss-m-2-connector",
+      "verification": "direct primary product page via web reader, exact SKU and VAT-labelled price",
+      "budget_status": "new observation only; no carrier/antennas inferred"
+    }
+  ],
+  "limits": "Prices are native USD listings, not quotations or Vietnam landed costs. No freight, import taxes, board suitability or package delivery commitment verified. API availability is not reserved stock. No expired promotion assumed.",
+  "contacts": [
+    {
+      "supplier": "Hshop",
+      "public_email": "contact.hshopvn@gmail.com",
+      "url": "https://hshop.vn/lien-he",
+      "scope": "candidate component seller; no installed-service quote or outgoing message"
+    },
+    {
+      "supplier": "LILYGO",
+      "public_email": "orders@lilygo.cc",
+      "business_email": "info@lilygo.cc",
+      "url": "https://lilygo.cc/en-us/products/t-sim7600",
+      "scope": "manufacturer product/business contacts; no quote or outgoing message"
+    }
+  ],
+  "discovery": {
+    "no_file_equivalence_assumed": true,
+    "local_prices_unchanged": true,
+    "no_third_party_messages": true,
+    "previous_lookup_note": "user deferred while awaiting Akai; stop further lookup",
+    "user_clarification": "BOM, not a separate BOMZ document; supplied Expanded MD is the identified source",
+    "BOM_source_status": "identified_reread_and_reconciled; model/package and quotation limits remain"
+  }
+}

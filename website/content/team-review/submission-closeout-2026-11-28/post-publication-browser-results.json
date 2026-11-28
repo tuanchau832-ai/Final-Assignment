@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-28",
+  "remote_commit": "e18f8b44f79dc136b017b6e3d5e4eace8477b8de",
+  "scope": "Exact published final-website snapshot, local Chrome after publication; no hosted URL yet.",
+  "cases": [
+    {
+      "width": 320,
+      "HomeCostRolloutCalculatedTotals": "PASS",
+      "appendixLedger": "PASS",
+      "tableScrollAndPageFit": "PASS",
+      "References": "PASS",
+      "bothWordDownloads": "PASS",
+      "runtimeErrors": []
+    },
+    {
+      "width": 390,
+      "HomeCostRolloutCalculatedTotals": "PASS",
+      "appendixLedger": "PASS",
+      "tableScrollAndPageFit": "PASS",
+      "References": "PASS",
+      "bothWordDownloads": "PASS",
+      "runtimeErrors": []
+    },
+    {
+      "width": 1440,
+      "HomeCostRolloutCalculatedTotals": "PASS",
+      "appendixLedger": "PASS",
+      "tableScrollAndPageFit": "PASS",
+      "References": "PASS",
+      "bothWordDownloads": "PASS",
+      "runtimeErrors": []
+    }
+  ],
+  "conservativeWebsiteWordCounter": 3652
+}
