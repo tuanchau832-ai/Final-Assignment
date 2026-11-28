@@ -13,26 +13,25 @@ export const OPTS = [
   { k: 'B · Test kits and app', s: [2, 2, 2, 4, 5, 4], r: ['Only when a volunteer tests', 'Tests river water, not outfalls', 'Kit accuracy and training vary', 'Residents take part directly', 'Kits are simple', 'Kits are cheap'] },
   { k: 'C · Manual sampling', s: [1, 3, 5, 2, 4, 2], r: ['Days between visits, plus lab time', 'Samples one outfall, if it is the right one', 'Laboratory accuracy', 'Results rarely reach residents', 'No equipment left on site', 'Staff time grows with every site'] }
 ];
-/* Listed price per station in VND, recorded 19-25 November 2026 (USD items at 25,940). A reference
-   design for asking quotes, not a final parts list. The pH kit is also the optional shared spare. */
+/* Q190 chosen for proposed costing on 28 November 2026; USD units use the explicit
+   historical 25,940 VND/USD assumption, rounded per unit. Not a purchase or installed budget. The pH kit is also the optional shared spare. */
 export const PH_KIT = { n: 'Industrial pH probe kit', s: 'SEN0169-V2 · US$64.90 · DFRobot (n.d.-a)', p: 1683506 };
 export const BUILD = [
   { n: 'Turbidity sensor', s: 'SEN0710 · US$229 · DFRobot (n.d.-c)', p: 5940260 },
   { n: 'Dissolved-oxygen sensor', s: 'SEN0680 · Hshop (n.d.-c)', p: 4428000 },
   PH_KIT,
-  { n: '4G modem', s: 'SIM7600G-H-M.2 · Hshop (n.d.-e)', p: 1566000 },
-  { n: 'ESP32 board', s: 'Vietduino HS2250V · Hshop (n.d.-d)', p: 195000 },
+  { n: 'Integrated ESP32/4G board', s: 'LILYGO Q190 R2 4MB · US$69.34 · LILYGO (n.d.)', p: 1798680 },
   { n: 'Temperature sensor', s: 'DS18B20, waterproof · Hshop (n.d.-b)', p: 35000 },
   { n: 'RS485 converter', s: 'TTL to RS485 · Hshop (n.d.-a)', p: 35000 },
   { n: 'Four cable glands', s: 'PG13.5, fit to be checked · Đại Hòa Phú (n.d.)', p: 4 * 3175 }
 ];
 export const LIFE = [
-  { k: 'Materials', imp: 'Electronics need copper, plastics and lithium for the battery.', who: 'Component suppliers', act: 'Choose RoHS-compliant parts, a stainless cage and a recyclable enclosure.' },
+  { k: 'Materials', imp: 'Electronics and batteries consume metals and plastics; the reference power budget uses an AGM lead-acid battery.', who: 'Component suppliers', act: 'Choose RoHS-compliant parts, a stainless cage and a recyclable enclosure.' },
   { k: 'Assembly', imp: 'Assembly uses energy and creates offcuts and packaging.', who: 'Our team, local workshops', act: 'Assemble in Hanoi to cut shipping and support local jobs.' },
   { k: 'Transport', imp: 'Short trips by van; each station weighs only a few kilograms.', who: 'Our team', act: 'Group installations by district to cut trips.' },
   { k: 'Installation', imp: 'Work on embankment walls beside traffic and water.', who: 'Drainage company, ward committees, residents', act: 'Agree access, follow safety rules and tell residents before work starts.' },
   { k: 'Use', imp: 'Solar powered, but needs service trips and calibration chemicals.', who: 'Inspectors, residents, factories', act: 'Collect used calibration fluid and plan visits by route.' },
-  { k: 'End of life', imp: 'Retired boards and lithium batteries become e-waste.', who: 'Certified recycler, the Department', act: 'Review wear in month 36, replace parts only as needed, recycle boards and batteries and reuse cages.' }
+  { k: 'End of life', imp: 'Retired boards become e-waste; AGM batteries need suitable lead-acid collection.', who: 'Certified recycler, the Department', act: 'Review wear in month 36, replace parts only as needed, recycle boards and batteries and reuse cages.' }
 ];
 export const TEAM = [
   { n: 'Nguyễn Gia Ngân', f: 'Industrial wastewater', b: 'Researched how industrial wastewater affects water quality in Hanoi, from COD and BOD₅ in the Tô Lịch to metals in river sediments.' },

@@ -1,5 +1,6 @@
 // @ts-nocheck  (ported from the design prototype; typed loosely on purpose)
 import { CRIT, OPTS, BUILD, PH_KIT, LIFE, TEAM } from '../content/data';
+import { planningSummary } from '../content/planning-budget';
 import { MapScene } from '../scenes/mapScene';
 import { RiverScene } from '../scenes/riverScene';
 
@@ -49,6 +50,7 @@ $('#bomBuild').innerHTML = BUILD.map(x => `
   <div class="it"><div><b>${esc(x.n)}</b><small>${esc(x.s)}</small></div><div class="bar"><i data-w="${(x.p / dearest * 100).toFixed(1)}"></i></div><span class="p">${dong(x.p)}</span></div>`).join('') + `<div class="tot"><span>Listed subtotal per station</span><span>${dong(station)}</span></div>`;
 const COSTS = { first: station, rest: 2 * station, spare: PH_KIT.p, total: 3 * station + PH_KIT.p };
 $$('[data-cost]').forEach(el => { el.textContent = dong(COSTS[el.dataset.cost]); });
+$$('[data-budget]').forEach(el => { el.textContent = dong(planningSummary[el.dataset.budget]); });
 
 /* life-cycle wheel */
 const wheel = $('#wheel');
@@ -82,7 +84,7 @@ $('#teamGrid').innerHTML = TEAM.map((m, i) => `
     <p>${esc(m.b)}</p>
     <p class="rr">Report role <span class="pending">To confirm</span></p>
   </article>`).join('');
-$('#declare').innerHTML = TEAM.map(m => `<div><b>${esc(m.n)}</b><span>Sections written, prototype or research work, presentation part.</span><span class="pending">Fill in</span></div>`).join('');
+$('#declare').innerHTML = TEAM.map(m => `<div><b>${esc(m.n)}</b>${m.n === 'Lê Nguyễn Bá Nguyên' ? '<span>Cost research, arithmetic, funding proposal, source checks and integration/QA records, with disclosed AI assistance.</span><a href="/documents/ba-nguyen-ai-log-2026-11-28.html">Own evidence; team confirmation pending</a>' : '<span>Sections written, prototype or research work, presentation part.</span><span class="pending">Fill in</span>'}</div>`).join('');
 
 /* ================= NAVIGATION ================= */
 const PAGES = ['home', 'design', 'solution', 'implementation', 'team', 'references', 'appendices'];
@@ -246,13 +248,16 @@ document.addEventListener('visibilitychange', () => scenes.forEach((s, cv) => { 
 
 /* ================= WORD COUNT ================= */
 const countWords = () => {
+  const count = text => (text.match(/\S+/g) || []).length;
   let words = 0;
-  $$('[data-count]').forEach(a => {
+  // Include tables/captions and the team text conservatively; navigation is not report content.
+  $$('[data-count], #p-team').forEach(a => {
     const c = a.cloneNode(true);
-    $$('.crumbs, .subnav, .phone, .log, .explore, .demo-bar, .pending, svg, .stage-btns, .stage, .simblock, .figcap, iframe', c).forEach(x => x.remove());
-    words += (c.textContent.match(/[\p{L}\p{N}][\p{L}\p{N}’'.,%₫$/–-]*/gu) || []).length;
+    $$('script, style, nav, .crumbs, .subnav, .stage', c).forEach(x => x.remove());
+    $$('p,h1,h2,h3,h4,td,th,caption,li,dt,dd,figcaption,div,section,br,small,b,span', c).forEach(x => x.append(' '));
+    words += count(c.textContent);
   });
-  LIFE.forEach(s => { words += (`${s.k} ${s.imp} ${s.who} ${s.act}`.match(/\S+/g) || []).length; });
+  LIFE.forEach(s => { words += count(`${s.k} ${s.imp} ${s.who} ${s.act}`); });
   return words;
 };
 const wc = countWords();
